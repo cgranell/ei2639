@@ -2,10 +2,10 @@ project:
   type: book
 
 book:
-  title: "YOUR TITLE"
-  author: "YOUR NAME"
+  title: "EI2639"
+  author: "Carlos Granell"
   date: today
-  repo-url: https://github.com/[YOURACCOUNT]/[YOURREPO]
+  repo-url: https://github.com/cgranell/ei2639
   repo-branch: main
   repo-actions: [source, edit, issue]
   chapters:
