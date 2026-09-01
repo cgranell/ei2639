@@ -22,7 +22,9 @@ format:
     highlight-style: styles/joyce.theme
     callout-icon: false
     
-bibliography: references.bib    
+bibliography: references.bib
+citations-hover: true
+citation-location: margin
     
 knitr:
   opts_chunk: 
