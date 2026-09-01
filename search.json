@@ -12,11 +12,31 @@
   {
     "objectID": "materials/intro.html",
     "href": "materials/intro.html",
-    "title": "1  Introduction",
+    "title": "1  Introducción",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee (knuth84?) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2",
+    "text": "1.1 Objetivo y resultados de aprendizaje\nSegún el SIA,\nY al finalizar satisfactoriamente la EI1039, deberías ser capaz de:\nTan importantes, o incluso más, que los resultados de aprendizaje mencionados anteriormente son las competencias blandas o habilidades interpersonales (soft skills), como la comunicación, el trabajo en equipo, la síntesis de información, la toma de decisiones, la resolución de conflictos, la gestión del tiempo, y el liderazgo. Trabajaremos en estas competencias o habilidades a lo largo del curso porque, aunque parezca increíble, son aspectos vitales del día a día de un arquitecto/a o diseñador/a de software.\nArquitectura software, patrones de diseño, comunicación, trabajo en equipo, …. Suena bien, ¿no? Espero que encuentres atractivo e interesante el contenido de la asignatura a lo largo del semestre.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción</span>"
+    ]
+  },
+  {
+    "objectID": "materials/intro.html#objetivo-y-resultados-de-aprendizaje",
+    "href": "materials/intro.html#objetivo-y-resultados-de-aprendizaje",
+    "title": "1  Introducción",
+    "section": "",
+    "text": "“la asignatura Diseño de Software se imparte en el primer semestre de cuarto curso del grado en Ingeniería Informática de la Universitat Jaume I, como parte del itinerario de Ingeniería del Software. El objetivo de esta asignatura es proporcionar al alumnado conocimientos y habilidades sobre las distintas etapas del diseño del software dentro del proceso de desarrollo.”\n\n\n\nComparar las distintas estrategias que se pueden utilizar en el diseño de un sistema software.\nSeleccionar, aplicar y evaluar patrones de arquitectura y diseño adecuados a la resolución de un determinado problema de desarrollo del software.\nDiseñar y evaluar la interfaz de usuario utilizando principios y técnicas propias de la interacción persona-computador.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción</span>"
+    ]
+  },
+  {
+    "objectID": "materials/intro.html#método-de-instrucción",
+    "href": "materials/intro.html#método-de-instrucción",
+    "title": "1  Introducción",
+    "section": "1.2 Método de instrucción",
+    "text": "1.2 Método de instrucción\n\n\n\n\n\n\nTip¿Te has preguntado alguna vez qué pasa en tu cerebro cuando aprendes? (Lang 2016)\n\n\n\nTenemos millones de neuronas que “hacen amigos fácilmente”. Las neuronas se conectan con otras neuronas con cada nueva experiencia que tenemos (nuevas emociones, pensamientos, acciones, conocimiento, etc.) formando redes. Las redes al principio son débiles, pero cada vez que repetimos la experiencia o acción, el camimo de la red se consolida y se hace más fuerte. Cuando aprendemos, nuestro cerebro cambia por la formación de nuevas conexiones entre neuronas.\n¿Quieres saber más? 10 Things Software Developers Should Learn about Learning (Brown et al. 2023)\n\n\n\nBrown, Neil C. C., Felienne F. J. Hermans, and Lauren E. Margulieux. 2023. “10 Things Software Developers Should Learn about Learning.” Communications of the ACM 67 (1): 78–87. https://doi.org/10.1145/3584859.\n\nLang, James M. 2016. Small Teaching. Jossey-Bass. https://www.jamesmlang.com/books.\n\n\n\n\n\n\nTipPirámide Bloom\n\n\n\nCuando reflexionamos y aplicamos (en contraposición a simplemente leer o subrayar, ver Figure 1.1) cierto conocimiento a contextos nuevos, lo comprendemos más profundamente, provocando que la red sea más densa y tenga conexiones con otras redes. La differencia entre la red de un principiante y la de un experto radica justamente en el número y densidad de conexiones. Cuanto más interconexiones, mayor comprensión.\n\n\n\n\n\n\nFigure 1.1: Taxonomía de Bloom\n\n\n\n\n\nSi esperas presentaciones largas y densas por mi parte todos los viernes por la tarde, entonces creo que te has matriculado de la asignatura equivocada. 😁🍻\nHay evidencia científica de sobra que demuestra una y otra vez que los métodos de aprendizaje activo (por activo me refiero a todos, tanto dentro como fuera de clase) son mucho más efectivos que escucharme y tomar apuntes de forma pasiva. Vale, es cierto que a veces son necesarias presentaciones aclaratorias; pero tú debes ser el protagonista (y no yo) de tu propio proceso de aprendizaje para alcanzar los resultados esperados con éxito. Por lo tanto, esta asignatura mezcla diversas estrategias de aprendizaje, algunas más tradicionales como presentaciones cuando sea necesario combinadas con estrategias de apredizaje colaborativas y activas para trabajo en grupo, exploración y aplicación de conceptos, y competencias de proceso (o process skills), como por ejemplo Flipped Classroom (lecturas y ejercicios básicos fuera del aula que requieren competencias cognitivas bajas, con análisis y resolución de problemas en aula que requiren competencias cognitivas altas).\nPara que te hagas una idea, una semana típica de clase de teoría podría ser así:\n\nHasta el miércoles (a las 9:00): Fecha límite para entregar las actividades previas a la siguiente clase de teoría de forma individual en el Aula Virtual.\nViernes (en aula): Comentamos las actividades previas, junto con presentaciones y actividades en clase.\n\nLas asignaturas EI1039 (Diseño de software) y EI1048 (Paradigmas de Software) están muy relacionadas, ya que son dos caras de la misma moneda a la hora de diseñar y desarrollar aplicaciones avanzadas. Para facilitar el aprendizaje de las competencias de ambas asignaturas, el profesorado nos hemos organizado y coordinado para proponerte un proyecto común que viene detallado en un documento separado colgado en el Aula Virtual de las dos asignaturas. Las clases de laboratorio (LA) de la EI1039 y de la EI1048 son de trabajo (en grupo) para el desarrollo del proyecto común.\nLlevamos varios años colaborando entre el profesorado de ambas asignaturas y presentando los resultados en foros sobre educación universitaria en informática (JENUI):\n\n(González-Pérez et al. 2021),\n(González-Pérez et al. 2022),\n(Matey-Sanz et al. 2024) y\n(Matey-Sanz et al. 2025).\n\n\nGonzález-Pérez, Alberto, Ramón A. Mollineda Cárdenas, and David Llorens Piñana. 2021. “Aprendizaje Basado En Metodologías Ágiles Centradas En Diseño Evolutivo Dirigido Por Pruebas de Aceptación.” Actas de Las XXVII Jornadas Sobre La Enseñanza Universitaria de La Informática (JENUI) 6: 99–106. https://aenui.org/actas/pdf/JENUI_2021_012.pdf.\n\nGonzález-Pérez, Alberto, Carlos Granell-Canut, and Ramón A. Mollineda Cárdenas. 2022. “Coordinación de Asignaturas Dirigida Por Un Proyecto de Desarrollo Ágil Con Evaluación Unificada.” Actas de Las Jornadas Sobre Enseñanza Universitaria de La Informática (JENUI) 7 (July): 127–34. https://aenui.org/actas/pdf/JENUI_2022_017.pdf.\n\nMatey-Sanz, Miguel, Carlos Granell-Canut, and Ramón A. Mollineda Cárdenas. 2024. “Estrategias de Control y Seguimiento Activo de Proyectos de Desarrollo de Software.” Actas de Las Jornadas Sobre Enseñanza Universitaria de La Informática (JENUI) 9 (July): 165–72. https://aenui.org/actas/pdf/JENUI_2024_021.pdf.\n\nMatey-Sanz, Miguel, Carlos Granell-Canut, and Ramón A. Mollineda Cárdenas. 2025. “La IA Generativa Como Acompañante En El Ciclo de Vida Del Software.” Actas de Las Jornadas Sobre Enseñanza Universitaria de La Informática (JENUI) 10 (July): 45–53. https://aenui.org/actas/fichas/JENUI_2025_005.html.\nEn la edición de la JENUI 2024, se reconoció nuestro trabajo en (Matey-Sanz et al. 2024) con el premio SISTEDES al mejor trabajo sobre ingeniería del software.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción</span>"
     ]
   },
   {
@@ -27,6 +47,16 @@
     "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Brown, Neil C. C., Felienne F. J. Hermans, and Lauren E. Margulieux.\n2023. “10 Things Software Developers Should Learn about\nLearning.” Communications of the ACM 67 (1): 78–87. https://doi.org/10.1145/3584859.\n\n\nGonzález-Pérez, Alberto, Ramón A. Mollineda Cárdenas, and David Llorens\nPiñana. 2021. “Aprendizaje Basado En Metodologías Ágiles Centradas\nEn Diseño Evolutivo Dirigido Por Pruebas de Aceptación.”\nActas de Las XXVII Jornadas Sobre La Enseñanza Universitaria de La\nInformática (JENUI) 6: 99–106. https://aenui.org/actas/pdf/JENUI_2021_012.pdf.\n\n\nGonzález-Pérez, Alberto, Carlos Granell-Canut, and Ramón A. Mollineda\nCárdenas. 2022. “Coordinación de Asignaturas Dirigida Por Un\nProyecto de Desarrollo Ágil Con Evaluación Unificada.” Actas\nde Las Jornadas Sobre Enseñanza Universitaria de La Informática\n(JENUI) 7 (July): 127–34. https://aenui.org/actas/pdf/JENUI_2022_017.pdf.\n\n\nLang, James M. 2016. Small Teaching. Jossey-Bass. https://www.jamesmlang.com/books.\n\n\nMatey-Sanz, Miguel, Carlos Granell-Canut, and Ramón A. Mollineda\nCárdenas. 2024. “Estrategias de Control y Seguimiento Activo de\nProyectos de Desarrollo de Software.” Actas de Las Jornadas\nSobre Enseñanza Universitaria de La Informática (JENUI) 9 (July):\n165–72. https://aenui.org/actas/pdf/JENUI_2024_021.pdf.\n\n\nMatey-Sanz, Miguel, Carlos Granell-Canut, and Ramón A. Mollineda\nCárdenas. 2025. “La IA Generativa Como Acompañante En El Ciclo de\nVida Del Software.” Actas de Las Jornadas Sobre Enseñanza\nUniversitaria de La Informática (JENUI) 10 (July): 45–53. https://aenui.org/actas/fichas/JENUI_2025_005.html.",
+    "crumbs": [
+      "References"
     ]
   }
 ]
