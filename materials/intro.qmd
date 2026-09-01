@@ -59,3 +59,40 @@ Llevamos varios años colaborando entre el profesorado de ambas asignaturas y pr
 
 En la edición de la JENUI 2024, se reconoció nuestro trabajo en [@matey2024jenui] con el [premio SISTEDES al mejor trabajo sobre ingeniería del software](https://jenui2024.udc.es/premios-jenui-2024/).
 
+
+## Materiales y contenido
+
+Los materiales del curso relativos a Teoria (TE) están disponibles en el [Aula Virtual](https://aulavirtual.uji.es/course/view.php?id=84498), organizados por semanas. Obviamente, el AV enlaza con este sitio web de la asignatura. Desde el punto de vista del estudiantes, es conveniente tener tanto el AV como este sitio web abiertos.  
+
+En el Aula Virtual de la asignatura se especifican las actividades previas a título individual que se entregan a través de tareas correspondientes. Voy a utilizar el Aula Virtual para proporcionarte feedback sobre las actividades propuestas, para anuncios de la asignatura y, en definitiva, para cualquier tipo de comunicación oficial. Agradecería enormemente que todas las comunicaciones entre nosotros relativas a la asignatura fueran canalizadas a través del Aula Virtual, y **no a través de mi correo personal**.
+
+La asignatura también consta de sesiones de seminarios (SE) donde exploraremos temas adicionales al diseño de software, como arquitectura de software o comunicación oral, relacionados de algún modo con el proyecto común a desarrollar. La información de los seminarios se encuentra únicamente en el Aula Virtual. Las cinco sesiones de seminarios se organizan como sigue:
+
+-   **Seminario 1** (*26 septiembre*) - MVC y variantes + LLM
+
+-   **Seminario 2** (*17 octubre*) - Caso de estudio: Software architecture patterns
+
+-   **Seminario 3** (*30/31 octubre*) - Conjunto con EI1048. Relacionado con el proyecto común
+
+-   **Seminario 4** (*20/21 noviembre*) - Conjunto con EI1048. Relacionado con el proyecto común
+
+-   **Seminario 5** (*12 diciembre*) - Comunicación oral efectiva
+
+
+## Métodos de evaluación
+
+Vuestra participación en clase es fundamental. Las actividades propuestas en el aula durante las sesiones de teoría invitan al trabajo colaborativo y participativo, fomentado el aprendizaje activo, la discusión y la comunicación. Las actividades previas cuentan un 10%. Es necesario entregarlas todas. Los seminarios computan otro 20% de la nota final, según se desglosa en @tbl-evaluacion. A lo largo del curso se informará con más detalle de la naturaleza de los seminarios evaluables.
+
+El desarrollo, entrega y defensa del proyecto común cubre el 70% de la nota.
+
+
+| Actividad                     |            | Peso | Tipo         | Instrumento                                         |
+|---------------|---------------|---------------|---------------|---------------|
+| Actividades previas           | Individual | 10%  | Formativa    | Código y/o reflexión personal                       |
+| Seminarios 1 y 2              | Individual | 10%  | Formativa    | Reflexión personal                                  |
+| Seminarios 3 y 4 (con EI1048) | Grupo      | 10%  | Formativa    | Presentación y discusión                            |
+| Proyecto común (con EI1048)   | Grupo      | 70%  | Acreditativa | Código, documento escrito, presentación y discusión |
+
+: Instrumentos de evaluación {#tbl-evaluacion} {.hover}
+
+> [Política de entrega tardía/retrasada*:*]{.underline} *Las fechas límite semanales (miércoles mediodía para las activiades previas a clase) tienen sentido para que pueda evaluar el trabajo y proporcionar feedback rápido en la siguiente clase de teoría (viernes). Por lo tanto, las actividades entregadas con retraso no se aceptarán sin permiso especial o debida justificación.*
