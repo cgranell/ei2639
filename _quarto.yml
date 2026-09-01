@@ -2,16 +2,18 @@ project:
   type: book
 
 book:
-  title: "EI2639"
+  title: "EI1009 - m2026/2027"
   author: "Carlos Granell"
+  description: "Diseño de Software"
   date: today
   repo-url: https://github.com/cgranell/ei2639
   repo-branch: main
   repo-actions: [source, edit, issue]
+  reader-mode: true
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
+    - materials/intro.qmd
+    - materials/summary.qmd
     - references.qmd
   
 format:
