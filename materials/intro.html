@@ -27,26 +27,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -99,7 +80,7 @@ div.csl-indent {
 
 </head>
 
-<body class="nav-sidebar floating slimcontent quarto-light">
+<body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -170,20 +151,11 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#objetivo-y-resultados-de-aprendizaje" id="toc-objetivo-y-resultados-de-aprendizaje" class="nav-link active" data-scroll-target="#objetivo-y-resultados-de-aprendizaje"><span class="header-section-number">1.1</span> Objetivo y resultados de aprendizaje</a></li>
-  <li><a href="#método-de-instrucción" id="toc-método-de-instrucción" class="nav-link" data-scroll-target="#método-de-instrucción"><span class="header-section-number">1.2</span> Método de instrucción</a></li>
-  <li><a href="#materiales-y-contenido" id="toc-materiales-y-contenido" class="nav-link" data-scroll-target="#materiales-y-contenido"><span class="header-section-number">1.3</span> Materiales y contenido</a></li>
-  <li><a href="#métodos-de-evaluación" id="toc-métodos-de-evaluación" class="nav-link" data-scroll-target="#métodos-de-evaluación"><span class="header-section-number">1.4</span> Métodos de evaluación</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/cgranell/ei2639/blob/main/materials/intro.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/cgranell/ei2639/edit/main/materials/intro.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/cgranell/ei2639/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -204,170 +176,8 @@ div.csl-indent {
 </header>
 
 
-<section id="objetivo-y-resultados-de-aprendizaje" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="objetivo-y-resultados-de-aprendizaje"><span class="header-section-number">1.1</span> Objetivo y resultados de aprendizaje</h2>
-<p>Según el <a href="https://ujiapps.uji.es/sia/rest/publicacion/2025/estudio/225/asignatura/EI1039">SIA</a>,</p>
-<blockquote class="blockquote">
-<p>“la asignatura Diseño de Software se imparte en el primer semestre de cuarto curso del grado en Ingeniería Informática de la Universitat Jaume I, como parte del itinerario de Ingeniería del Software. El objetivo de esta asignatura es proporcionar al alumnado conocimientos y habilidades sobre las distintas etapas del diseño del software dentro del proceso de desarrollo.”</p>
-</blockquote>
-<p>Y al finalizar satisfactoriamente la EI1039, deberías ser capaz de:</p>
-<ul>
-<li>Comparar las distintas estrategias que se pueden utilizar en el diseño de un sistema software.</li>
-<li>Seleccionar, aplicar y evaluar patrones de arquitectura y diseño adecuados a la resolución de un determinado problema de desarrollo del software.</li>
-<li>Diseñar y evaluar la interfaz de usuario utilizando principios y técnicas propias de la interacción persona-computador.</li>
-</ul>
-<p>Tan importantes, o incluso más, que los resultados de aprendizaje mencionados anteriormente son las competencias blandas o habilidades interpersonales (<em>soft skills</em>), como la comunicación, el trabajo en equipo, la síntesis de información, la toma de decisiones, la resolución de conflictos, la gestión del tiempo, y el liderazgo. Trabajaremos en estas competencias o habilidades a lo largo del curso porque, aunque parezca increíble, son aspectos vitales del día a día de un arquitecto/a o diseñador/a de software.</p>
-<p>Arquitectura software, patrones de diseño, comunicación, trabajo en equipo, …. Suena bien, ¿no? Espero que encuentres atractivo e interesante el contenido de la asignatura a lo largo del semestre.</p>
-</section>
-<section id="método-de-instrucción" class="level2 page-columns page-full" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="método-de-instrucción"><span class="header-section-number">1.2</span> Método de instrucción</h2>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>¿Te has preguntado alguna vez qué pasa en tu cerebro cuando aprendes? <span class="citation" data-cites="lang2016">(<a href="../references.html#ref-lang2016" role="doc-biblioref">Lang 2016</a>)</span>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Tenemos millones de neuronas que “hacen amigos fácilmente”. Las neuronas se conectan con otras neuronas con cada nueva experiencia que tenemos (nuevas emociones, pensamientos, acciones, conocimiento, etc.) formando redes. Las redes al principio son débiles, pero cada vez que repetimos la experiencia o acción, el camimo de la red se consolida y se hace más fuerte. <strong>Cuando aprendemos, nuestro cerebro cambia</strong> por la formación de nuevas conexiones entre neuronas.</p>
-<p>¿Quieres saber más? <a href="https://cacm.acm.org/research/10-things-software-developers-should-learn-about-learning/">10 Things Software Developers Should Learn about Learning</a> <span class="citation" data-cites="brown2023">(<a href="../references.html#ref-brown2023" role="doc-biblioref">Brown et al. 2023</a>)</span></p>
-</div>
-</div>
-<div class="no-row-height column-margin column-container"><div id="ref-brown2023" class="csl-entry" role="listitem">
-Brown, Neil C. C., Felienne F. J. Hermans, and Lauren E. Margulieux. 2023. <span>“10 Things Software Developers Should Learn about Learning.”</span> <em>Communications of the ACM</em> 67 (1): 78–87. <a href="https://doi.org/10.1145/3584859">https://doi.org/10.1145/3584859</a>.
-</div></div><div class="no-row-height column-margin column-container"><div id="ref-lang2016" class="csl-entry" role="listitem">
-Lang, James M. 2016. <em>Small Teaching</em>. Jossey-Bass. <a href="https://www.jamesmlang.com/books">https://www.jamesmlang.com/books</a>.
-</div></div><div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Pirámide Bloom
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Cuando <strong>reflexionamos</strong> y <strong>aplicamos</strong> (en contraposición a simplemente leer o subrayar, ver <a href="#fig-bloom" class="quarto-xref">Figure&nbsp;<span>1.1</span></a>) cierto conocimiento a contextos nuevos, lo comprendemos más profundamente, provocando que la red sea más densa y tenga conexiones con otras redes. La differencia entre la red de un principiante y la de un experto radica justamente en el número y densidad de conexiones<strong>. Cuanto más interconexiones, mayor comprensión</strong>.</p>
-<div id="fig-bloom" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-bloom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/bloom_taxonomy.jpg" class="img-fluid figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bloom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.1: Taxonomía de Bloom
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>Si esperas presentaciones largas y densas por mi parte todos los viernes por la tarde, entonces creo que te has matriculado de la asignatura equivocada. 😁🍻</p>
-<p>Hay evidencia científica de sobra que demuestra una y otra vez que los métodos de <em>aprendizaje activo</em> (por <em>activo</em> me refiero a todos, tanto dentro como fuera de clase) son mucho más efectivos que escucharme y tomar apuntes de forma pasiva. Vale, es cierto que a veces son necesarias presentaciones aclaratorias; pero tú debes ser el protagonista (y no yo) de tu propio proceso de aprendizaje para alcanzar los resultados esperados con éxito. Por lo tanto, esta asignatura mezcla diversas estrategias de aprendizaje, algunas más tradicionales como presentaciones cuando sea necesario combinadas con estrategias de apredizaje colaborativas y activas para trabajo en grupo, exploración y aplicación de conceptos, y competencias de proceso (o <a href="http://elipss.com/process-skills.html">process skills</a>), como por ejemplo <a href="https://www.theflippedclassroom.es/"><em>Flipped Classroom</em></a> (lecturas y ejercicios básicos fuera del aula que requieren competencias cognitivas bajas, con análisis y resolución de problemas en aula que requiren competencias cognitivas altas).</p>
-<p>Para que te hagas una idea, una semana típica de clase de teoría podría ser así:</p>
-<ul>
-<li><p>Hasta el miércoles (a las 9:00): Fecha límite para entregar las actividades previas a la siguiente clase de teoría de forma individual en el Aula Virtual.</p></li>
-<li><p>Viernes (en aula): Comentamos las actividades previas, junto con presentaciones y actividades en clase.</p></li>
-</ul>
-<p>Las asignaturas <a href="https://ujiapps.uji.es/sia/rest/publicacion/2025/estudio/225/asignatura/EI1039">EI1039 (Diseño de software)</a> y <a href="https://ujiapps.uji.es/sia/rest/publicacion/2025/estudio/225/asignatura/EI1048">EI1048 (Paradigmas de Software)</a> están muy relacionadas, ya que son dos caras de la misma moneda a la hora de diseñar y desarrollar aplicaciones avanzadas. Para facilitar el aprendizaje de las competencias de ambas asignaturas, el profesorado nos hemos organizado y coordinado para proponerte un proyecto común que viene detallado en un documento separado colgado en el Aula Virtual de las dos asignaturas. Las clases de laboratorio (LA) de la EI1039 y de la EI1048 son de trabajo (en grupo) para el desarrollo del proyecto común.</p>
-<p>Llevamos varios años colaborando entre el profesorado de ambas asignaturas y presentando los resultados en foros sobre educación universitaria en informática (<a href="https://aenui.org/jenui/">JENUI</a>):</p>
-<ul>
-<li><span class="citation" data-cites="gonzalez2021jenui">(<a href="../references.html#ref-gonzalez2021jenui" role="doc-biblioref">González-Pérez et al. 2021</a>)</span>,</li>
-<li><span class="citation" data-cites="gonzalez2022jenui">(<a href="../references.html#ref-gonzalez2022jenui" role="doc-biblioref">González-Pérez et al. 2022</a>)</span>,</li>
-<li><span class="citation" data-cites="matey2024jenui">(<a href="../references.html#ref-matey2024jenui" role="doc-biblioref">Matey-Sanz et al. 2024</a>)</span> y</li>
-<li><span class="citation" data-cites="matey2025jenui">(<a href="../references.html#ref-matey2025jenui" role="doc-biblioref">Matey-Sanz et al. 2025</a>)</span>.</li>
-</ul>
-<div class="no-row-height column-margin column-container"><div id="ref-gonzalez2021jenui" class="csl-entry" role="listitem">
-González-Pérez, Alberto, Ramón A. Mollineda Cárdenas, and David Llorens Piñana. 2021. <span>“Aprendizaje Basado En Metodologías Ágiles Centradas En Diseño Evolutivo Dirigido Por Pruebas de Aceptación.”</span> <em>Actas de Las XXVII Jornadas Sobre La Enseñanza Universitaria de La Informática (JENUI)</em> 6: 99–106. <a href="https://aenui.org/actas/pdf/JENUI_2021_012.pdf">https://aenui.org/actas/pdf/JENUI_2021_012.pdf</a>.
-</div><div id="ref-gonzalez2022jenui" class="csl-entry" role="listitem">
-González-Pérez, Alberto, Carlos Granell-Canut, and Ramón A. Mollineda Cárdenas. 2022. <span>“Coordinación de Asignaturas Dirigida Por Un Proyecto de Desarrollo Ágil Con Evaluación Unificada.”</span> <em>Actas de Las Jornadas Sobre Enseñanza Universitaria de La Informática (JENUI)</em> 7 (July): 127–34. <a href="https://aenui.org/actas/pdf/JENUI_2022_017.pdf">https://aenui.org/actas/pdf/JENUI_2022_017.pdf</a>.
-</div><div id="ref-matey2024jenui" class="csl-entry" role="listitem">
-Matey-Sanz, Miguel, Carlos Granell-Canut, and Ramón A. Mollineda Cárdenas. 2024. <span>“Estrategias de Control y Seguimiento Activo de Proyectos de Desarrollo de Software.”</span> <em>Actas de Las Jornadas Sobre Enseñanza Universitaria de La Informática (JENUI)</em> 9 (July): 165–72. <a href="https://aenui.org/actas/pdf/JENUI_2024_021.pdf">https://aenui.org/actas/pdf/JENUI_2024_021.pdf</a>.
-</div><div id="ref-matey2025jenui" class="csl-entry" role="listitem">
-Matey-Sanz, Miguel, Carlos Granell-Canut, and Ramón A. Mollineda Cárdenas. 2025. <span>“La IA Generativa Como Acompañante En El Ciclo de Vida Del Software.”</span> <em>Actas de Las Jornadas Sobre Enseñanza Universitaria de La Informática (JENUI)</em> 10 (July): 45–53. <a href="https://aenui.org/actas/fichas/JENUI_2025_005.html">https://aenui.org/actas/fichas/JENUI_2025_005.html</a>.
-</div></div><p>En la edición de la JENUI 2024, se reconoció nuestro trabajo en <span class="citation" data-cites="matey2024jenui">(<a href="../references.html#ref-matey2024jenui" role="doc-biblioref">Matey-Sanz et al. 2024</a>)</span> con el <a href="https://jenui2024.udc.es/premios-jenui-2024/">premio SISTEDES al mejor trabajo sobre ingeniería del software</a>.</p>
-</section>
-<section id="materiales-y-contenido" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="materiales-y-contenido"><span class="header-section-number">1.3</span> Materiales y contenido</h2>
-<p>Los materiales del curso relativos a Teoria (TE) están disponibles en el <a href="https://aulavirtual.uji.es/course/view.php?id=84498">Aula Virtual</a>, organizados por semanas. Obviamente, el AV enlaza con este sitio web de la asignatura. Desde el punto de vista del estudiantes, es conveniente tener tanto el AV como este sitio web abiertos.</p>
-<p>En el Aula Virtual de la asignatura se especifican las actividades previas a título individual que se entregan a través de tareas correspondientes. Voy a utilizar el Aula Virtual para proporcionarte feedback sobre las actividades propuestas, para anuncios de la asignatura y, en definitiva, para cualquier tipo de comunicación oficial. Agradecería enormemente que todas las comunicaciones entre nosotros relativas a la asignatura fueran canalizadas a través del Aula Virtual, y <strong>no a través de mi correo personal</strong>.</p>
-<p>La asignatura también consta de sesiones de seminarios (SE) donde exploraremos temas adicionales al diseño de software, como arquitectura de software o comunicación oral, relacionados de algún modo con el proyecto común a desarrollar. La información de los seminarios se encuentra únicamente en el Aula Virtual. Las cinco sesiones de seminarios se organizan como sigue:</p>
-<ul>
-<li><p><strong>Seminario 1</strong> (<em>26 septiembre</em>) - MVC y variantes + LLM</p></li>
-<li><p><strong>Seminario 2</strong> (<em>17 octubre</em>) - Caso de estudio: Software architecture patterns</p></li>
-<li><p><strong>Seminario 3</strong> (<em>30/31 octubre</em>) - Conjunto con EI1048. Relacionado con el proyecto común</p></li>
-<li><p><strong>Seminario 4</strong> (<em>20/21 noviembre</em>) - Conjunto con EI1048. Relacionado con el proyecto común</p></li>
-<li><p><strong>Seminario 5</strong> (<em>12 diciembre</em>) - Comunicación oral efectiva</p></li>
-</ul>
-</section>
-<section id="métodos-de-evaluación" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="métodos-de-evaluación"><span class="header-section-number">1.4</span> Métodos de evaluación</h2>
-<p>Vuestra participación en clase es fundamental. Las actividades propuestas en el aula durante las sesiones de teoría invitan al trabajo colaborativo y participativo, fomentado el aprendizaje activo, la discusión y la comunicación. Las actividades previas cuentan un 10%. Es necesario entregarlas todas. Los seminarios computan otro 20% de la nota final, según se desglosa en <a href="#tbl-evaluacion" class="quarto-xref">Table&nbsp;<span>1.1</span></a>. A lo largo del curso se informará con más detalle de la naturaleza de los seminarios evaluables.</p>
-<p>El desarrollo, entrega y defensa del proyecto común cubre el 70% de la nota.</p>
-<div id="tbl-evaluacion" class="hover quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-evaluacion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1.1: Instrumentos de evaluación
-</figcaption>
-<div aria-describedby="tbl-evaluacion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="table-hover caption-top table">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Actividad</th>
-<th></th>
-<th>Peso</th>
-<th>Tipo</th>
-<th>Instrumento</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Actividades previas</td>
-<td>Individual</td>
-<td>10%</td>
-<td>Formativa</td>
-<td>Código y/o reflexión personal</td>
-</tr>
-<tr class="even">
-<td>Seminarios 1 y 2</td>
-<td>Individual</td>
-<td>10%</td>
-<td>Formativa</td>
-<td>Reflexión personal</td>
-</tr>
-<tr class="odd">
-<td>Seminarios 3 y 4 (con EI1048)</td>
-<td>Grupo</td>
-<td>10%</td>
-<td>Formativa</td>
-<td>Presentación y discusión</td>
-</tr>
-<tr class="even">
-<td>Proyecto común (con EI1048)</td>
-<td>Grupo</td>
-<td>70%</td>
-<td>Acreditativa</td>
-<td>Código, documento escrito, presentación y discusión</td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-<blockquote class="blockquote">
-<p><u>Política de entrega tardía/retrasada<em>:</em></u> <em>Las fechas límite semanales (miércoles mediodía para las activiades previas a clase) tienen sentido para que pueda evaluar el trabajo y proporcionar feedback rápido en la siguiente clase de teoría (viernes). Por lo tanto, las actividades entregadas con retraso no se aceptarán sin permiso especial o debida justificación.</em></p>
-</blockquote>
 
 
-
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -787,4 +597,4 @@ Table&nbsp;1.1: Instrumentos de evaluación
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/cgranell/ei2639/blob/main/materials/intro.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/cgranell/ei2639/edit/main/materials/intro.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/cgranell/ei2639/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/cgranell/ei2639/blob/main/materials/intro.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/cgranell/ei2639/edit/main/materials/intro.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/cgranell/ei2639/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
