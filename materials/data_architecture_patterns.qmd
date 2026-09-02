@@ -1,4 +1,4 @@
-## Patrones de arquitectura de datos
+# Patrones de arquitectura de datos
 
 Data engineering is no longer just about moving data from one system to another. Modern data engineers are expected to build architectures that are scalable, reliable, secure, cost-efficient, and ready for analytics and AI.
 
@@ -6,7 +6,7 @@ As organizations increasingly adopt cloud platforms, real-time analytics, data p
 
 Here are 12 data architecture patterns every data engineer should understand in 2026 [@aais2026].
 
-### ETL Architecture
+## ETL Architecture
 
 Extract, Transform, Load (ETL) remains a foundational data architecture pattern.
 
@@ -21,7 +21,7 @@ Best suited for:
 
 Although modern architectures often favor ELT, understanding ETL is still important for legacy and regulated environments.
 
-### ELT Architecture
+## ELT Architecture
 
 In Extract, Load, Transform (ELT), raw data is first loaded into a scalable cloud data platform and transformed afterward.
 
@@ -36,7 +36,7 @@ Key benefits:
 
 ELT has become a common foundation for modern analytics platforms.
 
-### Data Warehouse Architecture
+## Data Warehouse Architecture
 
 A data warehouse provides a centralized environment for structured, analytical data.
 
@@ -44,7 +44,7 @@ It typically organizes cleaned and transformed data into models designed for rep
 
 A strong warehouse architecture helps organizations create a reliable single source of truth for business metrics.
 
-### Data Lake Architecture
+## Data Lake Architecture
 
 A data lake stores large volumes of data in its original or near-original form.
 
@@ -60,7 +60,7 @@ Common use cases include:
 
 The major challenge is maintaining governance, quality, and discoverability.
 
-### Lakehouse Architecture
+## Lakehouse Architecture
 
 The data lakehouse combines characteristics of data lakes and data warehouses.
 
@@ -73,7 +73,7 @@ It aims to provide:
 
 For organizations managing both analytics and AI workloads, lakehouse architectures have become particularly important.
 
-### Lambda Architecture
+## Lambda Architecture
 
 Lambda architecture separates data processing into multiple layers, traditionally including:
 
@@ -85,7 +85,7 @@ The batch layer processes large historical datasets while the speed layer handle
 
 Although newer approaches have reduced the need for this complexity in some environments, Lambda architecture remains useful for understanding large-scale streaming systems.
 
-### Kappa Architecture
+## Kappa Architecture
 
 Kappa architecture simplifies the Lambda model by focusing primarily on stream processing.
 
@@ -98,7 +98,7 @@ It can be useful for applications that require:
 - Continuous data pipelines
 - Low-latency decision-making
 
-### Data Mesh Architecture
+## Data Mesh Architecture
 
 Data Mesh shifts the responsibility for data ownership toward business domains.
 
@@ -113,7 +113,7 @@ Four important principles commonly associated with Data Mesh are:
 
 This model can work particularly well in large organizations with many independent business domains.
 
-### Data Fabric Architecture
+## Data Fabric Architecture
 
 A Data Fabric focuses on connecting and governing data across different environments.
 
@@ -128,7 +128,7 @@ It can bring together data from:
 
 Metadata, automation, integration, and governance are central components of this architecture.
 
-### Event-Driven Data Architecture
+## Event-Driven Data Architecture
 
 In an event-driven architecture, systems communicate through events rather than relying entirely on traditional request-response interactions.
 
@@ -138,7 +138,7 @@ Order Created → Inventory Update → Payment Processing → Notification → A
 
 This pattern is especially valuable for distributed systems and real-time applications.
 
-### Medallion Architecture
+## Medallion Architecture
 
 The Medallion architecture organizes data into progressive quality layers.
 
@@ -150,7 +150,7 @@ The Medallion architecture organizes data into progressive quality layers.
 
 This layered approach makes data pipelines easier to manage, troubleshoot, and govern.
 
-### Data Product Architecture
+## Data Product Architecture
 
 A modern data team increasingly treats datasets as products rather than simply pipeline outputs.
 
@@ -166,7 +166,7 @@ A data product should have:
 
 This approach encourages data teams to think about usability and business value—not just data movement.
 
-How Should Data Engineers Choose the Right Pattern?
+## How Should Data Engineers Choose the Right Pattern?
 
 There is no single architecture that works for every organization.
 

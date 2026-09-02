@@ -111,13 +111,21 @@ Los **patrones creacionales** proporcionan mecanismos de creación de objetos qu
 
 Las secciones relativas a los patrones creacionales se dividen en los mismos apartados, tal como reflejan los mapas conceptuales:
 
-- Propósito (*aim*)
+1. Propósito (*aim*)
 
-- Problema (*what problem does it solve?*)
+2. Problema (*what problem does it solve?*)
 
-- Solución (*conceptual solution*)
+3. Solución (*conceptual solution*)
 
-- Ventajas e inconvenientes (*pros and cons*)
+4. Ventajas e inconvenientes (*pros and cons*)
+
+Además, cada mapa conceotual añade tres apartados más:
+
+5. A menudo se confunde con (*often confused with*)
+
+6. Ver también (*see also*)
+
+7. Usos (*usage*)
 
 
 Dejamos para la argumentación y discusión en clase la tarea de [conectar y relacionar](#relaciones-entre-patrones) los distintos patrones creacionales entre ellos, y sugerir [situaciones o aplicaciones](#aplicabilidad) donde se puedan aplicar.
