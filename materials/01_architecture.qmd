@@ -22,3 +22,44 @@ Es importante definir, o al menos caracterizar, el concepto de arquitectura de s
 :::
 
 :::
+
+
+## Dimensiones de un arquitectura software
+
+Según [@richards2020], no es fácil definir el concepto de arquitectura software. Una forma altrenativa ed hacerlo caracterizar el concepto a través de sus aspectos más destacables. Los autores utilizan el término *dimensión* para agrupar estos aspectos clave de la siguiente forma:
+
+- Estructura o estilo
+
+- Características de la arquitectura
+
+- Decisiones o reglas
+
+- Principios de diseño
+
+
+### Características de la arquitectura de software
+
+
+Ahora nos centramos en la dimensión de **características de la arquitectura**, que engloba todos aquellos aspectos, criterios y requisitos no funcionales (términos terminados generalmente en *-idad*, como seguridad, fiabilidad, escalabildiad, etc.) que una determinada arquitectura debe cumplir (o al menos tener en cuenta) para garantizar un funcionamiento correcto y deseable.
+
+::: {.callout-tip icon=false}
+## **Slide Deck** 
+
+::: slides
+[Características](01-arquitectura-caracteristicas.qmd)
+:::
+
+:::
+
+### Estructura de la arquitectura de software
+
+La estructura o el estilo es otra dimensión de la arquitectura de software [@richards2020]. Quizás mucho más conocida y popular, y precisamente por eso, existe la errónea tendencia a reducir cualquier arquitectura de software únicamente a la dimensión de estructura o estilo. Hablamos de arquitectura **en capas** o basada en **microservicios**, como si la dimensión de la estructura abarcara en sí misma toda la complejidad de una arquitectura de software.
+
+::: {.callout-tip icon=false}
+## **Slide Deck** 
+
+::: slides
+[Estilos de arquitectura](01-arquitectura-estilos.qmd)
+:::
+
+:::

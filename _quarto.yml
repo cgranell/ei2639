@@ -13,7 +13,7 @@ book:
   chapters:
     - index.qmd
     - materials/01_architecture.qmd
-    - materials/summary.qmd
+    - materials/design_patterns.qmd
     - references.qmd
   
 format:
