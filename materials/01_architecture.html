@@ -8,7 +8,7 @@
 
 <meta name="description" content="Diseño de Software">
 
-<title>1&nbsp; Introducción – EI1039 - 2026/2027</title>
+<title>1&nbsp; Fundamentos de arquitectura – EI1039 - 2026/2027</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -89,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../materials/intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../materials/01_architecture.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Fundamentos de arquitectura</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -130,8 +130,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../materials/intro.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></span></a>
+  <a href="../materials/01_architecture.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Fundamentos de arquitectura</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -151,15 +151,21 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#qué-es-una-arquitectura-de-software" id="toc-qué-es-una-arquitectura-de-software" class="nav-link active" data-scroll-target="#qué-es-una-arquitectura-de-software"><span class="header-section-number">1.1</span> ¿Qué es una arquitectura de software?</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/cgranell/ei2639/blob/main/materials/01_architecture.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/cgranell/ei2639/edit/main/materials/01_architecture.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/cgranell/ei2639/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Fundamentos de arquitectura</span></h1>
 </div>
 
 
@@ -176,8 +182,36 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="qué-es-una-arquitectura-de-software" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="qué-es-una-arquitectura-de-software"><span class="header-section-number">1.1</span> ¿Qué es una arquitectura de software?</h2>
+<p>El término <strong>arquitectura</strong> tiene multiples significados según el contexto. En ingeniería de software/sistemas, ¿de qué hablamos cuando decimos <strong>arquitectura software</strong>?</p>
+<ul>
+<li>¿Nos referimos a una aplicación móvil?</li>
+<li>¿A una librería software?</li>
+<li>¿O una aplicación empresarial?</li>
+<li>¿Tal vez una red de sensores desplegados en la ciudad junto a un centro (hub) de datos?</li>
+<li>¿O simplemente el conjunto de diagramas de clases u casos de usos asociados?</li>
+<li>¿Una red de <em>data centers</em> como los que posee Meta, Google, etc.?</li>
+</ul>
+<p>Es importante definir, o al menos caracterizar, el concepto de arquitectura de software así como las implicaciones en el diseño y desarrollo de una arquitectura de software. A parte de programador o analista, podrías dedicarte al desarrollo de arquitecturas de software en el futuro. ¿Lo has pensado como profesión?</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span><strong>Slide Deck</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="slides">
+<p><a href="https://cgranell.github.io/ei1039-uji/materials/01-arquitectura-conceptos.html">Conceptos, roles y compromisos</a></p>
+</div>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -597,4 +631,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/cgranell/ei2639/blob/main/materials/intro.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/cgranell/ei2639/edit/main/materials/intro.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/cgranell/ei2639/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/cgranell/ei2639/blob/main/materials/01_architecture.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/cgranell/ei2639/edit/main/materials/01_architecture.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/cgranell/ei2639/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
