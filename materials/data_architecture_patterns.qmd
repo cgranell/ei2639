@@ -186,7 +186,7 @@ The right choice depends on factors such as:
 
 - Team structure: Is data ownership centralized or distributed across domains?
 
-### Summary: The Bigger Picture for 2026
+## Summary: The Bigger Picture for 2026
 
 The most valuable data engineers in 2026 won't simply know how to build pipelines. They will understand why a particular architecture should be used, what trade-offs it introduces, and how it supports business and AI workloads.
 

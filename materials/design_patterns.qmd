@@ -153,3 +153,93 @@ Dejamos para la argumentación y discusión en clase la tarea de [conectar y rel
 
 :::
 
+
+
+### Factory method
+
+
+
+| Propósito |  Problema |
+|-----------|-----------|
+| crea objetos **sin especificar las clases concretas** | ... porque quiero crear objetos especializados  en tiempo de ejecución |
+
+
+
+::: column-screen-inset-right
+![](../images/concept-maps/FACTORYMETHOD-map.png)
+:::
+
+
+
+
+
+::: {.callout-tip}
+# Slide Deck 
+
+::: slides
+[Factory objects & Factory Method pattern](https://cgranell.github.io/ei1039/slides/TE3_factory.html)
+:::
+
+:::
+
+
+
+::: {.callout-tip}
+# Implementación
+
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Factory Method en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/factory-method/java/example#lang-features)
+
+:::
+
+
+### Abstract Factory
+
+
+
+| Propósito |  Problema |
+|-----------|-----------|
+| **agrupa factorias** relacionadas temáticamente sin especificar las clases concretas | ... porque quiero crear familias de objetos especializados en tiempo de ejecución |
+
+
+
+::: column-screen-inset-right
+![](../images/concept-maps/ABSTRACTFACTORY-map.png)
+:::
+
+::: {.callout-tip}
+# Implementación
+
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Abstract Factory en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/abstract-factory/java/example#lang-features)
+
+:::
+
+
+
+### Builder
+
+
+| Propósito |  Problema |
+|-----------|-----------|
+| crea objetos complejos separando el proceso de **construcción de su representación** | ... porque tengo clases constructuras con muchos argumentos |
+
+::: column-screen-inset-right
+![](../images/concept-maps/BUILDER-map.png)
+:::
+
+
+::: {.callout-tip}
+# Implementación
+
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Builder en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/builder/java/example#lang-features)
+
+:::
+
+### Prototype
+
+
+
+### Relaciones entre patrones
+
+
+
+### Aplicabilidad
