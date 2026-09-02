@@ -1,0 +1,199 @@
+## Patrones de arquitectura de datos
+
+Data engineering is no longer just about moving data from one system to another. Modern data engineers are expected to build architectures that are scalable, reliable, secure, cost-efficient, and ready for analytics and AI.
+
+As organizations increasingly adopt cloud platforms, real-time analytics, data products, and AI-driven applications, understanding data architecture patterns has become an essential skill.
+
+Here are 12 data architecture patterns every data engineer should understand in 2026 [@aais2026].
+
+### ETL Architecture
+
+Extract, Transform, Load (ETL) remains a foundational data architecture pattern.
+
+Data is extracted from operational systems, transformed into a suitable format, and then loaded into a target data warehouse or analytical system.
+
+Best suited for:
+
+- Structured enterprise data
+- Batch processing
+- Traditional reporting
+- Data warehouse environments
+
+Although modern architectures often favor ELT, understanding ETL is still important for legacy and regulated environments.
+
+### ELT Architecture
+
+In Extract, Load, Transform (ELT), raw data is first loaded into a scalable cloud data platform and transformed afterward.
+
+This approach takes advantage of the processing power of modern cloud warehouses and lakehouses.
+
+Key benefits:
+
+- Faster ingestion
+- Greater flexibility
+- Preservation of raw data
+- Scalable transformation
+
+ELT has become a common foundation for modern analytics platforms.
+
+### Data Warehouse Architecture
+
+A data warehouse provides a centralized environment for structured, analytical data.
+
+It typically organizes cleaned and transformed data into models designed for reporting, business intelligence, and analytics.
+
+A strong warehouse architecture helps organizations create a reliable single source of truth for business metrics.
+
+### Data Lake Architecture
+
+A data lake stores large volumes of data in its original or near-original form.
+
+Unlike traditional warehouses, data lakes can accommodate structured, semi-structured, and unstructured data.
+
+Common use cases include:
+
+- Machine learning
+- Data science
+- Log analysis
+- Large-scale analytics
+- Raw data storage
+
+The major challenge is maintaining governance, quality, and discoverability.
+
+### Lakehouse Architecture
+
+The data lakehouse combines characteristics of data lakes and data warehouses.
+
+It aims to provide:
+
+- Low-cost and flexible storage
+- Structured analytical capabilities
+- Transactional reliability
+- Support for BI and machine learning
+
+For organizations managing both analytics and AI workloads, lakehouse architectures have become particularly important.
+
+### Lambda Architecture
+
+Lambda architecture separates data processing into multiple layers, traditionally including:
+
+- Batch layer
+- Speed layer
+- Serving layer
+
+The batch layer processes large historical datasets while the speed layer handles real-time information.
+
+Although newer approaches have reduced the need for this complexity in some environments, Lambda architecture remains useful for understanding large-scale streaming systems.
+
+### Kappa Architecture
+
+Kappa architecture simplifies the Lambda model by focusing primarily on stream processing.
+
+Instead of maintaining separate batch and real-time pipelines, data is treated as a continuous stream that can be replayed when necessary.
+
+It can be useful for applications that require:
+
+- Real-time analytics
+- Event processing
+- Continuous data pipelines
+- Low-latency decision-making
+
+### Data Mesh Architecture
+
+Data Mesh shifts the responsibility for data ownership toward business domains.
+
+Instead of one centralized data team controlling everything, individual domains become responsible for their own data products.
+
+Four important principles commonly associated with Data Mesh are:
+
+- Domain ownership
+- Data as a product
+- Self-service data infrastructure
+- Federated computational governance
+
+This model can work particularly well in large organizations with many independent business domains.
+
+### Data Fabric Architecture
+
+A Data Fabric focuses on connecting and governing data across different environments.
+
+It can bring together data from:
+
+- Cloud platforms
+- On-premises systems
+- SaaS applications
+- Databases
+- Data lakes
+- Warehouses
+
+Metadata, automation, integration, and governance are central components of this architecture.
+
+### Event-Driven Data Architecture
+
+In an event-driven architecture, systems communicate through events rather than relying entirely on traditional request-response interactions.
+
+For example, when a customer places an order, an event can trigger multiple downstream processes such as:
+
+Order Created → Inventory Update → Payment Processing → Notification → Analytics
+
+This pattern is especially valuable for distributed systems and real-time applications.
+
+### Medallion Architecture
+
+The Medallion architecture organizes data into progressive quality layers.
+
+- Bronze: Raw, ingested data.
+
+- Silver: Cleaned, validated, and standardized data.
+
+- Gold: Business-ready data optimized for analytics and reporting.
+
+This layered approach makes data pipelines easier to manage, troubleshoot, and govern.
+
+### Data Product Architecture
+
+A modern data team increasingly treats datasets as products rather than simply pipeline outputs.
+
+A data product should have:
+
+- Clear ownership
+- Defined consumers
+- Reliable quality
+- Documented metadata
+- Access controls
+- Service-level expectations
+- Discoverability
+
+This approach encourages data teams to think about usability and business value—not just data movement.
+
+How Should Data Engineers Choose the Right Pattern?
+
+There is no single architecture that works for every organization.
+
+The right choice depends on factors such as:
+
+- Data volume: How much data needs to be processed?
+
+- Data velocity: Is the data arriving daily, hourly, or in real time?
+
+- Data variety: Is the data structured, semi-structured, or unstructured?
+
+- Latency requirements: Does the business need results immediately?
+
+- Governance: What security, privacy, and compliance requirements exist?
+
+- Cost: What infrastructure and operational costs are acceptable?
+
+- Team structure: Is data ownership centralized or distributed across domains?
+
+### Summary: The Bigger Picture for 2026
+
+The most valuable data engineers in 2026 won't simply know how to build pipelines. They will understand why a particular architecture should be used, what trade-offs it introduces, and how it supports business and AI workloads.
+
+Modern data engineering increasingly sits at the intersection of:
+
+Data + Cloud + AI + Analytics + Governance + Software Engineering
+
+Understanding these 12 architecture patterns gives data engineers a strong foundation for designing systems that are scalable, adaptable, and ready for the next generation of data platforms.
+
+The goal isn’t to master one architecture. It’s to master the ability to choose the right architecture for the right problem.
