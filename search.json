@@ -84,7 +84,147 @@
     "href": "materials/data_architecture_patterns.html",
     "title": "2  Patrones de arquitectura de datos",
     "section": "",
-    "text": "Data engineering is no longer just about moving data from one system to another. Modern data engineers are expected to build architectures that are scalable, reliable, secure, cost-efficient, and ready for analytics and AI.\nAs organizations increasingly adopt cloud platforms, real-time analytics, data products, and AI-driven applications, understanding data architecture patterns has become an essential skill.\nHere are 12 data architecture patterns every data engineer should understand in 2026 (E-learning 2026).\n\n2.0.1 ETL Architecture\nExtract, Transform, Load (ETL) remains a foundational data architecture pattern.\nData is extracted from operational systems, transformed into a suitable format, and then loaded into a target data warehouse or analytical system.\nBest suited for:\n\nStructured enterprise data\nBatch processing\nTraditional reporting\nData warehouse environments\n\nAlthough modern architectures often favor ELT, understanding ETL is still important for legacy and regulated environments.\n\n\n2.0.2 ELT Architecture\nIn Extract, Load, Transform (ELT), raw data is first loaded into a scalable cloud data platform and transformed afterward.\nThis approach takes advantage of the processing power of modern cloud warehouses and lakehouses.\nKey benefits:\n\nFaster ingestion\nGreater flexibility\nPreservation of raw data\nScalable transformation\n\nELT has become a common foundation for modern analytics platforms.\n\n\n2.0.3 Data Warehouse Architecture\nA data warehouse provides a centralized environment for structured, analytical data.\nIt typically organizes cleaned and transformed data into models designed for reporting, business intelligence, and analytics.\nA strong warehouse architecture helps organizations create a reliable single source of truth for business metrics.\n\n\n2.0.4 Data Lake Architecture\nA data lake stores large volumes of data in its original or near-original form.\nUnlike traditional warehouses, data lakes can accommodate structured, semi-structured, and unstructured data.\nCommon use cases include:\n\nMachine learning\nData science\nLog analysis\nLarge-scale analytics\nRaw data storage\n\nThe major challenge is maintaining governance, quality, and discoverability.\n\n\n2.0.5 Lakehouse Architecture\nThe data lakehouse combines characteristics of data lakes and data warehouses.\nIt aims to provide:\n\nLow-cost and flexible storage\nStructured analytical capabilities\nTransactional reliability\nSupport for BI and machine learning\n\nFor organizations managing both analytics and AI workloads, lakehouse architectures have become particularly important.\n\n\n2.0.6 Lambda Architecture\nLambda architecture separates data processing into multiple layers, traditionally including:\n\nBatch layer\nSpeed layer\nServing layer\n\nThe batch layer processes large historical datasets while the speed layer handles real-time information.\nAlthough newer approaches have reduced the need for this complexity in some environments, Lambda architecture remains useful for understanding large-scale streaming systems.\n\n\n2.0.7 Kappa Architecture\nKappa architecture simplifies the Lambda model by focusing primarily on stream processing.\nInstead of maintaining separate batch and real-time pipelines, data is treated as a continuous stream that can be replayed when necessary.\nIt can be useful for applications that require:\n\nReal-time analytics\nEvent processing\nContinuous data pipelines\nLow-latency decision-making\n\n\n\n2.0.8 Data Mesh Architecture\nData Mesh shifts the responsibility for data ownership toward business domains.\nInstead of one centralized data team controlling everything, individual domains become responsible for their own data products.\nFour important principles commonly associated with Data Mesh are:\n\nDomain ownership\nData as a product\nSelf-service data infrastructure\nFederated computational governance\n\nThis model can work particularly well in large organizations with many independent business domains.\n\n\n2.0.9 Data Fabric Architecture\nA Data Fabric focuses on connecting and governing data across different environments.\nIt can bring together data from:\n\nCloud platforms\nOn-premises systems\nSaaS applications\nDatabases\nData lakes\nWarehouses\n\nMetadata, automation, integration, and governance are central components of this architecture.\n\n\n2.0.10 Event-Driven Data Architecture\nIn an event-driven architecture, systems communicate through events rather than relying entirely on traditional request-response interactions.\nFor example, when a customer places an order, an event can trigger multiple downstream processes such as:\nOrder Created → Inventory Update → Payment Processing → Notification → Analytics\nThis pattern is especially valuable for distributed systems and real-time applications.\n\n\n2.0.11 Medallion Architecture\nThe Medallion architecture organizes data into progressive quality layers.\n\nBronze: Raw, ingested data.\nSilver: Cleaned, validated, and standardized data.\nGold: Business-ready data optimized for analytics and reporting.\n\nThis layered approach makes data pipelines easier to manage, troubleshoot, and govern.\n\n\n2.0.12 Data Product Architecture\nA modern data team increasingly treats datasets as products rather than simply pipeline outputs.\nA data product should have:\n\nClear ownership\nDefined consumers\nReliable quality\nDocumented metadata\nAccess controls\nService-level expectations\nDiscoverability\n\nThis approach encourages data teams to think about usability and business value—not just data movement.\nHow Should Data Engineers Choose the Right Pattern?\nThere is no single architecture that works for every organization.\nThe right choice depends on factors such as:\n\nData volume: How much data needs to be processed?\nData velocity: Is the data arriving daily, hourly, or in real time?\nData variety: Is the data structured, semi-structured, or unstructured?\nLatency requirements: Does the business need results immediately?\nGovernance: What security, privacy, and compliance requirements exist?\nCost: What infrastructure and operational costs are acceptable?\nTeam structure: Is data ownership centralized or distributed across domains?\n\n\n\n2.0.13 Summary: The Bigger Picture for 2026\nThe most valuable data engineers in 2026 won’t simply know how to build pipelines. They will understand why a particular architecture should be used, what trade-offs it introduces, and how it supports business and AI workloads.\nModern data engineering increasingly sits at the intersection of:\nData + Cloud + AI + Analytics + Governance + Software Engineering\nUnderstanding these 12 architecture patterns gives data engineers a strong foundation for designing systems that are scalable, adaptable, and ready for the next generation of data platforms.\nThe goal isn’t to master one architecture. It’s to master the ability to choose the right architecture for the right problem.\n\n\n\n\nE-learning, AAIS. 2026. The 12 Data Architecture Patterns Every Data Engineer Should Master in 2026. Medium. https://medium.com/@aaiselearning/the-12-data-architecture-patterns-every-data-engineer-should-master-in-2026-00fe5f9052ce.",
+    "text": "2.1 ETL Architecture\nData engineering is no longer just about moving data from one system to another. Modern data engineers are expected to build architectures that are scalable, reliable, secure, cost-efficient, and ready for analytics and AI.\nAs organizations increasingly adopt cloud platforms, real-time analytics, data products, and AI-driven applications, understanding data architecture patterns has become an essential skill.\nHere are 12 data architecture patterns every data engineer should understand in 2026 (E-learning 2026).\nExtract, Transform, Load (ETL) remains a foundational data architecture pattern.\nData is extracted from operational systems, transformed into a suitable format, and then loaded into a target data warehouse or analytical system.\nBest suited for:\nAlthough modern architectures often favor ELT, understanding ETL is still important for legacy and regulated environments.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
+    ]
+  },
+  {
+    "objectID": "materials/data_architecture_patterns.html#etl-architecture",
+    "href": "materials/data_architecture_patterns.html#etl-architecture",
+    "title": "2  Patrones de arquitectura de datos",
+    "section": "",
+    "text": "Structured enterprise data\nBatch processing\nTraditional reporting\nData warehouse environments",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
+    ]
+  },
+  {
+    "objectID": "materials/data_architecture_patterns.html#elt-architecture",
+    "href": "materials/data_architecture_patterns.html#elt-architecture",
+    "title": "2  Patrones de arquitectura de datos",
+    "section": "2.2 ELT Architecture",
+    "text": "2.2 ELT Architecture\nIn Extract, Load, Transform (ELT), raw data is first loaded into a scalable cloud data platform and transformed afterward.\nThis approach takes advantage of the processing power of modern cloud warehouses and lakehouses.\nKey benefits:\n\nFaster ingestion\nGreater flexibility\nPreservation of raw data\nScalable transformation\n\nELT has become a common foundation for modern analytics platforms.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
+    ]
+  },
+  {
+    "objectID": "materials/data_architecture_patterns.html#data-warehouse-architecture",
+    "href": "materials/data_architecture_patterns.html#data-warehouse-architecture",
+    "title": "2  Patrones de arquitectura de datos",
+    "section": "2.3 Data Warehouse Architecture",
+    "text": "2.3 Data Warehouse Architecture\nA data warehouse provides a centralized environment for structured, analytical data.\nIt typically organizes cleaned and transformed data into models designed for reporting, business intelligence, and analytics.\nA strong warehouse architecture helps organizations create a reliable single source of truth for business metrics.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
+    ]
+  },
+  {
+    "objectID": "materials/data_architecture_patterns.html#data-lake-architecture",
+    "href": "materials/data_architecture_patterns.html#data-lake-architecture",
+    "title": "2  Patrones de arquitectura de datos",
+    "section": "2.4 Data Lake Architecture",
+    "text": "2.4 Data Lake Architecture\nA data lake stores large volumes of data in its original or near-original form.\nUnlike traditional warehouses, data lakes can accommodate structured, semi-structured, and unstructured data.\nCommon use cases include:\n\nMachine learning\nData science\nLog analysis\nLarge-scale analytics\nRaw data storage\n\nThe major challenge is maintaining governance, quality, and discoverability.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
+    ]
+  },
+  {
+    "objectID": "materials/data_architecture_patterns.html#lakehouse-architecture",
+    "href": "materials/data_architecture_patterns.html#lakehouse-architecture",
+    "title": "2  Patrones de arquitectura de datos",
+    "section": "2.5 Lakehouse Architecture",
+    "text": "2.5 Lakehouse Architecture\nThe data lakehouse combines characteristics of data lakes and data warehouses.\nIt aims to provide:\n\nLow-cost and flexible storage\nStructured analytical capabilities\nTransactional reliability\nSupport for BI and machine learning\n\nFor organizations managing both analytics and AI workloads, lakehouse architectures have become particularly important.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
+    ]
+  },
+  {
+    "objectID": "materials/data_architecture_patterns.html#lambda-architecture",
+    "href": "materials/data_architecture_patterns.html#lambda-architecture",
+    "title": "2  Patrones de arquitectura de datos",
+    "section": "2.6 Lambda Architecture",
+    "text": "2.6 Lambda Architecture\nLambda architecture separates data processing into multiple layers, traditionally including:\n\nBatch layer\nSpeed layer\nServing layer\n\nThe batch layer processes large historical datasets while the speed layer handles real-time information.\nAlthough newer approaches have reduced the need for this complexity in some environments, Lambda architecture remains useful for understanding large-scale streaming systems.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
+    ]
+  },
+  {
+    "objectID": "materials/data_architecture_patterns.html#kappa-architecture",
+    "href": "materials/data_architecture_patterns.html#kappa-architecture",
+    "title": "2  Patrones de arquitectura de datos",
+    "section": "2.7 Kappa Architecture",
+    "text": "2.7 Kappa Architecture\nKappa architecture simplifies the Lambda model by focusing primarily on stream processing.\nInstead of maintaining separate batch and real-time pipelines, data is treated as a continuous stream that can be replayed when necessary.\nIt can be useful for applications that require:\n\nReal-time analytics\nEvent processing\nContinuous data pipelines\nLow-latency decision-making",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
+    ]
+  },
+  {
+    "objectID": "materials/data_architecture_patterns.html#data-mesh-architecture",
+    "href": "materials/data_architecture_patterns.html#data-mesh-architecture",
+    "title": "2  Patrones de arquitectura de datos",
+    "section": "2.8 Data Mesh Architecture",
+    "text": "2.8 Data Mesh Architecture\nData Mesh shifts the responsibility for data ownership toward business domains.\nInstead of one centralized data team controlling everything, individual domains become responsible for their own data products.\nFour important principles commonly associated with Data Mesh are:\n\nDomain ownership\nData as a product\nSelf-service data infrastructure\nFederated computational governance\n\nThis model can work particularly well in large organizations with many independent business domains.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
+    ]
+  },
+  {
+    "objectID": "materials/data_architecture_patterns.html#data-fabric-architecture",
+    "href": "materials/data_architecture_patterns.html#data-fabric-architecture",
+    "title": "2  Patrones de arquitectura de datos",
+    "section": "2.9 Data Fabric Architecture",
+    "text": "2.9 Data Fabric Architecture\nA Data Fabric focuses on connecting and governing data across different environments.\nIt can bring together data from:\n\nCloud platforms\nOn-premises systems\nSaaS applications\nDatabases\nData lakes\nWarehouses\n\nMetadata, automation, integration, and governance are central components of this architecture.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
+    ]
+  },
+  {
+    "objectID": "materials/data_architecture_patterns.html#event-driven-data-architecture",
+    "href": "materials/data_architecture_patterns.html#event-driven-data-architecture",
+    "title": "2  Patrones de arquitectura de datos",
+    "section": "2.10 Event-Driven Data Architecture",
+    "text": "2.10 Event-Driven Data Architecture\nIn an event-driven architecture, systems communicate through events rather than relying entirely on traditional request-response interactions.\nFor example, when a customer places an order, an event can trigger multiple downstream processes such as:\nOrder Created → Inventory Update → Payment Processing → Notification → Analytics\nThis pattern is especially valuable for distributed systems and real-time applications.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
+    ]
+  },
+  {
+    "objectID": "materials/data_architecture_patterns.html#medallion-architecture",
+    "href": "materials/data_architecture_patterns.html#medallion-architecture",
+    "title": "2  Patrones de arquitectura de datos",
+    "section": "2.11 Medallion Architecture",
+    "text": "2.11 Medallion Architecture\nThe Medallion architecture organizes data into progressive quality layers.\n\nBronze: Raw, ingested data.\nSilver: Cleaned, validated, and standardized data.\nGold: Business-ready data optimized for analytics and reporting.\n\nThis layered approach makes data pipelines easier to manage, troubleshoot, and govern.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
+    ]
+  },
+  {
+    "objectID": "materials/data_architecture_patterns.html#data-product-architecture",
+    "href": "materials/data_architecture_patterns.html#data-product-architecture",
+    "title": "2  Patrones de arquitectura de datos",
+    "section": "2.12 Data Product Architecture",
+    "text": "2.12 Data Product Architecture\nA modern data team increasingly treats datasets as products rather than simply pipeline outputs.\nA data product should have:\n\nClear ownership\nDefined consumers\nReliable quality\nDocumented metadata\nAccess controls\nService-level expectations\nDiscoverability\n\nThis approach encourages data teams to think about usability and business value—not just data movement.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
+    ]
+  },
+  {
+    "objectID": "materials/data_architecture_patterns.html#how-should-data-engineers-choose-the-right-pattern",
+    "href": "materials/data_architecture_patterns.html#how-should-data-engineers-choose-the-right-pattern",
+    "title": "2  Patrones de arquitectura de datos",
+    "section": "2.13 How Should Data Engineers Choose the Right Pattern?",
+    "text": "2.13 How Should Data Engineers Choose the Right Pattern?\nThere is no single architecture that works for every organization.\nThe right choice depends on factors such as:\n\nData volume: How much data needs to be processed?\nData velocity: Is the data arriving daily, hourly, or in real time?\nData variety: Is the data structured, semi-structured, or unstructured?\nLatency requirements: Does the business need results immediately?\nGovernance: What security, privacy, and compliance requirements exist?\nCost: What infrastructure and operational costs are acceptable?\nTeam structure: Is data ownership centralized or distributed across domains?",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
+    ]
+  },
+  {
+    "objectID": "materials/data_architecture_patterns.html#summary-the-bigger-picture-for-2026",
+    "href": "materials/data_architecture_patterns.html#summary-the-bigger-picture-for-2026",
+    "title": "2  Patrones de arquitectura de datos",
+    "section": "2.14 Summary: The Bigger Picture for 2026",
+    "text": "2.14 Summary: The Bigger Picture for 2026\nThe most valuable data engineers in 2026 won’t simply know how to build pipelines. They will understand why a particular architecture should be used, what trade-offs it introduces, and how it supports business and AI workloads.\nModern data engineering increasingly sits at the intersection of:\nData + Cloud + AI + Analytics + Governance + Software Engineering\nUnderstanding these 12 architecture patterns gives data engineers a strong foundation for designing systems that are scalable, adaptable, and ready for the next generation of data platforms.\nThe goal isn’t to master one architecture. It’s to master the ability to choose the right architecture for the right problem.\n\n\n\n\nE-learning, AAIS. 2026. The 12 Data Architecture Patterns Every Data Engineer Should Master in 2026. Medium. https://medium.com/@aaiselearning/the-12-data-architecture-patterns-every-data-engineer-should-master-in-2026-00fe5f9052ce.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
     ]
@@ -124,7 +264,7 @@
     "href": "materials/design_patterns.html#patrones-creacionales",
     "title": "3  Patrones de diseño",
     "section": "3.3 Patrones creacionales",
-    "text": "3.3 Patrones creacionales\n\n\n\n\n\n\nNoteDefinición\n\n\n\nLos patrones creacionales proporcionan mecanismos de creación de objetos que incrementan la flexibilidad y la reutilización del código.\n\n\nLas secciones relativas a los patrones creacionales se dividen en los mismos apartados, tal como reflejan los mapas conceptuales:\n\nPropósito (aim)\nProblema (what problem does it solve?)\nSolución (conceptual solution)\nVentajas e inconvenientes (pros and cons)\n\nDejamos para la argumentación y discusión en clase la tarea de conectar y relacionar los distintos patrones creacionales entre ellos, y sugerir situaciones o aplicaciones donde se puedan aplicar.\n\n3.3.1 Singleton\n\n\n\n\n\n\n\nPropósito\nProblema\n\n\n\n\nasegura que una clase tenga una única instancia y proporciona un punto de acceso global a dicha instancia\n… porque quiero centralizar o controlar el acceso a un recurso.\n\n\n\n\n\n\n\n\n\n\n\n\nTipImplementación\n\n\n\n Singleton en Java (refactoring.guru)",
+    "text": "3.3 Patrones creacionales\n\n\n\n\n\n\nNoteDefinición\n\n\n\nLos patrones creacionales proporcionan mecanismos de creación de objetos que incrementan la flexibilidad y la reutilización del código.\n\n\nLas secciones relativas a los patrones creacionales se dividen en los mismos apartados, tal como reflejan los mapas conceptuales:\n\nPropósito (aim)\nProblema (what problem does it solve?)\nSolución (conceptual solution)\nVentajas e inconvenientes (pros and cons)\n\nAdemás, cada mapa conceotual añade tres apartados más:\n\nA menudo se confunde con (often confused with)\nVer también (see also)\nUsos (usage)\n\nDejamos para la argumentación y discusión en clase la tarea de conectar y relacionar los distintos patrones creacionales entre ellos, y sugerir situaciones o aplicaciones donde se puedan aplicar.\n\n3.3.1 Singleton\n\n\n\n\n\n\n\nPropósito\nProblema\n\n\n\n\nasegura que una clase tenga una única instancia y proporciona un punto de acceso global a dicha instancia\n… porque quiero centralizar o controlar el acceso a un recurso.\n\n\n\n\n\n\n\n\n\n\n\n\nTipImplementación\n\n\n\n Singleton en Java (refactoring.guru)\n\n\n\n\n3.3.2 Factory method\n\n\n\n\n\n\n\nPropósito\nProblema\n\n\n\n\ncrea objetos sin especificar las clases concretas\n… porque quiero crear objetos especializados en tiempo de ejecución\n\n\n\n\n\n\n\n\n\n\n\n\nTipSlide Deck\n\n\n\n\nFactory objects & Factory Method pattern\n\n\n\n\n\n\n\n\n\nTipImplementación\n\n\n\n Factory Method en Java (refactoring.guru)\n\n\n\n\n3.3.3 Abstract Factory\n\n\n\n\n\n\n\nPropósito\nProblema\n\n\n\n\nagrupa factorias relacionadas temáticamente sin especificar las clases concretas\n… porque quiero crear familias de objetos especializados en tiempo de ejecución\n\n\n\n\n\n\n\n\n\n\n\n\nTipImplementación\n\n\n\n Abstract Factory en Java (refactoring.guru)\n\n\n\n\n3.3.4 Builder\n\n\n\n\n\n\n\nPropósito\nProblema\n\n\n\n\ncrea objetos complejos separando el proceso de construcción de su representación\n… porque tengo clases constructuras con muchos argumentos\n\n\n\n\n\n\n\n\n\n\n\n\nTipImplementación\n\n\n\n Builder en Java (refactoring.guru)\n\n\n\n\n3.3.5 Prototype\n\n\n3.3.6 Relaciones entre patrones\n\n\n3.3.7 Aplicabilidad",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Patrones de diseño</span>"
     ]
