@@ -1,8 +1,8 @@
 # Preface {.unnumbered}
 
 ```{r}
-#|label: vars
-#|echo: false
+#| label: vars
+#| echo: false
 url_av <- "https://aulavirtual.uji.es/course/view.php?id=87296"
 url_sia_39 <- "https://ujiapps.uji.es/sia/rest/publicacion/2026/estudio/225/asignatura/EI1039"
 url_sia_48 <- "https://ujiapps.uji.es/sia/rest/publicacion/2026/estudio/225/asignatura/EI1048"
@@ -26,7 +26,9 @@ Arquitectura de software, patrones de diseño, patrones de arquitectura de datos
 
 ## Método de instrucción
 
-::: callout-tip
+Hay evidencia científica de sobra que demuestra una y otra vez que los métodos de *aprendizaje activo* (por *activo* me refiero a todos, tanto dentro como fuera de clase) son mucho más efectivos que escucharme y tomar apuntes de forma pasiva. Vale, es cierto que a veces son necesarias presentaciones aclaratorias; pero tú debes ser el protagonista de tu proceso de aprendizaje para alcanzar los resultados esperados con éxito. Y yo estoy encantado de facilitar ese proceso de aprendizaje. 
+
+::: {.callout-tip icon=true}
 ## ¿Te has preguntado alguna vez qué pasa en tu cerebro cuando aprendes? [@lang2016]
 
 Tenemos millones de neuronas que "hacen amigos fácilmente". Las neuronas se conectan con otras neuronas formando redes con cada nueva experiencia que tenemos (nuevas emociones, pensamientos, acciones, conocimiento, etc.). Las redes al principio son débiles, pero cada vez que repetimos la experiencia o acción, el camimo de la red se consolida y se hace más fuerte. **Cuando aprendemos, nuestro cerebro cambia** por la formación de nuevas conexiones entre neuronas.
@@ -35,7 +37,10 @@ Tenemos millones de neuronas que "hacen amigos fácilmente". Las neuronas se con
 :::
 
 
-::: callout-tip
+Esta asignatura mezcla diversas estrategias de aprendizaje, algunas más tradicionales como presentaciones cuando sea necesario combinadas con estrategias de apredizaje colaborativas y activas para trabajo en grupo, exploración y aplicación de conceptos, y competencias de proceso (o [process skills](http://elipss.com/process-skills.html)), como por ejemplo [*Flipped Classroom*](https://www.theflippedclassroom.es/) (lecturas y ejercicios básicos fuera del aula que requieren competencias cognitivas bajas, con análisis y resolución de problemas en aula que requiren competencias cognitivas altas).
+
+
+::: {.callout-tip icon=true}
 ## Pirámide Bloom
 
 Cuando **reflexionamos** y **aplicamos** cierto conocimiento a contextos nuevos (en contraposición a simplemente leer o subrayar, ver @fig-bloom), lo comprendemos más profundamente, provocando que la red (de neuronas) sea más densa y tenga conexiones con otras redes, con lo cual estamos mejorando nuestro aprendizaje. La diferencia entre la red de un principiante y la de un experto radica justamente en el número y densidad de conexiones. **Cuanto más interconexiones, mayor comprensión**.
@@ -43,22 +48,26 @@ Cuando **reflexionamos** y **aplicamos** cierto conocimiento a contextos nuevos 
 ![Taxonomía de Bloom](images/bloom_taxonomy.jpg){#fig-bloom width="60%"}
 :::
 
-Hay evidencia científica de sobra que demuestra una y otra vez que los métodos de *aprendizaje activo* (por *activo* me refiero a todos, tanto dentro como fuera de clase) son mucho más efectivos que escucharme y tomar apuntes de forma pasiva. Vale, es cierto que a veces son necesarias presentaciones aclaratorias; pero tú debes ser el protagonista (y no yo) de tu propio proceso de aprendizaje para alcanzar los resultados esperados con éxito. Por lo tanto, esta asignatura mezcla diversas estrategias de aprendizaje, algunas más tradicionales como presentaciones cuando sea necesario combinadas con estrategias de apredizaje colaborativas y activas para trabajo en grupo, exploración y aplicación de conceptos, y competencias de proceso (o [process skills](http://elipss.com/process-skills.html)), como por ejemplo [*Flipped Classroom*](https://www.theflippedclassroom.es/) (lecturas y ejercicios básicos fuera del aula que requieren competencias cognitivas bajas, con análisis y resolución de problemas en aula que requiren competencias cognitivas altas).
 
 Para que te hagas una idea, una semana típica de clase de teoría/seminario sería así:
 
--   En el AV se indica el trabajo (lecturas recomendadas, etc) que cada estudiante debe realizar previo a la sesión de teoría.
+- En el AV se indica el trabajo (lecturas recomendadas, etc) que cada estudiante debe realizar previo a la sesión de teoría.
 
--   Durante la sesión en aula (viernes) profundizaremos en esos contenidos mediante presentaciones y actividades en clase.
+- Durante la sesión en aula (viernes) profundizaremos en esos contenidos mediante presentaciones y actividades en clase.
 
 
 Además, las asignaturas [EI1039 (Diseño de Software)](`r url_sia_39`) y [EI1048 (Paradigmas de Software)](`r url_sia_48``) están muy relacionadas, ya que son dos caras de la misma moneda a la hora de diseñar y desarrollar aplicaciones avanzadas. Para facilitar el aprendizaje de las competencias y conenbido de ambas asignaturas, el profesorado nos hemos organizado y coordinado para proponerte un proyecto común que viene detallado en un documento separado colgado en el AV de ambas asignaturas. Las sesiones de laboratorio (LA) de las dos asignaturas se destinan integramente al trabajo (en grupo) para el desarrollo del proyecto común.
 
 Llevamos varios años colaborando entre el profesorado de ambas asignaturas y presentando los resultados en foros sobre educación universitaria en informática (e.g., [JENUI](https://aenui.org/jenui/)): 
+
 - [@gonzalez2021jenui], 
+
 - [@gonzalez2022jenui], 
+
 - [@matey2024jenui],  
+
 - [@matey2025jenui], y
+
 - [@matey2026ieee].
 
 

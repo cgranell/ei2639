@@ -12,7 +12,7 @@ book:
   reader-mode: true
   chapters:
     - index.qmd
-    - materials/intro.qmd
+    - materials/01_architecture.qmd
     - materials/summary.qmd
     - references.qmd
   
@@ -21,6 +21,7 @@ format:
     theme: [default, styles/edav3.scss]
     highlight-style: styles/joyce.theme
     callout-icon: false
+    code-tools: false
     
 bibliography: references.bib
 citations-hover: true
