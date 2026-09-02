@@ -48,7 +48,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-8a611540bec77a3210e8019426d16fc4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-74add01399811d0324a4867c23650aa5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-f4ac5c866a506ae4f06d9cf22abf9f5a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -167,12 +167,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#patrones-creacionales" id="toc-patrones-creacionales" class="nav-link" data-scroll-target="#patrones-creacionales"><span class="header-section-number">3.3</span> Patrones creacionales</a>
   <ul class="collapse">
   <li><a href="#singleton" id="toc-singleton" class="nav-link" data-scroll-target="#singleton"><span class="header-section-number">3.3.1</span> Singleton</a></li>
-  <li><a href="#factory-method" id="toc-factory-method" class="nav-link" data-scroll-target="#factory-method"><span class="header-section-number">3.3.2</span> Factory method</a></li>
-  <li><a href="#abstract-factory" id="toc-abstract-factory" class="nav-link" data-scroll-target="#abstract-factory"><span class="header-section-number">3.3.3</span> Abstract Factory</a></li>
-  <li><a href="#builder" id="toc-builder" class="nav-link" data-scroll-target="#builder"><span class="header-section-number">3.3.4</span> Builder</a></li>
-  <li><a href="#prototype" id="toc-prototype" class="nav-link" data-scroll-target="#prototype"><span class="header-section-number">3.3.5</span> Prototype</a></li>
-  <li><a href="#relaciones-entre-patrones" id="toc-relaciones-entre-patrones" class="nav-link" data-scroll-target="#relaciones-entre-patrones"><span class="header-section-number">3.3.6</span> Relaciones entre patrones</a></li>
-  <li><a href="#aplicabilidad" id="toc-aplicabilidad" class="nav-link" data-scroll-target="#aplicabilidad"><span class="header-section-number">3.3.7</span> Aplicabilidad</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/cgranell/ei2639/blob/main/materials/design_patterns.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/cgranell/ei2639/edit/main/materials/design_patterns.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/cgranell/ei2639/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -371,141 +365,6 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/singleton/java/example#lang-features">Singleton en Java (refactoring.guru)</a></p>
 </div>
 </div>
-</section>
-<section id="factory-method" class="level3 page-columns page-full" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="factory-method"><span class="header-section-number">3.3.2</span> Factory method</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Propósito</th>
-<th>Problema</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>crea objetos <strong>sin especificar las clases concretas</strong></td>
-<td>… porque quiero crear objetos especializados en tiempo de ejecución</td>
-</tr>
-</tbody>
-</table>
-<div class="column-screen-inset-right">
-<p><img src="../images/concept-maps/FACTORYMETHOD-map.png" class="img-fluid"></p>
-</div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Slide Deck
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<div class="slides">
-<p><a href="https://cgranell.github.io/ei1039/slides/TE3_factory.html">Factory objects &amp; Factory Method pattern</a></p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Implementación
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/factory-method/java/example#lang-features">Factory Method en Java (refactoring.guru)</a></p>
-</div>
-</div>
-</section>
-<section id="abstract-factory" class="level3 page-columns page-full" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="abstract-factory"><span class="header-section-number">3.3.3</span> Abstract Factory</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Propósito</th>
-<th>Problema</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>agrupa factorias</strong> relacionadas temáticamente sin especificar las clases concretas</td>
-<td>… porque quiero crear familias de objetos especializados en tiempo de ejecución</td>
-</tr>
-</tbody>
-</table>
-<div class="column-screen-inset-right">
-<p><img src="../images/concept-maps/ABSTRACTFACTORY-map.png" class="img-fluid"></p>
-</div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Implementación
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/abstract-factory/java/example#lang-features">Abstract Factory en Java (refactoring.guru)</a></p>
-</div>
-</div>
-</section>
-<section id="builder" class="level3 page-columns page-full" data-number="3.3.4">
-<h3 data-number="3.3.4" class="anchored" data-anchor-id="builder"><span class="header-section-number">3.3.4</span> Builder</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Propósito</th>
-<th>Problema</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>crea objetos complejos separando el proceso de <strong>construcción de su representación</strong></td>
-<td>… porque tengo clases constructuras con muchos argumentos</td>
-</tr>
-</tbody>
-</table>
-<div class="column-screen-inset-right">
-<p><img src="../images/concept-maps/BUILDER-map.png" class="img-fluid"></p>
-</div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Implementación
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/builder/java/example#lang-features">Builder en Java (refactoring.guru)</a></p>
-</div>
-</div>
-</section>
-<section id="prototype" class="level3" data-number="3.3.5">
-<h3 data-number="3.3.5" class="anchored" data-anchor-id="prototype"><span class="header-section-number">3.3.5</span> Prototype</h3>
-</section>
-<section id="relaciones-entre-patrones" class="level3" data-number="3.3.6">
-<h3 data-number="3.3.6" class="anchored" data-anchor-id="relaciones-entre-patrones"><span class="header-section-number">3.3.6</span> Relaciones entre patrones</h3>
-</section>
-<section id="aplicabilidad" class="level3" data-number="3.3.7">
-<h3 data-number="3.3.7" class="anchored" data-anchor-id="aplicabilidad"><span class="header-section-number">3.3.7</span> Aplicabilidad</h3>
 
 
 </section>
