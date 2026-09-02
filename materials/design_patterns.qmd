@@ -1,3 +1,98 @@
 # Patrones de diseño
 
+## ¿Qué es un patrón?
 
+El término **patrón** tiene multiples significados según el contexto: patrones numéricos, patrones geométricos, etc. 
+
+
+En informática, el área de [aprendizaje automático](https://es.wikipedia.org/wiki/Aprendizaje_autom%C3%A1tico) utiliza técnicas computacionales avanzadas para buscar y encontrar patrones en los datos. 
+
+En ingeniería de software, descubrirás a lo largo de tu carrera profesional que los mismos problemas de diseño de software se repiten una y otra vez. Hay muchas formas de abordar estos problemas, pero la industria prefiere soluciones más flexibles y/o reutilizables. Ahí es donde los **patrones de diseño** entran en juego.
+
+::: {.callout-note icon=true}
+## **Definición**
+
+Un patrón de diseño es una solución práctica y bien testeada a problemas recurrentes.
+:::
+
+Los patrones de diseño permiten (re)utilizar soluciones previamente testeadas que los desarrolladores han utilizado a menudo para resolver un problema de diseño de software, de modo que no es necesario reinvoitar la rueda, es decir, crear una *nueva* solución a partir de los principios básicos de la programación orientada a objetos. Los patrones de diseño no son solo soluciones teóricas o académicas, son soluciones reales que se utilizan en la industria del software, por ejemplo, en la implementación de los propios lenguajes de progrmación o en productos software comerciales. 
+
+Una buena analogía para entender el concepto de patrones de diseño es equipararlos a *planos predefinidos* que se pueden personalizar para resolver un problema de diseño recurrente en tu código.
+
+
+::: {.column-margin}
+
+![](../images/rawpixel/home-layout-discussion.jpg){fig-alt="house-layout" fig-align="center" width="70%"}
+
+*Source: [Rawpixel.com](https://www.rawpixel.com/image/691263/)*
+
+:::
+
+
+Es importante dejar claro que los patrones de diseño no son únicamente código (clases, interfaces, etc) que se añaden a tu proyecto de software. Los patrones de diseño se deben consider como **soluciones conceptuales**: soluciones que se pueden aplicar y, sobre todo personalizar, edurante el diseño e impleemntación de software en contextos concretos para mejorar la estructura, modularidad, abstracción, flexibilidad y reutilización de tu código. Por ese motivo, en este curso describimos los patrones de diseño de forma conceptual (clases, interfaces, relaciones, etc.); obviamente, implementarás patrones de diseño concretos en el contexto del proyecto común.
+
+::: {.callout-tip}
+## **Slide Deck** 
+
+::: slides
+[Patrones de Diseño: Concepto, catálogo y principios](https://cgranell.github.io/ei1039-uji/materials/02-patrones-slides.html)
+:::
+
+:::
+
+
+## Principios SOLID
+
+Varios autores ([Michael Feathers](https://michaelfeathers.silvrback.com/), [Robert C. Martin](https://blog.cleancoder.com/), etc. ) han contribuido a definir una serie de principios (recomendaciones, etc.) para que desarrolladores/programadores generen software de *calidad*. ¿Y qué entendemos por software de calidad? Software que sea  
+
+- robusto y estable, 
+- reutilizable y mantenible, 
+- escalable, es decir, que se pueda modificar/extender fácilmente.
+
+
+Sin embargo, que el código resultante sea robusto y estable por un lado, pero que también sea fácilmente extendible y reutilizable por otro, parece que sean objetivos contradictorios. En ingeniería y desarrollo de software, tenemos dos conceptos que tenemos que balancear adecuadamente al mismo tiempo para producir software de calidad.
+
+
+::: {.callout-note}
+## **Definición**
+
+**Acoplamiento** indica el grado de *interdependencia* entre entidades/componentes de software (ya sean clases, métodos, módulos, funciones, etc. ). Si dos componentes son completamente independientes entre sí, entonces están *desacoplados*.
+
+:::
+
+Como ingenieros/as de software, queremos que el software generado tenga **un bajo acomplamiento**.
+
+
+
+::: {.callout-note}
+## **Definición**
+
+
+**Cohesión** indica el grado en que entidades/componentes de software independientes se combinan para alcanzar un resultado (comporatemeionte, etc) mejor que si trabajaran por separado. Se refiere a la forma en que podemos agrupar componentes de software.
+
+
+:::
+
+Como ingenieros/as de software, queremos que el software generado tenga **una alta cohesión**.
+
+
+
+Los principios SOLID están estrechamente relacionados con el uso de patrones de diseño, ya que las solucciones conceptuales de muchos patrones apuntan directamente a uno o varios de los principios SOLID. Luego, cuando utilizas patrones de diseño de forma eficaz, estarás poniendo en práctica alguno de los principios SOLID para que el código resultante sea de la mejor calidad posible. 
+
+Los 5 principios SOLID de diseño de aplicaciones de software son:
+
+- **S** – Single Responsibility Principle (SRP)
+- **O** – Open/Closed Principle (OCP)
+- **L** – Liskov Substitution Principle (LSP)
+- **I** – Interface Segregation Principle (ISP)
+- **D** – Dependency Inversion Principle (DIP)
+
+
+::: {.callout-tip}
+## **Slide Deck** 
+
+::: slides
+[Principios SOLID](https://cgranell.github.io/ei1039-uji/materials/02-solid-slides.html)
+:::
+
+:::

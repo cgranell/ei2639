@@ -14,6 +14,7 @@ book:
     - index.qmd
     - materials/01_architecture.qmd
     - materials/design_patterns.qmd
+    - materials/design_patterns_creational.qmd
     - references.qmd
   
 format:
@@ -22,6 +23,8 @@ format:
     highlight-style: styles/joyce.theme
     callout-icon: false
     code-tools: false
+    link-external-newwindow: true
+    link-external-icon: true
     
 bibliography: references.bib
 citations-hover: true
