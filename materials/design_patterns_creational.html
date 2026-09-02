@@ -8,7 +8,7 @@
 
 <meta name="description" content="Diseño de Software">
 
-<title>1&nbsp; Fundamentos de arquitectura – EI1039 - 2026/2027</title>
+<title>3&nbsp; Patrones creacionales – EI1039 - 2026/2027</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -27,26 +27,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -56,8 +37,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../materials/design_patterns.html" rel="next">
-<link href="../index.html" rel="prev">
+<link href="../references.html" rel="next">
+<link href="../materials/design_patterns.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -108,7 +89,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../materials/01_architecture.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Fundamentos de arquitectura</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../materials/design_patterns_creational.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Patrones creacionales</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -149,7 +130,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../materials/01_architecture.html" class="sidebar-item-text sidebar-link active">
+  <a href="../materials/01_architecture.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Fundamentos de arquitectura</span></span></a>
   </div>
 </li>
@@ -161,7 +142,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../materials/design_patterns_creational.html" class="sidebar-item-text sidebar-link">
+  <a href="../materials/design_patterns_creational.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Patrones creacionales</span></span></a>
   </div>
 </li>
@@ -176,26 +157,15 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#qué-es-una-arquitectura-de-software" id="toc-qué-es-una-arquitectura-de-software" class="nav-link active" data-scroll-target="#qué-es-una-arquitectura-de-software"><span class="header-section-number">1.1</span> ¿Qué es una arquitectura de software?</a></li>
-  <li><a href="#dimensiones-de-un-arquitectura-software" id="toc-dimensiones-de-un-arquitectura-software" class="nav-link" data-scroll-target="#dimensiones-de-un-arquitectura-software"><span class="header-section-number">1.2</span> Dimensiones de un arquitectura software</a>
-  <ul class="collapse">
-  <li><a href="#características-de-la-arquitectura-de-software" id="toc-características-de-la-arquitectura-de-software" class="nav-link" data-scroll-target="#características-de-la-arquitectura-de-software"><span class="header-section-number">1.2.1</span> Características de la arquitectura de software</a></li>
-  <li><a href="#estructura-de-la-arquitectura-de-software" id="toc-estructura-de-la-arquitectura-de-software" class="nav-link" data-scroll-target="#estructura-de-la-arquitectura-de-software"><span class="header-section-number">1.2.2</span> Estructura de la arquitectura de software</a></li>
-  </ul></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/cgranell/ei2639/blob/main/materials/01_architecture.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/cgranell/ei2639/edit/main/materials/01_architecture.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/cgranell/ei2639/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Fundamentos de arquitectura</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Patrones creacionales</span></h1>
 </div>
 
 
@@ -212,89 +182,8 @@ div.csl-indent {
 </header>
 
 
-<section id="qué-es-una-arquitectura-de-software" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="qué-es-una-arquitectura-de-software"><span class="header-section-number">1.1</span> ¿Qué es una arquitectura de software?</h2>
-<p>El término <strong>arquitectura</strong> tiene multiples significados según el contexto. En ingeniería de software/sistemas, ¿de qué hablamos cuando decimos <strong>arquitectura software</strong>?</p>
-<ul>
-<li>¿Nos referimos a una aplicación móvil?</li>
-<li>¿A una librería software?</li>
-<li>¿O una aplicación empresarial?</li>
-<li>¿Tal vez una red de sensores desplegados en la ciudad junto a un centro (hub) de datos?</li>
-<li>¿O simplemente el conjunto de diagramas de clases u casos de usos asociados?</li>
-<li>¿Una red de <em>data centers</em> como los que posee Meta, Google, etc.?</li>
-</ul>
-<p>Es importante definir, o al menos caracterizar, el concepto de arquitectura de software así como las implicaciones en el diseño y desarrollo de una arquitectura de software. A parte de programador o analista, podrías dedicarte al desarrollo de arquitecturas de software en el futuro. ¿Lo has pensado como profesión?</p>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span><strong>Slide Deck</strong>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<div class="slides">
-<p><a href="https://cgranell.github.io/ei1039-uji/materials/01-arquitectura-conceptos.html">Conceptos, roles y compromisos</a></p>
-</div>
-</div>
-</div>
-</section>
-<section id="dimensiones-de-un-arquitectura-software" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="dimensiones-de-un-arquitectura-software"><span class="header-section-number">1.2</span> Dimensiones de un arquitectura software</h2>
-<p>Según <span class="citation" data-cites="richards2020">(<a href="../references.html#ref-richards2020" role="doc-biblioref">Richards and Ford 2020</a>)</span>, no es fácil definir el concepto de arquitectura software. Una forma altrenativa ed hacerlo caracterizar el concepto a través de sus aspectos más destacables. Los autores utilizan el término <em>dimensión</em> para agrupar estos aspectos clave de la siguiente forma:</p>
-<ul>
-<li><p>Estructura o estilo</p></li>
-<li><p>Características de la arquitectura</p></li>
-<li><p>Decisiones o reglas</p></li>
-<li><p>Principios de diseño</p></li>
-</ul>
-<section id="características-de-la-arquitectura-de-software" class="level3" data-number="1.2.1">
-<h3 data-number="1.2.1" class="anchored" data-anchor-id="características-de-la-arquitectura-de-software"><span class="header-section-number">1.2.1</span> Características de la arquitectura de software</h3>
-<p>Ahora nos centramos en la dimensión de <strong>características de la arquitectura</strong>, que engloba todos aquellos aspectos, criterios y requisitos no funcionales (términos terminados generalmente en <em>-idad</em>, como seguridad, fiabilidad, escalabildiad, etc.) que una determinada arquitectura debe cumplir (o al menos tener en cuenta) para garantizar un funcionamiento correcto y deseable.</p>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span><strong>Slide Deck</strong>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<div class="slides">
-<p><a href="https://cgranell.github.io/ei1039-uji/materials/01-arquitectura-caracteristicas.html">Características de una arquitectura</a></p>
-</div>
-</div>
-</div>
-</section>
-<section id="estructura-de-la-arquitectura-de-software" class="level3" data-number="1.2.2">
-<h3 data-number="1.2.2" class="anchored" data-anchor-id="estructura-de-la-arquitectura-de-software"><span class="header-section-number">1.2.2</span> Estructura de la arquitectura de software</h3>
-<p>La estructura o el estilo es otra dimensión de la arquitectura de software <span class="citation" data-cites="richards2020">(<a href="../references.html#ref-richards2020" role="doc-biblioref">Richards and Ford 2020</a>)</span>. Quizás mucho más conocida y popular, y precisamente por eso, existe la errónea tendencia a reducir cualquier arquitectura de software únicamente a la dimensión de estructura o estilo. Hablamos de arquitectura <strong>en capas</strong> o basada en <strong>microservicios</strong>, como si la dimensión de la estructura abarcara en sí misma toda la complejidad de una arquitectura de software.</p>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span><strong>Slide Deck</strong>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<div class="slides">
-<p><a href="https://cgranell.github.io/ei1039-uji/materials/01-arquitectura-estilos.html">Estilos de una arquitectura</a></p>
-</div>
-</div>
-</div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
-<div id="ref-richards2020" class="csl-entry" role="listitem">
-Richards, Mark, and Neal Ford. 2020. <em>Fundamentals of Software Architecture, 1st Edition</em>. O’Really Media Inc.
-</div>
-</div>
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -706,13 +595,13 @@ Richards, Mark, and Neal Ford. 2020. <em>Fundamentals of Software Architecture, 
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../index.html" class="pagination-link" aria-label="Preface">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="../materials/design_patterns.html" class="pagination-link" aria-label="Patrones de diseño">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Patrones de diseño</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../materials/design_patterns.html" class="pagination-link" aria-label="Patrones de diseño">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Patrones de diseño</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -721,4 +610,4 @@ Richards, Mark, and Neal Ford. 2020. <em>Fundamentals of Software Architecture, 
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/cgranell/ei2639/blob/main/materials/01_architecture.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/cgranell/ei2639/edit/main/materials/01_architecture.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/cgranell/ei2639/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/cgranell/ei2639/blob/main/materials/design_patterns_creational.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/cgranell/ei2639/edit/main/materials/design_patterns_creational.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/cgranell/ei2639/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
