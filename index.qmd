@@ -26,14 +26,19 @@ Arquitectura de software, patrones de diseño, patrones de arquitectura de datos
 
 ## Método de instrucción
 
-Hay evidencia científica de sobra que demuestra una y otra vez que los métodos de *aprendizaje activo* (por *activo* me refiero a todos, tanto dentro como fuera de clase) son mucho más efectivos que escucharme y tomar apuntes de forma pasiva. Vale, es cierto que a veces son necesarias presentaciones aclaratorias; pero tú debes ser el protagonista de tu proceso de aprendizaje para alcanzar los resultados esperados con éxito. Y yo estoy encantado de facilitar ese proceso de aprendizaje. 
+Hay evidencia científica de sobra que demuestra una y otra vez que los métodos de *aprendizaje activo* (por *activo* me refiero tanto dentro como fuera de clase) son mucho más efectivos que escucharme y tomar apuntes de forma pasiva. Vale, es cierto que a veces son necesarias presentaciones aclaratorias; pero tú debes ser el protagonista de tu proceso de aprendizaje para alcanzar los resultados esperados con éxito. Y yo estoy encantado de facilitar ese proceso de aprendizaje. 
 
 ::: {.callout-tip icon=true}
 ## ¿Te has preguntado alguna vez qué pasa en tu cerebro cuando aprendes? [@lang2016]
 
 Tenemos millones de neuronas que "hacen amigos fácilmente". Las neuronas se conectan con otras neuronas formando redes con cada nueva experiencia que tenemos (nuevas emociones, pensamientos, acciones, conocimiento, etc.). Las redes al principio son débiles, pero cada vez que repetimos la experiencia o acción, el camimo de la red se consolida y se hace más fuerte. **Cuando aprendemos, nuestro cerebro cambia** por la formación de nuevas conexiones entre neuronas.
 
-¿Quieres saber más? [10 Things Software Developers Should Learn about Learning](https://cacm.acm.org/research/10-things-software-developers-should-learn-about-learning/) [@brown2023]
+¿Quieres saber más? 
+
+- [10 Things Software Developers Should Learn about Learning](https://cacm.acm.org/research/10-things-software-developers-should-learn-about-learning/) [@brown2023]
+
+- Conferencia inaugural JENUI 2018 "[Indiana Jones: uno de los nuestros](https://www.youtube.com/watch?v=VlI9VJQp9Tk)" por el professor UPC Fermín Sánchez  y [premio de investigación Sociedad Científica Informática de España - Fundación BBVA](https://www.fbbva.es/galardonados/fermin-sanchez-carracedo/), que presenta la importancia de la motivación y la experimentación en el aprendizaje y en los mecanismos que favorecen el éxito del estudiante. 
+
 :::
 
 
