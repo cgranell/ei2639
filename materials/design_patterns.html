@@ -8,7 +8,7 @@
 
 <meta name="description" content="Diseño de Software">
 
-<title>2&nbsp; Patrones de diseño – EI1039 - 2026/2027</title>
+<title>3&nbsp; Patrones de diseño – EI1039 - 2026/2027</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -37,8 +37,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../materials/design_patterns_creational.html" rel="next">
-<link href="../materials/01_architecture.html" rel="prev">
+<link href="../references.html" rel="next">
+<link href="../materials/data_architecture_patterns.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -89,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../materials/design_patterns.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Patrones de diseño</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../materials/design_patterns.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Patrones de diseño</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -136,14 +136,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../materials/design_patterns.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Patrones de diseño</span></span></a>
+  <a href="../materials/data_architecture_patterns.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Patrones de arquitectura de datos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../materials/design_patterns_creational.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Patrones creacionales</span></span></a>
+  <a href="../materials/design_patterns.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Patrones de diseño</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -162,8 +162,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#qué-es-un-patrón" id="toc-qué-es-un-patrón" class="nav-link active" data-scroll-target="#qué-es-un-patrón"><span class="header-section-number">2.1</span> ¿Qué es un patrón?</a></li>
-  <li><a href="#principios-solid" id="toc-principios-solid" class="nav-link" data-scroll-target="#principios-solid"><span class="header-section-number">2.2</span> Principios SOLID</a></li>
+  <li><a href="#qué-es-un-patrón" id="toc-qué-es-un-patrón" class="nav-link active" data-scroll-target="#qué-es-un-patrón"><span class="header-section-number">3.1</span> ¿Qué es un patrón?</a></li>
+  <li><a href="#principios-solid" id="toc-principios-solid" class="nav-link" data-scroll-target="#principios-solid"><span class="header-section-number">3.2</span> Principios SOLID</a></li>
+  <li><a href="#patrones-creacionales" id="toc-patrones-creacionales" class="nav-link" data-scroll-target="#patrones-creacionales"><span class="header-section-number">3.3</span> Patrones creacionales</a>
+  <ul class="collapse">
+  <li><a href="#singleton" id="toc-singleton" class="nav-link" data-scroll-target="#singleton"><span class="header-section-number">3.3.1</span> Singleton</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/cgranell/ei2639/blob/main/materials/design_patterns.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/cgranell/ei2639/edit/main/materials/design_patterns.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/cgranell/ei2639/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -172,7 +176,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Patrones de diseño</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Patrones de diseño</span></h1>
 </div>
 
 
@@ -189,8 +193,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="qué-es-un-patrón" class="level2 page-columns page-full" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="qué-es-un-patrón"><span class="header-section-number">2.1</span> ¿Qué es un patrón?</h2>
+<section id="qué-es-un-patrón" class="level2 page-columns page-full" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="qué-es-un-patrón"><span class="header-section-number">3.1</span> ¿Qué es un patrón?</h2>
 <p>El término <strong>patrón</strong> tiene multiples significados según el contexto: patrones numéricos, patrones geométricos, etc.</p>
 <p>En informática, el área de <a href="https://es.wikipedia.org/wiki/Aprendizaje_autom%C3%A1tico">aprendizaje automático</a> utiliza técnicas computacionales avanzadas para buscar y encontrar patrones en los datos.</p>
 <p>En ingeniería de software, descubrirás a lo largo de tu carrera profesional que los mismos problemas de diseño de software se repiten una y otra vez. Hay muchas formas de abordar estos problemas, pero la industria prefiere soluciones más flexibles y/o reutilizables. Ahí es donde los <strong>patrones de diseño</strong> entran en juego.</p>
@@ -204,7 +208,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Un patrón de diseño es una solución práctica y bien testeada a problemas recurrentes.</p>
+<p>Un <strong>patrón de diseño de software</strong> es una solución práctica, reutilizable y bien testeada a problemas recurrentes.</p>
 </div>
 </div>
 <p>Los patrones de diseño permiten (re)utilizar soluciones previamente testeadas que los desarrolladores han utilizado a menudo para resolver un problema de diseño de software, de modo que no es necesario reinvoitar la rueda, es decir, crear una <em>nueva</em> solución a partir de los principios básicos de la programación orientada a objetos. Los patrones de diseño no son solo soluciones teóricas o académicas, son soluciones reales que se utilizan en la industria del software, por ejemplo, en la implementación de los propios lenguajes de progrmación o en productos software comerciales.</p>
@@ -234,8 +238,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="principios-solid" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="principios-solid"><span class="header-section-number">2.2</span> Principios SOLID</h2>
+<section id="principios-solid" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="principios-solid"><span class="header-section-number">3.2</span> Principios SOLID</h2>
 <p>Varios autores (<a href="https://michaelfeathers.silvrback.com/">Michael Feathers</a>, <a href="https://blog.cleancoder.com/">Robert C. Martin</a>, etc. ) han contribuido a definir una serie de principios (recomendaciones, etc.) para que desarrolladores/programadores generen software de <em>calidad</em>. ¿Y qué entendemos por software de calidad? Software que sea</p>
 <ul>
 <li>robusto y estable,</li>
@@ -295,8 +299,69 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+</section>
+<section id="patrones-creacionales" class="level2 page-columns page-full" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="patrones-creacionales"><span class="header-section-number">3.3</span> Patrones creacionales</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Los <strong>patrones creacionales</strong> proporcionan mecanismos de creación de objetos que incrementan la flexibilidad y la reutilización del código.</p>
+</div>
+</div>
+<p>Las secciones relativas a los patrones creacionales se dividen en los mismos apartados, tal como reflejan los mapas conceptuales:</p>
+<ul>
+<li><p>Propósito (<em>aim</em>)</p></li>
+<li><p>Problema (<em>what problem does it solve?</em>)</p></li>
+<li><p>Solución (<em>conceptual solution</em>)</p></li>
+<li><p>Ventajas e inconvenientes (<em>pros and cons</em>)</p></li>
+</ul>
+<p>Dejamos para la argumentación y discusión en clase la tarea de <a href="#relaciones-entre-patrones">conectar y relacionar</a> los distintos patrones creacionales entre ellos, y sugerir <a href="#aplicabilidad">situaciones o aplicaciones</a> donde se puedan aplicar.</p>
+<section id="singleton" class="level3 page-columns page-full" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="singleton"><span class="header-section-number">3.3.1</span> Singleton</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propósito</th>
+<th>Problema</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>asegura que una clase tenga una <strong>única instancia</strong> y proporciona un punto de <strong>acceso global</strong> a dicha instancia</td>
+<td>… porque quiero centralizar o controlar el acceso a un recurso.</td>
+</tr>
+</tbody>
+</table>
+<div class="column-screen-inset-right">
+<p><img src="../images/concept-maps/SINGLETON-map.png" class="img-fluid"></p>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Implementación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/singleton/java/example#lang-features">Singleton en Java (refactoring.guru)</a></p>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -709,13 +774,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../materials/01_architecture.html" class="pagination-link" aria-label="Fundamentos de arquitectura">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Fundamentos de arquitectura</span></span>
+      <a href="../materials/data_architecture_patterns.html" class="pagination-link" aria-label="Patrones de arquitectura de datos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Patrones de arquitectura de datos</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../materials/design_patterns_creational.html" class="pagination-link" aria-label="Patrones creacionales">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Patrones creacionales</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

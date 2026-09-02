@@ -8,7 +8,7 @@
 
 <meta name="description" content="Diseño de Software">
 
-<title>3&nbsp; Patrones creacionales – EI1039 - 2026/2027</title>
+<title>2&nbsp; Patrones de arquitectura de datos – EI1039 - 2026/2027</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -27,7 +27,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -37,8 +56,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../references.html" rel="next">
-<link href="../materials/design_patterns.html" rel="prev">
+<link href="../materials/design_patterns.html" rel="next">
+<link href="../materials/01_architecture.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -89,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../materials/design_patterns_creational.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Patrones creacionales</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../materials/data_architecture_patterns.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Patrones de arquitectura de datos</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -136,14 +155,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../materials/design_patterns.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Patrones de diseño</span></span></a>
+  <a href="../materials/data_architecture_patterns.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Patrones de arquitectura de datos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../materials/design_patterns_creational.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Patrones creacionales</span></span></a>
+  <a href="../materials/design_patterns.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Patrones de diseño</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -157,15 +176,33 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#etl-architecture" id="toc-etl-architecture" class="nav-link active" data-scroll-target="#etl-architecture"><span class="header-section-number">2.0.1</span> ETL Architecture</a></li>
+  <li><a href="#elt-architecture" id="toc-elt-architecture" class="nav-link" data-scroll-target="#elt-architecture"><span class="header-section-number">2.0.2</span> ELT Architecture</a></li>
+  <li><a href="#data-warehouse-architecture" id="toc-data-warehouse-architecture" class="nav-link" data-scroll-target="#data-warehouse-architecture"><span class="header-section-number">2.0.3</span> Data Warehouse Architecture</a></li>
+  <li><a href="#data-lake-architecture" id="toc-data-lake-architecture" class="nav-link" data-scroll-target="#data-lake-architecture"><span class="header-section-number">2.0.4</span> Data Lake Architecture</a></li>
+  <li><a href="#lakehouse-architecture" id="toc-lakehouse-architecture" class="nav-link" data-scroll-target="#lakehouse-architecture"><span class="header-section-number">2.0.5</span> Lakehouse Architecture</a></li>
+  <li><a href="#lambda-architecture" id="toc-lambda-architecture" class="nav-link" data-scroll-target="#lambda-architecture"><span class="header-section-number">2.0.6</span> Lambda Architecture</a></li>
+  <li><a href="#kappa-architecture" id="toc-kappa-architecture" class="nav-link" data-scroll-target="#kappa-architecture"><span class="header-section-number">2.0.7</span> Kappa Architecture</a></li>
+  <li><a href="#data-mesh-architecture" id="toc-data-mesh-architecture" class="nav-link" data-scroll-target="#data-mesh-architecture"><span class="header-section-number">2.0.8</span> Data Mesh Architecture</a></li>
+  <li><a href="#data-fabric-architecture" id="toc-data-fabric-architecture" class="nav-link" data-scroll-target="#data-fabric-architecture"><span class="header-section-number">2.0.9</span> Data Fabric Architecture</a></li>
+  <li><a href="#event-driven-data-architecture" id="toc-event-driven-data-architecture" class="nav-link" data-scroll-target="#event-driven-data-architecture"><span class="header-section-number">2.0.10</span> Event-Driven Data Architecture</a></li>
+  <li><a href="#medallion-architecture" id="toc-medallion-architecture" class="nav-link" data-scroll-target="#medallion-architecture"><span class="header-section-number">2.0.11</span> Medallion Architecture</a></li>
+  <li><a href="#data-product-architecture" id="toc-data-product-architecture" class="nav-link" data-scroll-target="#data-product-architecture"><span class="header-section-number">2.0.12</span> Data Product Architecture</a></li>
+  <li><a href="#summary-the-bigger-picture-for-2026" id="toc-summary-the-bigger-picture-for-2026" class="nav-link" data-scroll-target="#summary-the-bigger-picture-for-2026"><span class="header-section-number">2.0.13</span> Summary: The Bigger Picture for 2026</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/cgranell/ei2639/blob/main/materials/data_architecture_patterns.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/cgranell/ei2639/edit/main/materials/data_architecture_patterns.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/cgranell/ei2639/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Patrones creacionales</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Patrones de arquitectura de datos</span></h1>
 </div>
 
 
@@ -182,8 +219,176 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>Data engineering is no longer just about moving data from one system to another. Modern data engineers are expected to build architectures that are scalable, reliable, secure, cost-efficient, and ready for analytics and AI.</p>
+<p>As organizations increasingly adopt cloud platforms, real-time analytics, data products, and AI-driven applications, understanding data architecture patterns has become an essential skill.</p>
+<p>Here are 12 data architecture patterns every data engineer should understand in 2026 <span class="citation" data-cites="aais2026">(<a href="../references.html#ref-aais2026" role="doc-biblioref">E-learning 2026</a>)</span>.</p>
+<section id="etl-architecture" class="level3" data-number="2.0.1">
+<h3 data-number="2.0.1" class="anchored" data-anchor-id="etl-architecture"><span class="header-section-number">2.0.1</span> ETL Architecture</h3>
+<p>Extract, Transform, Load (ETL) remains a foundational data architecture pattern.</p>
+<p>Data is extracted from operational systems, transformed into a suitable format, and then loaded into a target data warehouse or analytical system.</p>
+<p>Best suited for:</p>
+<ul>
+<li>Structured enterprise data</li>
+<li>Batch processing</li>
+<li>Traditional reporting</li>
+<li>Data warehouse environments</li>
+</ul>
+<p>Although modern architectures often favor ELT, understanding ETL is still important for legacy and regulated environments.</p>
+</section>
+<section id="elt-architecture" class="level3" data-number="2.0.2">
+<h3 data-number="2.0.2" class="anchored" data-anchor-id="elt-architecture"><span class="header-section-number">2.0.2</span> ELT Architecture</h3>
+<p>In Extract, Load, Transform (ELT), raw data is first loaded into a scalable cloud data platform and transformed afterward.</p>
+<p>This approach takes advantage of the processing power of modern cloud warehouses and lakehouses.</p>
+<p>Key benefits:</p>
+<ul>
+<li>Faster ingestion</li>
+<li>Greater flexibility</li>
+<li>Preservation of raw data</li>
+<li>Scalable transformation</li>
+</ul>
+<p>ELT has become a common foundation for modern analytics platforms.</p>
+</section>
+<section id="data-warehouse-architecture" class="level3" data-number="2.0.3">
+<h3 data-number="2.0.3" class="anchored" data-anchor-id="data-warehouse-architecture"><span class="header-section-number">2.0.3</span> Data Warehouse Architecture</h3>
+<p>A data warehouse provides a centralized environment for structured, analytical data.</p>
+<p>It typically organizes cleaned and transformed data into models designed for reporting, business intelligence, and analytics.</p>
+<p>A strong warehouse architecture helps organizations create a reliable single source of truth for business metrics.</p>
+</section>
+<section id="data-lake-architecture" class="level3" data-number="2.0.4">
+<h3 data-number="2.0.4" class="anchored" data-anchor-id="data-lake-architecture"><span class="header-section-number">2.0.4</span> Data Lake Architecture</h3>
+<p>A data lake stores large volumes of data in its original or near-original form.</p>
+<p>Unlike traditional warehouses, data lakes can accommodate structured, semi-structured, and unstructured data.</p>
+<p>Common use cases include:</p>
+<ul>
+<li>Machine learning</li>
+<li>Data science</li>
+<li>Log analysis</li>
+<li>Large-scale analytics</li>
+<li>Raw data storage</li>
+</ul>
+<p>The major challenge is maintaining governance, quality, and discoverability.</p>
+</section>
+<section id="lakehouse-architecture" class="level3" data-number="2.0.5">
+<h3 data-number="2.0.5" class="anchored" data-anchor-id="lakehouse-architecture"><span class="header-section-number">2.0.5</span> Lakehouse Architecture</h3>
+<p>The data lakehouse combines characteristics of data lakes and data warehouses.</p>
+<p>It aims to provide:</p>
+<ul>
+<li>Low-cost and flexible storage</li>
+<li>Structured analytical capabilities</li>
+<li>Transactional reliability</li>
+<li>Support for BI and machine learning</li>
+</ul>
+<p>For organizations managing both analytics and AI workloads, lakehouse architectures have become particularly important.</p>
+</section>
+<section id="lambda-architecture" class="level3" data-number="2.0.6">
+<h3 data-number="2.0.6" class="anchored" data-anchor-id="lambda-architecture"><span class="header-section-number">2.0.6</span> Lambda Architecture</h3>
+<p>Lambda architecture separates data processing into multiple layers, traditionally including:</p>
+<ul>
+<li>Batch layer</li>
+<li>Speed layer</li>
+<li>Serving layer</li>
+</ul>
+<p>The batch layer processes large historical datasets while the speed layer handles real-time information.</p>
+<p>Although newer approaches have reduced the need for this complexity in some environments, Lambda architecture remains useful for understanding large-scale streaming systems.</p>
+</section>
+<section id="kappa-architecture" class="level3" data-number="2.0.7">
+<h3 data-number="2.0.7" class="anchored" data-anchor-id="kappa-architecture"><span class="header-section-number">2.0.7</span> Kappa Architecture</h3>
+<p>Kappa architecture simplifies the Lambda model by focusing primarily on stream processing.</p>
+<p>Instead of maintaining separate batch and real-time pipelines, data is treated as a continuous stream that can be replayed when necessary.</p>
+<p>It can be useful for applications that require:</p>
+<ul>
+<li>Real-time analytics</li>
+<li>Event processing</li>
+<li>Continuous data pipelines</li>
+<li>Low-latency decision-making</li>
+</ul>
+</section>
+<section id="data-mesh-architecture" class="level3" data-number="2.0.8">
+<h3 data-number="2.0.8" class="anchored" data-anchor-id="data-mesh-architecture"><span class="header-section-number">2.0.8</span> Data Mesh Architecture</h3>
+<p>Data Mesh shifts the responsibility for data ownership toward business domains.</p>
+<p>Instead of one centralized data team controlling everything, individual domains become responsible for their own data products.</p>
+<p>Four important principles commonly associated with Data Mesh are:</p>
+<ul>
+<li>Domain ownership</li>
+<li>Data as a product</li>
+<li>Self-service data infrastructure</li>
+<li>Federated computational governance</li>
+</ul>
+<p>This model can work particularly well in large organizations with many independent business domains.</p>
+</section>
+<section id="data-fabric-architecture" class="level3" data-number="2.0.9">
+<h3 data-number="2.0.9" class="anchored" data-anchor-id="data-fabric-architecture"><span class="header-section-number">2.0.9</span> Data Fabric Architecture</h3>
+<p>A Data Fabric focuses on connecting and governing data across different environments.</p>
+<p>It can bring together data from:</p>
+<ul>
+<li>Cloud platforms</li>
+<li>On-premises systems</li>
+<li>SaaS applications</li>
+<li>Databases</li>
+<li>Data lakes</li>
+<li>Warehouses</li>
+</ul>
+<p>Metadata, automation, integration, and governance are central components of this architecture.</p>
+</section>
+<section id="event-driven-data-architecture" class="level3" data-number="2.0.10">
+<h3 data-number="2.0.10" class="anchored" data-anchor-id="event-driven-data-architecture"><span class="header-section-number">2.0.10</span> Event-Driven Data Architecture</h3>
+<p>In an event-driven architecture, systems communicate through events rather than relying entirely on traditional request-response interactions.</p>
+<p>For example, when a customer places an order, an event can trigger multiple downstream processes such as:</p>
+<p>Order Created → Inventory Update → Payment Processing → Notification → Analytics</p>
+<p>This pattern is especially valuable for distributed systems and real-time applications.</p>
+</section>
+<section id="medallion-architecture" class="level3" data-number="2.0.11">
+<h3 data-number="2.0.11" class="anchored" data-anchor-id="medallion-architecture"><span class="header-section-number">2.0.11</span> Medallion Architecture</h3>
+<p>The Medallion architecture organizes data into progressive quality layers.</p>
+<ul>
+<li><p>Bronze: Raw, ingested data.</p></li>
+<li><p>Silver: Cleaned, validated, and standardized data.</p></li>
+<li><p>Gold: Business-ready data optimized for analytics and reporting.</p></li>
+</ul>
+<p>This layered approach makes data pipelines easier to manage, troubleshoot, and govern.</p>
+</section>
+<section id="data-product-architecture" class="level3" data-number="2.0.12">
+<h3 data-number="2.0.12" class="anchored" data-anchor-id="data-product-architecture"><span class="header-section-number">2.0.12</span> Data Product Architecture</h3>
+<p>A modern data team increasingly treats datasets as products rather than simply pipeline outputs.</p>
+<p>A data product should have:</p>
+<ul>
+<li>Clear ownership</li>
+<li>Defined consumers</li>
+<li>Reliable quality</li>
+<li>Documented metadata</li>
+<li>Access controls</li>
+<li>Service-level expectations</li>
+<li>Discoverability</li>
+</ul>
+<p>This approach encourages data teams to think about usability and business value—not just data movement.</p>
+<p>How Should Data Engineers Choose the Right Pattern?</p>
+<p>There is no single architecture that works for every organization.</p>
+<p>The right choice depends on factors such as:</p>
+<ul>
+<li><p>Data volume: How much data needs to be processed?</p></li>
+<li><p>Data velocity: Is the data arriving daily, hourly, or in real time?</p></li>
+<li><p>Data variety: Is the data structured, semi-structured, or unstructured?</p></li>
+<li><p>Latency requirements: Does the business need results immediately?</p></li>
+<li><p>Governance: What security, privacy, and compliance requirements exist?</p></li>
+<li><p>Cost: What infrastructure and operational costs are acceptable?</p></li>
+<li><p>Team structure: Is data ownership centralized or distributed across domains?</p></li>
+</ul>
+</section>
+<section id="summary-the-bigger-picture-for-2026" class="level3" data-number="2.0.13">
+<h3 data-number="2.0.13" class="anchored" data-anchor-id="summary-the-bigger-picture-for-2026"><span class="header-section-number">2.0.13</span> Summary: The Bigger Picture for 2026</h3>
+<p>The most valuable data engineers in 2026 won’t simply know how to build pipelines. They will understand why a particular architecture should be used, what trade-offs it introduces, and how it supports business and AI workloads.</p>
+<p>Modern data engineering increasingly sits at the intersection of:</p>
+<p>Data + Cloud + AI + Analytics + Governance + Software Engineering</p>
+<p>Understanding these 12 architecture patterns gives data engineers a strong foundation for designing systems that are scalable, adaptable, and ready for the next generation of data platforms.</p>
+<p>The goal isn’t to master one architecture. It’s to master the ability to choose the right architecture for the right problem.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-aais2026" class="csl-entry" role="listitem">
+E-learning, AAIS. 2026. <em>The 12 Data Architecture Patterns Every Data Engineer Should Master in 2026</em>. Medium. <a href="https://medium.com/@aaiselearning/the-12-data-architecture-patterns-every-data-engineer-should-master-in-2026-00fe5f9052ce">https://medium.com/@aaiselearning/the-12-data-architecture-patterns-every-data-engineer-should-master-in-2026-00fe5f9052ce</a>.
+</div>
+</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -595,13 +800,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../materials/design_patterns.html" class="pagination-link" aria-label="Patrones de diseño">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Patrones de diseño</span></span>
+      <a href="../materials/01_architecture.html" class="pagination-link" aria-label="Fundamentos de arquitectura">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Fundamentos de arquitectura</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../materials/design_patterns.html" class="pagination-link" aria-label="Patrones de diseño">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Patrones de diseño</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -610,4 +815,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/cgranell/ei2639/blob/main/materials/design_patterns_creational.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/cgranell/ei2639/edit/main/materials/design_patterns_creational.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/cgranell/ei2639/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/cgranell/ei2639/blob/main/materials/data_architecture_patterns.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/cgranell/ei2639/edit/main/materials/data_architecture_patterns.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/cgranell/ei2639/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
