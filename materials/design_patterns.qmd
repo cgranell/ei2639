@@ -10,7 +10,7 @@ En informática, el área de [aprendizaje automático](https://es.wikipedia.org/
 En ingeniería de software, descubrirás a lo largo de tu carrera profesional que los mismos problemas de diseño de software se repiten una y otra vez. Hay muchas formas de abordar estos problemas, pero la industria prefiere soluciones más flexibles y/o reutilizables. Ahí es donde los **patrones de diseño** entran en juego.
 
 ::: {.callout-note icon=true}
-## **Definición**
+## Definición
 
 Un **patrón de diseño de software** es una solución práctica, reutilizable y bien testeada a problemas recurrentes.
 :::
@@ -32,7 +32,7 @@ Una buena analogía para entender el concepto de patrones de diseño es equipara
 Es importante dejar claro que los patrones de diseño no son únicamente código (clases, interfaces, etc) que se añaden a tu proyecto de software. Los patrones de diseño se deben consider como **soluciones conceptuales**: soluciones que se pueden aplicar y, sobre todo personalizar, edurante el diseño e impleemntación de software en contextos concretos para mejorar la estructura, modularidad, abstracción, flexibilidad y reutilización de tu código. Por ese motivo, en este curso describimos los patrones de diseño de forma conceptual (clases, interfaces, relaciones, etc.); obviamente, implementarás patrones de diseño concretos en el contexto del proyecto común.
 
 ::: {.callout-tip}
-## **Slide Deck** 
+## Slide Deck 
 
 ::: slides
 [Patrones de Diseño: Concepto, catálogo y principios](https://cgranell.github.io/ei1039-uji/materials/02-patrones-slides.html)
@@ -53,8 +53,8 @@ Varios autores ([Michael Feathers](https://michaelfeathers.silvrback.com/), [Rob
 Sin embargo, que el código resultante sea robusto y estable por un lado, pero que también sea fácilmente extendible y reutilizable por otro, parece que sean objetivos contradictorios. En ingeniería y desarrollo de software, tenemos dos conceptos que tenemos que balancear adecuadamente al mismo tiempo para producir software de calidad.
 
 
-::: {.callout-note}
-## **Definición**
+::: {.callout-note icon=true}
+## Definición
 
 **Acoplamiento** indica el grado de *interdependencia* entre entidades/componentes de software (ya sean clases, métodos, módulos, funciones, etc. ). Si dos componentes son completamente independientes entre sí, entonces están *desacoplados*.
 
@@ -64,8 +64,8 @@ Como ingenieros/as de software, queremos que el software generado tenga **un baj
 
 
 
-::: {.callout-note}
-## **Definición**
+::: {.callout-note icon=true}
+## Definición
 
 
 **Cohesión** indica el grado en que entidades/componentes de software independientes se combinan para alcanzar un resultado (comporatemeionte, etc) mejor que si trabajaran por separado. Se refiere a la forma en que podemos agrupar componentes de software.
@@ -89,7 +89,7 @@ Los 5 principios SOLID de diseño de aplicaciones de software son:
 
 
 ::: {.callout-tip}
-## **Slide Deck** 
+## Slide Deck 
 
 ::: slides
 [Principios SOLID](https://cgranell.github.io/ei1039-uji/materials/02-solid-slides.html)
@@ -101,7 +101,7 @@ Los 5 principios SOLID de diseño de aplicaciones de software son:
 ## Patrones creacionales
 
 
-::: {.callout-note}
+::: {.callout-note icon=true}
 ## Definición
 
 Los **patrones creacionales** proporcionan mecanismos de creación de objetos que incrementan la flexibilidad y la reutilización del código.
@@ -109,7 +109,7 @@ Los **patrones creacionales** proporcionan mecanismos de creación de objetos qu
 :::
 
 
-Las secciones relativas a los patrones creacionales se dividen en los mismos apartados, tal como reflejan los mapas conceptuales:
+Las secciones relativas a los patrones creacionales (y los estructurales y de comportamiento) se dividen en los mismos apartados, tal como reflejan los mapas conceptuales:
 
 1. Propósito (*aim*)
 
@@ -119,7 +119,7 @@ Las secciones relativas a los patrones creacionales se dividen en los mismos apa
 
 4. Ventajas e inconvenientes (*pros and cons*)
 
-Además, cada mapa conceotual añade tres apartados más:
+Además, cada mapa conceptual añade tres apartados más:
 
 5. A menudo se confunde con (*often confused with*)
 
@@ -147,7 +147,7 @@ Dejamos para la argumentación y discusión en clase la tarea de [conectar y rel
 
 
 ::: {.callout-tip}
-# Implementación
+## Implementación
 
 ![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Singleton en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/singleton/java/example#lang-features)
 
@@ -174,7 +174,7 @@ Dejamos para la argumentación y discusión en clase la tarea de [conectar y rel
 
 
 ::: {.callout-tip}
-# Slide Deck 
+## Slide Deck 
 
 ::: slides
 [Factory objects & Factory Method pattern](https://cgranell.github.io/ei1039/slides/TE3_factory.html)
@@ -185,7 +185,7 @@ Dejamos para la argumentación y discusión en clase la tarea de [conectar y rel
 
 
 ::: {.callout-tip}
-# Implementación
+## Implementación
 
 ![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Factory Method en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/factory-method/java/example#lang-features)
 
@@ -207,7 +207,7 @@ Dejamos para la argumentación y discusión en clase la tarea de [conectar y rel
 :::
 
 ::: {.callout-tip}
-# Implementación
+## Implementación
 
 ![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Abstract Factory en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/abstract-factory/java/example#lang-features)
 
@@ -228,7 +228,7 @@ Dejamos para la argumentación y discusión en clase la tarea de [conectar y rel
 
 
 ::: {.callout-tip}
-# Implementación
+## Implementación
 
 ![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Builder en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/builder/java/example#lang-features)
 
@@ -243,3 +243,172 @@ Dejamos para la argumentación y discusión en clase la tarea de [conectar y rel
 
 
 ### Aplicabilidad
+
+
+
+## Patrones estructurales
+
+
+::: {.callout-note icon=true}
+## Definición
+
+Los **patrones estructurales** se refieren a la organización del código, es decir, a la composición de clases y objetos. Definen formas de componer y organizar clases para obtener fines estructurales (nuevas funciones, etc.).
+
+:::
+
+
+### Adapter
+
+
+| Propósito |  Problema |
+|-----------|-----------|
+| permite que clases con **interfaces incompatibles** colaboren...  | ... porque quiero utilizar cierta clase o librería externa |
+
+
+::: column-screen-inset-right
+
+![](../images/concept-maps/ADAPTER-map.png)
+
+:::
+
+
+
+::: {.callout-tip}
+## Slide Deck 
+
+::: slides
+[Adapter pattern ](https://cgranell.github.io/ei1039/slides/TE5_adapter.html)
+:::
+
+:::
+
+
+::: {.callout-tip}
+## Implementación
+
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Adapter en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/adapter/java/example#lang-features)
+
+:::
+
+
+
+### Bridge
+
+| Propósito |  Problema |
+|-----------|-----------|
+| **separa subsistemas**... | ... porque puede que un subsistema cambie completamente sin que eso afecte al otro subsistema |
+
+
+
+::: column-screen-inset-right
+
+![](../images/concept-maps/BRIDGE-map.png)
+
+:::
+
+
+::: {.callout-tip icon=false}
+## Implementación
+
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Bridge en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/bridge/java/example#lang-features)
+
+:::
+
+
+
+### Facade 
+
+
+| Propósito |  Problema |
+|-----------|-----------|
+| **simplifica la interfaz** a un subsistema... | ... porque quiero ocultar la complejidad de un subsistema a los clientes |
+
+
+
+::: column-screen-inset-right
+
+![](../images/concept-maps/FACADE-map.png)
+
+:::
+
+::: {.callout-tip}
+## Slide Deck 
+
+[Facade pattern](https://cgranell.github.io/ei1039/slides/TE5_facade.html)
+
+:::
+
+
+::: {.callout-tip}
+## Implementación
+
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Facade en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/facade/java/example#lang-features)
+
+:::
+
+
+
+### Proxy
+
+
+
+| Propósito |  Problema |
+|-----------|-----------|
+| **suplanta** recursos reales de forma transparente al cliente... | ... porque quiero implantar restricciones de acceso o reducir coste |
+
+
+
+::: column-screen-inset-right
+
+![](../images/concept-maps/PROXY-map.png)
+
+:::
+
+::: {.callout-tip}
+## Slide Deck
+
+[Proxy pattern](https://cgranell.github.io/ei1039/slides/TE5_proxy.html)
+
+:::
+
+
+::: {.callout-tip}
+## Implementación
+
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Proxy en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/proxy/java/example#lang-features)
+
+:::
+
+
+
+### Composite
+
+
+| Propósito |  Problema |
+|-----------|-----------|
+| **manipula** jerarquías de objetos somo si fueran de solo un tipo ... | ... porque quiero tratar objetos individuales y compuestos de la misma forma |
+
+
+
+::: column-screen-inset-right
+
+![](../images/concept-maps/COMPOSITE-map.png)
+
+:::
+
+
+::: {.callout-tip}
+## Slide Deck
+
+[Composite pattern](https://cgranell.github.io/ei1039/slides/TE6_composite.html)
+
+:::
+
+
+::: {.callout-tip}
+## Implementación
+
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Composite en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/composite/java/example#lang-features)
+
+:::
+
