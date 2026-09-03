@@ -412,3 +412,62 @@ Los **patrones estructurales** se refieren a la organización del código, es de
 
 :::
 
+
+
+### Decorator
+
+| Propósito |  Problema |
+|-----------|-----------|
+| **añade** nuevas reponsabilidades/comportamientos a objetos | ... porque quiero añadirlos, quitarlos, o agregarlos dinámicamente |
+
+
+
+::: column-screen-inset-right
+
+![](../images/concept-maps/DECORATOR-map.png)
+
+:::
+
+::: {.callout-tip}
+## Slide Deck 
+
+[Decorator pattern](https://cgranell.github.io/ei1039/slides/TE6_decorator.html)
+
+:::
+
+::: {.callout-tip}
+## Implementación
+
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Decorator en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/composite/java/example#lang-features)
+
+:::
+
+
+### Flyweight
+ 
+
+| Propósito |  Problema |
+|-----------|-----------|
+| **construye objetos ligeros**  que comparten estado... | ... porque tengo problemas de memoria al tener muchos objetos similares |
+
+
+::: column-screen-inset-right
+
+![](../images/concept-maps/FLYWEIGHT-map.png)
+:::
+
+::: {.callout-tip}
+## Implementación
+
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Flyweight en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/flyweight/java/example#lang-features)
+
+:::
+ 
+ 
+ 
+### Relaciones entre patrones
+
+
+
+### Aplicabilidad
+

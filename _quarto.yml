@@ -13,9 +13,9 @@ book:
   chapters:
     - index.qmd
     - materials/01_architecture.qmd
+    - materials/principles.qmd
     - materials/data_architecture_patterns.qmd
     - materials/design_patterns.qmd
-    
     - references.qmd
   
 format:
