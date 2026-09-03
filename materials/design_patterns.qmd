@@ -31,11 +31,7 @@ Una buena analogía para entender el concepto de patrones de diseño es equipara
 
 Es importante dejar claro que los patrones de diseño no son únicamente código (clases, interfaces, etc) que se añaden a tu proyecto de software. Los patrones de diseño se deben consider como **soluciones conceptuales**: soluciones que se pueden aplicar y, sobre todo personalizar, edurante el diseño e impleemntación de software en contextos concretos para mejorar la estructura, modularidad, abstracción, flexibilidad y reutilización de tu código. Por ese motivo, en este curso describimos los patrones de diseño de forma conceptual (clases, interfaces, relaciones, etc.); obviamente, implementarás patrones de diseño concretos en el contexto del proyecto común.
 
-::: {.callout-tip title="Slide Deck"}
 
-[Patrones de Diseño: Concepto, catálogo y principios](https://cgranell.github.io/ei1039-uji/materials/02-patrones-slides.html)
-
-:::
 
 
 ## Patrones creacionales

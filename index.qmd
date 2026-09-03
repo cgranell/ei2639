@@ -85,10 +85,6 @@ La asignatura también consta de 5 sesiones de seminarios (SE), en el aula [TD11
 - **Seminario 5** (*4 diciembre*) sobre comunicación oral efectiva (a las 15:00!).
 
 
-## Materiales y contenido
-
-Los materiales del curso relativos a Teoria (TE) están disponibles en el [Aula Virtual](`r url_av`), organizados por semanas. Obviamente, el AV enlaza con este sitio web de la asignatura. Es por tanto conveniente tener ambos abiertos.  
-
 
 ## Métodos de evaluación
 
@@ -103,4 +99,19 @@ El desarrollo, entrega y defensa del proyecto común representa el 70% de la not
 | Examen            | Individual | 10%  | Acreditativa    | examen escrito |
 
 : Instrumentos de evaluación {#tbl-evaluacion} {.hover}
+
+
+
+## Materiales y contenido
+
+Los materiales del curso relativos a Teoria (TE) están disponibles en el [Aula Virtual](`r url_av`), organizados por semanas. Obviamente, el AV enlaza con este sitio web de la asignatura. Es por tanto conveniente tener ambos abiertos.  
+
+<!-- TODO: (1a sesion). Quitar los Principios básicos de diseño de software
+(presentes en casi todos los patrones de diseño) a la pagina principles.qmd, añadir contenido del resto de la asignatura -->
+
+::: {.callout-tip title="Slide Deck"}
+
+[Contenido curso (antes Patrones de Diseño: Concepto, catálogo y principios)](https://cgranell.github.io/ei1039-uji/materials/02-patrones-slides.html)
+
+:::
 

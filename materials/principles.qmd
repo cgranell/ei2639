@@ -1,8 +1,22 @@
-# Principios básicos
+# Principios de diseño de software
 
 
-## POO
+## Principios de la programación orientada a objetos (POO)
 
+
+<!-- TODO: Narrativa de los Principios básicos de diseño de software (presentes en casi todos los patrones de diseño) aqui a partir de la presnetacion en index.qmd -->
+
+Principios básicos de diseño de software (presentes en casi todos los patrones de diseño)
+
+### Encapsula lo que varía y sepáralo de lo que no cambia 
+
+
+
+### Programa a una interfaz, no a una implementación
+
+
+
+### Favorece la composición sobre la herencia
 
 
 ## Principios SOLID
@@ -48,6 +62,9 @@ Los 5 principios SOLID de diseño de aplicaciones de software son:
 - **I** – Interface Segregation Principle (ISP)
 - **D** – Dependency Inversion Principle (DIP)
 
+
+
+<!-- TODO: Transformar slides SOLID en texto y eliminar slides -->
 
 ::: {.callout-tip title="Slide Deck"}
 
