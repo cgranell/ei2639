@@ -17,8 +17,7 @@ Varios autores ([Michael Feathers](https://michaelfeathers.silvrback.com/), [Rob
 Sin embargo, que el código resultante sea robusto y estable por un lado, pero que también sea fácilmente extendible y reutilizable por otro, parece que sean objetivos contradictorios. En ingeniería y desarrollo de software, tenemos dos conceptos que tenemos que balancear adecuadamente al mismo tiempo para producir software de calidad.
 
 
-::: {.callout-note icon=true}
-## Definición
+::: {.callout-note title="Definición" icon=true}
 
 **Acoplamiento** indica el grado de *interdependencia* entre entidades/componentes de software (ya sean clases, métodos, módulos, funciones, etc. ). Si dos componentes son completamente independientes entre sí, entonces están *desacoplados*.
 
@@ -28,9 +27,7 @@ Como ingenieros/as de software, queremos que el software generado tenga **un baj
 
 
 
-::: {.callout-note icon=true}
-## Definición
-
+::: {.callout-note title="Definición" icon=true}
 
 **Cohesión** indica el grado en que entidades/componentes de software independientes se combinan para alcanzar un resultado (comporatemeionte, etc) mejor que si trabajaran por separado. Se refiere a la forma en que podemos agrupar componentes de software.
 
@@ -52,11 +49,8 @@ Los 5 principios SOLID de diseño de aplicaciones de software son:
 - **D** – Dependency Inversion Principle (DIP)
 
 
-::: {.callout-tip}
-## Slide Deck 
+::: {.callout-tip title="Slide Deck"}
 
-::: slides
 [Principios SOLID](https://cgranell.github.io/ei1039-uji/materials/02-solid-slides.html)
-:::
 
 :::

@@ -9,8 +9,8 @@ En informática, el área de [aprendizaje automático](https://es.wikipedia.org/
 
 En ingeniería de software, descubrirás a lo largo de tu carrera profesional que los mismos problemas de diseño de software se repiten una y otra vez. Hay muchas formas de abordar estos problemas, pero la industria prefiere soluciones más flexibles y/o reutilizables. Ahí es donde los **patrones de diseño** entran en juego.
 
-::: {.callout-note icon=true}
-## Definición
+::: {.callout-note title="Definición" icon=true}
+
 
 Un **patrón de diseño de software** es una solución práctica, reutilizable y bien testeada a problemas recurrentes.
 :::
@@ -31,12 +31,9 @@ Una buena analogía para entender el concepto de patrones de diseño es equipara
 
 Es importante dejar claro que los patrones de diseño no son únicamente código (clases, interfaces, etc) que se añaden a tu proyecto de software. Los patrones de diseño se deben consider como **soluciones conceptuales**: soluciones que se pueden aplicar y, sobre todo personalizar, edurante el diseño e impleemntación de software en contextos concretos para mejorar la estructura, modularidad, abstracción, flexibilidad y reutilización de tu código. Por ese motivo, en este curso describimos los patrones de diseño de forma conceptual (clases, interfaces, relaciones, etc.); obviamente, implementarás patrones de diseño concretos en el contexto del proyecto común.
 
-::: {.callout-tip}
-## Slide Deck 
+::: {.callout-tip title="Slide Deck"}
 
-::: slides
 [Patrones de Diseño: Concepto, catálogo y principios](https://cgranell.github.io/ei1039-uji/materials/02-patrones-slides.html)
-:::
 
 :::
 
@@ -44,8 +41,7 @@ Es importante dejar claro que los patrones de diseño no son únicamente código
 ## Patrones creacionales
 
 
-::: {.callout-note icon=true}
-## Definición
+::: {.callout-note title="Definición" icon=true}
 
 Los **patrones creacionales** proporcionan mecanismos de creación de objetos que incrementan la flexibilidad y la reutilización del código.
 
@@ -89,8 +85,7 @@ Dejamos para la argumentación y discusión en clase la tarea de [conectar y rel
 :::
 
 
-::: {.callout-tip}
-## Implementación
+::: {.callout-tip title="Implementación"}
 
 ![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Singleton en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/singleton/java/example#lang-features)
 
@@ -116,19 +111,15 @@ Dejamos para la argumentación y discusión en clase la tarea de [conectar y rel
 
 
 
-::: {.callout-tip}
-## Slide Deck 
+::: {.callout-tip title="Slide Deck"}
 
-::: slides
 [Factory objects & Factory Method pattern](https://cgranell.github.io/ei1039/slides/TE3_factory.html)
-:::
 
 :::
 
 
 
-::: {.callout-tip}
-## Implementación
+::: {.callout-tip title="Implementación"}
 
 ![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Factory Method en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/factory-method/java/example#lang-features)
 
@@ -149,8 +140,7 @@ Dejamos para la argumentación y discusión en clase la tarea de [conectar y rel
 ![](../images/concept-maps/ABSTRACTFACTORY-map.png)
 :::
 
-::: {.callout-tip}
-## Implementación
+::: {.callout-tip title="Implementación"}
 
 ![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Abstract Factory en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/abstract-factory/java/example#lang-features)
 
@@ -170,8 +160,7 @@ Dejamos para la argumentación y discusión en clase la tarea de [conectar y rel
 :::
 
 
-::: {.callout-tip}
-## Implementación
+::: {.callout-tip title="Implementación"}
 
 ![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Builder en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/builder/java/example#lang-features)
 
@@ -192,8 +181,7 @@ Dejamos para la argumentación y discusión en clase la tarea de [conectar y rel
 ## Patrones estructurales
 
 
-::: {.callout-note icon=true}
-## Definición
+::: {.callout-note title="Definición" icon=true}
 
 Los **patrones estructurales** se refieren a la organización del código, es decir, a la composición de clases y objetos. Definen formas de componer y organizar clases para obtener fines estructurales (nuevas funciones, etc.).
 
@@ -216,18 +204,14 @@ Los **patrones estructurales** se refieren a la organización del código, es de
 
 
 
-::: {.callout-tip}
-## Slide Deck 
+::: {.callout-tip title="Slide Deck"}
 
-::: slides
 [Adapter pattern ](https://cgranell.github.io/ei1039/slides/TE5_adapter.html)
-:::
 
 :::
 
 
-::: {.callout-tip}
-## Implementación
+::: {.callout-tip title="Implementación"}
 
 ![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Adapter en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/adapter/java/example#lang-features)
 
@@ -250,8 +234,7 @@ Los **patrones estructurales** se refieren a la organización del código, es de
 :::
 
 
-::: {.callout-tip icon=false}
-## Implementación
+::: {.callout-tip title="Implementación"}
 
 ![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Bridge en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/bridge/java/example#lang-features)
 
@@ -274,16 +257,14 @@ Los **patrones estructurales** se refieren a la organización del código, es de
 
 :::
 
-::: {.callout-tip}
-## Slide Deck 
+::: {.callout-tip title="Slide Deck"}
 
 [Facade pattern](https://cgranell.github.io/ei1039/slides/TE5_facade.html)
 
 :::
 
 
-::: {.callout-tip}
-## Implementación
+::: {.callout-tip title="Implementación"}
 
 ![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Facade en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/facade/java/example#lang-features)
 
@@ -307,16 +288,14 @@ Los **patrones estructurales** se refieren a la organización del código, es de
 
 :::
 
-::: {.callout-tip}
-## Slide Deck
+::: {.callout-tip title="Slide Deck"}
 
 [Proxy pattern](https://cgranell.github.io/ei1039/slides/TE5_proxy.html)
 
 :::
 
 
-::: {.callout-tip}
-## Implementación
+::: {.callout-tip title="Implementación"}
 
 ![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Proxy en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/proxy/java/example#lang-features)
 
@@ -340,16 +319,14 @@ Los **patrones estructurales** se refieren a la organización del código, es de
 :::
 
 
-::: {.callout-tip}
-## Slide Deck
+::: {.callout-tip title="Slide Deck"}
 
 [Composite pattern](https://cgranell.github.io/ei1039/slides/TE6_composite.html)
 
 :::
 
 
-::: {.callout-tip}
-## Implementación
+::: {.callout-tip title="Implementación"}
 
 ![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Composite en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/composite/java/example#lang-features)
 
@@ -371,15 +348,13 @@ Los **patrones estructurales** se refieren a la organización del código, es de
 
 :::
 
-::: {.callout-tip}
-## Slide Deck 
+::: {.callout-tip title="Slide Deck"}
 
 [Decorator pattern](https://cgranell.github.io/ei1039/slides/TE6_decorator.html)
 
 :::
 
-::: {.callout-tip}
-## Implementación
+::: {.callout-tip title="Implementación"}
 
 ![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Decorator en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/composite/java/example#lang-features)
 
@@ -399,8 +374,8 @@ Los **patrones estructurales** se refieren a la organización del código, es de
 ![](../images/concept-maps/FLYWEIGHT-map.png)
 :::
 
-::: {.callout-tip}
-## Implementación
+::: {.callout-tip title="Implementación"}
+
 
 ![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Flyweight en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/flyweight/java/example#lang-features)
 
