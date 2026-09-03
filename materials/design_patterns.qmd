@@ -401,3 +401,230 @@ Los **patrones de comportamiento** se refieren a la comunicación entre objetos 
 
 :::
 
+
+
+
+### Command
+
+
+
+| Propósito |  Problema |
+|-----------|-----------|
+| permite encapsular una petición como un objeto ...  | ... porque quiero tener mayor control sobre el ciclo de vida de dicha petición |
+
+
+::: column-screen-inset-right
+
+![](../images/concept-maps/COMMAND-map.png)
+
+:::
+
+
+::: {.callout-tip title="Slide Deck" icon=false}
+
+[Command pattern](https://cgranell.github.io/ei1039/slides/TE8_command.html)
+
+:::
+
+
+::: {.callout-tip title="Implementación"}
+
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Command en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/command/java/example#lang-features)
+
+:::
+
+
+
+### Memento
+
+
+| Propósito |  Problema |
+|-----------|-----------|
+| permite capturar el estado de un objeto  ...  | ... porque quiero restaurar ese estado en cualquier momento |
+
+
+::: column-screen-inset-right
+
+![](../images/concept-maps/MEMENTO-map.png)
+
+
+:::
+
+::: {.callout-tip title="Implementación"}
+
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Memento en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/memento/java/example#lang-features)
+
+:::
+
+
+
+### Chain of responsibility
+
+| Propósito |  Problema |
+|-----------|-----------|
+| permite distribuir responsabilidad de una petición ...  | ... porque tengo un número variable de objetos que pueden gestionarla |
+
+
+::: column-screen-inset-right
+
+![](../images/concept-maps/CHAIN-OF-RESPONSIBILITY-map.png)
+
+:::
+
+::: {.callout-tip title="Implementación"}
+
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Chain of Reponsibility en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/chain-of-responsibility/java/example#lang-features)
+
+:::
+
+
+
+### Template method  
+
+| Propósito |  Problema |
+|-----------|-----------|
+| define un algoritmo a nivel de superclase...  | ... pero permite que subclases sobrescriban partes del algoritmo |
+
+
+::: column-screen-inset-right
+
+![](../images/concept-maps/TEMPLATE-METHOD-map.png)
+
+:::
+
+::: {.callout-tip title="Slide Deck"}
+
+[Template Method pattern](https://cgranell.github.io/ei1039/slides/TE7_templatemethod.html)
+
+:::
+
+
+
+::: {.callout-tip title="Implementación"}
+
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Template Method en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/template-method/java/example#lang-features)
+
+:::
+
+
+
+### Observer
+
+| Propósito |  Problema |
+|-----------|-----------|
+| define un mecanismo de suscripción sobre un objeto (sujeto) ...  | ... porque hay un número variable de objetos observadores que dependen de sus cambios |
+
+
+::: column-screen-inset-right
+
+![](../images/concept-maps/OBSERVER-map.png)
+
+:::
+
+::: {.callout-tip title="Slide Deck"}
+
+[Observer pattern](https://cgranell.github.io/ei1039/slides/TE6_observer.html)
+
+:::
+
+::: {.callout-tip title="Implementación"}
+
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Observer en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/observer/java/example#lang-features)
+
+:::
+
+
+
+### Strategy
+
+
+| Propósito |  Problema |
+|-----------|-----------|
+| Permite seleccionar un método/algoritmo en tiempo real ...  | ... porque hay diferentes algoritmos intercambiables para resolver un mismo problema |
+
+
+::: column-screen-inset-right
+
+![](../images/concept-maps/STRATEGY-map.png)
+
+:::
+
+::: {.callout-tip title="Slide Deck"}
+
+[Strategy pattern](https://cgranell.github.io/ei1039/slides/TE7_strategy.html)
+
+:::
+
+::: {.callout-tip title="Implementación"}
+
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Strategy en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/strategy/java/example#lang-features)
+
+:::
+
+
+
+### Mediator
+
+
+| Propósito |  Problema |
+|-----------|-----------|
+| Encapsula comunicaciones/interacciones entre objetos ...  | ... para evitar dependencias directas y código *spaguetti* |
+
+
+::: column-screen-inset-right
+
+![](../images/concept-maps/MEDIATOR-map.png)
+
+:::
+
+
+::: {.callout-tip title="Implementación"}
+
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Mediator en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/mediator/java/example#lang-features)
+
+:::
+
+
+
+### Iterator
+
+
+| Propósito |  Problema |
+|-----------|-----------|
+| Proporciona un mecanismo de acceso a los elementos de una colección sin exponer su estructura/representación interna...  | ... porque tengo diferentes tipos de colecciones y quiero acceder de forma homegénea a todas |
+
+
+::: column-screen-inset-right
+
+![](../images/concept-maps/ITERATOR-map.png)
+
+:::
+
+::: {.callout-tip title="Slide Deck"}
+
+[Iterator pattern](https://cgranell.github.io/ei1039/slides/TE8_iterator.html)
+
+:::
+
+
+::: {.callout-tip title="Implementación"}
+
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Iterator en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/iterator/java/example#lang-features)
+
+:::
+
+
+
+
+### State
+
+
+### Interpreter
+
+
+ 
+### Relaciones entre patrones
+
+
+
+### Aplicabilidad
