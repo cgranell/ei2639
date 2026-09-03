@@ -41,63 +41,6 @@ Es importante dejar claro que los patrones de diseño no son únicamente código
 :::
 
 
-## Principios SOLID
-
-Varios autores ([Michael Feathers](https://michaelfeathers.silvrback.com/), [Robert C. Martin](https://blog.cleancoder.com/), etc. ) han contribuido a definir una serie de principios (recomendaciones, etc.) para que desarrolladores/programadores generen software de *calidad*. ¿Y qué entendemos por software de calidad? Software que sea  
-
-- robusto y estable, 
-- reutilizable y mantenible, 
-- escalable, es decir, que se pueda modificar/extender fácilmente.
-
-
-Sin embargo, que el código resultante sea robusto y estable por un lado, pero que también sea fácilmente extendible y reutilizable por otro, parece que sean objetivos contradictorios. En ingeniería y desarrollo de software, tenemos dos conceptos que tenemos que balancear adecuadamente al mismo tiempo para producir software de calidad.
-
-
-::: {.callout-note icon=true}
-## Definición
-
-**Acoplamiento** indica el grado de *interdependencia* entre entidades/componentes de software (ya sean clases, métodos, módulos, funciones, etc. ). Si dos componentes son completamente independientes entre sí, entonces están *desacoplados*.
-
-:::
-
-Como ingenieros/as de software, queremos que el software generado tenga **un bajo acomplamiento**.
-
-
-
-::: {.callout-note icon=true}
-## Definición
-
-
-**Cohesión** indica el grado en que entidades/componentes de software independientes se combinan para alcanzar un resultado (comporatemeionte, etc) mejor que si trabajaran por separado. Se refiere a la forma en que podemos agrupar componentes de software.
-
-
-:::
-
-Como ingenieros/as de software, queremos que el software generado tenga **una alta cohesión**.
-
-
-
-Los principios SOLID están estrechamente relacionados con el uso de patrones de diseño, ya que las solucciones conceptuales de muchos patrones apuntan directamente a uno o varios de los principios SOLID. Luego, cuando utilizas patrones de diseño de forma eficaz, estarás poniendo en práctica alguno de los principios SOLID para que el código resultante sea de la mejor calidad posible. 
-
-Los 5 principios SOLID de diseño de aplicaciones de software son:
-
-- **S** – Single Responsibility Principle (SRP)
-- **O** – Open/Closed Principle (OCP)
-- **L** – Liskov Substitution Principle (LSP)
-- **I** – Interface Segregation Principle (ISP)
-- **D** – Dependency Inversion Principle (DIP)
-
-
-::: {.callout-tip}
-## Slide Deck 
-
-::: slides
-[Principios SOLID](https://cgranell.github.io/ei1039-uji/materials/02-solid-slides.html)
-:::
-
-:::
-
-
 ## Patrones creacionales
 
 
@@ -470,4 +413,16 @@ Los **patrones estructurales** se refieren a la organización del código, es de
 
 
 ### Aplicabilidad
+
+
+
+## Patrones de comportamiento
+
+
+
+::: {.callout-note title="Definición" icon=true}
+
+Los **patrones de comportamiento** se refieren a la comunicación entre objetos en tiempo de ejecución, es decir, los roles que asumen dichos objetos y cómo interactúan entre sí.
+
+:::
 
