@@ -8,7 +8,7 @@
 
 <meta name="description" content="Diseño de Software">
 
-<title>3&nbsp; Patrones de diseño – EI1039 - 2026/2027</title>
+<title>4&nbsp; Patrones de diseño – EI1039 - 2026/2027</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -89,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../materials/design_patterns.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Patrones de diseño</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../materials/design_patterns.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Patrones de diseño</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -136,14 +136,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../materials/principles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Principios básicos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../materials/data_architecture_patterns.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Patrones de arquitectura de datos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Patrones de arquitectura de datos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../materials/design_patterns.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Patrones de diseño</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Patrones de diseño</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -162,25 +168,29 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#qué-es-un-patrón" id="toc-qué-es-un-patrón" class="nav-link active" data-scroll-target="#qué-es-un-patrón"><span class="header-section-number">3.1</span> ¿Qué es un patrón?</a></li>
-  <li><a href="#principios-solid" id="toc-principios-solid" class="nav-link" data-scroll-target="#principios-solid"><span class="header-section-number">3.2</span> Principios SOLID</a></li>
-  <li><a href="#patrones-creacionales" id="toc-patrones-creacionales" class="nav-link" data-scroll-target="#patrones-creacionales"><span class="header-section-number">3.3</span> Patrones creacionales</a>
+  <li><a href="#qué-es-un-patrón" id="toc-qué-es-un-patrón" class="nav-link active" data-scroll-target="#qué-es-un-patrón"><span class="header-section-number">4.1</span> ¿Qué es un patrón?</a></li>
+  <li><a href="#principios-solid" id="toc-principios-solid" class="nav-link" data-scroll-target="#principios-solid"><span class="header-section-number">4.2</span> Principios SOLID</a></li>
+  <li><a href="#patrones-creacionales" id="toc-patrones-creacionales" class="nav-link" data-scroll-target="#patrones-creacionales"><span class="header-section-number">4.3</span> Patrones creacionales</a>
   <ul class="collapse">
-  <li><a href="#singleton" id="toc-singleton" class="nav-link" data-scroll-target="#singleton"><span class="header-section-number">3.3.1</span> Singleton</a></li>
-  <li><a href="#factory-method" id="toc-factory-method" class="nav-link" data-scroll-target="#factory-method"><span class="header-section-number">3.3.2</span> Factory method</a></li>
-  <li><a href="#abstract-factory" id="toc-abstract-factory" class="nav-link" data-scroll-target="#abstract-factory"><span class="header-section-number">3.3.3</span> Abstract Factory</a></li>
-  <li><a href="#builder" id="toc-builder" class="nav-link" data-scroll-target="#builder"><span class="header-section-number">3.3.4</span> Builder</a></li>
-  <li><a href="#prototype" id="toc-prototype" class="nav-link" data-scroll-target="#prototype"><span class="header-section-number">3.3.5</span> Prototype</a></li>
-  <li><a href="#relaciones-entre-patrones" id="toc-relaciones-entre-patrones" class="nav-link" data-scroll-target="#relaciones-entre-patrones"><span class="header-section-number">3.3.6</span> Relaciones entre patrones</a></li>
-  <li><a href="#aplicabilidad" id="toc-aplicabilidad" class="nav-link" data-scroll-target="#aplicabilidad"><span class="header-section-number">3.3.7</span> Aplicabilidad</a></li>
+  <li><a href="#singleton" id="toc-singleton" class="nav-link" data-scroll-target="#singleton"><span class="header-section-number">4.3.1</span> Singleton</a></li>
+  <li><a href="#factory-method" id="toc-factory-method" class="nav-link" data-scroll-target="#factory-method"><span class="header-section-number">4.3.2</span> Factory method</a></li>
+  <li><a href="#abstract-factory" id="toc-abstract-factory" class="nav-link" data-scroll-target="#abstract-factory"><span class="header-section-number">4.3.3</span> Abstract Factory</a></li>
+  <li><a href="#builder" id="toc-builder" class="nav-link" data-scroll-target="#builder"><span class="header-section-number">4.3.4</span> Builder</a></li>
+  <li><a href="#prototype" id="toc-prototype" class="nav-link" data-scroll-target="#prototype"><span class="header-section-number">4.3.5</span> Prototype</a></li>
+  <li><a href="#relaciones-entre-patrones" id="toc-relaciones-entre-patrones" class="nav-link" data-scroll-target="#relaciones-entre-patrones"><span class="header-section-number">4.3.6</span> Relaciones entre patrones</a></li>
+  <li><a href="#aplicabilidad" id="toc-aplicabilidad" class="nav-link" data-scroll-target="#aplicabilidad"><span class="header-section-number">4.3.7</span> Aplicabilidad</a></li>
   </ul></li>
-  <li><a href="#patrones-estructurales" id="toc-patrones-estructurales" class="nav-link" data-scroll-target="#patrones-estructurales"><span class="header-section-number">3.4</span> Patrones estructurales</a>
+  <li><a href="#patrones-estructurales" id="toc-patrones-estructurales" class="nav-link" data-scroll-target="#patrones-estructurales"><span class="header-section-number">4.4</span> Patrones estructurales</a>
   <ul class="collapse">
-  <li><a href="#adapter" id="toc-adapter" class="nav-link" data-scroll-target="#adapter"><span class="header-section-number">3.4.1</span> Adapter</a></li>
-  <li><a href="#bridge" id="toc-bridge" class="nav-link" data-scroll-target="#bridge"><span class="header-section-number">3.4.2</span> Bridge</a></li>
-  <li><a href="#facade" id="toc-facade" class="nav-link" data-scroll-target="#facade"><span class="header-section-number">3.4.3</span> Facade</a></li>
-  <li><a href="#proxy" id="toc-proxy" class="nav-link" data-scroll-target="#proxy"><span class="header-section-number">3.4.4</span> Proxy</a></li>
-  <li><a href="#composite" id="toc-composite" class="nav-link" data-scroll-target="#composite"><span class="header-section-number">3.4.5</span> Composite</a></li>
+  <li><a href="#adapter" id="toc-adapter" class="nav-link" data-scroll-target="#adapter"><span class="header-section-number">4.4.1</span> Adapter</a></li>
+  <li><a href="#bridge" id="toc-bridge" class="nav-link" data-scroll-target="#bridge"><span class="header-section-number">4.4.2</span> Bridge</a></li>
+  <li><a href="#facade" id="toc-facade" class="nav-link" data-scroll-target="#facade"><span class="header-section-number">4.4.3</span> Facade</a></li>
+  <li><a href="#proxy" id="toc-proxy" class="nav-link" data-scroll-target="#proxy"><span class="header-section-number">4.4.4</span> Proxy</a></li>
+  <li><a href="#composite" id="toc-composite" class="nav-link" data-scroll-target="#composite"><span class="header-section-number">4.4.5</span> Composite</a></li>
+  <li><a href="#decorator" id="toc-decorator" class="nav-link" data-scroll-target="#decorator"><span class="header-section-number">4.4.6</span> Decorator</a></li>
+  <li><a href="#flyweight" id="toc-flyweight" class="nav-link" data-scroll-target="#flyweight"><span class="header-section-number">4.4.7</span> Flyweight</a></li>
+  <li><a href="#relaciones-entre-patrones-1" id="toc-relaciones-entre-patrones-1" class="nav-link" data-scroll-target="#relaciones-entre-patrones-1"><span class="header-section-number">4.4.8</span> Relaciones entre patrones</a></li>
+  <li><a href="#aplicabilidad-1" id="toc-aplicabilidad-1" class="nav-link" data-scroll-target="#aplicabilidad-1"><span class="header-section-number">4.4.9</span> Aplicabilidad</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/cgranell/ei2639/blob/main/materials/design_patterns.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/cgranell/ei2639/edit/main/materials/design_patterns.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/cgranell/ei2639/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -190,7 +200,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Patrones de diseño</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Patrones de diseño</span></h1>
 </div>
 
 
@@ -207,8 +217,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="qué-es-un-patrón" class="level2 page-columns page-full" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="qué-es-un-patrón"><span class="header-section-number">3.1</span> ¿Qué es un patrón?</h2>
+<section id="qué-es-un-patrón" class="level2 page-columns page-full" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="qué-es-un-patrón"><span class="header-section-number">4.1</span> ¿Qué es un patrón?</h2>
 <p>El término <strong>patrón</strong> tiene multiples significados según el contexto: patrones numéricos, patrones geométricos, etc.</p>
 <p>En informática, el área de <a href="https://es.wikipedia.org/wiki/Aprendizaje_autom%C3%A1tico">aprendizaje automático</a> utiliza técnicas computacionales avanzadas para buscar y encontrar patrones en los datos.</p>
 <p>En ingeniería de software, descubrirás a lo largo de tu carrera profesional que los mismos problemas de diseño de software se repiten una y otra vez. Hay muchas formas de abordar estos problemas, pero la industria prefiere soluciones más flexibles y/o reutilizables. Ahí es donde los <strong>patrones de diseño</strong> entran en juego.</p>
@@ -252,8 +262,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="principios-solid" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="principios-solid"><span class="header-section-number">3.2</span> Principios SOLID</h2>
+<section id="principios-solid" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="principios-solid"><span class="header-section-number">4.2</span> Principios SOLID</h2>
 <p>Varios autores (<a href="https://michaelfeathers.silvrback.com/">Michael Feathers</a>, <a href="https://blog.cleancoder.com/">Robert C. Martin</a>, etc. ) han contribuido a definir una serie de principios (recomendaciones, etc.) para que desarrolladores/programadores generen software de <em>calidad</em>. ¿Y qué entendemos por software de calidad? Software que sea</p>
 <ul>
 <li>robusto y estable,</li>
@@ -314,8 +324,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="patrones-creacionales" class="level2 page-columns page-full" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="patrones-creacionales"><span class="header-section-number">3.3</span> Patrones creacionales</h2>
+<section id="patrones-creacionales" class="level2 page-columns page-full" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="patrones-creacionales"><span class="header-section-number">4.3</span> Patrones creacionales</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -343,8 +353,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Usos (<em>usage</em>)</p></li>
 </ol>
 <p>Dejamos para la argumentación y discusión en clase la tarea de <a href="#relaciones-entre-patrones">conectar y relacionar</a> los distintos patrones creacionales entre ellos, y sugerir <a href="#aplicabilidad">situaciones o aplicaciones</a> donde se puedan aplicar.</p>
-<section id="singleton" class="level3 page-columns page-full" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="singleton"><span class="header-section-number">3.3.1</span> Singleton</h3>
+<section id="singleton" class="level3 page-columns page-full" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="singleton"><span class="header-section-number">4.3.1</span> Singleton</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -380,8 +390,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="factory-method" class="level3 page-columns page-full" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="factory-method"><span class="header-section-number">3.3.2</span> Factory method</h3>
+<section id="factory-method" class="level3 page-columns page-full" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="factory-method"><span class="header-section-number">4.3.2</span> Factory method</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -432,8 +442,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="abstract-factory" class="level3 page-columns page-full" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="abstract-factory"><span class="header-section-number">3.3.3</span> Abstract Factory</h3>
+<section id="abstract-factory" class="level3 page-columns page-full" data-number="4.3.3">
+<h3 data-number="4.3.3" class="anchored" data-anchor-id="abstract-factory"><span class="header-section-number">4.3.3</span> Abstract Factory</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -469,8 +479,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="builder" class="level3 page-columns page-full" data-number="3.3.4">
-<h3 data-number="3.3.4" class="anchored" data-anchor-id="builder"><span class="header-section-number">3.3.4</span> Builder</h3>
+<section id="builder" class="level3 page-columns page-full" data-number="4.3.4">
+<h3 data-number="4.3.4" class="anchored" data-anchor-id="builder"><span class="header-section-number">4.3.4</span> Builder</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -506,18 +516,18 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="prototype" class="level3" data-number="3.3.5">
-<h3 data-number="3.3.5" class="anchored" data-anchor-id="prototype"><span class="header-section-number">3.3.5</span> Prototype</h3>
+<section id="prototype" class="level3" data-number="4.3.5">
+<h3 data-number="4.3.5" class="anchored" data-anchor-id="prototype"><span class="header-section-number">4.3.5</span> Prototype</h3>
 </section>
-<section id="relaciones-entre-patrones" class="level3" data-number="3.3.6">
-<h3 data-number="3.3.6" class="anchored" data-anchor-id="relaciones-entre-patrones"><span class="header-section-number">3.3.6</span> Relaciones entre patrones</h3>
+<section id="relaciones-entre-patrones" class="level3" data-number="4.3.6">
+<h3 data-number="4.3.6" class="anchored" data-anchor-id="relaciones-entre-patrones"><span class="header-section-number">4.3.6</span> Relaciones entre patrones</h3>
 </section>
-<section id="aplicabilidad" class="level3" data-number="3.3.7">
-<h3 data-number="3.3.7" class="anchored" data-anchor-id="aplicabilidad"><span class="header-section-number">3.3.7</span> Aplicabilidad</h3>
+<section id="aplicabilidad" class="level3" data-number="4.3.7">
+<h3 data-number="4.3.7" class="anchored" data-anchor-id="aplicabilidad"><span class="header-section-number">4.3.7</span> Aplicabilidad</h3>
 </section>
 </section>
-<section id="patrones-estructurales" class="level2 page-columns page-full" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="patrones-estructurales"><span class="header-section-number">3.4</span> Patrones estructurales</h2>
+<section id="patrones-estructurales" class="level2 page-columns page-full" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="patrones-estructurales"><span class="header-section-number">4.4</span> Patrones estructurales</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -531,8 +541,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Los <strong>patrones estructurales</strong> se refieren a la organización del código, es decir, a la composición de clases y objetos. Definen formas de componer y organizar clases para obtener fines estructurales (nuevas funciones, etc.).</p>
 </div>
 </div>
-<section id="adapter" class="level3 page-columns page-full" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="adapter"><span class="header-section-number">3.4.1</span> Adapter</h3>
+<section id="adapter" class="level3 page-columns page-full" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="adapter"><span class="header-section-number">4.4.1</span> Adapter</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -583,8 +593,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="bridge" class="level3 page-columns page-full" data-number="3.4.2">
-<h3 data-number="3.4.2" class="anchored" data-anchor-id="bridge"><span class="header-section-number">3.4.2</span> Bridge</h3>
+<section id="bridge" class="level3 page-columns page-full" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="bridge"><span class="header-section-number">4.4.2</span> Bridge</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -620,8 +630,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="facade" class="level3 page-columns page-full" data-number="3.4.3">
-<h3 data-number="3.4.3" class="anchored" data-anchor-id="facade"><span class="header-section-number">3.4.3</span> Facade</h3>
+<section id="facade" class="level3 page-columns page-full" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="facade"><span class="header-section-number">4.4.3</span> Facade</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -670,8 +680,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="proxy" class="level3 page-columns page-full" data-number="3.4.4">
-<h3 data-number="3.4.4" class="anchored" data-anchor-id="proxy"><span class="header-section-number">3.4.4</span> Proxy</h3>
+<section id="proxy" class="level3 page-columns page-full" data-number="4.4.4">
+<h3 data-number="4.4.4" class="anchored" data-anchor-id="proxy"><span class="header-section-number">4.4.4</span> Proxy</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -720,8 +730,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="composite" class="level3 page-columns page-full" data-number="3.4.5">
-<h3 data-number="3.4.5" class="anchored" data-anchor-id="composite"><span class="header-section-number">3.4.5</span> Composite</h3>
+<section id="composite" class="level3 page-columns page-full" data-number="4.4.5">
+<h3 data-number="4.4.5" class="anchored" data-anchor-id="composite"><span class="header-section-number">4.4.5</span> Composite</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -769,6 +779,99 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/composite/java/example#lang-features">Composite en Java (refactoring.guru)</a></p>
 </div>
 </div>
+</section>
+<section id="decorator" class="level3 page-columns page-full" data-number="4.4.6">
+<h3 data-number="4.4.6" class="anchored" data-anchor-id="decorator"><span class="header-section-number">4.4.6</span> Decorator</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propósito</th>
+<th>Problema</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>añade</strong> nuevas reponsabilidades/comportamientos a objetos</td>
+<td>… porque quiero añadirlos, quitarlos, o agregarlos dinámicamente</td>
+</tr>
+</tbody>
+</table>
+<div class="column-screen-inset-right">
+<p><img src="../images/concept-maps/DECORATOR-map.png" class="img-fluid"></p>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Slide Deck
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="https://cgranell.github.io/ei1039/slides/TE6_decorator.html">Decorator pattern</a></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Implementación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/composite/java/example#lang-features">Decorator en Java (refactoring.guru)</a></p>
+</div>
+</div>
+</section>
+<section id="flyweight" class="level3 page-columns page-full" data-number="4.4.7">
+<h3 data-number="4.4.7" class="anchored" data-anchor-id="flyweight"><span class="header-section-number">4.4.7</span> Flyweight</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propósito</th>
+<th>Problema</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>construye objetos ligeros</strong> que comparten estado…</td>
+<td>… porque tengo problemas de memoria al tener muchos objetos similares</td>
+</tr>
+</tbody>
+</table>
+<div class="column-screen-inset-right">
+<p><img src="../images/concept-maps/FLYWEIGHT-map.png" class="img-fluid"></p>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Implementación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/flyweight/java/example#lang-features">Flyweight en Java (refactoring.guru)</a></p>
+</div>
+</div>
+</section>
+<section id="relaciones-entre-patrones-1" class="level3" data-number="4.4.8">
+<h3 data-number="4.4.8" class="anchored" data-anchor-id="relaciones-entre-patrones-1"><span class="header-section-number">4.4.8</span> Relaciones entre patrones</h3>
+</section>
+<section id="aplicabilidad-1" class="level3" data-number="4.4.9">
+<h3 data-number="4.4.9" class="anchored" data-anchor-id="aplicabilidad-1"><span class="header-section-number">4.4.9</span> Aplicabilidad</h3>
 
 
 </section>
@@ -1185,7 +1288,7 @@ ul.task-list li input[type="checkbox"] {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../materials/data_architecture_patterns.html" class="pagination-link" aria-label="Patrones de arquitectura de datos">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Patrones de arquitectura de datos</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Patrones de arquitectura de datos</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
