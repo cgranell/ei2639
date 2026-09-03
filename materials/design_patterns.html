@@ -48,7 +48,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-8a611540bec77a3210e8019426d16fc4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-74add01399811d0324a4867c23650aa5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-f4ac5c866a506ae4f06d9cf22abf9f5a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -191,7 +191,21 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#relaciones-entre-patrones-1" id="toc-relaciones-entre-patrones-1" class="nav-link" data-scroll-target="#relaciones-entre-patrones-1"><span class="header-section-number">4.3.8</span> Relaciones entre patrones</a></li>
   <li><a href="#aplicabilidad-1" id="toc-aplicabilidad-1" class="nav-link" data-scroll-target="#aplicabilidad-1"><span class="header-section-number">4.3.9</span> Aplicabilidad</a></li>
   </ul></li>
-  <li><a href="#patrones-de-comportamiento" id="toc-patrones-de-comportamiento" class="nav-link" data-scroll-target="#patrones-de-comportamiento"><span class="header-section-number">4.4</span> Patrones de comportamiento</a></li>
+  <li><a href="#patrones-de-comportamiento" id="toc-patrones-de-comportamiento" class="nav-link" data-scroll-target="#patrones-de-comportamiento"><span class="header-section-number">4.4</span> Patrones de comportamiento</a>
+  <ul class="collapse">
+  <li><a href="#command" id="toc-command" class="nav-link" data-scroll-target="#command"><span class="header-section-number">4.4.1</span> Command</a></li>
+  <li><a href="#memento" id="toc-memento" class="nav-link" data-scroll-target="#memento"><span class="header-section-number">4.4.2</span> Memento</a></li>
+  <li><a href="#chain-of-responsibility" id="toc-chain-of-responsibility" class="nav-link" data-scroll-target="#chain-of-responsibility"><span class="header-section-number">4.4.3</span> Chain of responsibility</a></li>
+  <li><a href="#template-method" id="toc-template-method" class="nav-link" data-scroll-target="#template-method"><span class="header-section-number">4.4.4</span> Template method</a></li>
+  <li><a href="#observer" id="toc-observer" class="nav-link" data-scroll-target="#observer"><span class="header-section-number">4.4.5</span> Observer</a></li>
+  <li><a href="#strategy" id="toc-strategy" class="nav-link" data-scroll-target="#strategy"><span class="header-section-number">4.4.6</span> Strategy</a></li>
+  <li><a href="#mediator" id="toc-mediator" class="nav-link" data-scroll-target="#mediator"><span class="header-section-number">4.4.7</span> Mediator</a></li>
+  <li><a href="#iterator" id="toc-iterator" class="nav-link" data-scroll-target="#iterator"><span class="header-section-number">4.4.8</span> Iterator</a></li>
+  <li><a href="#state" id="toc-state" class="nav-link" data-scroll-target="#state"><span class="header-section-number">4.4.9</span> State</a></li>
+  <li><a href="#interpreter" id="toc-interpreter" class="nav-link" data-scroll-target="#interpreter"><span class="header-section-number">4.4.10</span> Interpreter</a></li>
+  <li><a href="#relaciones-entre-patrones-2" id="toc-relaciones-entre-patrones-2" class="nav-link" data-scroll-target="#relaciones-entre-patrones-2"><span class="header-section-number">4.4.11</span> Relaciones entre patrones</a></li>
+  <li><a href="#aplicabilidad-2" id="toc-aplicabilidad-2" class="nav-link" data-scroll-target="#aplicabilidad-2"><span class="header-section-number">4.4.12</span> Aplicabilidad</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/cgranell/ei2639/blob/main/materials/design_patterns.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/cgranell/ei2639/edit/main/materials/design_patterns.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/cgranell/ei2639/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -806,7 +820,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 data-number="4.3.9" class="anchored" data-anchor-id="aplicabilidad-1"><span class="header-section-number">4.3.9</span> Aplicabilidad</h3>
 </section>
 </section>
-<section id="patrones-de-comportamiento" class="level2" data-number="4.4">
+<section id="patrones-de-comportamiento" class="level2 page-columns page-full" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="patrones-de-comportamiento"><span class="header-section-number">4.4</span> Patrones de comportamiento</h2>
 <div class="callout callout-style-default callout-note callout-titled" title="Definición">
 <div class="callout-header d-flex align-content-center">
@@ -821,8 +835,381 @@ ul.task-list li input[type="checkbox"] {
 <p>Los <strong>patrones de comportamiento</strong> se refieren a la comunicación entre objetos en tiempo de ejecución, es decir, los roles que asumen dichos objetos y cómo interactúan entre sí.</p>
 </div>
 </div>
+<section id="command" class="level3 page-columns page-full" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="command"><span class="header-section-number">4.4.1</span> Command</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propósito</th>
+<th>Problema</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>permite encapsular una petición como un objeto …</td>
+<td>… porque quiero tener mayor control sobre el ciclo de vida de dicha petición</td>
+</tr>
+</tbody>
+</table>
+<div class="column-screen-inset-right">
+<p><img src="../images/concept-maps/COMMAND-map.png" class="img-fluid"></p>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Slide Deck">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Slide Deck
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="https://cgranell.github.io/ei1039/slides/TE8_command.html">Command pattern</a></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Implementación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Implementación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/command/java/example#lang-features">Command en Java (refactoring.guru)</a></p>
+</div>
+</div>
+</section>
+<section id="memento" class="level3 page-columns page-full" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="memento"><span class="header-section-number">4.4.2</span> Memento</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propósito</th>
+<th>Problema</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>permite capturar el estado de un objeto …</td>
+<td>… porque quiero restaurar ese estado en cualquier momento</td>
+</tr>
+</tbody>
+</table>
+<div class="column-screen-inset-right">
+<p><img src="../images/concept-maps/MEMENTO-map.png" class="img-fluid"></p>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Implementación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Implementación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/memento/java/example#lang-features">Memento en Java (refactoring.guru)</a></p>
+</div>
+</div>
+</section>
+<section id="chain-of-responsibility" class="level3 page-columns page-full" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="chain-of-responsibility"><span class="header-section-number">4.4.3</span> Chain of responsibility</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propósito</th>
+<th>Problema</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>permite distribuir responsabilidad de una petición …</td>
+<td>… porque tengo un número variable de objetos que pueden gestionarla</td>
+</tr>
+</tbody>
+</table>
+<div class="column-screen-inset-right">
+<p><img src="../images/concept-maps/CHAIN-OF-RESPONSIBILITY-map.png" class="img-fluid"></p>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Implementación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Implementación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/chain-of-responsibility/java/example#lang-features">Chain of Reponsibility en Java (refactoring.guru)</a></p>
+</div>
+</div>
+</section>
+<section id="template-method" class="level3 page-columns page-full" data-number="4.4.4">
+<h3 data-number="4.4.4" class="anchored" data-anchor-id="template-method"><span class="header-section-number">4.4.4</span> Template method</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propósito</th>
+<th>Problema</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>define un algoritmo a nivel de superclase…</td>
+<td>… pero permite que subclases sobrescriban partes del algoritmo</td>
+</tr>
+</tbody>
+</table>
+<div class="column-screen-inset-right">
+<p><img src="../images/concept-maps/TEMPLATE-METHOD-map.png" class="img-fluid"></p>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Slide Deck">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Slide Deck
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="https://cgranell.github.io/ei1039/slides/TE7_templatemethod.html">Template Method pattern</a></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Implementación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Implementación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/template-method/java/example#lang-features">Template Method en Java (refactoring.guru)</a></p>
+</div>
+</div>
+</section>
+<section id="observer" class="level3 page-columns page-full" data-number="4.4.5">
+<h3 data-number="4.4.5" class="anchored" data-anchor-id="observer"><span class="header-section-number">4.4.5</span> Observer</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propósito</th>
+<th>Problema</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>define un mecanismo de suscripción sobre un objeto (sujeto) …</td>
+<td>… porque hay un número variable de objetos observadores que dependen de sus cambios</td>
+</tr>
+</tbody>
+</table>
+<div class="column-screen-inset-right">
+<p><img src="../images/concept-maps/OBSERVER-map.png" class="img-fluid"></p>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Slide Deck">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Slide Deck
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="https://cgranell.github.io/ei1039/slides/TE6_observer.html">Observer pattern</a></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Implementación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Implementación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/observer/java/example#lang-features">Observer en Java (refactoring.guru)</a></p>
+</div>
+</div>
+</section>
+<section id="strategy" class="level3 page-columns page-full" data-number="4.4.6">
+<h3 data-number="4.4.6" class="anchored" data-anchor-id="strategy"><span class="header-section-number">4.4.6</span> Strategy</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propósito</th>
+<th>Problema</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Permite seleccionar un método/algoritmo en tiempo real …</td>
+<td>… porque hay diferentes algoritmos intercambiables para resolver un mismo problema</td>
+</tr>
+</tbody>
+</table>
+<div class="column-screen-inset-right">
+<p><img src="../images/concept-maps/STRATEGY-map.png" class="img-fluid"></p>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Slide Deck">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Slide Deck
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="https://cgranell.github.io/ei1039/slides/TE7_strategy.html">Strategy pattern</a></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Implementación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Implementación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/strategy/java/example#lang-features">Strategy en Java (refactoring.guru)</a></p>
+</div>
+</div>
+</section>
+<section id="mediator" class="level3 page-columns page-full" data-number="4.4.7">
+<h3 data-number="4.4.7" class="anchored" data-anchor-id="mediator"><span class="header-section-number">4.4.7</span> Mediator</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propósito</th>
+<th>Problema</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Encapsula comunicaciones/interacciones entre objetos …</td>
+<td>… para evitar dependencias directas y código <em>spaguetti</em></td>
+</tr>
+</tbody>
+</table>
+<div class="column-screen-inset-right">
+<p><img src="../images/concept-maps/MEDIATOR-map.png" class="img-fluid"></p>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Implementación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Implementación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/mediator/java/example#lang-features">Mediator en Java (refactoring.guru)</a></p>
+</div>
+</div>
+</section>
+<section id="iterator" class="level3 page-columns page-full" data-number="4.4.8">
+<h3 data-number="4.4.8" class="anchored" data-anchor-id="iterator"><span class="header-section-number">4.4.8</span> Iterator</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propósito</th>
+<th>Problema</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Proporciona un mecanismo de acceso a los elementos de una colección sin exponer su estructura/representación interna…</td>
+<td>… porque tengo diferentes tipos de colecciones y quiero acceder de forma homegénea a todas</td>
+</tr>
+</tbody>
+</table>
+<div class="column-screen-inset-right">
+<p><img src="../images/concept-maps/ITERATOR-map.png" class="img-fluid"></p>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Slide Deck">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Slide Deck
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="https://cgranell.github.io/ei1039/slides/TE8_iterator.html">Iterator pattern</a></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Implementación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Implementación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/iterator/java/example#lang-features">Iterator en Java (refactoring.guru)</a></p>
+</div>
+</div>
+</section>
+<section id="state" class="level3" data-number="4.4.9">
+<h3 data-number="4.4.9" class="anchored" data-anchor-id="state"><span class="header-section-number">4.4.9</span> State</h3>
+</section>
+<section id="interpreter" class="level3" data-number="4.4.10">
+<h3 data-number="4.4.10" class="anchored" data-anchor-id="interpreter"><span class="header-section-number">4.4.10</span> Interpreter</h3>
+</section>
+<section id="relaciones-entre-patrones-2" class="level3" data-number="4.4.11">
+<h3 data-number="4.4.11" class="anchored" data-anchor-id="relaciones-entre-patrones-2"><span class="header-section-number">4.4.11</span> Relaciones entre patrones</h3>
+</section>
+<section id="aplicabilidad-2" class="level3" data-number="4.4.12">
+<h3 data-number="4.4.12" class="anchored" data-anchor-id="aplicabilidad-2"><span class="header-section-number">4.4.12</span> Aplicabilidad</h3>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
