@@ -41,7 +41,7 @@ Ahora nos centramos en la dimensión de **características de la arquitectura**,
 
 ::: {.callout-tip title="Slide Deck"}
 
-[Características de una arquitectura](https://cgranell.github.io/ei1039-uji/materials/01-arquitectura-caracteristicas.html)
+[Características de una arquitectura](https://cgranell.github.io/ei2639-slides/materials/03-architecture-characteristics/)
 
 :::
 
@@ -51,6 +51,6 @@ La estructura o el estilo es otra dimensión de la arquitectura de software [@ri
 
 ::: {.callout-tip title="Slide Deck"}
 
-[Estilos de una arquitectura](https://cgranell.github.io/ei1039-uji/materials/01-arquitectura-estilos.html)
+[Estilos de una arquitectura](https://cgranell.github.io/ei2639-slides/materials/04-architecture-structure/)
 
 :::
