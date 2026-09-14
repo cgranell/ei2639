@@ -111,7 +111,15 @@ Los materiales del curso relativos a Teoria (TE) están disponibles en el [Aula 
 
 ::: {.callout-tip title="Slide Deck"}
 
-[Contenido curso (antes Patrones de Diseño: Concepto, catálogo y principios)](https://cgranell.github.io/ei1039-uji/materials/02-patrones-slides.html)
+[Contenido curso](https://cgranell.github.io/ei2639-slides/materials/01-course-content/)
+
+
 
 :::
 
+
+## Recursos
+
+- [Catálogo de patrones de diseño (en refactoring.guru)](https://refactoring.guru/es/design-patterns/catalog)
+- [Head first design patterns: building extensible and maintainable object-oriented software](http://biblioteca.ubikgs.com/index.html?sbook=QA76.76.D47+H43+2020), by Freeman, Eric; Robson, Elisabeth, autor; Sierra, Kathy, autor; Bates, Bert. Second edition, Sebastopol : O'Reilly, December 2020
+- [Modern Web App Design Patterns](https://www.patterns.dev/)
