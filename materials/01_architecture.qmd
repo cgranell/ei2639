@@ -16,7 +16,7 @@ Es importante definir, o al menos caracterizar, el concepto de arquitectura de s
 
 ::: {.callout-tip title="Slide Deck"}
 
-[Conceptos, roles y compromisos](https://cgranell.github.io/ei1039-uji/materials/01-arquitectura-conceptos.html)
+[Conceptos, roles y compromisos](https://cgranell.github.io/ei2639-slides/materials/02-architecture-concepts/)
 
 :::
 
