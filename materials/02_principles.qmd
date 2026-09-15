@@ -4,7 +4,7 @@
 ## Principios de la programación orientada a objetos (POO)
 
 
-<!-- TODO: Narrativa de los Principios básicos de diseño de software (presentes en casi todos los patrones de diseño) aqui a partir de la presnetacion en index.qmd -->
+<!-- TODO: Narrativa de los Principios básicos de diseño de software (presentes en casi todos los patrones de diseño) aqui a partir de la presentación https://cgranell.github.io/ei2639-slides/materials/01-course-content/ -->
 
 Principios básicos de diseño de software (presentes en casi todos los patrones de diseño)
 
@@ -21,7 +21,7 @@ Principios básicos de diseño de software (presentes en casi todos los patrones
 
 ## Principios SOLID
 
-Varios autores ([Michael Feathers](https://michaelfeathers.silvrback.com/), [Robert C. Martin](https://blog.cleancoder.com/), etc. ) han contribuido a definir una serie de principios (recomendaciones, etc.) para que desarrolladores/programadores generen software de *calidad*. ¿Y qué entendemos por software de calidad? Software que sea  
+Varios autores ([Michael Feathers](https://michaelfeathers.silvrback.com/), [Robert C. Martin](https://blog.cleancoder.com/), etc. ) han contribuido a definir una serie de principios (recomendaciones, etc.) para que desarrolladores/programadores generen software de *calidad*. ¿Y qué entendemos por software de calidad? Software que sea:
 
 - robusto y estable, 
 - reutilizable y mantenible, 
@@ -56,18 +56,17 @@ Los principios SOLID están estrechamente relacionados con el uso de patrones de
 
 Los 5 principios SOLID de diseño de aplicaciones de software son:
 
-- **S** – Single Responsibility Principle (SRP)
-- **O** – Open/Closed Principle (OCP)
-- **L** – Liskov Substitution Principle (LSP)
-- **I** – Interface Segregation Principle (ISP)
-- **D** – Dependency Inversion Principle (DIP)
-
+- **S** – Single Responsibility Principle (SRP), *principio de responsabilidad única*
+- **O** – Open/Closed Principle (OCP), *principio de abierto/cerrado*
+- **L** – Liskov Substitution Principle (LSP), *principio de sustitución de Liskov*
+- **I** – Interface Segregation Principle (ISP), *principio de segregación de la interfaz*
+- **D** – Dependency Inversion Principle (DIP), *principio de inversión de dependencia*
 
 
 <!-- TODO: Transformar slides SOLID en texto y eliminar slides -->
 
 ::: {.callout-tip title="Slide Deck"}
 
-[Principios SOLID](https://cgranell.github.io/ei1039-uji/materials/02-solid-slides.html)
+[Principios SOLID](https://cgranell.github.io/ei2639-slides/materials/05-solid-principle/)
 
 :::
