@@ -124,37 +124,7 @@
     "href": "materials/data_architecture_patterns.html",
     "title": "3  Patrones de arquitectura de datos",
     "section": "",
-    "text": "3.1 ETL Architecture\nData engineering is no longer just about moving data from one system to another. Modern data engineers are expected to build architectures that are scalable, reliable, secure, cost-efficient, and ready for analytics and AI.\nAs organizations increasingly adopt cloud platforms, real-time analytics, data products, and AI-driven applications, understanding data architecture patterns has become an essential skill.\nHere are 12 data architecture patterns every data engineer should understand in 2026 (E-learning 2026).\nExtract, Transform, Load (ETL) remains a foundational data architecture pattern.\nData is extracted from operational systems, transformed into a suitable format, and then loaded into a target data warehouse or analytical system.\nBest suited for:\nAlthough modern architectures often favor ELT, understanding ETL is still important for legacy and regulated environments.",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
-    ]
-  },
-  {
-    "objectID": "materials/data_architecture_patterns.html#etl-architecture",
-    "href": "materials/data_architecture_patterns.html#etl-architecture",
-    "title": "3  Patrones de arquitectura de datos",
-    "section": "",
-    "text": "Structured enterprise data\nBatch processing\nTraditional reporting\nData warehouse environments",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
-    ]
-  },
-  {
-    "objectID": "materials/data_architecture_patterns.html#elt-architecture",
-    "href": "materials/data_architecture_patterns.html#elt-architecture",
-    "title": "3  Patrones de arquitectura de datos",
-    "section": "3.2 ELT Architecture",
-    "text": "3.2 ELT Architecture\nIn Extract, Load, Transform (ELT), raw data is first loaded into a scalable cloud data platform and transformed afterward.\nThis approach takes advantage of the processing power of modern cloud warehouses and lakehouses.\nKey benefits:\n\nFaster ingestion\nGreater flexibility\nPreservation of raw data\nScalable transformation\n\nELT has become a common foundation for modern analytics platforms.",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
-    ]
-  },
-  {
-    "objectID": "materials/data_architecture_patterns.html#data-warehouse-architecture",
-    "href": "materials/data_architecture_patterns.html#data-warehouse-architecture",
-    "title": "3  Patrones de arquitectura de datos",
-    "section": "3.3 Data Warehouse Architecture",
-    "text": "3.3 Data Warehouse Architecture\nA data warehouse provides a centralized environment for structured, analytical data.\nIt typically organizes cleaned and transformed data into models designed for reporting, business intelligence, and analytics.\nA strong warehouse architecture helps organizations create a reliable single source of truth for business metrics.",
+    "text": "3.1 ETL Architecture\nComo señala (Heck 2024), la ingeniería de datos es\nLa ingeniería de datos es la disciplina que diseña, construye y mantiene los sistemas, infraestructuras y arquitecturas que permiten recopilar, almacenar, transformar y poner a disposición los datos de una organización para su análisis y uso operativo. Combina principios de ingeniería de software, arquitectura de sistemas y gestión de datos para garantizar que la información fluya de manera fiable desde las fuentes originales hasta los usuarios finales, ya sean éstos otros sistemas o aplicaciones (modelos IA, applicaciones de negocio, dashboards) o personal especializado (analistas, científicos de datos).\nPor lo tanto, la ingeniería de datos, como disciplina, no va de trasladar, mover, o copiar datos de un sistema a otro. El perfil del ingeniero/a de datos se encarga de diseñar y construir arquitecturas de datos escalables, fiables, seguras, rentables y preparadas para la analítica y la IA. Su tarea comprende el diseño de pipelines o workflows de captura y transformación de datos, la especificacion de modelos de datos óptimos, la gobernanza de los datos, o la calidad de los datos.\nA medida que organizaciones y entidiad adoptan más plataformas en la nube, analítica en tiempo real, productos de datos y aplicaciones impulsadas por IA, comprender los patrones de arquitectura de datos (por ejemplo, (E-learning 2026)) es una habilidad esencial. Al igual que los patrones de diseño de software, los patrones de arquitectura de datos ofrecen soluciones probadas a problemas recurrentes, ya sea la integración de fuentes dedatos heterogéneas, o cómo servir datos a baja latencia, o cómo garantizar la trazabilidad de los datos.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
     ]
@@ -163,18 +133,8 @@
     "objectID": "materials/data_architecture_patterns.html#data-lake-architecture",
     "href": "materials/data_architecture_patterns.html#data-lake-architecture",
     "title": "3  Patrones de arquitectura de datos",
-    "section": "3.4 Data Lake Architecture",
-    "text": "3.4 Data Lake Architecture\nA data lake stores large volumes of data in its original or near-original form.\nUnlike traditional warehouses, data lakes can accommodate structured, semi-structured, and unstructured data.\nCommon use cases include:\n\nMachine learning\nData science\nLog analysis\nLarge-scale analytics\nRaw data storage\n\nThe major challenge is maintaining governance, quality, and discoverability.",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
-    ]
-  },
-  {
-    "objectID": "materials/data_architecture_patterns.html#lakehouse-architecture",
-    "href": "materials/data_architecture_patterns.html#lakehouse-architecture",
-    "title": "3  Patrones de arquitectura de datos",
-    "section": "3.5 Lakehouse Architecture",
-    "text": "3.5 Lakehouse Architecture\nThe data lakehouse combines characteristics of data lakes and data warehouses.\nIt aims to provide:\n\nLow-cost and flexible storage\nStructured analytical capabilities\nTransactional reliability\nSupport for BI and machine learning\n\nFor organizations managing both analytics and AI workloads, lakehouse architectures have become particularly important.",
+    "section": "3.2 Data Lake Architecture",
+    "text": "3.2 Data Lake Architecture",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
     ]
@@ -183,8 +143,8 @@
     "objectID": "materials/data_architecture_patterns.html#lambda-architecture",
     "href": "materials/data_architecture_patterns.html#lambda-architecture",
     "title": "3  Patrones de arquitectura de datos",
-    "section": "3.6 Lambda Architecture",
-    "text": "3.6 Lambda Architecture\nLambda architecture separates data processing into multiple layers, traditionally including:\n\nBatch layer\nSpeed layer\nServing layer\n\nThe batch layer processes large historical datasets while the speed layer handles real-time information.\nAlthough newer approaches have reduced the need for this complexity in some environments, Lambda architecture remains useful for understanding large-scale streaming systems.",
+    "section": "3.3 Lambda Architecture",
+    "text": "3.3 Lambda Architecture",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
     ]
@@ -193,38 +153,8 @@
     "objectID": "materials/data_architecture_patterns.html#kappa-architecture",
     "href": "materials/data_architecture_patterns.html#kappa-architecture",
     "title": "3  Patrones de arquitectura de datos",
-    "section": "3.7 Kappa Architecture",
-    "text": "3.7 Kappa Architecture\nKappa architecture simplifies the Lambda model by focusing primarily on stream processing.\nInstead of maintaining separate batch and real-time pipelines, data is treated as a continuous stream that can be replayed when necessary.\nIt can be useful for applications that require:\n\nReal-time analytics\nEvent processing\nContinuous data pipelines\nLow-latency decision-making",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
-    ]
-  },
-  {
-    "objectID": "materials/data_architecture_patterns.html#data-mesh-architecture",
-    "href": "materials/data_architecture_patterns.html#data-mesh-architecture",
-    "title": "3  Patrones de arquitectura de datos",
-    "section": "3.8 Data Mesh Architecture",
-    "text": "3.8 Data Mesh Architecture\nData Mesh shifts the responsibility for data ownership toward business domains.\nInstead of one centralized data team controlling everything, individual domains become responsible for their own data products.\nFour important principles commonly associated with Data Mesh are:\n\nDomain ownership\nData as a product\nSelf-service data infrastructure\nFederated computational governance\n\nThis model can work particularly well in large organizations with many independent business domains.",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
-    ]
-  },
-  {
-    "objectID": "materials/data_architecture_patterns.html#data-fabric-architecture",
-    "href": "materials/data_architecture_patterns.html#data-fabric-architecture",
-    "title": "3  Patrones de arquitectura de datos",
-    "section": "3.9 Data Fabric Architecture",
-    "text": "3.9 Data Fabric Architecture\nA Data Fabric focuses on connecting and governing data across different environments.\nIt can bring together data from:\n\nCloud platforms\nOn-premises systems\nSaaS applications\nDatabases\nData lakes\nWarehouses\n\nMetadata, automation, integration, and governance are central components of this architecture.",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
-    ]
-  },
-  {
-    "objectID": "materials/data_architecture_patterns.html#event-driven-data-architecture",
-    "href": "materials/data_architecture_patterns.html#event-driven-data-architecture",
-    "title": "3  Patrones de arquitectura de datos",
-    "section": "3.10 Event-Driven Data Architecture",
-    "text": "3.10 Event-Driven Data Architecture\nIn an event-driven architecture, systems communicate through events rather than relying entirely on traditional request-response interactions.\nFor example, when a customer places an order, an event can trigger multiple downstream processes such as:\nOrder Created → Inventory Update → Payment Processing → Notification → Analytics\nThis pattern is especially valuable for distributed systems and real-time applications.",
+    "section": "3.4 Kappa Architecture",
+    "text": "3.4 Kappa Architecture",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
     ]
@@ -233,8 +163,8 @@
     "objectID": "materials/data_architecture_patterns.html#medallion-architecture",
     "href": "materials/data_architecture_patterns.html#medallion-architecture",
     "title": "3  Patrones de arquitectura de datos",
-    "section": "3.11 Medallion Architecture",
-    "text": "3.11 Medallion Architecture\nThe Medallion architecture organizes data into progressive quality layers.\n\nBronze: Raw, ingested data.\nSilver: Cleaned, validated, and standardized data.\nGold: Business-ready data optimized for analytics and reporting.\n\nThis layered approach makes data pipelines easier to manage, troubleshoot, and govern.",
+    "section": "3.5 Medallion Architecture",
+    "text": "3.5 Medallion Architecture",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
     ]
@@ -243,28 +173,8 @@
     "objectID": "materials/data_architecture_patterns.html#data-product-architecture",
     "href": "materials/data_architecture_patterns.html#data-product-architecture",
     "title": "3  Patrones de arquitectura de datos",
-    "section": "3.12 Data Product Architecture",
-    "text": "3.12 Data Product Architecture\nA modern data team increasingly treats datasets as products rather than simply pipeline outputs.\nA data product should have:\n\nClear ownership\nDefined consumers\nReliable quality\nDocumented metadata\nAccess controls\nService-level expectations\nDiscoverability\n\nThis approach encourages data teams to think about usability and business value—not just data movement.",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
-    ]
-  },
-  {
-    "objectID": "materials/data_architecture_patterns.html#how-should-data-engineers-choose-the-right-pattern",
-    "href": "materials/data_architecture_patterns.html#how-should-data-engineers-choose-the-right-pattern",
-    "title": "3  Patrones de arquitectura de datos",
-    "section": "3.13 How Should Data Engineers Choose the Right Pattern?",
-    "text": "3.13 How Should Data Engineers Choose the Right Pattern?\nThere is no single architecture that works for every organization.\nThe right choice depends on factors such as:\n\nData volume: How much data needs to be processed?\nData velocity: Is the data arriving daily, hourly, or in real time?\nData variety: Is the data structured, semi-structured, or unstructured?\nLatency requirements: Does the business need results immediately?\nGovernance: What security, privacy, and compliance requirements exist?\nCost: What infrastructure and operational costs are acceptable?\nTeam structure: Is data ownership centralized or distributed across domains?",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
-    ]
-  },
-  {
-    "objectID": "materials/data_architecture_patterns.html#summary-the-bigger-picture-for-2026",
-    "href": "materials/data_architecture_patterns.html#summary-the-bigger-picture-for-2026",
-    "title": "3  Patrones de arquitectura de datos",
-    "section": "3.14 Summary: The Bigger Picture for 2026",
-    "text": "3.14 Summary: The Bigger Picture for 2026\nThe most valuable data engineers in 2026 won’t simply know how to build pipelines. They will understand why a particular architecture should be used, what trade-offs it introduces, and how it supports business and AI workloads.\nModern data engineering increasingly sits at the intersection of:\nData + Cloud + AI + Analytics + Governance + Software Engineering\nUnderstanding these 12 architecture patterns gives data engineers a strong foundation for designing systems that are scalable, adaptable, and ready for the next generation of data platforms.\nThe goal isn’t to master one architecture. It’s to master the ability to choose the right architecture for the right problem.\n\n\n\n\nE-learning, AAIS. 2026. The 12 Data Architecture Patterns Every Data Engineer Should Master in 2026. Medium. https://medium.com/@aaiselearning/the-12-data-architecture-patterns-every-data-engineer-should-master-in-2026-00fe5f9052ce.",
+    "section": "3.6 Data Product Architecture",
+    "text": "3.6 Data Product Architecture\n\n\n\n\nE-learning, AAIS. 2026. The 12 Data Architecture Patterns Every Data Engineer Should Master in 2026. Medium. https://medium.com/@aaiselearning/the-12-data-architecture-patterns-every-data-engineer-should-master-in-2026-00fe5f9052ce.\n\n\nHeck, Petra. 2024. “What about the Data? A Mapping Study on Data Engineering for AI Systems.” Proceedings of the IEEE/ACM 3rd International Conference on AI Engineering - Software Engineering for AI, April, 43–52. https://doi.org/10.1145/3644815.3644954.\n\n\nReis, Joe, and Matt Housley. 2022. Fundamentals of Data Engineering. O’Reilly. https://www.oreilly.com/library/view/fundamentals-of-data/9781098108298/.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Patrones de arquitectura de datos</span>"
     ]
@@ -324,7 +234,7 @@
     "href": "references.html",
     "title": "References",
     "section": "",
-    "text": "Brown, Neil C. C., Felienne F. J. Hermans, and Lauren E. Margulieux.\n2023. “10 Things Software Developers Should Learn about\nLearning.” Communications of the ACM 67 (1): 78–87. https://doi.org/10.1145/3584859.\n\n\nE-learning, AAIS. 2026. The 12 Data Architecture Patterns Every Data\nEngineer Should Master in 2026. Medium. https://medium.com/@aaiselearning/the-12-data-architecture-patterns-every-data-engineer-should-master-in-2026-00fe5f9052ce.\n\n\nGonzález-Pérez, Alberto, Ramón A. Mollineda Cárdenas, and David Llorens\nPiñana. 2021. “Aprendizaje Basado En Metodologías Ágiles Centradas\nEn Diseño Evolutivo Dirigido Por Pruebas de Aceptación.”\nActas de Las XXVII Jornadas Sobre La Enseñanza Universitaria de La\nInformática (JENUI) 6: 99–106. https://aenui.org/actas/pdf/JENUI_2021_012.pdf.\n\n\nGonzález-Pérez, Alberto, Carlos Granell-Canut, and Ramón A. Mollineda\nCárdenas. 2022. “Coordinación de Asignaturas Dirigida Por Un\nProyecto de Desarrollo Ágil Con Evaluación Unificada.” Actas\nde Las Jornadas Sobre Enseñanza Universitaria de La Informática\n(JENUI) 7 (July): 127–34. https://aenui.org/actas/pdf/JENUI_2022_017.pdf.\n\n\nLang, James M. 2016. Small Teaching. Jossey-Bass. https://www.jamesmlang.com/books.\n\n\nMatey-Sanz, Miguel, Carlos Granell, and Ramón A. Mollineda. 2026.\n“Responsible Integration of Generative AI in Software Engineering\nEducation.” IEEE Revista Iberoamericana de Tecnologias Del\nAprendizaje 21: 375–84. https://doi.org/10.1109/RITA.2026.3694480.\n\n\nMatey-Sanz, Miguel, Carlos Granell-Canut, and Ramón A. Mollineda\nCárdenas. 2024. “Estrategias de Control y Seguimiento Activo de\nProyectos de Desarrollo de Software.” Actas de Las Jornadas\nSobre Enseñanza Universitaria de La Informática (JENUI) 9 (July):\n165–72. https://aenui.org/actas/pdf/JENUI_2024_021.pdf.\n\n\nMatey-Sanz, Miguel, Carlos Granell-Canut, and Ramón A. Mollineda\nCárdenas. 2025. “La IA Generativa Como Acompañante En El Ciclo de\nVida Del Software.” Actas de Las Jornadas Sobre Enseñanza\nUniversitaria de La Informática (JENUI) 10 (July): 45–53. https://aenui.org/actas/fichas/JENUI_2025_005.html.\n\n\nRichards, Mark, and Neal Ford. 2020. Fundamentals of Software\nArchitecture, 1st Edition. O’Really Media Inc.",
+    "text": "Brown, Neil C. C., Felienne F. J. Hermans, and Lauren E. Margulieux.\n2023. “10 Things Software Developers Should Learn about\nLearning.” Communications of the ACM 67 (1): 78–87. https://doi.org/10.1145/3584859.\n\n\nE-learning, AAIS. 2026. The 12 Data Architecture Patterns Every Data\nEngineer Should Master in 2026. Medium. https://medium.com/@aaiselearning/the-12-data-architecture-patterns-every-data-engineer-should-master-in-2026-00fe5f9052ce.\n\n\nGonzález-Pérez, Alberto, Ramón A. Mollineda Cárdenas, and David Llorens\nPiñana. 2021. “Aprendizaje Basado En Metodologías Ágiles Centradas\nEn Diseño Evolutivo Dirigido Por Pruebas de Aceptación.”\nActas de Las XXVII Jornadas Sobre La Enseñanza Universitaria de La\nInformática (JENUI) 6: 99–106. https://aenui.org/actas/pdf/JENUI_2021_012.pdf.\n\n\nGonzález-Pérez, Alberto, Carlos Granell-Canut, and Ramón A. Mollineda\nCárdenas. 2022. “Coordinación de Asignaturas Dirigida Por Un\nProyecto de Desarrollo Ágil Con Evaluación Unificada.” Actas\nde Las Jornadas Sobre Enseñanza Universitaria de La Informática\n(JENUI) 7 (July): 127–34. https://aenui.org/actas/pdf/JENUI_2022_017.pdf.\n\n\nHeck, Petra. 2024. “What about the Data? A Mapping Study on Data\nEngineering for AI Systems.” Proceedings of the IEEE/ACM 3rd\nInternational Conference on AI Engineering - Software Engineering for\nAI, April, 43–52. https://doi.org/10.1145/3644815.3644954.\n\n\nLang, James M. 2016. Small Teaching. Jossey-Bass. https://www.jamesmlang.com/books.\n\n\nMatey-Sanz, Miguel, Carlos Granell, and Ramón A. Mollineda. 2026.\n“Responsible Integration of Generative AI in Software Engineering\nEducation.” IEEE Revista Iberoamericana de Tecnologias Del\nAprendizaje 21: 375–84. https://doi.org/10.1109/RITA.2026.3694480.\n\n\nMatey-Sanz, Miguel, Carlos Granell-Canut, and Ramón A. Mollineda\nCárdenas. 2024. “Estrategias de Control y Seguimiento Activo de\nProyectos de Desarrollo de Software.” Actas de Las Jornadas\nSobre Enseñanza Universitaria de La Informática (JENUI) 9 (July):\n165–72. https://aenui.org/actas/pdf/JENUI_2024_021.pdf.\n\n\nMatey-Sanz, Miguel, Carlos Granell-Canut, and Ramón A. Mollineda\nCárdenas. 2025. “La IA Generativa Como Acompañante En El Ciclo de\nVida Del Software.” Actas de Las Jornadas Sobre Enseñanza\nUniversitaria de La Informática (JENUI) 10 (July): 45–53. https://aenui.org/actas/fichas/JENUI_2025_005.html.\n\n\nReis, Joe, and Matt Housley. 2022. Fundamentals of Data\nEngineering. O’Reilly. https://www.oreilly.com/library/view/fundamentals-of-data/9781098108298/.\n\n\nRichards, Mark, and Neal Ford. 2020. Fundamentals of Software\nArchitecture, 1st Edition. O’Really Media Inc.",
     "crumbs": [
       "References"
     ]
