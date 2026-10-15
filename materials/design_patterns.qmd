@@ -129,6 +129,44 @@ Algunos recursos de un programa deben existir **una sola vez**: la conexión a u
 :::
 
 
+### Builder
+
+
+Cuando un objeto tiene muchos atributos, varios de ellos opcionales, su constructor acaba recibiendo una lista interminable de parámetros, uqe dificulta la gestión de nuevas instancias. El patrón *Builder* propone construir el objeto **paso a paso**, mediante un objeto constructor (*builder*) con un método para cada parte. Además, el mismo proceso de construcción puede producir representaciones distintas: por ejemplo, el mismo informe generado en HTML o en PDF.
+
+
+| Propósito |  Problema |
+|-----------|-----------|
+| crea objetos complejos separando el proceso de **construcción de su representación** | ... porque tengo clases constructures con muchos argumentos y con cierto grado de opcionalidad  |
+
+
+::: column-screen-inset-right
+![](../images/concept-maps/BUILDER-map.png)
+:::
+
+
+::: {.callout-tip title="Implementación"}
+
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Builder en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/builder/java/example#lang-features)
+
+:::
+
+
+### Prototype
+
+
+En ocasiones, crear un objeto desde cero resulta costoso (requiere consultas a una base de datos, cálculos largos o una configuración compleja) o simplemente queremos obtener una copia exacta de un objeto ya existente. Copiarlo "desde fuera" no siempre es posible, porque parte de su estado puede ser privado y el código cliente quedaría atado a su clase concreta. El patrón *Prototype* delega la copia en el propio objeto: cada prototipo sabe **clonarse a sí mismo**, de modo que el cliente puede crear objetos nuevos a partir de otros ya configurados sin conocer su clase.
+
+| Propósito | Problema |
+|---|---|
+| crea objetos nuevos **copiando (clonando) objetos existentes** sin depender de sus clases concretas | … porque crear el objeto desde cero es costoso o quiero copias de objetos ya configurados |
+
+
+
+::: {.callout-tip title="Implementación"}
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Prototype en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/prototype/java/example#lang-features)
+:::
+
 
 ### Factory method
 
@@ -187,42 +225,7 @@ A veces no basta con crear un objeto, sino que necesitamos crear **familias de o
 
 
 
-### Builder
 
-
-Cuando un objeto tiene muchos atributos, varios de ellos opcionales, su constructor acaba recibiendo una lista interminable de parámetros, uqe dificulta la gestión de nuevas instancias. El patrón *Builder* propone construir el objeto **paso a paso**, mediante un objeto constructor (*builder*) con un método para cada parte. Además, el mismo proceso de construcción puede producir representaciones distintas: por ejemplo, el mismo informe generado en HTML o en PDF.
-
-
-| Propósito |  Problema |
-|-----------|-----------|
-| crea objetos complejos separando el proceso de **construcción de su representación** | ... porque tengo clases constructures con muchos argumentos y con cierto grado de opcionalidad  |
-
-
-::: column-screen-inset-right
-![](../images/concept-maps/BUILDER-map.png)
-:::
-
-
-::: {.callout-tip title="Implementación"}
-
-![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Builder en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/builder/java/example#lang-features)
-
-:::
-
-### Prototype
-
-
-En ocasiones, crear un objeto desde cero resulta costoso (requiere consultas a una base de datos, cálculos largos o una configuración compleja) o simplemente queremos obtener una copia exacta de un objeto ya existente. Copiarlo "desde fuera" no siempre es posible, porque parte de su estado puede ser privado y el código cliente quedaría atado a su clase concreta. El patrón *Prototype* delega la copia en el propio objeto: cada prototipo sabe **clonarse a sí mismo**, de modo que el cliente puede crear objetos nuevos a partir de otros ya configurados sin conocer su clase.
-
-| Propósito | Problema |
-|---|---|
-| crea objetos nuevos **copiando (clonando) objetos existentes** sin depender de sus clases concretas | … porque crear el objeto desde cero es costoso o quiero copias de objetos ya configurados |
-
-
-
-::: {.callout-tip title="Implementación"}
-![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Prototype en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/prototype/java/example#lang-features)
-:::
 
 ### Relaciones entre patrones
 
@@ -243,10 +246,10 @@ flowchart TD
   C -- Sí --> BU["Builder"]
   C -- No --> D{"¿Crear el objeto desde cero es costoso<br/>o necesito copias de objetos ya configurados?"}
   D -- Sí --> P["Prototype"]
-  D -- No --> E{"¿Necesito crear familias de objetos<br/>relacionados y compatibles entre sí?"}
-  E -- Sí --> AF["Abstract Factory"]
+  D -- No --> E{"¿Debo decidir en tiempo de ejecución<br/>qué subclase concreta instanciar?"}
+  E -- Sí --> FM["Factory Method"]
   E -- No --> F{"¿Debo decidir en tiempo de ejecución<br/>qué subclase concreta crear?"}
-  F -- Sí --> FM["Factory Method"]
+  F -- Sí --> AF["Abstract Factory"]
   F -- No --> N["Basta con el constructor:<br/>no hace falta un patrón"]
 ```
 
