@@ -27,7 +27,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -231,6 +250,44 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>Con la popularización de los asistentes de código basados en inteligencia artificial (IA), como <a href="https://github.com/features/copilot">GitHub Copilot</a> o <a href="https://www.anthropic.com/claude-code">Claude Code</a>, y de la llamada <a href="https://en.wikipedia.org/wiki/Agentic_AI">programación <em>agéntica</em></a> (en la que la IA no solo sugiere código, sino que planifica y ejecuta tareas de forma autónoma), el futuro de la ingeniería y el desarrollo de software parece estar en entredicho. Esto plantea varias preguntas:</p>
+<ul>
+<li>¿Tiene el desarrollo de software la misma importancia que antes de la llegada de estas herramientas?</li>
+<li>¿Es ahora más fácil o más difícil programar?</li>
+<li>¿Siguen siendo válidas las competencias tradicionales de un desarrollador en la era de los asistentes de IA? Si no es así, ¿qué ha cambiado?</li>
+</ul>
+<p>En los últimos años se ha publicado una gran cantidad de artículos de opinión sobre el papel de la profesión ante la expansión de los asistentes IA en todas las fases del desarrollo de software. Es difícil prever en qué se convertirá la profesión, pero algunos autores ofrecen pistas que, aunque no sean definitivas, merece la pena tener en cuenta. Osborn <span class="citation" data-cites="osborn2026">(<a href="../references.html#ref-osborn2026" role="doc-biblioref">Osborn 2026</a>)</span> lo resume así:</p>
+<blockquote class="blockquote">
+<p>The future of software development will belong to those who can think clearly at scale, maintain durable mental models amid rapid change, and integrate machine-generated output into human-directed intent.</p>
+</blockquote>
+<p>Es decir, el futuro pertenecerá a quienes sepan pensar con claridad a gran escala, mantener modelos mentales sólidos aunque todo cambie rápidamente e integrar el código generado por la IA en objetivos definidos por personas.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Para reflexionar">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Para reflexionar
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>¿Qué significa «pensar con claridad a gran escala»?</p>
+</div>
+</div>
+<p>Según el mismo autor, los asistentes de código actuales funcionan como una <strong>memoria externa</strong>: liberan al programador de recordar la sintaxis, escribir <a href="https://en.wikipedia.org/wiki/Boilerplate_code">código repetitivo</a> (<em>boilerplate</em>) o memorizar cómo se usa cada <a href="https://es.wikipedia.org/wiki/Interfaz_de_programaci%C3%B3n_de_aplicaciones">API</a>, porque esas tareas las gestionan los asistentes IA. Al reducirse la carga de memoria, ganan peso otras capacidades, como:</p>
+<ul>
+<li>el razonamiento,</li>
+<li>la comprensión de la arquitectura del sistema,</li>
+<li>el criterio para tomar decisiones,</li>
+<li>la conciencia de cómo está estructurado el código.</li>
+</ul>
+<p>En consecuencia, lo que significa “saber programar” está cambiando de forma profunda. Sin embargo, esto no implica que programar sea más fácil ni que el programador pierda relevancia en los proyectos de software. Los asistentes de IA no eliminan el esfuerzo intelectual de programar, sino que lo <strong>desplazan</strong>: unas habilidades pasan a importar más que otras y, aunque desaparecen algunas barreras antiguas, surgen dificultades nuevas.</p>
+<p>Por ejemplo, tareas críticas como la <a href="https://es.wikipedia.org/wiki/Depuraci%C3%B3n_de_programas"><strong>depuración</strong></a> (<em>debugging</em>), la <a href="https://es.wikipedia.org/wiki/Refactorizaci%C3%B3n"><strong>refactorización</strong></a> y el <strong>análisis de sistemas</strong> siguen exigiendo conocimiento experto y comprensión profunda. Estas tareas dependen en gran medida de los <a href="https://es.wikipedia.org/wiki/Modelo_mental"><strong>modelos mentales</strong></a> del programador, es decir, de su capacidad para “ejecutar” el código mentalmente y deducir el flujo lógico de causa y efecto de un proyecto <span class="citation" data-cites="osborn2026">(<a href="../references.html#ref-osborn2026" role="doc-biblioref">Osborn 2026</a>)</span>.</p>
+<p>Así, programar depende cada vez menos de cuánta información puede retener un desarrollador en su memoria y cada vez más de su capacidad para <strong>pensar con claridad a distintas escalas</strong>: desde el detalle de una función hasta la organización global del sistema. Precisamente aquí es donde los <a href="https://refactoring.guru/es/design-patterns"><strong>patrones de diseño</strong></a> siguen siendo relevantes, incluso en la era de la programación <em>agéntica</em>: ofrecen soluciones probadas y un vocabulario común para estructurar sistemas complejos, y nos ayudan a evaluar y organizar el código que genera la IA.</p>
+<p>Para cerrar, Osborn <span class="citation" data-cites="osborn2026">(<a href="../references.html#ref-osborn2026" role="doc-biblioref">Osborn 2026</a>)</span> propone una analogía con la medicina que ilustra bien este cambio:</p>
+<blockquote class="blockquote">
+<p>The human, in turn, becomes less a conductor of keystrokes and more a shaper of intent: checking, interpreting, integrating, synthesizing, validating, reorganizing, discarding, editing, and ultimately giving structure and purpose to what the system supplies. It resembles what has already happened in medicine: Diagnostic tools lowered the burden of memorizing obscure clinical details but raised the stakes for interpretation, judgment, and error detection. Expertise became less about recall and more about reasoning.</p>
+</blockquote>
 <section id="qué-es-un-patrón" class="level2 page-columns page-full" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="qué-es-un-patrón"><span class="header-section-number">4.1</span> ¿Qué es un patrón?</h2>
 <p>El término <strong>patrón</strong> tiene multiples significados según el contexto: patrones numéricos, patrones geométricos, etc.</p>
@@ -1196,6 +1253,11 @@ ul.task-list li input[type="checkbox"] {
 <h3 data-number="4.4.12" class="anchored" data-anchor-id="aplicabilidad-2"><span class="header-section-number">4.4.12</span> Aplicabilidad</h3>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-osborn2026" class="csl-entry" role="listitem">
+Osborn, Jeremy. 2026. <span>“<span>AI</span> Didn’t Make Programming Easier. It Just Made It Differently Difficult.”</span> <em>Communications of the ACM</em> 69 (8): 18–21. <a href="https://doi.org/10.1145/3795534">https://doi.org/10.1145/3795534</a>.
+</div>
+</div>
 </section>
 </section>
 
