@@ -106,10 +106,13 @@ Dejamos para el debate en clase dos tareas: [relacionar los patrones creacionale
 
 ### Singleton
 
+Algunos recursos de un programa deben existir **una sola vez**: la conexión a una base de datos, el registro de *logs* o la configuración global de la aplicación. Si cada parte del código creara su propia instancia, tendríamos datos inconsistentes y un consumo innecesario de recursos. El patrón *Singleton* garantiza que solo exista un objeto de esa clase y ofrece un único punto de acceso a él. Es el patrón creacional más sencillo, pero también el más discutido: si se abusa de él, introduce un estado global que dificulta las pruebas y oculta dependencias entre clases.
+
 
 | Propósito |  Problema |
 |-----------|-----------|
 | asegura que una clase tenga una **única instancia** y proporciona un punto de **acceso global** a dicha instancia | ... porque quiero centralizar o controlar el acceso a un recurso. |
+
 
 
 ::: column-screen-inset-right
@@ -130,18 +133,18 @@ Dejamos para el debate en clase dos tareas: [relacionar los patrones creacionale
 ### Factory method
 
 
+Imagina una aplicación de logística que al principio solo gestiona camiones. Si el código crea los camiones directamente (`new Camion()`), añadir barcos más adelante obligará a modificar muchas partes del programa. El patrón *Factory Method* resuelve este problema sustituyendo la creación directa de objetos por una llamada a un **método de fábrica**, que las subclases pueden redefinir para decidir qué objeto concreto se crea. Así, el código que usa los objetos depende de una interfaz común y no de clases concretas.
+
 
 | Propósito |  Problema |
 |-----------|-----------|
-| crea objetos **sin especificar las clases concretas** | ... porque quiero crear objetos especializados  en tiempo de ejecución |
+| crea objetos **sin especificar las clases concretas** | ... porque quiero crear objetos especializados en tiempo de ejecución |
 
 
 
 ::: column-screen-inset-right
 ![](../images/concept-maps/FACTORYMETHOD-map.png)
 :::
-
-
 
 
 
@@ -162,6 +165,8 @@ Dejamos para el debate en clase dos tareas: [relacionar los patrones creacionale
 
 ### Abstract Factory
 
+
+A veces no basta con crear un objeto, sino que necesitamos crear **familias de objetos que deben ser compatibles entre sí**. Por ejemplo, una interfaz gráfica con botones, menús y casillas de verificación que deben compartir el mismo estilo (Windows, macOS o Linux). El patrón *Abstract Factory* agrupa en una misma fábrica los métodos que crean cada objeto de la familia, de modo que el cliente obtiene siempre productos coherentes sin conocer sus clases concretas. Puede verse como una generalización de *Factory Method*, aplicada a varios productos relacionados a la vez.
 
 
 | Propósito |  Problema |
@@ -185,9 +190,13 @@ Dejamos para el debate en clase dos tareas: [relacionar los patrones creacionale
 ### Builder
 
 
+Cuando un objeto tiene muchos atributos, varios de ellos opcionales, su constructor acaba recibiendo una lista interminable de parámetros, uqe dificulta la gestión de nuevas instancias. El patrón *Builder* propone construir el objeto **paso a paso**, mediante un objeto constructor (*builder*) con un método para cada parte. Además, el mismo proceso de construcción puede producir representaciones distintas: por ejemplo, el mismo informe generado en HTML o en PDF.
+
+
 | Propósito |  Problema |
 |-----------|-----------|
-| crea objetos complejos separando el proceso de **construcción de su representación** | ... porque tengo clases constructuras con muchos argumentos |
+| crea objetos complejos separando el proceso de **construcción de su representación** | ... porque tengo clases constructures con muchos argumentos y con cierta opcionalidad  |
+
 
 ::: column-screen-inset-right
 ![](../images/concept-maps/BUILDER-map.png)
@@ -203,10 +212,47 @@ Dejamos para el debate en clase dos tareas: [relacionar los patrones creacionale
 ### Prototype
 
 
+En ocasiones, crear un objeto desde cero resulta costoso (requiere consultas a una base de datos, cálculos largos o una configuración compleja) o simplemente queremos obtener una copia exacta de un objeto ya existente. Copiarlo "desde fuera" no siempre es posible, porque parte de su estado puede ser privado y el código cliente quedaría atado a su clase concreta. El patrón *Prototype* delega la copia en el propio objeto: cada prototipo sabe **clonarse a sí mismo**, de modo que el cliente puede crear objetos nuevos a partir de otros ya configurados sin conocer su clase.
+
+| Propósito | Problema |
+|---|---|
+| crea objetos nuevos **copiando (clonando) objetos existentes** sin depender de sus clases concretas | … porque crear el objeto desde cero es costoso o quiero copias de objetos ya configurados |
+
+
+
+::: {.callout-tip title="Implementación"}
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34) [Prototype en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/prototype/java/example#lang-features)
+:::
 
 ### Relaciones entre patrones
 
 
+Los patrones creacionales no son independientes entre sí. A menudo se combinan o uno evoluciona hacia otro a medida que el diseño se vuelve más complejo. Muchos diseños empiezan con *Factory Method*, que es sencillo y fácil de adaptar mediante subclases, y evolucionan hacia *Abstract Factory*, *Prototype* o *Builder* cuando se necesita más flexibilidad. A su vez, las clases de *Abstract Factory* suelen implementarse con métodos de fábrica (*Factory Method*), aunque también pueden apoyarse en *Prototype*. Por último, tanto las fábricas abstractas como los *builders* y los prototipos pueden implementarse como *Singleton* cuando basta con una única instancia de ellos.
+
+El siguiente [árbol de decisión]() resume cuándo conviene usar cada patrón creacional:
+
+
+
+```{mermaid}
+%%| label: fig-arbol-creacionales
+%%| fig-cap: "Árbol de decisión para elegir un patrón creacional"
+flowchart TD
+    A["¿Qué problema tengo al crear objetos?"] --> B{"¿Necesito que exista<br/>una única instancia compartida?"}
+    B -- Sí --> S["Singleton"]
+    B -- No --> C{"¿El objeto es complejo, con muchos<br/>parámetros o pasos de construcción?"}
+    C -- Sí --> BU["Builder"]
+    C -- No --> D{"¿Crear el objeto desde cero es costoso<br/>o necesito copias de objetos ya configurados?"}
+    D -- Sí --> P["Prototype"]
+    D -- No --> E{"¿Necesito crear familias de objetos<br/>relacionados y compatibles entre sí?"}
+    E -- Sí --> AF["Abstract Factory"]
+    E -- No --> F{"¿Debo decidir en tiempo de ejecución<br/>qué subclase concreta crear?"}
+    F -- Sí --> FM["Factory Method"]
+    F -- No --> N["Basta con el constructor:<br/>no hace falta un patrón"]
+```
+
+::: {.callout-warning title="Un árbol orientativo"}
+Este árbol es una guía, no una regla. En la práctica, un mismo problema puede encajar en varias ramas, y los patrones se combinan entre sí. La última rama es igual de importante que las demás: aplicar un patrón cuando no hace falta añade complejidad sin aportar nada.
+:::
 
 ### Aplicabilidad
 
@@ -390,7 +436,7 @@ Los **patrones estructurales** se refieren a la organización del código, es de
 
 ::: {.callout-tip title="Implementación"}
 
-![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Decorator en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/composite/java/example#lang-features)
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Decorator en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/decorator/java/example#lang-features)
 
 :::
 
