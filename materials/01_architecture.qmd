@@ -23,7 +23,7 @@ Es importante definir, o al menos caracterizar, el concepto de arquitectura de s
 
 ## Dimensiones de un arquitectura software
 
-Según [@richards2020], no es fácil definir el concepto de arquitectura software. Una forma altrenativa ed hacerlo caracterizar el concepto a través de sus aspectos más destacables. Los autores utilizan el término *dimensión* para agrupar estos aspectos clave de la siguiente forma:
+Según [@richards2020], no es fácil definir el concepto de arquitectura software. Una forma alternativa es caracterizar el concepto a través de sus aspectos más destacables. Los autores utilizan el término *dimensión* para agrupar estos aspectos clave de la siguiente forma:
 
 - Estructura o estilo
 

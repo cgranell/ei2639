@@ -1,5 +1,42 @@
 # Patrones de diseño
 
+Con la popularización de los asistentes de código basados en inteligencia artificial (IA), como [GitHub Copilot](https://github.com/features/copilot) o [Claude Code](https://www.anthropic.com/claude-code), y de la llamada [programación *agéntica*](https://en.wikipedia.org/wiki/Agentic_AI) (en la que la IA no solo sugiere código, sino que planifica y ejecuta tareas de forma autónoma), el futuro de la ingeniería y el desarrollo de software parece estar en entredicho. Esto plantea varias preguntas:
+
+- ¿Tiene el desarrollo de software la misma importancia que antes de la llegada de estas herramientas?
+- ¿Es ahora más fácil o más difícil programar?
+- ¿Siguen siendo válidas las competencias tradicionales de un desarrollador en la era de los asistentes de IA? Si no es así, ¿qué ha cambiado?
+
+En los últimos años se ha publicado una gran cantidad de artículos de opinión sobre el papel de la profesión ante la expansión de los asistentes IA en todas las fases del desarrollo de software. Es difícil prever en qué se convertirá la profesión, pero algunos autores ofrecen pistas que, aunque no sean definitivas, merece la pena tener en cuenta. Osborn [@osborn2026] lo resume así:
+
+> The future of software development will belong to those who can think clearly at scale, maintain durable mental models amid rapid change, and integrate machine-generated output into human-directed intent.
+
+Es decir, el futuro pertenecerá a quienes sepan pensar con claridad a gran escala, mantener modelos mentales sólidos aunque todo cambie rápidamente e integrar el código generado por la IA en objetivos definidos por personas.
+
+::: {.callout-note title="Para reflexionar"}
+¿Qué significa «pensar con claridad a gran escala»?
+:::
+
+
+Según el mismo autor, los asistentes de código actuales funcionan como una **memoria externa**: liberan al programador de recordar la sintaxis, escribir [código repetitivo](https://en.wikipedia.org/wiki/Boilerplate_code) (*boilerplate*) o memorizar cómo se usa cada [API](https://es.wikipedia.org/wiki/Interfaz_de_programaci%C3%B3n_de_aplicaciones), porque esas tareas las gestionan los asistentes IA. Al reducirse la carga de memoria, ganan peso otras capacidades, como:
+
+- el razonamiento,
+- la comprensión de la arquitectura del sistema,
+- el criterio para tomar decisiones,
+- la conciencia de cómo está estructurado el código.
+
+
+
+En consecuencia, lo que significa "saber programar" está cambiando de forma profunda. Sin embargo, esto no implica que programar sea más fácil ni que el programador pierda relevancia en los proyectos de software. Los asistentes de IA no eliminan el esfuerzo intelectual de programar, sino que lo **desplazan**: unas habilidades pasan a importar más que otras y, aunque desaparecen algunas barreras antiguas, surgen dificultades nuevas.
+
+Por ejemplo, tareas críticas como la [**depuración**](https://es.wikipedia.org/wiki/Depuraci%C3%B3n_de_programas) (*debugging*), la [**refactorización**](https://es.wikipedia.org/wiki/Refactorizaci%C3%B3n) y el **análisis de sistemas** siguen exigiendo conocimiento experto y comprensión profunda. Estas tareas dependen en gran medida de los [**modelos mentales**](https://es.wikipedia.org/wiki/Modelo_mental) del programador, es decir, de su capacidad para "ejecutar" el código mentalmente y deducir el flujo lógico de causa y efecto de un proyecto [@osborn2026].
+
+Así, programar depende cada vez menos de cuánta información puede retener un desarrollador en su memoria y cada vez más de su capacidad para **pensar con claridad a distintas escalas**: desde el detalle de una función hasta la organización global del sistema. Precisamente aquí es donde los [**patrones de diseño**](https://refactoring.guru/es/design-patterns) siguen siendo relevantes, incluso en la era de la programación *agéntica*: ofrecen soluciones probadas y un vocabulario común para estructurar sistemas complejos, y nos ayudan a evaluar y organizar el código que genera la IA.
+
+Para cerrar, Osborn [@osborn2026] propone una analogía con la medicina que ilustra bien este cambio:
+
+> The human, in turn, becomes less a conductor of keystrokes and more a shaper of intent: checking, interpreting, integrating, synthesizing, validating, reorganizing, discarding, editing, and ultimately giving structure and purpose to what the system supplies. It resembles what has already happened in medicine: Diagnostic tools lowered the burden of memorizing obscure clinical details but raised the stakes for interpretation, judgment, and error detection. Expertise became less about recall and more about reasoning.
+
+
 ## ¿Qué es un patrón?
 
 El término **patrón** tiene multiples significados según el contexto: patrones numéricos, patrones geométricos, etc. 
