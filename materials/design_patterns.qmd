@@ -12,7 +12,7 @@ En los últimos años se ha publicado una gran cantidad de artículos de opinió
 
 Es decir, el futuro pertenecerá a quienes sepan pensar con claridad a gran escala, mantener modelos mentales sólidos aunque todo cambie rápidamente e integrar el código generado por la IA en objetivos definidos por personas.
 
-::: {.callout-note title="Para reflexionar"}
+::: {.callout-note title="Para reflexionar" icon=true}
 ¿Qué significa «pensar con claridad a gran escala»?
 :::
 
@@ -99,7 +99,7 @@ Los mapas conceptuales incluyen, además, tres apartados complementarios:
 6. **Ver también** (*see also*): patrones relacionados que suelen usarse junto a él.
 7. **Usos** (*usage*): ejemplos de dónde se aplica en la práctica.
 
-::: {.callout-tip title="Para trabajar en clase"}
+::: {.callout-tip title="Para trabajar en clase" icon=true}
 Dejamos para el debate en clase dos tareas: [relacionar los patrones creacionales entre sí](#relaciones-entre-patrones) y proponer [situaciones o aplicaciones concretas](#aplicabilidad) en las que tenga sentido usarlos.
 :::
 
@@ -229,7 +229,7 @@ En ocasiones, crear un objeto desde cero resulta costoso (requiere consultas a u
 
 Los patrones creacionales no son independientes entre sí. A menudo se combinan o uno evoluciona hacia otro a medida que el diseño se vuelve más complejo. Muchos diseños empiezan con *Factory Method*, que es sencillo y fácil de adaptar mediante subclases, y evolucionan hacia *Abstract Factory*, *Prototype* o *Builder* cuando se necesita más flexibilidad. A su vez, las clases de *Abstract Factory* suelen implementarse con métodos de fábrica (*Factory Method*), aunque también pueden apoyarse en *Prototype*. Por último, tanto las fábricas abstractas como los *builders* y los prototipos pueden implementarse como *Singleton* cuando basta con una única instancia de ellos.
 
-El siguiente [árbol de decisión](https://medium.com/womenintechnology/stop-memorizing-design-patterns-use-this-decision-tree-instead-e84f22fca9fa?sk=d8ce25c71ba530c026c9b90e9c8d38f0) resume cuándo conviene usar cada patrón creacional:
+La @fig-arbol-creacionales reproduce un [árbol de decisión](https://medium.com/womenintechnology/stop-memorizing-design-patterns-use-this-decision-tree-instead-e84f22fca9fa?sk=d8ce25c71ba530c026c9b90e9c8d38f0) que resume cuándo conviene usar cada patrón creacional:
 
 
 ```{mermaid}
@@ -250,7 +250,7 @@ flowchart TD
   F -- No --> N["Basta con el constructor:<br/>no hace falta un patrón"]
 ```
 
-::: {.callout-note title="Un árbol orientativo"}
+::: {.callout-note title="Un árbol orientativo" icon=true}
 Este árbol es una guía, no una regla. En la práctica, un mismo problema puede encajar en varias ramas, y los patrones se combinan entre sí. La última rama es igual de importante que las demás: aplicar un patrón cuando no hace falta añade complejidad sin aportar nada.
 :::
 
