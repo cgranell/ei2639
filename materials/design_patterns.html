@@ -194,10 +194,10 @@ div.csl-indent {
   <li><a href="#patrones-creacionales" id="toc-patrones-creacionales" class="nav-link" data-scroll-target="#patrones-creacionales"><span class="header-section-number">4.2</span> Patrones creacionales</a>
   <ul class="collapse">
   <li><a href="#singleton" id="toc-singleton" class="nav-link" data-scroll-target="#singleton"><span class="header-section-number">4.2.1</span> Singleton</a></li>
-  <li><a href="#factory-method" id="toc-factory-method" class="nav-link" data-scroll-target="#factory-method"><span class="header-section-number">4.2.2</span> Factory method</a></li>
-  <li><a href="#abstract-factory" id="toc-abstract-factory" class="nav-link" data-scroll-target="#abstract-factory"><span class="header-section-number">4.2.3</span> Abstract Factory</a></li>
-  <li><a href="#builder" id="toc-builder" class="nav-link" data-scroll-target="#builder"><span class="header-section-number">4.2.4</span> Builder</a></li>
-  <li><a href="#prototype" id="toc-prototype" class="nav-link" data-scroll-target="#prototype"><span class="header-section-number">4.2.5</span> Prototype</a></li>
+  <li><a href="#builder" id="toc-builder" class="nav-link" data-scroll-target="#builder"><span class="header-section-number">4.2.2</span> Builder</a></li>
+  <li><a href="#prototype" id="toc-prototype" class="nav-link" data-scroll-target="#prototype"><span class="header-section-number">4.2.3</span> Prototype</a></li>
+  <li><a href="#factory-method" id="toc-factory-method" class="nav-link" data-scroll-target="#factory-method"><span class="header-section-number">4.2.4</span> Factory method</a></li>
+  <li><a href="#abstract-factory" id="toc-abstract-factory" class="nav-link" data-scroll-target="#abstract-factory"><span class="header-section-number">4.2.5</span> Abstract Factory</a></li>
   <li><a href="#relaciones-entre-patrones" id="toc-relaciones-entre-patrones" class="nav-link" data-scroll-target="#relaciones-entre-patrones"><span class="header-section-number">4.2.6</span> Relaciones entre patrones</a></li>
   <li><a href="#aplicabilidad" id="toc-aplicabilidad" class="nav-link" data-scroll-target="#aplicabilidad"><span class="header-section-number">4.2.7</span> Aplicabilidad</a></li>
   </ul></li>
@@ -405,8 +405,81 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="factory-method" class="level3 page-columns page-full" data-number="4.2.2">
-<h3 data-number="4.2.2" class="anchored" data-anchor-id="factory-method"><span class="header-section-number">4.2.2</span> Factory method</h3>
+<section id="builder" class="level3 page-columns page-full" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="builder"><span class="header-section-number">4.2.2</span> Builder</h3>
+<p>Cuando un objeto tiene muchos atributos, varios de ellos opcionales, su constructor acaba recibiendo una lista interminable de parámetros, uqe dificulta la gestión de nuevas instancias. El patrón <em>Builder</em> propone construir el objeto <strong>paso a paso</strong>, mediante un objeto constructor (<em>builder</em>) con un método para cada parte. Además, el mismo proceso de construcción puede producir representaciones distintas: por ejemplo, el mismo informe generado en HTML o en PDF.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propósito</th>
+<th>Problema</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>crea objetos complejos separando el proceso de <strong>construcción de su representación</strong></td>
+<td>… porque tengo clases constructures con muchos argumentos y con cierto grado de opcionalidad</td>
+</tr>
+</tbody>
+</table>
+<div class="column-screen-inset-right">
+<p><img src="../images/concept-maps/BUILDER-map.png" class="img-fluid"></p>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Implementación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Implementación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/builder/java/example#lang-features">Builder en Java (refactoring.guru)</a></p>
+</div>
+</div>
+</section>
+<section id="prototype" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="prototype"><span class="header-section-number">4.2.3</span> Prototype</h3>
+<p>En ocasiones, crear un objeto desde cero resulta costoso (requiere consultas a una base de datos, cálculos largos o una configuración compleja) o simplemente queremos obtener una copia exacta de un objeto ya existente. Copiarlo “desde fuera” no siempre es posible, porque parte de su estado puede ser privado y el código cliente quedaría atado a su clase concreta. El patrón <em>Prototype</em> delega la copia en el propio objeto: cada prototipo sabe <strong>clonarse a sí mismo</strong>, de modo que el cliente puede crear objetos nuevos a partir de otros ya configurados sin conocer su clase.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propósito</th>
+<th>Problema</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>crea objetos nuevos <strong>copiando (clonando) objetos existentes</strong> sin depender de sus clases concretas</td>
+<td>… porque crear el objeto desde cero es costoso o quiero copias de objetos ya configurados</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Implementación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Implementación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/prototype/java/example#lang-features">Prototype en Java (refactoring.guru)</a></p>
+</div>
+</div>
+</section>
+<section id="factory-method" class="level3 page-columns page-full" data-number="4.2.4">
+<h3 data-number="4.2.4" class="anchored" data-anchor-id="factory-method"><span class="header-section-number">4.2.4</span> Factory method</h3>
 <p>Imagina una aplicación de logística que al principio solo gestiona camiones. Si el código crea los camiones directamente (<code>new Camion()</code>), añadir barcos más adelante obligará a modificar muchas partes del programa. El patrón <em>Factory Method</em> resuelve este problema sustituyendo la creación directa de objetos por una llamada a un <strong>método de fábrica</strong>, que las subclases pueden redefinir para decidir qué objeto concreto se crea. Así, el código que usa los objetos depende de una interfaz común y no de clases concretas.</p>
 <table class="caption-top table">
 <colgroup>
@@ -456,8 +529,8 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="abstract-factory" class="level3 page-columns page-full" data-number="4.2.3">
-<h3 data-number="4.2.3" class="anchored" data-anchor-id="abstract-factory"><span class="header-section-number">4.2.3</span> Abstract Factory</h3>
+<section id="abstract-factory" class="level3 page-columns page-full" data-number="4.2.5">
+<h3 data-number="4.2.5" class="anchored" data-anchor-id="abstract-factory"><span class="header-section-number">4.2.5</span> Abstract Factory</h3>
 <p>A veces no basta con crear un objeto, sino que necesitamos crear <strong>familias de objetos que deben ser compatibles entre sí</strong>. Por ejemplo, una interfaz gráfica con botones, menús y casillas de verificación que deben compartir el mismo estilo (Windows, macOS o Linux). El patrón <em>Abstract Factory</em> agrupa en una misma fábrica los métodos que crean cada objeto de la familia, de modo que el cliente obtiene siempre productos coherentes sin conocer sus clases concretas. Puede verse como una generalización de <em>Factory Method</em>, aplicada a varios productos relacionados a la vez.</p>
 <table class="caption-top table">
 <colgroup>
@@ -494,79 +567,6 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="builder" class="level3 page-columns page-full" data-number="4.2.4">
-<h3 data-number="4.2.4" class="anchored" data-anchor-id="builder"><span class="header-section-number">4.2.4</span> Builder</h3>
-<p>Cuando un objeto tiene muchos atributos, varios de ellos opcionales, su constructor acaba recibiendo una lista interminable de parámetros, uqe dificulta la gestión de nuevas instancias. El patrón <em>Builder</em> propone construir el objeto <strong>paso a paso</strong>, mediante un objeto constructor (<em>builder</em>) con un método para cada parte. Además, el mismo proceso de construcción puede producir representaciones distintas: por ejemplo, el mismo informe generado en HTML o en PDF.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Propósito</th>
-<th>Problema</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>crea objetos complejos separando el proceso de <strong>construcción de su representación</strong></td>
-<td>… porque tengo clases constructures con muchos argumentos y con cierto grado de opcionalidad</td>
-</tr>
-</tbody>
-</table>
-<div class="column-screen-inset-right">
-<p><img src="../images/concept-maps/BUILDER-map.png" class="img-fluid"></p>
-</div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Implementación">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Implementación
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/builder/java/example#lang-features">Builder en Java (refactoring.guru)</a></p>
-</div>
-</div>
-</section>
-<section id="prototype" class="level3" data-number="4.2.5">
-<h3 data-number="4.2.5" class="anchored" data-anchor-id="prototype"><span class="header-section-number">4.2.5</span> Prototype</h3>
-<p>En ocasiones, crear un objeto desde cero resulta costoso (requiere consultas a una base de datos, cálculos largos o una configuración compleja) o simplemente queremos obtener una copia exacta de un objeto ya existente. Copiarlo “desde fuera” no siempre es posible, porque parte de su estado puede ser privado y el código cliente quedaría atado a su clase concreta. El patrón <em>Prototype</em> delega la copia en el propio objeto: cada prototipo sabe <strong>clonarse a sí mismo</strong>, de modo que el cliente puede crear objetos nuevos a partir de otros ya configurados sin conocer su clase.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Propósito</th>
-<th>Problema</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>crea objetos nuevos <strong>copiando (clonando) objetos existentes</strong> sin depender de sus clases concretas</td>
-<td>… porque crear el objeto desde cero es costoso o quiero copias de objetos ya configurados</td>
-</tr>
-</tbody>
-</table>
-<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Implementación">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Implementación
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/prototype/java/example#lang-features">Prototype en Java (refactoring.guru)</a></p>
-</div>
-</div>
-</section>
 <section id="relaciones-entre-patrones" class="level3" data-number="4.2.6">
 <h3 data-number="4.2.6" class="anchored" data-anchor-id="relaciones-entre-patrones"><span class="header-section-number">4.2.6</span> Relaciones entre patrones</h3>
 <p>Los patrones creacionales no son independientes entre sí. A menudo se combinan o uno evoluciona hacia otro a medida que el diseño se vuelve más complejo. Muchos diseños empiezan con <em>Factory Method</em>, que es sencillo y fácil de adaptar mediante subclases, y evolucionan hacia <em>Abstract Factory</em>, <em>Prototype</em> o <em>Builder</em> cuando se necesita más flexibilidad. A su vez, las clases de <em>Abstract Factory</em> suelen implementarse con métodos de fábrica (<em>Factory Method</em>), aunque también pueden apoyarse en <em>Prototype</em>. Por último, tanto las fábricas abstractas como los <em>builders</em> y los prototipos pueden implementarse como <em>Singleton</em> cuando basta con una única instancia de ellos.</p>
@@ -584,10 +584,10 @@ div.csl-indent {
   C -- Sí --&gt; BU["Builder"]
   C -- No --&gt; D{"¿Crear el objeto desde cero es costoso&lt;br/&gt;o necesito copias de objetos ya configurados?"}
   D -- Sí --&gt; P["Prototype"]
-  D -- No --&gt; E{"¿Necesito crear familias de objetos&lt;br/&gt;relacionados y compatibles entre sí?"}
-  E -- Sí --&gt; AF["Abstract Factory"]
+  D -- No --&gt; E{"¿Debo decidir en tiempo de ejecución&lt;br/&gt;qué subclase concreta instanciar?"}
+  E -- Sí --&gt; FM["Factory Method"]
   E -- No --&gt; F{"¿Debo decidir en tiempo de ejecución&lt;br/&gt;qué subclase concreta crear?"}
-  F -- Sí --&gt; FM["Factory Method"]
+  F -- Sí --&gt; AF["Abstract Factory"]
   F -- No --&gt; N["Basta con el constructor:&lt;br/&gt;no hace falta un patrón"]
 </pre>
 </div>
