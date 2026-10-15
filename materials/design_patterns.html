@@ -27,6 +27,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -95,6 +130,9 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -366,6 +404,7 @@ div.csl-indent {
 </div>
 <section id="singleton" class="level3 page-columns page-full" data-number="4.2.1">
 <h3 data-number="4.2.1" class="anchored" data-anchor-id="singleton"><span class="header-section-number">4.2.1</span> Singleton</h3>
+<p>Algunos recursos de un programa deben existir <strong>una sola vez</strong>: la conexión a una base de datos, el registro de <em>logs</em> o la configuración global de la aplicación. Si cada parte del código creara su propia instancia, tendríamos datos inconsistentes y un consumo innecesario de recursos. El patrón <em>Singleton</em> garantiza que solo exista un objeto de esa clase y ofrece un único punto de acceso a él. Es el patrón creacional más sencillo, pero también el más discutido: si se abusa de él, introduce un estado global que dificulta las pruebas y oculta dependencias entre clases.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -403,6 +442,7 @@ div.csl-indent {
 </section>
 <section id="factory-method" class="level3 page-columns page-full" data-number="4.2.2">
 <h3 data-number="4.2.2" class="anchored" data-anchor-id="factory-method"><span class="header-section-number">4.2.2</span> Factory method</h3>
+<p>Imagina una aplicación de logística que al principio solo gestiona camiones. Si el código crea los camiones directamente (<code>new Camion()</code>), añadir barcos más adelante obligará a modificar muchas partes del programa. El patrón <em>Factory Method</em> resuelve este problema sustituyendo la creación directa de objetos por una llamada a un <strong>método de fábrica</strong>, que las subclases pueden redefinir para decidir qué objeto concreto se crea. Así, el código que usa los objetos depende de una interfaz común y no de clases concretas.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -453,6 +493,7 @@ div.csl-indent {
 </section>
 <section id="abstract-factory" class="level3 page-columns page-full" data-number="4.2.3">
 <h3 data-number="4.2.3" class="anchored" data-anchor-id="abstract-factory"><span class="header-section-number">4.2.3</span> Abstract Factory</h3>
+<p>A veces no basta con crear un objeto, sino que necesitamos crear <strong>familias de objetos que deben ser compatibles entre sí</strong>. Por ejemplo, una interfaz gráfica con botones, menús y casillas de verificación que deben compartir el mismo estilo (Windows, macOS o Linux). El patrón <em>Abstract Factory</em> agrupa en una misma fábrica los métodos que crean cada objeto de la familia, de modo que el cliente obtiene siempre productos coherentes sin conocer sus clases concretas. Puede verse como una generalización de <em>Factory Method</em>, aplicada a varios productos relacionados a la vez.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -490,6 +531,7 @@ div.csl-indent {
 </section>
 <section id="builder" class="level3 page-columns page-full" data-number="4.2.4">
 <h3 data-number="4.2.4" class="anchored" data-anchor-id="builder"><span class="header-section-number">4.2.4</span> Builder</h3>
+<p>Cuando un objeto tiene muchos atributos, varios de ellos opcionales, su constructor acaba recibiendo una lista interminable de parámetros, uqe dificulta la gestión de nuevas instancias. El patrón <em>Builder</em> propone construir el objeto <strong>paso a paso</strong>, mediante un objeto constructor (<em>builder</em>) con un método para cada parte. Además, el mismo proceso de construcción puede producir representaciones distintas: por ejemplo, el mismo informe generado en HTML o en PDF.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -504,7 +546,7 @@ div.csl-indent {
 <tbody>
 <tr class="odd">
 <td>crea objetos complejos separando el proceso de <strong>construcción de su representación</strong></td>
-<td>… porque tengo clases constructuras con muchos argumentos</td>
+<td>… porque tengo clases constructures con muchos argumentos y con cierta opcionalidad</td>
 </tr>
 </tbody>
 </table>
@@ -527,9 +569,96 @@ div.csl-indent {
 </section>
 <section id="prototype" class="level3" data-number="4.2.5">
 <h3 data-number="4.2.5" class="anchored" data-anchor-id="prototype"><span class="header-section-number">4.2.5</span> Prototype</h3>
+<p>En ocasiones, crear un objeto desde cero resulta costoso (requiere consultas a una base de datos, cálculos largos o una configuración compleja) o simplemente queremos obtener una copia exacta de un objeto ya existente. Copiarlo “desde fuera” no siempre es posible, porque parte de su estado puede ser privado y el código cliente quedaría atado a su clase concreta. El patrón <em>Prototype</em> delega la copia en el propio objeto: cada prototipo sabe <strong>clonarse a sí mismo</strong>, de modo que el cliente puede crear objetos nuevos a partir de otros ya configurados sin conocer su clase.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propósito</th>
+<th>Problema</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>crea objetos nuevos <strong>copiando (clonando) objetos existentes</strong> sin depender de sus clases concretas</td>
+<td>… porque crear el objeto desde cero es costoso o quiero copias de objetos ya configurados</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Implementación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Implementación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid"> <a href="https://refactoring.guru/es/design-patterns/prototype/java/example#lang-features">Prototype en Java (refactoring.guru)</a></p>
+</div>
+</div>
 </section>
 <section id="relaciones-entre-patrones" class="level3" data-number="4.2.6">
 <h3 data-number="4.2.6" class="anchored" data-anchor-id="relaciones-entre-patrones"><span class="header-section-number">4.2.6</span> Relaciones entre patrones</h3>
+<p>Los patrones creacionales no son independientes entre sí. A menudo se combinan o uno evoluciona hacia otro a medida que el diseño se vuelve más complejo. Muchos diseños empiezan con <em>Factory Method</em>, que es sencillo y fácil de adaptar mediante subclases, y evolucionan hacia <em>Abstract Factory</em>, <em>Prototype</em> o <em>Builder</em> cuando se necesita más flexibilidad. A su vez, las clases de <em>Abstract Factory</em> suelen implementarse con métodos de fábrica (<em>Factory Method</em>), aunque también pueden apoyarse en <em>Prototype</em>. Por último, tanto las fábricas abstractas como los <em>builders</em> y los prototipos pueden implementarse como <em>Singleton</em> cuando basta con una única instancia de ellos.</p>
+<p>El siguiente <a href="">árbol de decisión</a> resume cuándo conviene usar cada patrón creacional:</p>
+<div class="cell" data-layout-align="default">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>flowchart TD</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    A["¿Qué problema tengo al crear objetos?"] --&gt; B{"¿Necesito que exista&lt;br/&gt;una única instancia compartida?"}</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    B -- Sí --&gt; S["Singleton"]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    B -- No --&gt; C{"¿El objeto es complejo, con muchos&lt;br/&gt;parámetros o pasos de construcción?"}</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    C -- Sí --&gt; BU["Builder"]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    C -- No --&gt; D{"¿Crear el objeto desde cero es costoso&lt;br/&gt;o necesito copias de objetos ya configurados?"}</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    D -- Sí --&gt; P["Prototype"]</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    D -- No --&gt; E{"¿Necesito crear familias de objetos&lt;br/&gt;relacionados y compatibles entre sí?"}</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    E -- Sí --&gt; AF["Abstract Factory"]</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    E -- No --&gt; F{"¿Debo decidir en tiempo de ejecución&lt;br/&gt;qué subclase concreta crear?"}</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    F -- Sí --&gt; FM["Factory Method"]</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    F -- No --&gt; N["Basta con el constructor:&lt;br/&gt;no hace falta un patrón"]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-arbol-creacionales" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-arbol-creacionales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-arbol-creacionales">flowchart TD
+    A["¿Qué problema tengo al crear objetos?"] --&gt; B{"¿Necesito que exista&lt;br/&gt;una única instancia compartida?"}
+    B -- Sí --&gt; S["Singleton"]
+    B -- No --&gt; C{"¿El objeto es complejo, con muchos&lt;br/&gt;parámetros o pasos de construcción?"}
+    C -- Sí --&gt; BU["Builder"]
+    C -- No --&gt; D{"¿Crear el objeto desde cero es costoso&lt;br/&gt;o necesito copias de objetos ya configurados?"}
+    D -- Sí --&gt; P["Prototype"]
+    D -- No --&gt; E{"¿Necesito crear familias de objetos&lt;br/&gt;relacionados y compatibles entre sí?"}
+    E -- Sí --&gt; AF["Abstract Factory"]
+    E -- No --&gt; F{"¿Debo decidir en tiempo de ejecución&lt;br/&gt;qué subclase concreta crear?"}
+    F -- Sí --&gt; FM["Factory Method"]
+    F -- No --&gt; N["Basta con el constructor:&lt;br/&gt;no hace falta un patrón"]
+</pre>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-arbol-creacionales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.1: Árbol de decisión para elegir un patrón creacional
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled" title="Un árbol orientativo">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Un árbol orientativo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Este árbol es una guía, no una regla. En la práctica, un mismo problema puede encajar en varias ramas, y los patrones se combinan entre sí. La última rama es igual de importante que las demás: aplicar un patrón cuando no hace falta añade complejidad sin aportar nada.</p>
+</div>
+</div>
 </section>
 <section id="aplicabilidad" class="level3" data-number="4.2.7">
 <h3 data-number="4.2.7" class="anchored" data-anchor-id="aplicabilidad"><span class="header-section-number">4.2.7</span> Aplicabilidad</h3>
@@ -833,7 +962,7 @@ div.csl-indent {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/composite/java/example#lang-features">Decorator en Java (refactoring.guru)</a></p>
+<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/decorator/java/example#lang-features">Decorator en Java (refactoring.guru)</a></p>
 </div>
 </div>
 </section>
