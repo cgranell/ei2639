@@ -290,9 +290,9 @@ div.csl-indent {
 </blockquote>
 <section id="qué-es-un-patrón" class="level2 page-columns page-full" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="qué-es-un-patrón"><span class="header-section-number">4.1</span> ¿Qué es un patrón?</h2>
-<p>El término <strong>patrón</strong> tiene multiples significados según el contexto: patrones numéricos, patrones geométricos, etc.</p>
-<p>En informática, el área de <a href="https://es.wikipedia.org/wiki/Aprendizaje_autom%C3%A1tico">aprendizaje automático</a> utiliza técnicas computacionales avanzadas para buscar y encontrar patrones en los datos.</p>
-<p>En ingeniería de software, descubrirás a lo largo de tu carrera profesional que los mismos problemas de diseño de software se repiten una y otra vez. Hay muchas formas de abordar estos problemas, pero la industria prefiere soluciones más flexibles y/o reutilizables. Ahí es donde los <strong>patrones de diseño</strong> entran en juego.</p>
+<p>El término <strong>patrón</strong> tiene múltiples significados según el contexto. En matemáticas, por ejemplo, hablamos de patrones numéricos (una secuencia que sigue una regla) o de patrones geométricos (formas que se repiten en el espacio).</p>
+<p>En informática, el <a href="https://es.wikipedia.org/wiki/Aprendizaje_autom%C3%A1tico">aprendizaje automático</a> utiliza técnicas computacionales avanzadas para descubrir patrones ocultos en los datos.</p>
+<p>En ingeniería de software, la palabra tiene un sentido distinto. A lo largo de tu carrera profesional comprobarás que los mismos problemas de diseño de software aparecen una y otra vez. Hay muchas formas de resolverlos, pero la industria prefiere soluciones flexibles, reutilizables y verificables. Esas soluciones son los <a href="https://refactoring.guru/es/design-patterns"><strong>patrones de diseño</strong></a>: descripciones generales de cómo resolver un problema de diseño recurrente, que puedes adaptar a cada situación concreta.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Definición">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -306,8 +306,9 @@ div.csl-indent {
 <p>Un <strong>patrón de diseño de software</strong> es una solución práctica, reutilizable y bien testeada a problemas recurrentes.</p>
 </div>
 </div>
-<p>Los patrones de diseño permiten (re)utilizar soluciones previamente testeadas que los desarrolladores han utilizado a menudo para resolver un problema de diseño de software, de modo que no es necesario reinvoitar la rueda, es decir, crear una <em>nueva</em> solución a partir de los principios básicos de la programación orientada a objetos. Los patrones de diseño no son solo soluciones teóricas o académicas, son soluciones reales que se utilizan en la industria del software, por ejemplo, en la implementación de los propios lenguajes de progrmación o en productos software comerciales.</p>
-<p>Una buena analogía para entender el concepto de patrones de diseño es equipararlos a <em>planos predefinidos</em> que se pueden personalizar para resolver un problema de diseño recurrente en tu código.</p>
+<p>Los patrones de diseño permiten reutilizar soluciones ya probadas, que otros desarrolladores han aplicado con éxito muchas veces para resolver un mismo problema de diseño. Así no hace falta <em>reinventar la rueda</em>, es decir, crear una solución nueva desde cero a partir de los principios básicos de la <a href="https://es.wikipedia.org/wiki/Programaci%C3%B3n_orientada_a_objetos">programación orientada a objetos</a>.</p>
+<p>Los patrones de diseño no son soluciones puramente teóricas o académicas: se utilizan de forma habitual en la industria del software, tanto en productos comerciales como en la implementación de los propios lenguajes de programación. Por ejemplo, el bucle <code>for</code> de Python se apoya en el patrón <a href="https://refactoring.guru/es/design-patterns/iterator"><em>Iterator</em></a>, que permite recorrer los elementos de una colección sin conocer cómo está organizada internamente.</p>
+<p>Una buena forma de entender qué es un patrón de diseño es compararlo con un <strong>plano</strong> de arquitectura: no es una construcción terminada, sino un esquema general que puedes adaptar para resolver un problema de diseño que se repite en tu código.</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
 <div class="quarto-figure quarto-figure-center">
@@ -316,10 +317,12 @@ div.csl-indent {
 </figure>
 </div>
 <p><em>Source: <a href="https://www.rawpixel.com/image/691263/">Rawpixel.com</a></em></p>
-</div></div><p>Es importante dejar claro que los patrones de diseño no son únicamente código (clases, interfaces, etc) que se añaden a tu proyecto de software. Los patrones de diseño se deben consider como <strong>soluciones conceptuales</strong>: soluciones que se pueden aplicar y, sobre todo personalizar, edurante el diseño e impleemntación de software en contextos concretos para mejorar la estructura, modularidad, abstracción, flexibilidad y reutilización de tu código. Por ese motivo, en este curso describimos los patrones de diseño de forma conceptual (clases, interfaces, relaciones, etc.); obviamente, implementarás patrones de diseño concretos en el contexto del proyecto común.</p>
+</div></div><p>Conviene dejar claro que un patrón de diseño no es simplemente un fragmento de código (clases, interfaces, etc.) que se copia y se añade al proyecto de software. Un patrón de diseño es una <strong>solución conceptual</strong>: una idea general que se aplica y, sobre todo, se adapta durante el diseño y la implementación de un programa concreto. Su objetivo es mejorar la estructura, la modularidad, la abstracción, la flexibilidad y la reutilización del código.</p>
+<p>Por ese motivo, en este curso presentamos los patrones de diseño de forma conceptual, describiendo qué papel cumple cada elemento (clases, interfaces y relaciones entre ellos), normalmente con ayuda de diagramas <a href="https://es.wikipedia.org/wiki/Lenguaje_unificado_de_modelado">UML</a>. Después, en el proyecto común de la asignatura, implementarás algunos de estos patrones en un contexto real.</p>
 </section>
 <section id="patrones-creacionales" class="level2 page-columns page-full" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="patrones-creacionales"><span class="header-section-number">4.2</span> Patrones creacionales</h2>
+<p>Los patrones de diseño suelen clasificarse en tres grandes familias según el tipo de problema que resuelven: <strong>creacionales</strong>, <strong>estructurales</strong> y <strong>de comportamiento</strong>. Esta clasificación procede del libro <em>Design Patterns: Elements of Reusable Object-Oriented Software</em> <span class="citation" data-cites="gamma1994">(<a href="../references.html#ref-gamma1994" role="doc-biblioref">Gamma et al. 1994</a>)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Definición">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -330,23 +333,37 @@ div.csl-indent {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Los <strong>patrones creacionales</strong> proporcionan mecanismos de creación de objetos que incrementan la flexibilidad y la reutilización del código.</p>
+<p>Los <a href="https://refactoring.guru/es/design-patterns/creational-patterns"><strong>patrones creacionales</strong></a> proporcionan mecanismos de creación de objetos que aumentan la flexibilidad y la reutilización del código.</p>
 </div>
 </div>
-<p>Las secciones relativas a los patrones creacionales (y los estructurales y de comportamiento) se dividen en los mismos apartados, tal como reflejan los mapas conceptuales:</p>
+<p>Estos patrones responden a una pregunta aparentemente sencilla: <strong>¿cómo se crean los objetos?</strong> En un programa pequeño basta con llamar directamente al constructor de una clase. Pero, a medida que el sistema crece, crear objetos de esa forma genera problemas: el código queda atado a clases concretas, cuesta sustituir unas por otras y la lógica de creación se repite por todo el proyecto.</p>
+<p>Los patrones creacionales resuelven estos problemas <strong>separando el uso de un objeto de la forma en que se crea</strong>. Así, el resto del programa no necesita saber qué clase concreta se instancia ni cómo se configura, lo que hace el código más flexible y fácil de mantener.</p>
+<p>Todos los patrones del curso (creacionales, estructurales y de comportamiento) siguen la misma estructura, que coincide con la de sus mapas conceptuales:</p>
 <ol type="1">
-<li><p>Propósito (<em>aim</em>)</p></li>
-<li><p>Problema (<em>what problem does it solve?</em>)</p></li>
-<li><p>Solución (<em>conceptual solution</em>)</p></li>
-<li><p>Ventajas e inconvenientes (<em>pros and cons</em>)</p></li>
+<li><strong>Propósito</strong> (<em>aim</em>): qué pretende conseguir el patrón.</li>
+<li><strong>Problema</strong> (<em>what problem does it solve?</em>): qué situación de diseño lo hace necesario.</li>
+<li><strong>Solución</strong> (<em>conceptual solution</em>): cómo se organizan las clases, interfaces y relaciones para resolverlo.</li>
+<li><strong>Ventajas e inconvenientes</strong> (<em>pros and cons</em>): qué se gana y qué se paga al aplicarlo.</li>
 </ol>
-<p>Además, cada mapa conceptual añade tres apartados más:</p>
+<p>Los mapas conceptuales incluyen, además, tres apartados complementarios:</p>
 <ol start="5" type="1">
-<li><p>A menudo se confunde con (<em>often confused with</em>)</p></li>
-<li><p>Ver también (<em>see also</em>)</p></li>
-<li><p>Usos (<em>usage</em>)</p></li>
+<li><strong>A menudo se confunde con</strong> (<em>often confused with</em>): patrones parecidos con los que conviene no mezclarlo.</li>
+<li><strong>Ver también</strong> (<em>see also</em>): patrones relacionados que suelen usarse junto a él.</li>
+<li><strong>Usos</strong> (<em>usage</em>): ejemplos de dónde se aplica en la práctica.</li>
 </ol>
-<p>Dejamos para la argumentación y discusión en clase la tarea de <a href="#relaciones-entre-patrones">conectar y relacionar</a> los distintos patrones creacionales entre ellos, y sugerir <a href="#aplicabilidad">situaciones o aplicaciones</a> donde se puedan aplicar.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Para trabajar en clase">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Para trabajar en clase
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Dejamos para el debate en clase dos tareas: <a href="#relaciones-entre-patrones">relacionar los patrones creacionales entre sí</a> y proponer <a href="#aplicabilidad">situaciones o aplicaciones concretas</a> en las que tenga sentido usarlos.</p>
+</div>
+</div>
 <section id="singleton" class="level3 page-columns page-full" data-number="4.2.1">
 <h3 data-number="4.2.1" class="anchored" data-anchor-id="singleton"><span class="header-section-number">4.2.1</span> Singleton</h3>
 <table class="caption-top table">
@@ -1254,6 +1271,9 @@ div.csl-indent {
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-gamma1994" class="csl-entry" role="listitem">
+Gamma, Erich, Richard Helm, Ralph Johnson, and John Vlissides. 1994. <em>Design Patterns: Elements of Reusable Object-Oriented Software</em>. Addison-Wesley.
+</div>
 <div id="ref-osborn2026" class="csl-entry" role="listitem">
 Osborn, Jeremy. 2026. <span>“<span>AI</span> Didn’t Make Programming Easier. It Just Made It Differently Difficult.”</span> <em>Communications of the ACM</em> 69 (8): 18–21. <a href="https://doi.org/10.1145/3795534">https://doi.org/10.1145/3795534</a>.
 </div>
