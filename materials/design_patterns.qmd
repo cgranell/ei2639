@@ -195,7 +195,7 @@ Cuando un objeto tiene muchos atributos, varios de ellos opcionales, su construc
 
 | Propósito |  Problema |
 |-----------|-----------|
-| crea objetos complejos separando el proceso de **construcción de su representación** | ... porque tengo clases constructures con muchos argumentos y con cierta opcionalidad  |
+| crea objetos complejos separando el proceso de **construcción de su representación** | ... porque tengo clases constructures con muchos argumentos y con cierto grado de opcionalidad  |
 
 
 ::: column-screen-inset-right
@@ -235,7 +235,7 @@ El siguiente [árbol de decisión](https://medium.com/womenintechnology/stop-mem
 ```{mermaid}
 %%| label: fig-arbol-creacionales
 %%| fig-cap: "Árbol de decisión para elegir un patrón creacional"
- 
+%%| echo: false
 flowchart TD
   A["¿Qué problema tengo al crear objetos?"] --> B{"¿Necesito que exista<br/>una única instancia compartida?"}
   B -- Sí --> S["Singleton"]
