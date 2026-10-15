@@ -221,7 +221,7 @@ En ocasiones, crear un objeto desde cero resulta costoso (requiere consultas a u
 
 
 ::: {.callout-tip title="Implementación"}
-![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34) [Prototype en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/prototype/java/example#lang-features)
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Prototype en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/prototype/java/example#lang-features)
 :::
 
 ### Relaciones entre patrones
@@ -229,28 +229,28 @@ En ocasiones, crear un objeto desde cero resulta costoso (requiere consultas a u
 
 Los patrones creacionales no son independientes entre sí. A menudo se combinan o uno evoluciona hacia otro a medida que el diseño se vuelve más complejo. Muchos diseños empiezan con *Factory Method*, que es sencillo y fácil de adaptar mediante subclases, y evolucionan hacia *Abstract Factory*, *Prototype* o *Builder* cuando se necesita más flexibilidad. A su vez, las clases de *Abstract Factory* suelen implementarse con métodos de fábrica (*Factory Method*), aunque también pueden apoyarse en *Prototype*. Por último, tanto las fábricas abstractas como los *builders* y los prototipos pueden implementarse como *Singleton* cuando basta con una única instancia de ellos.
 
-El siguiente [árbol de decisión]() resume cuándo conviene usar cada patrón creacional:
-
+El siguiente [árbol de decisión](https://medium.com/womenintechnology/stop-memorizing-design-patterns-use-this-decision-tree-instead-e84f22fca9fa?sk=d8ce25c71ba530c026c9b90e9c8d38f0) resume cuándo conviene usar cada patrón creacional:
 
 
 ```{mermaid}
 %%| label: fig-arbol-creacionales
 %%| fig-cap: "Árbol de decisión para elegir un patrón creacional"
+ 
 flowchart TD
-    A["¿Qué problema tengo al crear objetos?"] --> B{"¿Necesito que exista<br/>una única instancia compartida?"}
-    B -- Sí --> S["Singleton"]
-    B -- No --> C{"¿El objeto es complejo, con muchos<br/>parámetros o pasos de construcción?"}
-    C -- Sí --> BU["Builder"]
-    C -- No --> D{"¿Crear el objeto desde cero es costoso<br/>o necesito copias de objetos ya configurados?"}
-    D -- Sí --> P["Prototype"]
-    D -- No --> E{"¿Necesito crear familias de objetos<br/>relacionados y compatibles entre sí?"}
-    E -- Sí --> AF["Abstract Factory"]
-    E -- No --> F{"¿Debo decidir en tiempo de ejecución<br/>qué subclase concreta crear?"}
-    F -- Sí --> FM["Factory Method"]
-    F -- No --> N["Basta con el constructor:<br/>no hace falta un patrón"]
+  A["¿Qué problema tengo al crear objetos?"] --> B{"¿Necesito que exista<br/>una única instancia compartida?"}
+  B -- Sí --> S["Singleton"]
+  B -- No --> C{"¿El objeto es complejo, con muchos<br/>parámetros o pasos de construcción?"}
+  C -- Sí --> BU["Builder"]
+  C -- No --> D{"¿Crear el objeto desde cero es costoso<br/>o necesito copias de objetos ya configurados?"}
+  D -- Sí --> P["Prototype"]
+  D -- No --> E{"¿Necesito crear familias de objetos<br/>relacionados y compatibles entre sí?"}
+  E -- Sí --> AF["Abstract Factory"]
+  E -- No --> F{"¿Debo decidir en tiempo de ejecución<br/>qué subclase concreta crear?"}
+  F -- Sí --> FM["Factory Method"]
+  F -- No --> N["Basta con el constructor:<br/>no hace falta un patrón"]
 ```
 
-::: {.callout-warning title="Un árbol orientativo"}
+::: {.callout-note title="Un árbol orientativo"}
 Este árbol es una guía, no una regla. En la práctica, un mismo problema puede encajar en varias ramas, y los patrones se combinan entre sí. La última rama es igual de importante que las demás: aplicar un patrón cuando no hace falta añade complejidad sin aportar nada.
 :::
 
