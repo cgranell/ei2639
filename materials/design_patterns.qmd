@@ -81,12 +81,11 @@ Los patrones de diseño suelen clasificarse en tres grandes familias según el t
 Los [**patrones creacionales**](https://refactoring.guru/es/design-patterns/creational-patterns) proporcionan mecanismos de creación de objetos que aumentan la flexibilidad y la reutilización del código.
 :::
 
-Estos patrones responden a una pregunta aparentemente sencilla: **¿cómo se crean los objetos?** En un programa pequeño basta con llamar directamente al constructor de una clase. Pero, a medida que el sistema crece, crear objetos de esa forma genera problemas: el código queda atado a clases concretas, cuesta sustituir unas por otras y la lógica de creación se repite por todo el proyecto.
+Los patrones creacionales responden a una pregunta (problema) aparentemente sencilla: **¿cómo se crean los objetos?** En un programa pequeño basta con llamar directamente al constructor de una clase. Pero, a medida que el sistema crece en complejidad, crear objetos mediante la instanciación de clases concretas genera problemas: el código queda atado a clases concretas, cuesta sustituir unas por otras y la lógica de creación se repite por todo el proyecto.
 
-Los patrones creacionales resuelven estos problemas **separando el uso de un objeto de la forma en que se crea**. Así, el resto del programa no necesita saber qué clase concreta se instancia ni cómo se configura, lo que hace el código más flexible y fácil de mantener.
+Los patrones creacionales resuelven estos problemas relacionados con la creación de objetos **separando el uso de un objeto de la forma en que se crea**. Así, el resto de código de un programa (e.g., librería, modulo, cliente) no necesita saber qué clase concreta se instancia ni cómo se configura, resultando en un código más flexible, menos dependiente, y fácil de mantener.
 
-
-Todos los patrones del curso (creacionales, estructurales y de comportamiento) siguen la misma estructura, que coincide con la de sus mapas conceptuales:
+En este curos, todos los patrones (creacionales, estructurales y de comportamiento) siguen la misma estructura, que coincide con la de sus mapas conceptuales:
 
 1. **Propósito** (*aim*): qué pretende conseguir el patrón.
 2. **Problema** (*what problem does it solve?*): qué situación de diseño lo hace necesario.
