@@ -294,7 +294,7 @@ div.csl-indent {
 <section id="qué-es-un-patrón" class="level2 page-columns page-full" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="qué-es-un-patrón"><span class="header-section-number">4.1</span> ¿Qué es un patrón?</h2>
 <p>El término <strong>patrón</strong> tiene múltiples significados según el contexto. En matemáticas, por ejemplo, hablamos de patrones numéricos (una secuencia que sigue una regla) o de patrones geométricos (formas que se repiten en el espacio).</p>
-<p>En informática, el <a href="https://es.wikipedia.org/wiki/Aprendizaje_autom%C3%A1tico">aprendizaje automático</a> utiliza técnicas computacionales avanzadas para descubrir patrones ocultos en los datos.</p>
+<p>En el área de la Inteligencia Artificial, el <a href="https://es.wikipedia.org/wiki/Aprendizaje_autom%C3%A1tico">aprendizaje automático</a> utiliza técnicas computacionales avanzadas para descubrir patrones y relaciones ocultas en los datos.</p>
 <p>En ingeniería de software, la palabra tiene un sentido distinto. A lo largo de tu carrera profesional comprobarás que los mismos problemas de diseño de software aparecen una y otra vez. Hay muchas formas de resolverlos, pero la industria prefiere soluciones flexibles, reutilizables y verificables. Esas soluciones son los <a href="https://refactoring.guru/es/design-patterns"><strong>patrones de diseño</strong></a>: descripciones generales de cómo resolver un problema de diseño recurrente, que puedes adaptar a cada situación concreta.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Definición">
 <div class="callout-header d-flex align-content-center">
@@ -341,7 +341,7 @@ div.csl-indent {
 </div>
 <p>Los patrones creacionales responden a una pregunta (problema) aparentemente sencilla: <strong>¿cómo se crean los objetos?</strong> En un programa pequeño basta con llamar directamente al constructor de una clase. Pero, a medida que el sistema crece en complejidad, crear objetos mediante la instanciación de clases concretas genera problemas: el código queda atado a clases concretas, cuesta sustituir unas por otras y la lógica de creación se repite por todo el proyecto.</p>
 <p>Los patrones creacionales resuelven estos problemas relacionados con la creación de objetos <strong>separando el uso de un objeto de la forma en que se crea</strong>. Así, el resto de código de un programa (e.g., librería, modulo, cliente) no necesita saber qué clase concreta se instancia ni cómo se configura, resultando en un código más flexible, menos dependiente, y fácil de mantener.</p>
-<p>En este curos, todos los patrones (creacionales, estructurales y de comportamiento) siguen la misma estructura, que coincide con la de sus mapas conceptuales:</p>
+<p>En este curso, todos los patrones (creacionales, estructurales y de comportamiento) se describen con la misma estructura, que coincide con la de sus mapas conceptuales:</p>
 <ol type="1">
 <li><strong>Propósito</strong> (<em>aim</em>): qué pretende conseguir el patrón.</li>
 <li><strong>Problema</strong> (<em>what problem does it solve?</em>): qué situación de diseño lo hace necesario.</li>
@@ -531,7 +531,7 @@ div.csl-indent {
 </section>
 <section id="abstract-factory" class="level3 page-columns page-full" data-number="4.2.5">
 <h3 data-number="4.2.5" class="anchored" data-anchor-id="abstract-factory"><span class="header-section-number">4.2.5</span> Abstract Factory</h3>
-<p>A veces no basta con crear un objeto, sino que necesitamos crear <strong>familias de objetos que deben ser compatibles entre sí</strong>. Por ejemplo, una interfaz gráfica con botones, menús y casillas de verificación que deben compartir el mismo estilo (Windows, macOS o Linux). El patrón <em>Abstract Factory</em> agrupa en una misma fábrica los métodos que crean cada objeto de la familia, de modo que el cliente obtiene siempre productos coherentes sin conocer sus clases concretas. Puede verse como una generalización de <em>Factory Method</em>, aplicada a varios productos relacionados a la vez.</p>
+<p>A veces no basta con crear un objeto, sino que necesitamos crear <strong>familias de objetos que deben ser compatibles entre sí</strong>. Por ejemplo, una interfaz gráfica con botones, menús y casillas de verificación que deben compartir el mismo estilo (Windows, macOS o Linux). El patrón <em>Abstract Factory</em> agrupa en una misma fábrica los métodos que crean cada objeto de la familia, de modo que el cliente obtiene siempre productos coherentes sin conocer sus clases concretas. Puede verse como una generalización de <em>Factory Method</em>, aplicada a varios productos relacionados a la vez (en familias).</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -569,7 +569,7 @@ div.csl-indent {
 </section>
 <section id="relaciones-entre-patrones" class="level3" data-number="4.2.6">
 <h3 data-number="4.2.6" class="anchored" data-anchor-id="relaciones-entre-patrones"><span class="header-section-number">4.2.6</span> Relaciones entre patrones</h3>
-<p>Los patrones creacionales no son independientes entre sí. A menudo se combinan o uno evoluciona hacia otro a medida que el diseño se vuelve más complejo. Muchos diseños empiezan con <em>Factory Method</em>, que es sencillo y fácil de adaptar mediante subclases, y evolucionan hacia <em>Abstract Factory</em>, <em>Prototype</em> o <em>Builder</em> cuando se necesita más flexibilidad. A su vez, las clases de <em>Abstract Factory</em> suelen implementarse con métodos de fábrica (<em>Factory Method</em>), aunque también pueden apoyarse en <em>Prototype</em>. Por último, tanto las fábricas abstractas como los <em>builders</em> y los prototipos pueden implementarse como <em>Singleton</em> cuando basta con una única instancia de ellos.</p>
+<p>Los patrones creacionales no son independientes entre sí. A menudo se combinan o uno evoluciona hacia otro a medida que el diseño se vuelve más complejo. Muchos diseños empiezan con <em>Factory Method</em>, que es sencillo y fácil de adaptar mediante subclases, y evolucionan hacia <em>Abstract Factory</em>, <em>Prototype</em> o <em>Builder</em> cuando se necesita más flexibilidad. A su vez, las clases de <em>Abstract Factory</em> suelen implementarse con métodos de fábrica (<em>Factory Method</em>), aunque también pueden apoyarse en <em>Prototype</em>. Por último, tanto los patrones <em>Abstract Factory</em>, <em>Builder</em> y <em>Prototype</em> pueden implementarse como <em>Singleton</em> cuando basta con una única instancia de ellos.</p>
 <p>La <a href="#fig-arbol-creacionales" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> reproduce un <a href="https://medium.com/womenintechnology/stop-memorizing-design-patterns-use-this-decision-tree-instead-e84f22fca9fa?sk=d8ce25c71ba530c026c9b90e9c8d38f0">árbol de decisión</a> que resume cuándo conviene usar cada patrón creacional:</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
@@ -586,7 +586,7 @@ div.csl-indent {
   D -- Sí --&gt; P["Prototype"]
   D -- No --&gt; E{"¿Debo decidir en tiempo de ejecución&lt;br/&gt;qué subclase concreta instanciar?"}
   E -- Sí --&gt; FM["Factory Method"]
-  E -- No --&gt; F{"¿Debo decidir en tiempo de ejecución&lt;br/&gt;qué subclase concreta crear?"}
+  E -- No --&gt; F{"¿Necesito crear familias de objetos&lt;br/&gt;relacionados y compatibles entre sí?"}
   F -- Sí --&gt; AF["Abstract Factory"]
   F -- No --&gt; N["Basta con el constructor:&lt;br/&gt;no hace falta un patrón"]
 </pre>
