@@ -41,7 +41,7 @@ Para cerrar, Osborn [@osborn2026] propone una analogía con la medicina que ilus
 
 El término **patrón** tiene múltiples significados según el contexto. En matemáticas, por ejemplo, hablamos de patrones numéricos (una secuencia que sigue una regla) o de patrones geométricos (formas que se repiten en el espacio).
 
-En informática, el [aprendizaje automático](https://es.wikipedia.org/wiki/Aprendizaje_autom%C3%A1tico) utiliza técnicas computacionales avanzadas para descubrir patrones ocultos en los datos.
+En el área de la Inteligencia Artificial, el [aprendizaje automático](https://es.wikipedia.org/wiki/Aprendizaje_autom%C3%A1tico) utiliza técnicas computacionales avanzadas para descubrir patrones y relaciones ocultas en los datos.
 
 En ingeniería de software, la palabra tiene un sentido distinto. A lo largo de tu carrera profesional comprobarás que los mismos problemas de diseño de software aparecen una y otra vez. Hay muchas formas de resolverlos, pero la industria prefiere soluciones flexibles, reutilizables y verificables. Esas soluciones son los [**patrones de diseño**](https://refactoring.guru/es/design-patterns): descripciones generales de cómo resolver un problema de diseño recurrente, que puedes adaptar a cada situación concreta.
 
@@ -85,7 +85,7 @@ Los patrones creacionales responden a una pregunta (problema) aparentemente senc
 
 Los patrones creacionales resuelven estos problemas relacionados con la creación de objetos **separando el uso de un objeto de la forma en que se crea**. Así, el resto de código de un programa (e.g., librería, modulo, cliente) no necesita saber qué clase concreta se instancia ni cómo se configura, resultando en un código más flexible, menos dependiente, y fácil de mantener.
 
-En este curos, todos los patrones (creacionales, estructurales y de comportamiento) siguen la misma estructura, que coincide con la de sus mapas conceptuales:
+En este curso, todos los patrones (creacionales, estructurales y de comportamiento) se describen con la misma estructura, que coincide con la de sus mapas conceptuales:
 
 1. **Propósito** (*aim*): qué pretende conseguir el patrón.
 2. **Problema** (*what problem does it solve?*): qué situación de diseño lo hace necesario.
@@ -203,7 +203,7 @@ Imagina una aplicación de logística que al principio solo gestiona camiones. S
 ### Abstract Factory
 
 
-A veces no basta con crear un objeto, sino que necesitamos crear **familias de objetos que deben ser compatibles entre sí**. Por ejemplo, una interfaz gráfica con botones, menús y casillas de verificación que deben compartir el mismo estilo (Windows, macOS o Linux). El patrón *Abstract Factory* agrupa en una misma fábrica los métodos que crean cada objeto de la familia, de modo que el cliente obtiene siempre productos coherentes sin conocer sus clases concretas. Puede verse como una generalización de *Factory Method*, aplicada a varios productos relacionados a la vez.
+A veces no basta con crear un objeto, sino que necesitamos crear **familias de objetos que deben ser compatibles entre sí**. Por ejemplo, una interfaz gráfica con botones, menús y casillas de verificación que deben compartir el mismo estilo (Windows, macOS o Linux). El patrón *Abstract Factory* agrupa en una misma fábrica los métodos que crean cada objeto de la familia, de modo que el cliente obtiene siempre productos coherentes sin conocer sus clases concretas. Puede verse como una generalización de *Factory Method*, aplicada a varios productos relacionados a la vez (en familias).
 
 
 | Propósito |  Problema |
@@ -229,7 +229,7 @@ A veces no basta con crear un objeto, sino que necesitamos crear **familias de o
 ### Relaciones entre patrones
 
 
-Los patrones creacionales no son independientes entre sí. A menudo se combinan o uno evoluciona hacia otro a medida que el diseño se vuelve más complejo. Muchos diseños empiezan con *Factory Method*, que es sencillo y fácil de adaptar mediante subclases, y evolucionan hacia *Abstract Factory*, *Prototype* o *Builder* cuando se necesita más flexibilidad. A su vez, las clases de *Abstract Factory* suelen implementarse con métodos de fábrica (*Factory Method*), aunque también pueden apoyarse en *Prototype*. Por último, tanto las fábricas abstractas como los *builders* y los prototipos pueden implementarse como *Singleton* cuando basta con una única instancia de ellos.
+Los patrones creacionales no son independientes entre sí. A menudo se combinan o uno evoluciona hacia otro a medida que el diseño se vuelve más complejo. Muchos diseños empiezan con *Factory Method*, que es sencillo y fácil de adaptar mediante subclases, y evolucionan hacia *Abstract Factory*, *Prototype* o *Builder* cuando se necesita más flexibilidad. A su vez, las clases de *Abstract Factory* suelen implementarse con métodos de fábrica (*Factory Method*), aunque también pueden apoyarse en *Prototype*. Por último, tanto los patrones *Abstract Factory*, *Builder* y *Prototype* pueden implementarse como *Singleton* cuando basta con una única instancia de ellos.
 
 La @fig-arbol-creacionales reproduce un [árbol de decisión](https://medium.com/womenintechnology/stop-memorizing-design-patterns-use-this-decision-tree-instead-e84f22fca9fa?sk=d8ce25c71ba530c026c9b90e9c8d38f0) que resume cuándo conviene usar cada patrón creacional:
 
@@ -247,7 +247,7 @@ flowchart TD
   D -- Sí --> P["Prototype"]
   D -- No --> E{"¿Debo decidir en tiempo de ejecución<br/>qué subclase concreta instanciar?"}
   E -- Sí --> FM["Factory Method"]
-  E -- No --> F{"¿Debo decidir en tiempo de ejecución<br/>qué subclase concreta crear?"}
+  E -- No --> F{"¿Necesito crear familias de objetos<br/>relacionados y compatibles entre sí?"}
   F -- Sí --> AF["Abstract Factory"]
   F -- No --> N["Basta con el constructor:<br/>no hace falta un patrón"]
 ```
