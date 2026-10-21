@@ -52,11 +52,11 @@ Un **patrón de diseño de software** es una solución práctica, reutilizable y
 
 :::
 
-Los patrones de diseño permiten reutilizar soluciones ya probadas, que otros desarrolladores han aplicado con éxito muchas veces para resolver un mismo problema de diseño. Así no hace falta *reinventar la rueda*, es decir, crear una solución nueva desde cero a partir de los principios básicos de la [programación orientada a objetos](https://es.wikipedia.org/wiki/Programaci%C3%B3n_orientada_a_objetos).
+Los patrones de diseño permiten reutilizar soluciones ya probadas, que otros desarrolladores han aplicado con éxito muchas veces para resolver un mismo problema de diseño. Así no hace falta reinventar la rueda, es decir, crear una solución nueva desde cero a partir de los principios básicos de la [programación orientada a objetos](https://es.wikipedia.org/wiki/Programaci%C3%B3n_orientada_a_objetos).
 
 Los patrones de diseño no son soluciones puramente teóricas o académicas: se utilizan de forma habitual en la industria del software, tanto en productos comerciales como en la implementación de los propios lenguajes de programación. Por ejemplo, el bucle `for` de Python se apoya en el patrón [*Iterator*](https://refactoring.guru/es/design-patterns/iterator), que permite recorrer los elementos de una colección sin conocer cómo está organizada internamente.
 
-Una buena forma de entender qué es un patrón de diseño es compararlo con un **plano** de arquitectura: no es una construcción terminada, sino un esquema general que puedes adaptar para resolver un problema de diseño que se repite en tu código.
+Una buena forma de entender qué es un patrón de diseño es compararlo con un plano de arquitectura: no es una construcción terminada, sino un esquema general que puedes adaptar para resolver un problema de diseño que se repite en tu código.
 
 
 ::: {.column-margin}
@@ -77,13 +77,15 @@ Por ese motivo, en este curso presentamos los patrones de diseño de forma conce
 
 Los patrones de diseño suelen clasificarse en tres grandes familias según el tipo de problema que resuelven: **creacionales**, **estructurales** y **de comportamiento**. Esta clasificación procede del libro *Design Patterns: Elements of Reusable Object-Oriented Software* [@gamma1994].
 
+Los patrones creacionales responden a una pregunta (problema) aparentemente sencilla: **¿cómo se crean los objetos?** En un programa pequeño basta con llamar directamente al constructor de una clase. Pero, a medida que el sistema crece en complejidad, crear objetos mediante la instanciación de clases concretas genera problemas: el código queda atado a clases concretas, cuesta sustituir unas por otras y la lógica de creación se repite por todo el proyecto.
+
+Los patrones creacionales resuelven estos problemas relacionados con la creación de objetos **separando el uso de un objeto de la forma en que se crea**. Así, el resto de código de un programa (e.g., librería, modulo, cliente) no necesita saber qué clase concreta se instancia ni cómo se configura, resultando en un código más flexible, menos dependiente, y fácil de mantener.
+
 ::: {.callout-note title="Definición" icon=true}
 Los [**patrones creacionales**](https://refactoring.guru/es/design-patterns/creational-patterns) proporcionan mecanismos de creación de objetos que aumentan la flexibilidad y la reutilización del código.
 :::
 
-Los patrones creacionales responden a una pregunta (problema) aparentemente sencilla: **¿cómo se crean los objetos?** En un programa pequeño basta con llamar directamente al constructor de una clase. Pero, a medida que el sistema crece en complejidad, crear objetos mediante la instanciación de clases concretas genera problemas: el código queda atado a clases concretas, cuesta sustituir unas por otras y la lógica de creación se repite por todo el proyecto.
-
-Los patrones creacionales resuelven estos problemas relacionados con la creación de objetos **separando el uso de un objeto de la forma en que se crea**. Así, el resto de código de un programa (e.g., librería, modulo, cliente) no necesita saber qué clase concreta se instancia ni cómo se configura, resultando en un código más flexible, menos dependiente, y fácil de mantener. Los patrones creacionales son:
+Los patrones creacionales son:
 
 - [Singleton](#singleton)
 - [Builder](#builder)
@@ -105,7 +107,7 @@ Los mapas conceptuales incluyen, además, tres apartados complementarios:
 7. **Usos** (*usage*): ejemplos de dónde se aplica en la práctica.
 
 ::: {.callout-tip title="Para reflexionar" icon=true}
-Dejamos para el debate en clase dos tareas: [relacionar los patrones creacionales entre sí](#relaciones-creacionales) y proponer [situaciones o aplicaciones concretas](#aplicabilidad-creacionales) en las que tenga sentido usarlos.
+Dejamos para el debate en clase dos tareas: [relacionar los patrones creacionales entre sí](#relaciones-creacionales) y proponer situaciones o aplicaciones concretas en las que tenga sentido usarlos.
 :::
 
 
@@ -137,7 +139,7 @@ Algunos recursos de un programa deben existir **una sola vez**: la conexión a u
 ### Builder
 
 
-Cuando un objeto tiene muchos atributos, varios de ellos opcionales, su constructor acaba recibiendo una lista interminable de parámetros, que dificulta la gestión de nuevas instancias. El patrón *Builder* propone construir el objeto **paso a paso**, mediante un objeto constructor (*builder*) con un método para cada parte. Además, el mismo proceso de construcción puede producir representaciones distintas: por ejemplo, el mismo informe generado en HTML o en PDF.
+Cuando un objeto tiene muchos atributos, varios de ellos opcionales, su constructor acaba recibiendo una lista interminable de parámetros, que dificulta la gestión de nuevas instancias. El patrón *Builder* propone **construir el objeto paso a paso**, mediante un objeto constructor (*builder*) con un método para cada parte. Además, el mismo proceso de construcción puede producir representaciones distintas: por ejemplo, el mismo informe generado en HTML o en PDF.
 
 
 | Propósito |  Problema |
@@ -237,7 +239,7 @@ A veces no basta con crear un objeto, sino que necesitamos crear **familias de o
 
 Los patrones creacionales no son independientes entre sí. A menudo se combinan o uno evoluciona hacia otro a medida que el diseño se vuelve más complejo. Muchos diseños empiezan con *Factory Method*, que es sencillo y fácil de adaptar mediante subclases, y evolucionan hacia *Abstract Factory*, *Prototype* o *Builder* cuando se necesita más flexibilidad. A su vez, las clases de *Abstract Factory* suelen implementarse con métodos de fábrica (*Factory Method*), aunque también pueden apoyarse en *Prototype*. Por último, tanto los patrones *Abstract Factory*, *Builder* y *Prototype* pueden implementarse como *Singleton* cuando basta con una única instancia de ellos.
 
-La @fig-arbol-creacionales reproduce un [árbol de decisión](https://medium.com/womenintechnology/stop-memorizing-design-patterns-use-this-decision-tree-instead-e84f22fca9fa?sk=d8ce25c71ba530c026c9b90e9c8d38f0) que resume cuándo conviene usar cada patrón creacional:
+La @fig-arbol-creacionales recrea un [árbol de decisión](https://medium.com/womenintechnology/stop-memorizing-design-patterns-use-this-decision-tree-instead-e84f22fca9fa?sk=d8ce25c71ba530c026c9b90e9c8d38f0) que resume cuándo conviene utilizar cada patrón creacional.
 
 
 ```{mermaid}
@@ -262,25 +264,21 @@ flowchart TD
 Este árbol es una guía, no una regla. En la práctica, un mismo problema puede encajar en varias ramas, y los patrones se combinan entre sí. La última rama es igual de importante que las demás: aplicar un patrón cuando no hace falta añade complejidad sin aportar nada.
 :::
 
-### Aplicabilidad {#aplicabilidad-creacionales}
-
-
 
 ## Patrones estructurales
 
+Si los patrones creacionales responden a la pregunta **¿cómo se crean los objetos?**, los patrones estructurales responden a otra distinta: **¿cómo se organizan, conectan y combinan  los objetos entre sí?** En un sistema real, las clases no trabajan de forma aislada e independiente de otras. Siempre existe cierto grado de dependencia entre clases y, sobretodo, existen muy probablemente necesidades de integrar otras clases, externas o no, en el código del sistema. Por ejemplo, a veces surge la necesidad de incluir librerías externas cuya interfaz no encaja con las clases de nuestro sistema, ocultar subsistemas complejos, o añadir funcionalidades sin tener que modificar el código existente.
 
-::: {.callout-note title="Definición" icon=true}
-
-Los **patrones estructurales** se refieren a la organización del código, es decir, a la composición de clases y objetos. Definen formas de componer y organizar clases para obtener fines estructurales (nuevas funciones, etc.).
-
-:::
-
-Si los patrones creacionales responden a la pregunta *¿cómo se crean los objetos?*, los patrones estructurales responden a otra distinta: **¿cómo se organizan, conectan y combinan  los objetos entre sí?** En un sistema real, las clases no trabajan de forma aislada e independiente de otras. Siempre existe cierto grado de dependencia entre clases y, sobretodo, existen muy probablemente necesidades de integrar otras clases, externas o no, en el código del sistema. Por ejemplo, para la integración de librerías externas cuya interfaz no encaja con las clases de nuestro sistema, para ocultar subsistemas complejos, o para añadir funcionalidades sin modificar el código existente.
-
-La idea común que subyace a todos los patrones estructurales es favorecer la [**composición frente a la herencia**](#02_principles.html#favorece-la-composici%C3%B3n-sobre-la-herencia). En lugar de crear jerarquías *estáticas* de subclases cada vez más profundas y rígidas en tiempo de diseño, los aptrones estructura combinan objetos de forma *dinámica*: un objeto *envuelve* a otro, le delega trabajo o se presenta como intermediario. Así se pueden cambiar las piezas de la estructura sin reescribir el resto del programa. De forma conceptual, muchos de estos patrones se basan, de hecho, en un objeto **envoltorio** (*wrapper*), y la diferencia entre ellos está en el *propósito* con el que se envuelve.
+La idea común que subyace a todos los patrones estructurales es favorecer la [**composición frente a la herencia**](#02_principles.html#favorece-la-composici%C3%B3n-sobre-la-herencia). En lugar de definir jerarquías *estáticas* de clases cada vez más profundas y rígidas en tiempo de diseño, los patrones estructurales facilitan la combinación de clases/objetos de forma *dinámica* cuando la jerarquía estática de clase se convierte en un problema: un objeto **envuelve** a otro, delega trabajo o actúa de intermediario. Así se pueden cambiar los objetos y clases de la estructura sin [modificar el resto del programa](#02_principles.html#encapsula-lo-que-var%C3%ADa-y-sep%C3%A1ralo-de-lo-que-no-cambia). De forma conceptual, muchos de estos patrones se basan en un objeto envoltorio (*wrapper*), y la diferencia entre ellos está en el propósito de ese envoltorio.
 
 ::: {.column-margin}
 ¿Maximinar la reutilización de código sin la herencia? [Composición sobre herencia](https://en.wikipedia.org/wiki/Composition_over_inheritance). 
+:::
+
+::: {.callout-note title="Definición" icon=true}
+
+Los **patrones estructurales** explican cómo combinar clases y objetos para formar estructuras más grandes, manteniéndolas a la vez flexibles y eficientes.
+
 :::
 
 
@@ -297,7 +295,7 @@ Los patrones estructurales son:
 
 ### Adapter
 
-Imagina que tu aplicación trabaja con datos en formato [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) y quieres incorporar una librería de análisis que solo acepta [parquet](https://en.wikipedia.org/wiki/Apache_Parquet) No puedes modificar la librería (es externa) y tampoco quieres reescribir tu aplicación. El patrón *Adapter* resuelve este problema mediante un objeto intermedio, el **adaptador**, que traduce las llamadas de una interfaz a otra, igual que un adaptador de enchufe permite conectar un aparato a una toma de corriente de otro país. Así, dos clases con interfaces incompatibles pueden colaborar sin que ninguna de ellas cambie.
+Imagina que tu aplicación trabaja con datos en formato [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) y quieres incorporar una librería de análisis que solo acepta [parquet](https://en.wikipedia.org/wiki/Apache_Parquet). No puedes modificar la librería (porque es externa) y tampoco quieres (o puedes) reescribir tu aplicación. El patrón *Adapter* resuelve este problema mediante un objeto intermedio, el **adaptador**, que traduce las llamadas de una interfaz a otra, igual que un adaptador de enchufe permite conectar tu teléfono a una toma de corriente de otro país. Así, dos clases con interfaces incompatibles pueden colaborar sin que ninguna de ellas cambie.
 
 
 | Propósito |  Problema |
@@ -330,7 +328,7 @@ Imagina que tu aplicación trabaja con datos en formato [CSV](https://en.wikiped
 
 ### Bridge
 
-Supón que tienes una clase `Forma` con dos subclases (`Circulo` y `Cuadrado`) y quieres dibujarlas en dos colores. Con herencia necesitarías cuatro subclases (`CirculoRojo`, `CirculoAzul`...), y cada nueva forma o color multiplicaría su número. El problema es que la clase crece en **dos dimensiones independientes**. El patrón *Bridge* separa esas dimensiones en dos jerarquías distintas, la **abstracción** (la forma) y la **implementación** (el color), conectadas mediante una referencia, el *puente*. Así, cada jerarquía puede evolucionar o cambiar por completo sin afectar a la otra.
+Imagina que programas un bot que envía distintos tipos de mensajes (texto, imágenes y encuestas) a cada una de las plataformas de mensajería: Discord, Telegram y Slack. Con herencia, se necesita una subclase (implementación) para cada combinación mensaje-plataforma (`EncuestaDiscord`, `ImagenTelegram`, `TextoSlack`...): nueve clases para tres mensajes y tres plataformas, y cada nueva plataforma obliga a añadir tres clases más. El problema es que el diseño crece en dos dimensiones independientes: qué se envía y por dónde se envía. El uso del patrón *Bridge* separa esas dimensiones en dos jerarquías distintas, la **abstracción** (el tipo de mensaje) y la **implementación** (la plataforma), conectadas mediante una referencia, el *puente* (*bridge*). Cada mensaje sabe **qué** contenido enviar y delega en la plataforma **cómo** enviarlo. Añadir, poer ejemplo una nueva plataforma (e.g., WhatsApp) supone únicamente añadir una nueva clase a la dimensión de implementación únicamente, y no una clase por cada tipo de mensaje disponible.
 
 
 
@@ -357,8 +355,7 @@ Supón que tienes una clase `Forma` con dos subclases (`Circulo` y `Cuadrado`) y
 
 ### Facade 
 
-
-Convertir un vídeo de un formato a otro puede exigir coordinar decenas de clases de una librería multimedia: códecs, *buffers*, mezcladores de audio... Si el código cliente interactúa directamente con todas ellas, queda fuertemente acoplado a los detalles internos de la librería. El patrón *Facade* ofrece una **fachada**: una clase con una interfaz sencilla (por ejemplo, un único método `convertir(archivo, formato)`) que se encarga de coordinar internamente el subsistema. El cliente solo ve la fachada y la complejidad queda oculta tras ella.
+Cada vez que ejecutas `git commit` estás usando un partrón *Facade*. Internamente, Git distingue entre comandos de bajo nivel, o [*plumbing*](https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain) (fontanería), y comandos de alto nivel, o *porcelain* (porcelana). Un *commit* exige en realidad varios pasos: guardar el contenido de los archivos como objetos (`git hash-object`), construir el árbol de directorios (`git write-tree`), crear el objeto *commit* que apunta a ese árbol (`git commit-tree`) y mover la rama a ese nuevo *commit* (`git update-ref`). Nadie quiere realizar todas estas tareas cada vez que se lleva a cabo un `commit`. El patrón *Facade* ofrece uan solicón mediante la ideas de fachada: una interfaz sencilla y amigable, como `git commit`, que coordina internamente el subsistema complejo como uan serie de comandos de bajo nivel. El usuario solo ve la fachada, aunque podría utilizar los comandos de bajo nivel para, por ejemplo, encadanarlos al estilo UNIX en la línea de comandos.
 
 
 | Propósito |  Problema |
@@ -391,7 +388,7 @@ Convertir un vídeo de un formato a otro puede exigir coordinar decenas de clase
 ### Proxy
 
 
-A veces no queremos que el cliente acceda directamente a un objeto. Puede que crearlo sea costoso (una imagen de gran tamaño que solo conviene cargar cuando se muestre), que haya que comprobar permisos antes de usarlo, o que convenga guardar en caché sus resultados. El patrón *Proxy* coloca delante del objeto real un **sustituto** con su misma interfaz. El cliente cree que trabaja con el objeto original, pero el *proxy* controla el acceso y puede hacer tareas adicionales antes o después de delegar en él.
+A veces no queremos que el cliente acceda directamente a un objeto. Puede que sea un objeto costoso (una imagen de gran tamaño, o un objeto que requiere de mucho cómputo para instanciarse), que haya que comprobar permisos antes de usarlo, o que convenga guardar en caché sus resultados. El patrón *Proxy* propone un objeto **sustituto** con el misma interfaz del objeto real. El cliente cree que trabaja con el objeto original, pero realmente interactua con el objeto *proxy* que controla el acceso y puede hacer tareas adicionales antes y/o después de delegar en o interaccionar con el objeto real. En definitiva, el patrón *Proxy* permite **suplantar o sustituir** el objeto real.
 
 
 | Propósito |  Problema |
@@ -424,7 +421,9 @@ A veces no queremos que el cliente acceda directamente a un objeto. Puede que cr
 ### Composite
 
 
-Muchas estructuras tienen forma de **árbol**: un sistema de archivos contiene carpetas que a su vez contienen archivos y otras carpetas; un pedido contiene productos y cajas que a su vez contienen más productos. Si el código tiene que distinguir en cada paso si trata con un elemento simple o con un contenedor, se llena de condicionales. El patrón *Composite* define una interfaz común para los elementos simples (las *hojas*) y los compuestos (los *contenedores*), de modo que el cliente los trata de la misma forma. Por ejemplo, para calcular el tamaño de una carpeta basta con pedirle su tamaño, y ella se lo pide recursivamente a su contenido.
+Muchas estructuras tienen forma de **árbol**: un sistema de archivos contiene carpetas que a su vez contienen archivos y otras carpetas; un pedido contiene productos y cajas que a su vez contienen más productos. Si el código tiene que distinguir en cada paso si trata con un elemento simple o con un contenedor, se llena de condicionales. El patrón *Composite* define una interfaz común para los elementos simples (las hojas) y los compuestos (los contenedores), de modo que el cliente los trata de la misma forma. Por ejemplo, para calcular el tamaño de una carpeta basta con pedirle su tamaño, y ella se lo pide recursivamente a su contenido.
+
+Enlazado con asignaturas de compiladores y estructuras de datos, piensa en cómo un compilador o una calculadora evalúa la expresión `(3 + 4) * 5`. Primero la convierte en un [**árbol de sintaxis abstracta**](https://en.wikipedia.org/wiki/Abstract_syntax_tree) (AST): los números son las **hojas** y las operaciones (`+`, `*`) son **nodos compuestos** que contienen otras expresiones. Si el evaluador tuviera que comprobar en cada paso si está ante un número o ante una operación, se llenaría de condicionales. El patrón *Composite* define una interfaz común, `Expresion`, con un método `evaluar()`, que implementan tanto los números (nodos hojas) como las operaciones (nodos intermedios). Un número simplemente devuelve su valor; una suma pide a sus dos nodos hijos que se evalúen y suma los resultados. Así, al tener la misma interfaz, evaluar la expresión completa se reduce a una sola llamada: `raiz.evaluar()`, y la recursión hace el resto.
 
 
 | Propósito |  Problema |
@@ -457,9 +456,13 @@ Muchas estructuras tienen forma de **árbol**: un sistema de archivos contiene c
 
 ### Decorator
 
+Imagina un sistema de notificaciones que envía avisos por correo electrónico. Más adelante, algunos usuarios quieren recibirlos también por SMS, mientras que otros por Slack y, para complicar las cosas, hay otro grupo de usuarios que recibe notificaciones por las tres vías a la vez. Crear una subclase para cada combinación es inviable. El patrón *Decorator* permite **añadir responsabilidades a un objeto de forma dinámica**, envolviéndolo en uno o varios *decoradores* que comparten su interfaz. Cada decorador añade un comportamiento específica (por ejemplo, enviar por SMS) y delega el resto en el objeto que envuelve, como quien se pone capas de ropa según el tiempo que haga.
 
-Imagina un sistema de notificaciones que envía avisos por correo electrónico. Más adelante, algunos usuarios quieren recibirlos también por SMS, otros por Slack y otros por las tres vías a la vez. Crear una subclase para cada combinación es inviable. El patrón *Decorator* permite **añadir responsabilidades a un objeto de forma dinámica**, envolviéndolo en uno o varios *decoradores* que comparten su interfaz. Cada decorador añade su comportamiento y delega el resto en el objeto que envuelve, como quien se pone capas de ropa según el tiempo que haga.
+Los decoradores de Python son otro ejemplo ilustrativo ya que se inspiran en el patrón *Decorator*, pero no son exactamente lo mismo, porque envuelven funciones y no objetos que comparten una interfaz. La sitaxis `@` permite añadir comportamiento a una función in python sin modificar su código. Por ejemplo, `@functools.lru_cache` añade una caché de resultados a cualquier función, de modo que una función recursiva como Fibonacci deja de recalcular los mismos valores una y otra vez. Del mismo modo, podrías escribir un decorador `@medir_tiempo` que cronometre la ejecución o un decorador `@requiere_login` que compruebe permisos, y aplicar varios a la vez, uno encima de otro. Esta es la idea del patrón *Decorator*: **envolver** un objeto (aquí, una función) en otro que añade una responsabilidad y delega el resto en el original. Así, los comportamientos se añaden, se quitan o se combinan sin tocar el código envuelto.
 
+::: {.column-margin}
+Echa un vistazo a las [functools — Higher-order functions](https://docs.python.org/3/library/functools.html) para averiguar más sobre los entresigos de los decoradores en python.
+:::
 
 | Propósito |  Problema |
 |-----------|-----------|
@@ -488,8 +491,13 @@ Imagina un sistema de notificaciones que envía avisos por correo electrónico. 
 
 ### Flyweight
 
+Ahora imagina un videojuego que recrea un mundo con un bosque de cien mil árboles. Si cada árbol guardara su propia copia del modelo 3D, las texturas y la animación del viento, el juego necesitaría varios gigabytes de memoria solo para la vegetación. Sin embargo, en realidad solo hay unos pocos tipos de árbol (pino, roble, abeto); lo que cambia de uno a otro es su posición, su tamaño y su rotación. El patrón *Flyweight* separa el estado de cada objeto en dos partes. El **estado intrínseco** (el modelo y las texturas de cada tipo de árbol) es compartido e inmutable y se almacena una sola vez. El **estado extrínseco** (posición, escala, rotación) es propio de cada árbol. Así, miles de objetos *ligeros* comparten una copia de los mismos datos. 
 
-En un videojuego con miles de partículas (balas, chispas, gotas de lluvia), cada partícula puede guardar su propia copia de datos que en realidad son idénticos para todas: la textura, el color o el sprite. El resultado es un consumo de memoria desproporcionado. El patrón *Flyweight* separa el estado de cada objeto en dos partes. El **estado intrínseco** es compartido e inmutable (la textura) y se almacena una sola vez. El **estado extrínseco** es propio de cada objeto (la posición o la velocidad) y se pasa desde fuera cuando hace falta. Así, miles de objetos *ligeros* comparten los mismos datos.
+::: {.column-margin}
+Los motores gráficos llevan el patrón *Flyweight* al hardware con la técnica de [*instancing*](https://en.wikipedia.org/wiki/Geometry_instancing), que permite a la GPU dibujar miles de copias de un mismo modelo en una sola operación.
+:::
+
+Prueba esto en Java: `Integer.valueOf(100) == Integer.valueOf(100)` devuelve `true`, pero `Integer.valueOf(1000) == Integer.valueOf(1000)` devuelve `false`. La razón es que Java mantiene una **caché** con los objetos `Integer` de -128 a 127: como esos valores se usan constantemente, en lugar de crear un objeto nuevo cada vez, `valueOf()` devuelve siempre la misma instancia compartida. Python hace algo parecido con los enteros pequeños, y ambos lenguajes también reutilizan cadenas de texto idénticas (*string interning*). Esta es la idea del patrón *Flyweight*: cuando muchos objetos son idénticos e inmutables, se **comparte una única instancia** en lugar de crear miles de copias, lo que ahorra una gran cantidad de memoria.
 
 
 | Propósito |  Problema |
@@ -516,21 +524,22 @@ En un videojuego con miles de partículas (balas, chispas, gotas de lluvia), cad
 
 Varios patrones estructurales tienen una estructura muy parecida, porque todos *envuelven* un objeto, pero se distinguen por su intención:
 
-- **Adapter, Decorator y Proxy.** *Adapter* cambia la interfaz de un objeto existente. *Decorator* la mantiene, pero añade comportamiento. *Proxy* también la mantiene, pero controla el acceso al objeto real.
-- **Adapter y Facade.** *Adapter* hace utilizable la interfaz de *un* objeto. *Facade* define una interfaz nueva y simplificada para *todo un subsistema*.
-- **Adapter y Bridge.** *Bridge* se diseña desde el principio, para que abstracción e implementación evolucionen por separado. *Adapter* se aplica a posteriori, para encajar piezas que ya existen.
-- **Composite y Decorator.** Ambos se basan en la composición recursiva de objetos. La diferencia es que un decorador envuelve a *un único* objeto para añadirle funciones, mientras que un compuesto agrupa a *varios* hijos para sumar sus resultados.
-- **Composite y Flyweight.** *Flyweight* puede usarse para compartir las hojas de un árbol *Composite* y ahorrar memoria.
-- **Facade y Singleton.** Como basta con una única fachada por subsistema, *Facade* se implementa a menudo como *Singleton*.
+- *Adapter* cambia la interfaz de un objeto existente. *Decorator* la mantiene, pero añade comportamiento. *Proxy* también la mantiene, pero controla el acceso al objeto real.
+- *Adapter* hace utilizable la interfaz de *un* objeto. *Facade* define una interfaz nueva y simplificada para *todo un subsistema*.
+- *Bridge* se diseña desde el principio, para que abstracción e implementación evolucionen por separado. *Adapter* se aplica a posteriori, para encajar piezas que ya existen.
+- *Composite* y *Decorator* se basan en la composición recursiva de objetos. La diferencia es que un decorador envuelve a *un único* objeto para añadirle funciones, mientras que un compuesto agrupa a *varios* hijos para realizar una operación con sus resultados.
+- *Flyweight* puede usarse para compartir las hojas de un árbol *Composite* y ahorrar memoria.
+- Como basta con una única fachada por subsistema, *Facade* se implementa a menudo como *Singleton*.
 
-El siguiente árbol de decisión resume cuándo conviene usar cada patrón estructural:
+La @fig-arbol-estructurales recrea un [árbol de decisión](https://medium.com/womenintechnology/stop-memorizing-design-patterns-use-this-decision-tree-instead-e84f22fca9fa?sk=d8ce25c71ba530c026c9b90e9c8d38f0) que resume cuándo conviene utilizar cada patrón estructural.
+
 
 ```{mermaid}
 %%| label: fig-arbol-estructurales
 %%| fig-cap: "Árbol de decisión para elegir un patrón estructural"
 %%| echo: false
 flowchart TD
-  A["¿Qué problema tengo al organizar<br/>o conectar objetos?"] --> B{"¿Quiero usar una clase existente cuya<br/>interfaz no encaja con la que espero?"}
+  A["¿Qué problema tengo al <br/>combinar objetos/clases?"] --> B{"¿Quiero compatibiliar<br/> clases incompatibles?"}
   B -- Sí --> AD["Adapter"]
   B -- No --> C{"¿Quiero ofrecer una interfaz simple<br/>a un subsistema complejo?"}
   C -- Sí --> FA["Facade"]
@@ -550,10 +559,6 @@ flowchart TD
 ::: {.callout-note title="Un árbol orientativo"}
 Igual que con los patrones creacionales, este árbol es una guía y no una regla. Un mismo problema puede encajar en varias ramas, y los patrones estructurales se combinan con frecuencia (por ejemplo, *Composite* con *Decorator*, o *Composite* con *Flyweight*).
 :::
-
-
-### Aplicabilidad {#aplicabilidad-estructurales}
-
 
 
 ## Patrones de comportamiento
