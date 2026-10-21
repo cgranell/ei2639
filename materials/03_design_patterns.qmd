@@ -12,7 +12,7 @@ En los últimos años se ha publicado una gran cantidad de artículos de opinió
 
 Es decir, el futuro pertenecerá a quienes sepan pensar con claridad a gran escala, mantener modelos mentales sólidos aunque todo cambie rápidamente e integrar el código generado por la IA en objetivos definidos por personas.
 
-::: {.callout-note title="Para reflexionar" icon=true}
+::: {.callout-tip title="Para reflexionar" icon=true}
 ¿Qué significa «pensar con claridad a gran escala»?
 :::
 
@@ -85,11 +85,11 @@ Los patrones creacionales responden a una pregunta (problema) aparentemente senc
 
 Los patrones creacionales resuelven estos problemas relacionados con la creación de objetos **separando el uso de un objeto de la forma en que se crea**. Así, el resto de código de un programa (e.g., librería, modulo, cliente) no necesita saber qué clase concreta se instancia ni cómo se configura, resultando en un código más flexible, menos dependiente, y fácil de mantener. Los patrones creacionales son:
 
-- [Singleton](#Singleton)
-- [Builder](#Builder)
-- [Prototype](#Prototype)
-- [Factory Method](#Factory Method)
-- [Abstract Factory](#Abstract Factory)
+- [Singleton](#singleton)
+- [Builder](#builder)
+- [Prototype](#prototype)
+- [Factory Method](#factory-method)
+- [Abstract Factory](#abstract-factory)
 
 En este curso, todos los patrones, tanto los creacionales,  estructurales y de comportamiento, se describen con la misma estructura, que coincide con la de sus mapas conceptuales:
 
@@ -104,7 +104,7 @@ Los mapas conceptuales incluyen, además, tres apartados complementarios:
 6. **Ver también** (*see also*): patrones relacionados que suelen usarse junto a él.
 7. **Usos** (*usage*): ejemplos de dónde se aplica en la práctica.
 
-::: {.callout-tip title="Para trabajar en clase" icon=true}
+::: {.callout-tip title="Para reflexionar" icon=true}
 Dejamos para el debate en clase dos tareas: [relacionar los patrones creacionales entre sí](#relaciones-entre-patrones) y proponer [situaciones o aplicaciones concretas](#aplicabilidad) en las que tenga sentido usarlos.
 :::
 
