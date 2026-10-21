@@ -8,7 +8,7 @@
 
 <meta name="description" content="Diseño de Software">
 
-<title>4&nbsp; Patrones de diseño – EI1039 - 2026/2027</title>
+<title>3&nbsp; Patrones de diseño – EI1039 - 2026/2027</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -56,8 +56,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../references.html" rel="next">
-<link href="../materials/data_architecture_patterns.html" rel="prev">
+<link href="../materials/data_architecture_patterns.html" rel="next">
+<link href="../materials/02_principles.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -67,7 +67,7 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-defce90a430ddeea48f4f6a2f762eb41.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-81d8ec7cf955bbbdd9d6d093b8d99ca1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-d4540b64af3bcec97118e82438396e6f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -111,7 +111,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../materials/design_patterns.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Patrones de diseño</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../materials/03_design_patterns.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Patrones de diseño</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -164,14 +164,14 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../materials/data_architecture_patterns.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Patrones de arquitectura de datos</span></span></a>
+  <a href="../materials/03_design_patterns.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Patrones de diseño</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../materials/design_patterns.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Patrones de diseño</span></span></a>
+  <a href="../materials/data_architecture_patterns.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Patrones de arquitectura de datos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -190,53 +190,53 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#qué-es-un-patrón" id="toc-qué-es-un-patrón" class="nav-link active" data-scroll-target="#qué-es-un-patrón"><span class="header-section-number">4.1</span> ¿Qué es un patrón?</a></li>
-  <li><a href="#patrones-creacionales" id="toc-patrones-creacionales" class="nav-link" data-scroll-target="#patrones-creacionales"><span class="header-section-number">4.2</span> Patrones creacionales</a>
+  <li><a href="#qué-es-un-patrón" id="toc-qué-es-un-patrón" class="nav-link active" data-scroll-target="#qué-es-un-patrón"><span class="header-section-number">3.1</span> ¿Qué es un patrón?</a></li>
+  <li><a href="#patrones-creacionales" id="toc-patrones-creacionales" class="nav-link" data-scroll-target="#patrones-creacionales"><span class="header-section-number">3.2</span> Patrones creacionales</a>
   <ul class="collapse">
-  <li><a href="#singleton" id="toc-singleton" class="nav-link" data-scroll-target="#singleton"><span class="header-section-number">4.2.1</span> Singleton</a></li>
-  <li><a href="#builder" id="toc-builder" class="nav-link" data-scroll-target="#builder"><span class="header-section-number">4.2.2</span> Builder</a></li>
-  <li><a href="#prototype" id="toc-prototype" class="nav-link" data-scroll-target="#prototype"><span class="header-section-number">4.2.3</span> Prototype</a></li>
-  <li><a href="#factory-method" id="toc-factory-method" class="nav-link" data-scroll-target="#factory-method"><span class="header-section-number">4.2.4</span> Factory method</a></li>
-  <li><a href="#abstract-factory" id="toc-abstract-factory" class="nav-link" data-scroll-target="#abstract-factory"><span class="header-section-number">4.2.5</span> Abstract Factory</a></li>
-  <li><a href="#relaciones-entre-patrones" id="toc-relaciones-entre-patrones" class="nav-link" data-scroll-target="#relaciones-entre-patrones"><span class="header-section-number">4.2.6</span> Relaciones entre patrones</a></li>
-  <li><a href="#aplicabilidad" id="toc-aplicabilidad" class="nav-link" data-scroll-target="#aplicabilidad"><span class="header-section-number">4.2.7</span> Aplicabilidad</a></li>
+  <li><a href="#singleton" id="toc-singleton" class="nav-link" data-scroll-target="#singleton"><span class="header-section-number">3.2.1</span> Singleton</a></li>
+  <li><a href="#builder" id="toc-builder" class="nav-link" data-scroll-target="#builder"><span class="header-section-number">3.2.2</span> Builder</a></li>
+  <li><a href="#prototype" id="toc-prototype" class="nav-link" data-scroll-target="#prototype"><span class="header-section-number">3.2.3</span> Prototype</a></li>
+  <li><a href="#factory-method" id="toc-factory-method" class="nav-link" data-scroll-target="#factory-method"><span class="header-section-number">3.2.4</span> Factory method</a></li>
+  <li><a href="#abstract-factory" id="toc-abstract-factory" class="nav-link" data-scroll-target="#abstract-factory"><span class="header-section-number">3.2.5</span> Abstract Factory</a></li>
+  <li><a href="#relaciones-entre-patrones" id="toc-relaciones-entre-patrones" class="nav-link" data-scroll-target="#relaciones-entre-patrones"><span class="header-section-number">3.2.6</span> Relaciones entre patrones</a></li>
+  <li><a href="#aplicabilidad" id="toc-aplicabilidad" class="nav-link" data-scroll-target="#aplicabilidad"><span class="header-section-number">3.2.7</span> Aplicabilidad</a></li>
   </ul></li>
-  <li><a href="#patrones-estructurales" id="toc-patrones-estructurales" class="nav-link" data-scroll-target="#patrones-estructurales"><span class="header-section-number">4.3</span> Patrones estructurales</a>
+  <li><a href="#patrones-estructurales" id="toc-patrones-estructurales" class="nav-link" data-scroll-target="#patrones-estructurales"><span class="header-section-number">3.3</span> Patrones estructurales</a>
   <ul class="collapse">
-  <li><a href="#adapter" id="toc-adapter" class="nav-link" data-scroll-target="#adapter"><span class="header-section-number">4.3.1</span> Adapter</a></li>
-  <li><a href="#bridge" id="toc-bridge" class="nav-link" data-scroll-target="#bridge"><span class="header-section-number">4.3.2</span> Bridge</a></li>
-  <li><a href="#facade" id="toc-facade" class="nav-link" data-scroll-target="#facade"><span class="header-section-number">4.3.3</span> Facade</a></li>
-  <li><a href="#proxy" id="toc-proxy" class="nav-link" data-scroll-target="#proxy"><span class="header-section-number">4.3.4</span> Proxy</a></li>
-  <li><a href="#composite" id="toc-composite" class="nav-link" data-scroll-target="#composite"><span class="header-section-number">4.3.5</span> Composite</a></li>
-  <li><a href="#decorator" id="toc-decorator" class="nav-link" data-scroll-target="#decorator"><span class="header-section-number">4.3.6</span> Decorator</a></li>
-  <li><a href="#flyweight" id="toc-flyweight" class="nav-link" data-scroll-target="#flyweight"><span class="header-section-number">4.3.7</span> Flyweight</a></li>
-  <li><a href="#relaciones-entre-patrones-1" id="toc-relaciones-entre-patrones-1" class="nav-link" data-scroll-target="#relaciones-entre-patrones-1"><span class="header-section-number">4.3.8</span> Relaciones entre patrones</a></li>
-  <li><a href="#aplicabilidad-1" id="toc-aplicabilidad-1" class="nav-link" data-scroll-target="#aplicabilidad-1"><span class="header-section-number">4.3.9</span> Aplicabilidad</a></li>
+  <li><a href="#adapter" id="toc-adapter" class="nav-link" data-scroll-target="#adapter"><span class="header-section-number">3.3.1</span> Adapter</a></li>
+  <li><a href="#bridge" id="toc-bridge" class="nav-link" data-scroll-target="#bridge"><span class="header-section-number">3.3.2</span> Bridge</a></li>
+  <li><a href="#facade" id="toc-facade" class="nav-link" data-scroll-target="#facade"><span class="header-section-number">3.3.3</span> Facade</a></li>
+  <li><a href="#proxy" id="toc-proxy" class="nav-link" data-scroll-target="#proxy"><span class="header-section-number">3.3.4</span> Proxy</a></li>
+  <li><a href="#composite" id="toc-composite" class="nav-link" data-scroll-target="#composite"><span class="header-section-number">3.3.5</span> Composite</a></li>
+  <li><a href="#decorator" id="toc-decorator" class="nav-link" data-scroll-target="#decorator"><span class="header-section-number">3.3.6</span> Decorator</a></li>
+  <li><a href="#flyweight" id="toc-flyweight" class="nav-link" data-scroll-target="#flyweight"><span class="header-section-number">3.3.7</span> Flyweight</a></li>
+  <li><a href="#relaciones-entre-patrones-1" id="toc-relaciones-entre-patrones-1" class="nav-link" data-scroll-target="#relaciones-entre-patrones-1"><span class="header-section-number">3.3.8</span> Relaciones entre patrones</a></li>
+  <li><a href="#aplicabilidad-1" id="toc-aplicabilidad-1" class="nav-link" data-scroll-target="#aplicabilidad-1"><span class="header-section-number">3.3.9</span> Aplicabilidad</a></li>
   </ul></li>
-  <li><a href="#patrones-de-comportamiento" id="toc-patrones-de-comportamiento" class="nav-link" data-scroll-target="#patrones-de-comportamiento"><span class="header-section-number">4.4</span> Patrones de comportamiento</a>
+  <li><a href="#patrones-de-comportamiento" id="toc-patrones-de-comportamiento" class="nav-link" data-scroll-target="#patrones-de-comportamiento"><span class="header-section-number">3.4</span> Patrones de comportamiento</a>
   <ul class="collapse">
-  <li><a href="#command" id="toc-command" class="nav-link" data-scroll-target="#command"><span class="header-section-number">4.4.1</span> Command</a></li>
-  <li><a href="#memento" id="toc-memento" class="nav-link" data-scroll-target="#memento"><span class="header-section-number">4.4.2</span> Memento</a></li>
-  <li><a href="#chain-of-responsibility" id="toc-chain-of-responsibility" class="nav-link" data-scroll-target="#chain-of-responsibility"><span class="header-section-number">4.4.3</span> Chain of responsibility</a></li>
-  <li><a href="#template-method" id="toc-template-method" class="nav-link" data-scroll-target="#template-method"><span class="header-section-number">4.4.4</span> Template method</a></li>
-  <li><a href="#observer" id="toc-observer" class="nav-link" data-scroll-target="#observer"><span class="header-section-number">4.4.5</span> Observer</a></li>
-  <li><a href="#strategy" id="toc-strategy" class="nav-link" data-scroll-target="#strategy"><span class="header-section-number">4.4.6</span> Strategy</a></li>
-  <li><a href="#mediator" id="toc-mediator" class="nav-link" data-scroll-target="#mediator"><span class="header-section-number">4.4.7</span> Mediator</a></li>
-  <li><a href="#iterator" id="toc-iterator" class="nav-link" data-scroll-target="#iterator"><span class="header-section-number">4.4.8</span> Iterator</a></li>
-  <li><a href="#state" id="toc-state" class="nav-link" data-scroll-target="#state"><span class="header-section-number">4.4.9</span> State</a></li>
-  <li><a href="#interpreter" id="toc-interpreter" class="nav-link" data-scroll-target="#interpreter"><span class="header-section-number">4.4.10</span> Interpreter</a></li>
-  <li><a href="#relaciones-entre-patrones-2" id="toc-relaciones-entre-patrones-2" class="nav-link" data-scroll-target="#relaciones-entre-patrones-2"><span class="header-section-number">4.4.11</span> Relaciones entre patrones</a></li>
-  <li><a href="#aplicabilidad-2" id="toc-aplicabilidad-2" class="nav-link" data-scroll-target="#aplicabilidad-2"><span class="header-section-number">4.4.12</span> Aplicabilidad</a></li>
+  <li><a href="#command" id="toc-command" class="nav-link" data-scroll-target="#command"><span class="header-section-number">3.4.1</span> Command</a></li>
+  <li><a href="#memento" id="toc-memento" class="nav-link" data-scroll-target="#memento"><span class="header-section-number">3.4.2</span> Memento</a></li>
+  <li><a href="#chain-of-responsibility" id="toc-chain-of-responsibility" class="nav-link" data-scroll-target="#chain-of-responsibility"><span class="header-section-number">3.4.3</span> Chain of responsibility</a></li>
+  <li><a href="#template-method" id="toc-template-method" class="nav-link" data-scroll-target="#template-method"><span class="header-section-number">3.4.4</span> Template method</a></li>
+  <li><a href="#observer" id="toc-observer" class="nav-link" data-scroll-target="#observer"><span class="header-section-number">3.4.5</span> Observer</a></li>
+  <li><a href="#strategy" id="toc-strategy" class="nav-link" data-scroll-target="#strategy"><span class="header-section-number">3.4.6</span> Strategy</a></li>
+  <li><a href="#mediator" id="toc-mediator" class="nav-link" data-scroll-target="#mediator"><span class="header-section-number">3.4.7</span> Mediator</a></li>
+  <li><a href="#iterator" id="toc-iterator" class="nav-link" data-scroll-target="#iterator"><span class="header-section-number">3.4.8</span> Iterator</a></li>
+  <li><a href="#state" id="toc-state" class="nav-link" data-scroll-target="#state"><span class="header-section-number">3.4.9</span> State</a></li>
+  <li><a href="#interpreter" id="toc-interpreter" class="nav-link" data-scroll-target="#interpreter"><span class="header-section-number">3.4.10</span> Interpreter</a></li>
+  <li><a href="#relaciones-entre-patrones-2" id="toc-relaciones-entre-patrones-2" class="nav-link" data-scroll-target="#relaciones-entre-patrones-2"><span class="header-section-number">3.4.11</span> Relaciones entre patrones</a></li>
+  <li><a href="#aplicabilidad-2" id="toc-aplicabilidad-2" class="nav-link" data-scroll-target="#aplicabilidad-2"><span class="header-section-number">3.4.12</span> Aplicabilidad</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/cgranell/ei2639/blob/main/materials/design_patterns.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/cgranell/ei2639/edit/main/materials/design_patterns.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/cgranell/ei2639/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/cgranell/ei2639/blob/main/materials/03_design_patterns.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/cgranell/ei2639/edit/main/materials/03_design_patterns.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/cgranell/ei2639/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Patrones de diseño</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Patrones de diseño</span></h1>
 </div>
 
 
@@ -291,8 +291,8 @@ div.csl-indent {
 <blockquote class="blockquote">
 <p>The human, in turn, becomes less a conductor of keystrokes and more a shaper of intent: checking, interpreting, integrating, synthesizing, validating, reorganizing, discarding, editing, and ultimately giving structure and purpose to what the system supplies. It resembles what has already happened in medicine: Diagnostic tools lowered the burden of memorizing obscure clinical details but raised the stakes for interpretation, judgment, and error detection. Expertise became less about recall and more about reasoning.</p>
 </blockquote>
-<section id="qué-es-un-patrón" class="level2 page-columns page-full" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="qué-es-un-patrón"><span class="header-section-number">4.1</span> ¿Qué es un patrón?</h2>
+<section id="qué-es-un-patrón" class="level2 page-columns page-full" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="qué-es-un-patrón"><span class="header-section-number">3.1</span> ¿Qué es un patrón?</h2>
 <p>El término <strong>patrón</strong> tiene múltiples significados según el contexto. En matemáticas, por ejemplo, hablamos de patrones numéricos (una secuencia que sigue una regla) o de patrones geométricos (formas que se repiten en el espacio).</p>
 <p>En el área de la Inteligencia Artificial, el <a href="https://es.wikipedia.org/wiki/Aprendizaje_autom%C3%A1tico">aprendizaje automático</a> utiliza técnicas computacionales avanzadas para descubrir patrones y relaciones ocultas en los datos.</p>
 <p>En ingeniería de software, la palabra tiene un sentido distinto. A lo largo de tu carrera profesional comprobarás que los mismos problemas de diseño de software aparecen una y otra vez. Hay muchas formas de resolverlos, pero la industria prefiere soluciones flexibles, reutilizables y verificables. Esas soluciones son los <a href="https://refactoring.guru/es/design-patterns"><strong>patrones de diseño</strong></a>: descripciones generales de cómo resolver un problema de diseño recurrente, que puedes adaptar a cada situación concreta.</p>
@@ -323,8 +323,8 @@ div.csl-indent {
 </div></div><p>Conviene dejar claro que un patrón de diseño no es simplemente un fragmento de código (clases, interfaces, etc.) que se copia y se añade al proyecto de software. Un patrón de diseño es una <strong>solución conceptual</strong>: una idea general que se aplica y, sobre todo, se adapta durante el diseño y la implementación de un programa concreto. Su objetivo es mejorar la estructura, la modularidad, la abstracción, la flexibilidad y la reutilización del código.</p>
 <p>Por ese motivo, en este curso presentamos los patrones de diseño de forma conceptual, describiendo qué papel cumple cada elemento (clases, interfaces y relaciones entre ellos), normalmente con ayuda de diagramas <a href="https://es.wikipedia.org/wiki/Lenguaje_unificado_de_modelado">UML</a>. Después, en el proyecto común de la asignatura, implementarás algunos de estos patrones en un contexto real.</p>
 </section>
-<section id="patrones-creacionales" class="level2 page-columns page-full" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="patrones-creacionales"><span class="header-section-number">4.2</span> Patrones creacionales</h2>
+<section id="patrones-creacionales" class="level2 page-columns page-full" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="patrones-creacionales"><span class="header-section-number">3.2</span> Patrones creacionales</h2>
 <p>Los patrones de diseño suelen clasificarse en tres grandes familias según el tipo de problema que resuelven: <strong>creacionales</strong>, <strong>estructurales</strong> y <strong>de comportamiento</strong>. Esta clasificación procede del libro <em>Design Patterns: Elements of Reusable Object-Oriented Software</em> <span class="citation" data-cites="gamma1994">(<a href="../references.html#ref-gamma1994" role="doc-biblioref">Gamma et al. 1994</a>)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Definición">
 <div class="callout-header d-flex align-content-center">
@@ -367,8 +367,8 @@ div.csl-indent {
 <p>Dejamos para el debate en clase dos tareas: <a href="#relaciones-entre-patrones">relacionar los patrones creacionales entre sí</a> y proponer <a href="#aplicabilidad">situaciones o aplicaciones concretas</a> en las que tenga sentido usarlos.</p>
 </div>
 </div>
-<section id="singleton" class="level3 page-columns page-full" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="singleton"><span class="header-section-number">4.2.1</span> Singleton</h3>
+<section id="singleton" class="level3 page-columns page-full" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="singleton"><span class="header-section-number">3.2.1</span> Singleton</h3>
 <p>Algunos recursos de un programa deben existir <strong>una sola vez</strong>: la conexión a una base de datos, el registro de <em>logs</em> o la configuración global de la aplicación. Si cada parte del código creara su propia instancia, tendríamos datos inconsistentes y un consumo innecesario de recursos. El patrón <em>Singleton</em> garantiza que solo exista un objeto de esa clase y ofrece un único punto de acceso a él. Es el patrón creacional más sencillo, pero también el más discutido: si se abusa de él, introduce un estado global que dificulta las pruebas y oculta dependencias entre clases.</p>
 <table class="caption-top table">
 <colgroup>
@@ -405,8 +405,8 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="builder" class="level3 page-columns page-full" data-number="4.2.2">
-<h3 data-number="4.2.2" class="anchored" data-anchor-id="builder"><span class="header-section-number">4.2.2</span> Builder</h3>
+<section id="builder" class="level3 page-columns page-full" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="builder"><span class="header-section-number">3.2.2</span> Builder</h3>
 <p>Cuando un objeto tiene muchos atributos, varios de ellos opcionales, su constructor acaba recibiendo una lista interminable de parámetros, uqe dificulta la gestión de nuevas instancias. El patrón <em>Builder</em> propone construir el objeto <strong>paso a paso</strong>, mediante un objeto constructor (<em>builder</em>) con un método para cada parte. Además, el mismo proceso de construcción puede producir representaciones distintas: por ejemplo, el mismo informe generado en HTML o en PDF.</p>
 <table class="caption-top table">
 <colgroup>
@@ -443,8 +443,8 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="prototype" class="level3" data-number="4.2.3">
-<h3 data-number="4.2.3" class="anchored" data-anchor-id="prototype"><span class="header-section-number">4.2.3</span> Prototype</h3>
+<section id="prototype" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="prototype"><span class="header-section-number">3.2.3</span> Prototype</h3>
 <p>En ocasiones, crear un objeto desde cero resulta costoso (requiere consultas a una base de datos, cálculos largos o una configuración compleja) o simplemente queremos obtener una copia exacta de un objeto ya existente. Copiarlo “desde fuera” no siempre es posible, porque parte de su estado puede ser privado y el código cliente quedaría atado a su clase concreta. El patrón <em>Prototype</em> delega la copia en el propio objeto: cada prototipo sabe <strong>clonarse a sí mismo</strong>, de modo que el cliente puede crear objetos nuevos a partir de otros ya configurados sin conocer su clase.</p>
 <table class="caption-top table">
 <colgroup>
@@ -478,8 +478,8 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="factory-method" class="level3 page-columns page-full" data-number="4.2.4">
-<h3 data-number="4.2.4" class="anchored" data-anchor-id="factory-method"><span class="header-section-number">4.2.4</span> Factory method</h3>
+<section id="factory-method" class="level3 page-columns page-full" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="factory-method"><span class="header-section-number">3.2.4</span> Factory method</h3>
 <p>Imagina una aplicación de logística que al principio solo gestiona camiones. Si el código crea los camiones directamente (<code>new Camion()</code>), añadir barcos más adelante obligará a modificar muchas partes del programa. El patrón <em>Factory Method</em> resuelve este problema sustituyendo la creación directa de objetos por una llamada a un <strong>método de fábrica</strong>, que las subclases pueden redefinir para decidir qué objeto concreto se crea. Así, el código que usa los objetos depende de una interfaz común y no de clases concretas.</p>
 <table class="caption-top table">
 <colgroup>
@@ -529,8 +529,8 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="abstract-factory" class="level3 page-columns page-full" data-number="4.2.5">
-<h3 data-number="4.2.5" class="anchored" data-anchor-id="abstract-factory"><span class="header-section-number">4.2.5</span> Abstract Factory</h3>
+<section id="abstract-factory" class="level3 page-columns page-full" data-number="3.2.5">
+<h3 data-number="3.2.5" class="anchored" data-anchor-id="abstract-factory"><span class="header-section-number">3.2.5</span> Abstract Factory</h3>
 <p>A veces no basta con crear un objeto, sino que necesitamos crear <strong>familias de objetos que deben ser compatibles entre sí</strong>. Por ejemplo, una interfaz gráfica con botones, menús y casillas de verificación que deben compartir el mismo estilo (Windows, macOS o Linux). El patrón <em>Abstract Factory</em> agrupa en una misma fábrica los métodos que crean cada objeto de la familia, de modo que el cliente obtiene siempre productos coherentes sin conocer sus clases concretas. Puede verse como una generalización de <em>Factory Method</em>, aplicada a varios productos relacionados a la vez (en familias).</p>
 <table class="caption-top table">
 <colgroup>
@@ -567,10 +567,10 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="relaciones-entre-patrones" class="level3" data-number="4.2.6">
-<h3 data-number="4.2.6" class="anchored" data-anchor-id="relaciones-entre-patrones"><span class="header-section-number">4.2.6</span> Relaciones entre patrones</h3>
+<section id="relaciones-entre-patrones" class="level3" data-number="3.2.6">
+<h3 data-number="3.2.6" class="anchored" data-anchor-id="relaciones-entre-patrones"><span class="header-section-number">3.2.6</span> Relaciones entre patrones</h3>
 <p>Los patrones creacionales no son independientes entre sí. A menudo se combinan o uno evoluciona hacia otro a medida que el diseño se vuelve más complejo. Muchos diseños empiezan con <em>Factory Method</em>, que es sencillo y fácil de adaptar mediante subclases, y evolucionan hacia <em>Abstract Factory</em>, <em>Prototype</em> o <em>Builder</em> cuando se necesita más flexibilidad. A su vez, las clases de <em>Abstract Factory</em> suelen implementarse con métodos de fábrica (<em>Factory Method</em>), aunque también pueden apoyarse en <em>Prototype</em>. Por último, tanto los patrones <em>Abstract Factory</em>, <em>Builder</em> y <em>Prototype</em> pueden implementarse como <em>Singleton</em> cuando basta con una única instancia de ellos.</p>
-<p>La <a href="#fig-arbol-creacionales" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> reproduce un <a href="https://medium.com/womenintechnology/stop-memorizing-design-patterns-use-this-decision-tree-instead-e84f22fca9fa?sk=d8ce25c71ba530c026c9b90e9c8d38f0">árbol de decisión</a> que resume cuándo conviene usar cada patrón creacional:</p>
+<p>La <a href="#fig-arbol-creacionales" class="quarto-xref">Figure&nbsp;<span>3.1</span></a> reproduce un <a href="https://medium.com/womenintechnology/stop-memorizing-design-patterns-use-this-decision-tree-instead-e84f22fca9fa?sk=d8ce25c71ba530c026c9b90e9c8d38f0">árbol de decisión</a> que resume cuándo conviene usar cada patrón creacional:</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div id="fig-arbol-creacionales" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -593,7 +593,7 @@ div.csl-indent {
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-arbol-creacionales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.1: Árbol de decisión para elegir un patrón creacional
+Figure&nbsp;3.1: Árbol de decisión para elegir un patrón creacional
 </figcaption>
 </figure>
 </div>
@@ -613,12 +613,12 @@ Figure&nbsp;4.1: Árbol de decisión para elegir un patrón creacional
 </div>
 </div>
 </section>
-<section id="aplicabilidad" class="level3" data-number="4.2.7">
-<h3 data-number="4.2.7" class="anchored" data-anchor-id="aplicabilidad"><span class="header-section-number">4.2.7</span> Aplicabilidad</h3>
+<section id="aplicabilidad" class="level3" data-number="3.2.7">
+<h3 data-number="3.2.7" class="anchored" data-anchor-id="aplicabilidad"><span class="header-section-number">3.2.7</span> Aplicabilidad</h3>
 </section>
 </section>
-<section id="patrones-estructurales" class="level2 page-columns page-full" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="patrones-estructurales"><span class="header-section-number">4.3</span> Patrones estructurales</h2>
+<section id="patrones-estructurales" class="level2 page-columns page-full" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="patrones-estructurales"><span class="header-section-number">3.3</span> Patrones estructurales</h2>
 <div class="callout callout-style-default callout-note callout-titled" title="Definición">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -632,8 +632,8 @@ Figure&nbsp;4.1: Árbol de decisión para elegir un patrón creacional
 <p>Los <strong>patrones estructurales</strong> se refieren a la organización del código, es decir, a la composición de clases y objetos. Definen formas de componer y organizar clases para obtener fines estructurales (nuevas funciones, etc.).</p>
 </div>
 </div>
-<section id="adapter" class="level3 page-columns page-full" data-number="4.3.1">
-<h3 data-number="4.3.1" class="anchored" data-anchor-id="adapter"><span class="header-section-number">4.3.1</span> Adapter</h3>
+<section id="adapter" class="level3 page-columns page-full" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="adapter"><span class="header-section-number">3.3.1</span> Adapter</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -682,8 +682,8 @@ Figure&nbsp;4.1: Árbol de decisión para elegir un patrón creacional
 </div>
 </div>
 </section>
-<section id="bridge" class="level3 page-columns page-full" data-number="4.3.2">
-<h3 data-number="4.3.2" class="anchored" data-anchor-id="bridge"><span class="header-section-number">4.3.2</span> Bridge</h3>
+<section id="bridge" class="level3 page-columns page-full" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="bridge"><span class="header-section-number">3.3.2</span> Bridge</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -719,8 +719,8 @@ Figure&nbsp;4.1: Árbol de decisión para elegir un patrón creacional
 </div>
 </div>
 </section>
-<section id="facade" class="level3 page-columns page-full" data-number="4.3.3">
-<h3 data-number="4.3.3" class="anchored" data-anchor-id="facade"><span class="header-section-number">4.3.3</span> Facade</h3>
+<section id="facade" class="level3 page-columns page-full" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="facade"><span class="header-section-number">3.3.3</span> Facade</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -769,8 +769,8 @@ Figure&nbsp;4.1: Árbol de decisión para elegir un patrón creacional
 </div>
 </div>
 </section>
-<section id="proxy" class="level3 page-columns page-full" data-number="4.3.4">
-<h3 data-number="4.3.4" class="anchored" data-anchor-id="proxy"><span class="header-section-number">4.3.4</span> Proxy</h3>
+<section id="proxy" class="level3 page-columns page-full" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="proxy"><span class="header-section-number">3.3.4</span> Proxy</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -819,8 +819,8 @@ Figure&nbsp;4.1: Árbol de decisión para elegir un patrón creacional
 </div>
 </div>
 </section>
-<section id="composite" class="level3 page-columns page-full" data-number="4.3.5">
-<h3 data-number="4.3.5" class="anchored" data-anchor-id="composite"><span class="header-section-number">4.3.5</span> Composite</h3>
+<section id="composite" class="level3 page-columns page-full" data-number="3.3.5">
+<h3 data-number="3.3.5" class="anchored" data-anchor-id="composite"><span class="header-section-number">3.3.5</span> Composite</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -869,8 +869,8 @@ Figure&nbsp;4.1: Árbol de decisión para elegir un patrón creacional
 </div>
 </div>
 </section>
-<section id="decorator" class="level3 page-columns page-full" data-number="4.3.6">
-<h3 data-number="4.3.6" class="anchored" data-anchor-id="decorator"><span class="header-section-number">4.3.6</span> Decorator</h3>
+<section id="decorator" class="level3 page-columns page-full" data-number="3.3.6">
+<h3 data-number="3.3.6" class="anchored" data-anchor-id="decorator"><span class="header-section-number">3.3.6</span> Decorator</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -919,8 +919,8 @@ Figure&nbsp;4.1: Árbol de decisión para elegir un patrón creacional
 </div>
 </div>
 </section>
-<section id="flyweight" class="level3 page-columns page-full" data-number="4.3.7">
-<h3 data-number="4.3.7" class="anchored" data-anchor-id="flyweight"><span class="header-section-number">4.3.7</span> Flyweight</h3>
+<section id="flyweight" class="level3 page-columns page-full" data-number="3.3.7">
+<h3 data-number="3.3.7" class="anchored" data-anchor-id="flyweight"><span class="header-section-number">3.3.7</span> Flyweight</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -956,15 +956,15 @@ Figure&nbsp;4.1: Árbol de decisión para elegir un patrón creacional
 </div>
 </div>
 </section>
-<section id="relaciones-entre-patrones-1" class="level3" data-number="4.3.8">
-<h3 data-number="4.3.8" class="anchored" data-anchor-id="relaciones-entre-patrones-1"><span class="header-section-number">4.3.8</span> Relaciones entre patrones</h3>
+<section id="relaciones-entre-patrones-1" class="level3" data-number="3.3.8">
+<h3 data-number="3.3.8" class="anchored" data-anchor-id="relaciones-entre-patrones-1"><span class="header-section-number">3.3.8</span> Relaciones entre patrones</h3>
 </section>
-<section id="aplicabilidad-1" class="level3" data-number="4.3.9">
-<h3 data-number="4.3.9" class="anchored" data-anchor-id="aplicabilidad-1"><span class="header-section-number">4.3.9</span> Aplicabilidad</h3>
+<section id="aplicabilidad-1" class="level3" data-number="3.3.9">
+<h3 data-number="3.3.9" class="anchored" data-anchor-id="aplicabilidad-1"><span class="header-section-number">3.3.9</span> Aplicabilidad</h3>
 </section>
 </section>
-<section id="patrones-de-comportamiento" class="level2 page-columns page-full" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="patrones-de-comportamiento"><span class="header-section-number">4.4</span> Patrones de comportamiento</h2>
+<section id="patrones-de-comportamiento" class="level2 page-columns page-full" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="patrones-de-comportamiento"><span class="header-section-number">3.4</span> Patrones de comportamiento</h2>
 <div class="callout callout-style-default callout-note callout-titled" title="Definición">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -978,8 +978,8 @@ Figure&nbsp;4.1: Árbol de decisión para elegir un patrón creacional
 <p>Los <strong>patrones de comportamiento</strong> se refieren a la comunicación entre objetos en tiempo de ejecución, es decir, los roles que asumen dichos objetos y cómo interactúan entre sí.</p>
 </div>
 </div>
-<section id="command" class="level3 page-columns page-full" data-number="4.4.1">
-<h3 data-number="4.4.1" class="anchored" data-anchor-id="command"><span class="header-section-number">4.4.1</span> Command</h3>
+<section id="command" class="level3 page-columns page-full" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="command"><span class="header-section-number">3.4.1</span> Command</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -1028,8 +1028,8 @@ Figure&nbsp;4.1: Árbol de decisión para elegir un patrón creacional
 </div>
 </div>
 </section>
-<section id="memento" class="level3 page-columns page-full" data-number="4.4.2">
-<h3 data-number="4.4.2" class="anchored" data-anchor-id="memento"><span class="header-section-number">4.4.2</span> Memento</h3>
+<section id="memento" class="level3 page-columns page-full" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="memento"><span class="header-section-number">3.4.2</span> Memento</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -1065,8 +1065,8 @@ Figure&nbsp;4.1: Árbol de decisión para elegir un patrón creacional
 </div>
 </div>
 </section>
-<section id="chain-of-responsibility" class="level3 page-columns page-full" data-number="4.4.3">
-<h3 data-number="4.4.3" class="anchored" data-anchor-id="chain-of-responsibility"><span class="header-section-number">4.4.3</span> Chain of responsibility</h3>
+<section id="chain-of-responsibility" class="level3 page-columns page-full" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="chain-of-responsibility"><span class="header-section-number">3.4.3</span> Chain of responsibility</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -1102,8 +1102,8 @@ Figure&nbsp;4.1: Árbol de decisión para elegir un patrón creacional
 </div>
 </div>
 </section>
-<section id="template-method" class="level3 page-columns page-full" data-number="4.4.4">
-<h3 data-number="4.4.4" class="anchored" data-anchor-id="template-method"><span class="header-section-number">4.4.4</span> Template method</h3>
+<section id="template-method" class="level3 page-columns page-full" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="template-method"><span class="header-section-number">3.4.4</span> Template method</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -1152,8 +1152,8 @@ Figure&nbsp;4.1: Árbol de decisión para elegir un patrón creacional
 </div>
 </div>
 </section>
-<section id="observer" class="level3 page-columns page-full" data-number="4.4.5">
-<h3 data-number="4.4.5" class="anchored" data-anchor-id="observer"><span class="header-section-number">4.4.5</span> Observer</h3>
+<section id="observer" class="level3 page-columns page-full" data-number="3.4.5">
+<h3 data-number="3.4.5" class="anchored" data-anchor-id="observer"><span class="header-section-number">3.4.5</span> Observer</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -1202,8 +1202,8 @@ Figure&nbsp;4.1: Árbol de decisión para elegir un patrón creacional
 </div>
 </div>
 </section>
-<section id="strategy" class="level3 page-columns page-full" data-number="4.4.6">
-<h3 data-number="4.4.6" class="anchored" data-anchor-id="strategy"><span class="header-section-number">4.4.6</span> Strategy</h3>
+<section id="strategy" class="level3 page-columns page-full" data-number="3.4.6">
+<h3 data-number="3.4.6" class="anchored" data-anchor-id="strategy"><span class="header-section-number">3.4.6</span> Strategy</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -1252,8 +1252,8 @@ Figure&nbsp;4.1: Árbol de decisión para elegir un patrón creacional
 </div>
 </div>
 </section>
-<section id="mediator" class="level3 page-columns page-full" data-number="4.4.7">
-<h3 data-number="4.4.7" class="anchored" data-anchor-id="mediator"><span class="header-section-number">4.4.7</span> Mediator</h3>
+<section id="mediator" class="level3 page-columns page-full" data-number="3.4.7">
+<h3 data-number="3.4.7" class="anchored" data-anchor-id="mediator"><span class="header-section-number">3.4.7</span> Mediator</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -1289,8 +1289,8 @@ Figure&nbsp;4.1: Árbol de decisión para elegir un patrón creacional
 </div>
 </div>
 </section>
-<section id="iterator" class="level3 page-columns page-full" data-number="4.4.8">
-<h3 data-number="4.4.8" class="anchored" data-anchor-id="iterator"><span class="header-section-number">4.4.8</span> Iterator</h3>
+<section id="iterator" class="level3 page-columns page-full" data-number="3.4.8">
+<h3 data-number="3.4.8" class="anchored" data-anchor-id="iterator"><span class="header-section-number">3.4.8</span> Iterator</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -1339,17 +1339,17 @@ Figure&nbsp;4.1: Árbol de decisión para elegir un patrón creacional
 </div>
 </div>
 </section>
-<section id="state" class="level3" data-number="4.4.9">
-<h3 data-number="4.4.9" class="anchored" data-anchor-id="state"><span class="header-section-number">4.4.9</span> State</h3>
+<section id="state" class="level3" data-number="3.4.9">
+<h3 data-number="3.4.9" class="anchored" data-anchor-id="state"><span class="header-section-number">3.4.9</span> State</h3>
 </section>
-<section id="interpreter" class="level3" data-number="4.4.10">
-<h3 data-number="4.4.10" class="anchored" data-anchor-id="interpreter"><span class="header-section-number">4.4.10</span> Interpreter</h3>
+<section id="interpreter" class="level3" data-number="3.4.10">
+<h3 data-number="3.4.10" class="anchored" data-anchor-id="interpreter"><span class="header-section-number">3.4.10</span> Interpreter</h3>
 </section>
-<section id="relaciones-entre-patrones-2" class="level3" data-number="4.4.11">
-<h3 data-number="4.4.11" class="anchored" data-anchor-id="relaciones-entre-patrones-2"><span class="header-section-number">4.4.11</span> Relaciones entre patrones</h3>
+<section id="relaciones-entre-patrones-2" class="level3" data-number="3.4.11">
+<h3 data-number="3.4.11" class="anchored" data-anchor-id="relaciones-entre-patrones-2"><span class="header-section-number">3.4.11</span> Relaciones entre patrones</h3>
 </section>
-<section id="aplicabilidad-2" class="level3" data-number="4.4.12">
-<h3 data-number="4.4.12" class="anchored" data-anchor-id="aplicabilidad-2"><span class="header-section-number">4.4.12</span> Aplicabilidad</h3>
+<section id="aplicabilidad-2" class="level3" data-number="3.4.12">
+<h3 data-number="3.4.12" class="anchored" data-anchor-id="aplicabilidad-2"><span class="header-section-number">3.4.12</span> Aplicabilidad</h3>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
@@ -1773,13 +1773,13 @@ Osborn, Jeremy. 2026. <span>“<span>AI</span> Didn’t Make Programming Easier.
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../materials/data_architecture_patterns.html" class="pagination-link" aria-label="Patrones de arquitectura de datos">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Patrones de arquitectura de datos</span></span>
+      <a href="../materials/02_principles.html" class="pagination-link" aria-label="Principios de diseño de software">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Principios de diseño de software</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../materials/data_architecture_patterns.html" class="pagination-link" aria-label="Patrones de arquitectura de datos">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Patrones de arquitectura de datos</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1788,4 +1788,4 @@ Osborn, Jeremy. 2026. <span>“<span>AI</span> Didn’t Make Programming Easier.
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/cgranell/ei2639/blob/main/materials/design_patterns.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/cgranell/ei2639/edit/main/materials/design_patterns.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/cgranell/ei2639/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/cgranell/ei2639/blob/main/materials/03_design_patterns.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/cgranell/ei2639/edit/main/materials/03_design_patterns.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/cgranell/ei2639/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
