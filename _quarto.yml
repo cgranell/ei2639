@@ -15,7 +15,8 @@ book:
     - materials/01_architecture.qmd
     - materials/02_principles.qmd
     - materials/03_design_patterns.qmd
-    - materials/data_architecture_patterns.qmd
+    - materials/04_cloud_data_formats.qmd
+    - materials/05_data_architecture_patterns.qmd
     - references.qmd
   
 format:
