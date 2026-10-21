@@ -83,9 +83,15 @@ Los [**patrones creacionales**](https://refactoring.guru/es/design-patterns/crea
 
 Los patrones creacionales responden a una pregunta (problema) aparentemente sencilla: **¿cómo se crean los objetos?** En un programa pequeño basta con llamar directamente al constructor de una clase. Pero, a medida que el sistema crece en complejidad, crear objetos mediante la instanciación de clases concretas genera problemas: el código queda atado a clases concretas, cuesta sustituir unas por otras y la lógica de creación se repite por todo el proyecto.
 
-Los patrones creacionales resuelven estos problemas relacionados con la creación de objetos **separando el uso de un objeto de la forma en que se crea**. Así, el resto de código de un programa (e.g., librería, modulo, cliente) no necesita saber qué clase concreta se instancia ni cómo se configura, resultando en un código más flexible, menos dependiente, y fácil de mantener.
+Los patrones creacionales resuelven estos problemas relacionados con la creación de objetos **separando el uso de un objeto de la forma en que se crea**. Así, el resto de código de un programa (e.g., librería, modulo, cliente) no necesita saber qué clase concreta se instancia ni cómo se configura, resultando en un código más flexible, menos dependiente, y fácil de mantener. Los patrones creacionales son:
 
-En este curso, todos los patrones (creacionales, estructurales y de comportamiento) se describen con la misma estructura, que coincide con la de sus mapas conceptuales:
+- [Singleton](#Singleton)
+- [Builder](#Builder)
+- [Prototype](#Prototype)
+- [Factory Method](#Factory Method)
+- [Abstract Factory](#Abstract Factory)
+
+En este curso, todos los patrones, tanto los creacionales,  estructurales y de comportamiento, se describen con la misma estructura, que coincide con la de sus mapas conceptuales:
 
 1. **Propósito** (*aim*): qué pretende conseguir el patrón.
 2. **Problema** (*what problem does it solve?*): qué situación de diseño lo hace necesario.
@@ -167,7 +173,7 @@ En ocasiones, crear un objeto desde cero resulta costoso (requiere consultas a u
 :::
 
 
-### Factory method
+### Factory Method
 
 
 Imagina una aplicación de logística que al principio solo gestiona camiones. Si el código crea los camiones directamente (`new Camion()`), añadir barcos más adelante obligará a modificar muchas partes del programa. El patrón *Factory Method* resuelve este problema sustituyendo la creación directa de objetos por una llamada a un **método de fábrica**, que las subclases pueden redefinir para decidir qué objeto concreto se crea. Así, el código que usa los objetos depende de una interfaz común y no de clases concretas.
