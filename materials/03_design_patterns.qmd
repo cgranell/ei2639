@@ -275,6 +275,26 @@ Los **patrones estructurales** se refieren a la organización del código, es de
 
 :::
 
+Si los patrones creacionales responden a la pregunta *¿cómo se crean los objetos?*, los patrones estructurales responden a otra distinta: **¿cómo se organizan, conectan y combinan  los objetos entre sí?** En un sistema real, las clases no trabajan de forma aislada e independiente de otras. Siempre existe cierto grado de dependencia entre clases y, sobretodo, existen muy probablemente necesidades de integrar otras clases, externas o no, en el código del sistema. Por ejemplo, para la integración de librerías externas cuya interfaz no encaja con las clases de nuestro sistema, para ocultar subsistemas complejos, o para añadir funcionalidades sin modificar el código existente.
+
+La idea común que subyace a todos los patrones estructurales es favorecer la [**composición frente a la herencia**](#02_principles.html#favorece-la-composici%C3%B3n-sobre-la-herencia). En lugar de crear jerarquías *estáticas* de subclases cada vez más profundas y rígidas en tiempo de diseño, los aptrones estructura combinan objetos de forma *dinámica*: un objeto *envuelve* a otro, le delega trabajo o se presenta como intermediario. Así se pueden cambiar las piezas de la estructura sin reescribir el resto del programa. De forma conceptual, muchos de estos patrones se basan, de hecho, en un objeto **envoltorio** (*wrapper*), y la diferencia entre ellos está en el *propósito* con el que se envuelve.
+
+::: {.column-margin}
+Este texto aparecerá en el margen derecho del documento.
+(https://en.wikipedia.org/wiki/Composition_over_inheritance). 
+:::
+
+
+Los patrones estructurales son:
+
+
+- [Adapter](#adapter)
+- [Bridge]()
+- [Facade]()
+- [Proxy]()
+- [Composite]()
+- [Decorator]()
+- [Flyweight]()
 
 ### Adapter
 
