@@ -284,11 +284,11 @@ Los **patrones estructurales** explican cómo combinar clases y objetos para for
 Los patrones estructurales son:
 
 - [Adapter](#adapter)
-- [Bridge](#bridge)
 - [Facade](#facade)
 - [Proxy](#proxy)
-- [Composite](#composite)
 - [Decorator](#decorator)
+- [Composite](#composite)
+- [Bridge](#bridge)
 - [Flyweight](#flyweight)
 
 
@@ -323,32 +323,6 @@ Imagina que una aplicación procesa datos en formato [CSV](https://en.wikipedia.
 
 :::
 
-
-
-### Bridge
-
-Imagina que programas un bot que envía distintos tipos de mensajes (texto, imágenes y encuestas) a cada una de las plataformas de mensajería: Discord, Telegram y Slack. Con herencia, se necesita una subclase (implementación) para cada combinación mensaje-plataforma (`EncuestaDiscord`, `ImagenTelegram`, `TextoSlack`...): nueve clases para tres mensajes y tres plataformas, y cada nueva plataforma obliga a añadir tres clases más. El problema es que el diseño crece en dos dimensiones independientes: qué se envía y por dónde se envía. El uso del patrón *Bridge* separa esos dos subsistemas en jerarquías distintas, uno para la **abstracción** (el tipo de mensaje) y otro para la **implementación** (la plataforma), conectados mediante un *puente* (*bridge*) que combina abstracciones e implementaciones dinámicamente. Cada mensaje sabe **qué** contenido enviar y delega en la plataforma **cómo** enviarlo. Añadir, por ejemplo, una nueva plataforma (e.g., WhatsApp) supone únicamente añadir una nueva clase al subsistema de implementación únicamente, y no una clase por cada tipo de mensaje disponible. Es decir, la jerarquía de clases para el subsistema de implementación evoluaciona sin afectar al código relativo al subsistema de abstracción.
-
-
-
-| Propósito |  Problema |
-|-----------|-----------|
-| **separa subsistemas**... | ... porque puede que un subsistema cambie completamente sin que eso afecte al otro subsistema |
-
-
-
-::: column-screen-inset-right
-
-![](../images/concept-maps/BRIDGE-map.png)
-
-:::
-
-
-::: {.callout-tip title="Implementación"}
-
-![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Bridge en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/bridge/java/example#lang-features)
-
-:::
 
 
 
@@ -416,6 +390,40 @@ A veces no queremos que el cliente acceda directamente a un objeto. Puede que se
 :::
 
 
+### Decorator
+
+Imagina un sistema de notificaciones que envía avisos por correo electrónico. Más adelante, algunos usuarios quieren recibirlos también por SMS, mientras que otros por Slack y, para complicar las cosas, hay otro grupo de usuarios que recibe notificaciones por las tres vías a la vez. Crear una subclase para cada combinación es inviable. El patrón *Decorator* permite **añadir responsabilidades a un objeto de forma dinámica**, envolviéndolo en uno o varios *decoradores* que comparten la misma interfaz. Cada decorador añade un comportamiento específico (por ejemplo, enviar por SMS) y delega el resto en el objeto que envuelve, como quien se pone capas de ropa según el tiempo que haga.
+
+Los decoradores de Python son otro ejemplo ilustrativo, ya que también se inspiran en el patrón *Decorator*, pero no son exactamente lo mismo, porque envuelven funciones y no objetos que comparten una interfaz. La sintaxis `@` permite añadir comportamiento a una función in Python sin modificar su código. Por ejemplo, `@functools.lru_cache` añade una caché de resultados a cualquier función, de modo que una función recursiva como Fibonacci deja de recalcular los mismos valores una y otra vez. Del mismo modo, podrías escribir un decorador `@medir_tiempo` que monitorize la ejecución o un decorador `@requiere_login` que compruebe permisos de acceso, y aplicar varios a la vez secuencialmente. Esta es la idea del patrón *Decorator*: **envolver** un objeto (en este ejemplo de Python, una función) en otro que añade una responsabilidad y delega el resto en el objeto original. Así, los comportamientos se añaden, se quitan o se combinan sin tocar el código del objeto envuelto.
+
+::: {.column-margin}
+Echa un vistazo a las [functools — Higher-order functions](https://docs.python.org/3/library/functools.html) para averiguar más sobre los entresigos de los decoradores en python.
+:::
+
+| Propósito |  Problema |
+|-----------|-----------|
+| **añade** nuevas reponsabilidades/comportamientos a objetos | ... porque quiero añadirlos, quitarlos, o agregarlos dinámicamente |
+
+
+
+::: column-screen-inset-right
+
+![](../images/concept-maps/DECORATOR-map.png)
+
+:::
+
+::: {.callout-tip title="Slide Deck"}
+
+[Decorator pattern](https://cgranell.github.io/ei1039/slides/TE6_decorator.html)
+
+:::
+
+::: {.callout-tip title="Implementación"}
+
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Decorator en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/decorator/java/example#lang-features)
+
+:::
+
 
 ### Composite
 
@@ -453,39 +461,32 @@ Relacionado con las asignaturas de compiladores y estructuras de datos, piensa e
 
 
 
-### Decorator
 
-Imagina un sistema de notificaciones que envía avisos por correo electrónico. Más adelante, algunos usuarios quieren recibirlos también por SMS, mientras que otros por Slack y, para complicar las cosas, hay otro grupo de usuarios que recibe notificaciones por las tres vías a la vez. Crear una subclase para cada combinación es inviable. El patrón *Decorator* permite **añadir responsabilidades a un objeto de forma dinámica**, envolviéndolo en uno o varios *decoradores* que comparten la misma interfaz. Cada decorador añade un comportamiento específico (por ejemplo, enviar por SMS) y delega el resto en el objeto que envuelve, como quien se pone capas de ropa según el tiempo que haga.
+### Bridge
 
-Los decoradores de Python son otro ejemplo ilustrativo, ya que también se inspiran en el patrón *Decorator*, pero no son exactamente lo mismo, porque envuelven funciones y no objetos que comparten una interfaz. La sitaxis `@` permite añadir comportamiento a una función in Python sin modificar su código. Por ejemplo, `@functools.lru_cache` añade una caché de resultados a cualquier función, de modo que una función recursiva como Fibonacci deja de recalcular los mismos valores una y otra vez. Del mismo modo, podrías escribir un decorador `@medir_tiempo` que monitorize la ejecución o un decorador `@requiere_login` que compruebe permisos de acceso, y aplicar varios a la vez secuencialmente. Esta es la idea del patrón *Decorator*: **envolver** un objeto (en este ejemplo de Python, una función) en otro que añade una responsabilidad y delega el resto en el objeto original. Así, los comportamientos se añaden, se quitan o se combinan sin tocar el código del objeto envuelto.
+Imagina que programas un bot que envía distintos tipos de mensajes (texto, imágenes y encuestas) a cada una de las plataformas de mensajería: Discord, Telegram y Slack. Con herencia, se necesita una subclase (implementación) para cada combinación mensaje-plataforma (`EncuestaDiscord`, `ImagenTelegram`, `TextoSlack`...): nueve clases para tres mensajes y tres plataformas, y cada nueva plataforma obliga a añadir tres clases más. El problema es que el diseño crece en dos dimensiones independientes: qué se envía y por dónde se envía. El uso del patrón *Bridge* separa esos dos subsistemas en jerarquías distintas, uno para la **abstracción** (el tipo de mensaje) y otro para la **implementación** (la plataforma), conectados mediante un *puente* (*bridge*) que combina abstracciones e implementaciones dinámicamente. Cada mensaje sabe **qué** contenido enviar y delega en la plataforma **cómo** enviarlo. Añadir, por ejemplo, una nueva plataforma (e.g., WhatsApp) supone únicamente añadir una nueva clase al subsistema de implementación únicamente, y no una clase por cada tipo de mensaje disponible. Es decir, la jerarquía de clases para el subsistema de implementación evoluaciona sin afectar al código relativo al subsistema de abstracción.
 
-::: {.column-margin}
-Echa un vistazo a las [functools — Higher-order functions](https://docs.python.org/3/library/functools.html) para averiguar más sobre los entresigos de los decoradores en python.
-:::
+
 
 | Propósito |  Problema |
 |-----------|-----------|
-| **añade** nuevas reponsabilidades/comportamientos a objetos | ... porque quiero añadirlos, quitarlos, o agregarlos dinámicamente |
+| **separa subsistemas**... | ... porque puede que un subsistema cambie completamente sin que eso afecte al otro subsistema |
 
 
 
 ::: column-screen-inset-right
 
-![](../images/concept-maps/DECORATOR-map.png)
+![](../images/concept-maps/BRIDGE-map.png)
 
 :::
 
-::: {.callout-tip title="Slide Deck"}
-
-[Decorator pattern](https://cgranell.github.io/ei1039/slides/TE6_decorator.html)
-
-:::
 
 ::: {.callout-tip title="Implementación"}
 
-![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Decorator en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/decorator/java/example#lang-features)
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Bridge en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/bridge/java/example#lang-features)
 
 :::
+
 
 
 ### Flyweight
