@@ -819,8 +819,8 @@ Los **patrones de comportamiento** se refieren a la comunicación entre objetos 
 
 
  
-### Relaciones entre patrones
+### Relaciones entre patrones {#relaciones-comportamiento}
 
 
 
-### Aplicabilidad
+

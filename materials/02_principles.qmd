@@ -8,15 +8,37 @@
 
 Principios básicos de diseño de software (presentes en casi todos los patrones de diseño)
 
-### Encapsula lo que varía y sepáralo de lo que no cambia 
 
+Aunque cada patrón resuelve un problema distinto, casi todos se apoyan en las mismas ideas de fondo. Estas ideas fueron principalmente formuladas por [@gamma1994] y otrhe autores. Si las entiendes bien, te resultará mucho más fácil reconocer, comparar y aplicar cualquier patrón. 
 
+### Encapsula lo que varía y sepáralo de lo que no cambia
+
+En cualquier programa hay partes estables y partes que cambian con frecuencia: nuevos requisitos, nuevos formatos, nuevos algoritmos o nuevos proveedores. Si ambas están mezcladas en la misma clase, cada cambio obliga a tocar código que funcionaba bien y aumenta el riesgo de introducir errores y propagarlos. Este principio propone **identificar qué aspectos de la aplicación van a variar y aislarlos** en su propia clase o módulo, de modo que puedan cambiar sin afectar al resto.
+
+Por ejemplo, en una tienda en línea, el proceso de pago es estable, pero el cálculo de impuestos cambia según el país. Si sacamos ese cálculo a una clase aparte, añadir un país nuevo no obliga a modificar el proceso de pago. Este principio está en la base de patrones como *Strategy*, *Factory Method* o *Bridge*.
 
 ### Programa a una interfaz, no a una implementación
 
+Cuando el código depende de una clase concreta, queda atado a ella: cualquier sustitución obliga a modificarlo. Este principio propone que el código dependa de **abstracciones** (ya sean interfaces o clases abstractas) y no de clases concretas (implementaciones). El código cliente solo sabe *qué* puede hacer un objeto, no *cómo* lo hace ni de qué clase es exactamente.
 
+Por ejemplo, si una función recibe un objeto `Notificador` en lugar de un `NotificadorEmail`, funcionará igual con un notificador por SMS o por Slack, sin cambiar una sola línea. En Python, donde no hay interfaces explícitas, la misma idea se expresa con las clases abstractas (`abc`) o con los protocolos (`typing.Protocol`). Prácticamente todos los patrones aplican este principio, en especial los creacionales, que permiten crear objetos sin nombrar sus clases concretas.
+
+::: {.column-margin}
+
+![](https://www.python.org/static/img/python-logo.png){width=25}: [Abstract Base Classes](https://docs.python.org/3/library/abc.html) y [Protocols](https://typing.python.org/en/latest/spec/protocol.html).
+:::
 
 ### Favorece la composición sobre la herencia
+
+La herencia es una forma sencilla de reutilizar código, pero crea un vínculo muy fuerte entre la clase padre y sus subclases. Ese vínculo se fija al escribir el código y no puede cambiarse en tiempo de ejecución (estático). Además, cuando el diseño varía en varias dimensiones, el número de subclases crece sin control. La **composición** consiste en construir objetos que *contienen* a otros objetos y les delegan parte del trabajo. Se pasa así de una relación *is-as* (herencia) a una relación *«has-a»* (composición), mucho más flexible.
+
+Por ejemplo, en lugar de crear subclases como `PersonajeVolador` o `PersonajeNadadorVolador`, un personaje puede *tener* un objeto que define cómo se mueve, y ese objeto puede sustituirse durante la partida. Este principio es la base de los patrones estructurales (*Decorator*, *Bridge*, *Composite*, *Proxy*) y de muchos patrones de comportamiento, como *Strategy* o *State*.
+
+::: {.callout-tip title="Para reflexionar"}
+
+Los tres principios están relacionados entre sí: encapsulamos lo que varía *detrás de una interfaz* y lo conectamos con el resto del sistema *mediante composición*. ¿Puedes identificar los tres en alguno de los patrones que ya conoces?
+
+:::
 
 
 ## Principios SOLID
