@@ -27,7 +27,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -80,7 +99,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating slimcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -185,7 +204,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="toc-actions"><ul><li><a href="https://github.com/cgranell/ei2639/blob/main/materials/02_principles.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/cgranell/ei2639/edit/main/materials/02_principles.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/cgranell/ei2639/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -206,18 +225,41 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="principios-de-la-programación-orientada-a-objetos-poo" class="level2" data-number="2.1">
+<section id="principios-de-la-programación-orientada-a-objetos-poo" class="level2 page-columns page-full" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="principios-de-la-programación-orientada-a-objetos-poo"><span class="header-section-number">2.1</span> Principios de la programación orientada a objetos (POO)</h2>
 <!-- TODO: Narrativa de los Principios básicos de diseño de software (presentes en casi todos los patrones de diseño) aqui a partir de la presentación https://cgranell.github.io/ei2639-slides/materials/01-course-content/ -->
 <p>Principios básicos de diseño de software (presentes en casi todos los patrones de diseño)</p>
+<p>Aunque cada patrón resuelve un problema distinto, casi todos se apoyan en las mismas ideas de fondo. Estas ideas fueron principalmente formuladas por <span class="citation" data-cites="gamma1994">(<a href="../references.html#ref-gamma1994" role="doc-biblioref">Gamma et al. 1994</a>)</span> y otrhe autores. Si las entiendes bien, te resultará mucho más fácil reconocer, comparar y aplicar cualquier patrón.</p>
 <section id="encapsula-lo-que-varía-y-sepáralo-de-lo-que-no-cambia" class="level3" data-number="2.1.1">
 <h3 data-number="2.1.1" class="anchored" data-anchor-id="encapsula-lo-que-varía-y-sepáralo-de-lo-que-no-cambia"><span class="header-section-number">2.1.1</span> Encapsula lo que varía y sepáralo de lo que no cambia</h3>
+<p>En cualquier programa hay partes estables y partes que cambian con frecuencia: nuevos requisitos, nuevos formatos, nuevos algoritmos o nuevos proveedores. Si ambas están mezcladas en la misma clase, cada cambio obliga a tocar código que funcionaba bien y aumenta el riesgo de introducir errores y propagarlos. Este principio propone <strong>identificar qué aspectos de la aplicación van a variar y aislarlos</strong> en su propia clase o módulo, de modo que puedan cambiar sin afectar al resto.</p>
+<p>Por ejemplo, en una tienda en línea, el proceso de pago es estable, pero el cálculo de impuestos cambia según el país. Si sacamos ese cálculo a una clase aparte, añadir un país nuevo no obliga a modificar el proceso de pago. Este principio está en la base de patrones como <em>Strategy</em>, <em>Factory Method</em> o <em>Bridge</em>.</p>
 </section>
-<section id="programa-a-una-interfaz-no-a-una-implementación" class="level3" data-number="2.1.2">
+<section id="programa-a-una-interfaz-no-a-una-implementación" class="level3 page-columns page-full" data-number="2.1.2">
 <h3 data-number="2.1.2" class="anchored" data-anchor-id="programa-a-una-interfaz-no-a-una-implementación"><span class="header-section-number">2.1.2</span> Programa a una interfaz, no a una implementación</h3>
-</section>
+<p>Cuando el código depende de una clase concreta, queda atado a ella: cualquier sustitución obliga a modificarlo. Este principio propone que el código dependa de <strong>abstracciones</strong> (ya sean interfaces o clases abstractas) y no de clases concretas (implementaciones). El código cliente solo sabe <em>qué</em> puede hacer un objeto, no <em>cómo</em> lo hace ni de qué clase es exactamente.</p>
+<p>Por ejemplo, si una función recibe un objeto <code>Notificador</code> en lugar de un <code>NotificadorEmail</code>, funcionará igual con un notificador por SMS o por Slack, sin cambiar una sola línea. En Python, donde no hay interfaces explícitas, la misma idea se expresa con las clases abstractas (<code>abc</code>) o con los protocolos (<code>typing.Protocol</code>). Prácticamente todos los patrones aplican este principio, en especial los creacionales, que permiten crear objetos sin nombrar sus clases concretas.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><img src="https://www.python.org/static/img/python-logo.png" class="img-fluid" width="25">: <a href="https://docs.python.org/3/library/abc.html">Abstract Base Classes</a> y <a href="https://typing.python.org/en/latest/spec/protocol.html">Protocols</a>.</p>
+</div></div></section>
 <section id="favorece-la-composición-sobre-la-herencia" class="level3" data-number="2.1.3">
 <h3 data-number="2.1.3" class="anchored" data-anchor-id="favorece-la-composición-sobre-la-herencia"><span class="header-section-number">2.1.3</span> Favorece la composición sobre la herencia</h3>
+<p>La herencia es una forma sencilla de reutilizar código, pero crea un vínculo muy fuerte entre la clase padre y sus subclases. Ese vínculo se fija al escribir el código y no puede cambiarse en tiempo de ejecución (estático). Además, cuando el diseño varía en varias dimensiones, el número de subclases crece sin control. La <strong>composición</strong> consiste en construir objetos que <em>contienen</em> a otros objetos y les delegan parte del trabajo. Se pasa así de una relación <em>is-as</em> (herencia) a una relación <em>«has-a»</em> (composición), mucho más flexible.</p>
+<p>Por ejemplo, en lugar de crear subclases como <code>PersonajeVolador</code> o <code>PersonajeNadadorVolador</code>, un personaje puede <em>tener</em> un objeto que define cómo se mueve, y ese objeto puede sustituirse durante la partida. Este principio es la base de los patrones estructurales (<em>Decorator</em>, <em>Bridge</em>, <em>Composite</em>, <em>Proxy</em>) y de muchos patrones de comportamiento, como <em>Strategy</em> o <em>State</em>.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Para reflexionar">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Para reflexionar
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Los tres principios están relacionados entre sí: encapsulamos lo que varía <em>detrás de una interfaz</em> y lo conectamos con el resto del sistema <em>mediante composición</em>. ¿Puedes identificar los tres en alguno de los patrones que ya conoces?</p>
+</div>
+</div>
 </section>
 </section>
 <section id="principios-solid" class="level2" data-number="2.2">
@@ -282,6 +324,11 @@ ul.task-list li input[type="checkbox"] {
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-gamma1994" class="csl-entry" role="listitem">
+Gamma, Erich, Richard Helm, Ralph Johnson, and John Vlissides. 1994. <em>Design Patterns: Elements of Reusable Object-Oriented Software</em>. Addison-Wesley.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
