@@ -1,12 +1,12 @@
 # Patrones de diseño
 
-Con la popularización de los asistentes de código basados en inteligencia artificial (IA), como [GitHub Copilot](https://github.com/features/copilot) o [Claude Code](https://www.anthropic.com/claude-code), y de la llamada [programación *agéntica*](https://en.wikipedia.org/wiki/Agentic_AI) (en la que la IA no solo sugiere código, sino que planifica y ejecuta tareas de forma autónoma), el futuro de la ingeniería y el desarrollo de software parece estar en entredicho. Esto plantea varias preguntas:
+Con la popularización de los asistentes de código basados en inteligencia artificial (IA), como [GitHub Copilot](https://github.com/features/copilot) o [Claude Code](https://www.anthropic.com/claude-code), y de la llamada [programación *agéntica*](https://en.wikipedia.org/wiki/Agentic_AI) (en la que la IA no solo genera código, sino que planifica y ejecuta tareas de forma autónoma), el futuro de la ingeniería y el desarrollo de software parece estar en entredicho. Esto plantea varias preguntas:
 
 - ¿Tiene el desarrollo de software la misma importancia que antes de la llegada de estas herramientas?
 - ¿Es ahora más fácil o más difícil programar?
 - ¿Siguen siendo válidas las competencias tradicionales de un desarrollador en la era de los asistentes de IA? Si no es así, ¿qué ha cambiado?
 
-En los últimos años se ha publicado una gran cantidad de artículos de opinión sobre el papel de la profesión ante la expansión de los asistentes IA en todas las fases del desarrollo de software. Es difícil prever en qué se convertirá la profesión, pero algunos autores ofrecen pistas que, aunque no sean definitivas, merece la pena tener en cuenta. Osborn [@osborn2026] lo resume así:
+En los últimos años se ha publicado una gran cantidad de artículos de opinión sobre el papel de la profesión ante la expansión de los asistentes IA en todas las fases del desarrollo de software. Es difícil prever en qué se convertirá la profesión, y que rol tendrán los futuros ingenieros, pero algunos autores ofrecen pistas que, aunque no sean definitivas, merece la pena tener en cuenta. Osborn [@osborn2026] lo resume así:
 
 > The future of software development will belong to those who can think clearly at scale, maintain durable mental models amid rapid change, and integrate machine-generated output into human-directed intent.
 
@@ -17,7 +17,7 @@ Es decir, el futuro pertenecerá a quienes sepan pensar con claridad a gran esca
 :::
 
 
-Según el mismo autor, los asistentes de código actuales funcionan como una **memoria externa**: liberan al programador de recordar la sintaxis, escribir [código repetitivo](https://en.wikipedia.org/wiki/Boilerplate_code) (*boilerplate*) o memorizar cómo se usa cada [API](https://es.wikipedia.org/wiki/Interfaz_de_programaci%C3%B3n_de_aplicaciones), porque esas tareas las gestionan los asistentes IA. Al reducirse la carga de memoria, ganan peso otras capacidades, como:
+Según el mismo autor, los asistentes de código actuales funcionan como una **memoria externa**: liberan al programador de recordar la sintaxis, escribir [código repetitivo](https://en.wikipedia.org/wiki/Boilerplate_code) (*boilerplate*) o memorizar cómo se usa cada [API](https://es.wikipedia.org/wiki/Interfaz_de_programaci%C3%B3n_de_aplicaciones), porque esas tareas las gestionan los asistentes IA. Al reducirse la carga de memoria para la programación, ganan peso sin embargo otras capacidades, como por ejemplo:
 
 - el razonamiento,
 - la comprensión de la arquitectura del sistema,
@@ -25,12 +25,11 @@ Según el mismo autor, los asistentes de código actuales funcionan como una **m
 - la conciencia de cómo está estructurado el código.
 
 
+En consecuencia, lo que significa "saber programar" y "programar" está cambiando de forma drástica. Sin embargo, esto no implica que programar sea más fácil ni que el programador pierda relevancia en los proyectos de software. Los asistentes IA no eliminan el esfuerzo intelectual de programar, sino que lo **desplazan**: unas habilidades pasan a importar más que otras y, aunque desaparecen algunas barreras antiguas, surgen dificultades nuevas.
 
-En consecuencia, lo que significa "saber programar" está cambiando de forma profunda. Sin embargo, esto no implica que programar sea más fácil ni que el programador pierda relevancia en los proyectos de software. Los asistentes de IA no eliminan el esfuerzo intelectual de programar, sino que lo **desplazan**: unas habilidades pasan a importar más que otras y, aunque desaparecen algunas barreras antiguas, surgen dificultades nuevas.
+Por ejemplo, tareas críticas como la [depuración](https://en.wikipedia.org/wiki/Debugging) (*debugging*), la [refactorización](https://en.wikipedia.org/wiki/Code_refactoring) o la [ingeniería de requisitos](https://en.wikipedia.org/wiki/Requirements_engineering) (*requirements engineering*) siguen exigiendo conocimiento experto y comprensión detallada del sistema a desarrollar. Estas tareas dependen en gran medida de los [**modelos mentales**](https://es.wikipedia.org/wiki/Modelo_mental) del programador, es decir, de su capacidad para "ejecutar" el código mentalmente y deducir el flujo lógico de un proyecto [@osborn2026].
 
-Por ejemplo, tareas críticas como la [**depuración**](https://es.wikipedia.org/wiki/Depuraci%C3%B3n_de_programas) (*debugging*), la [**refactorización**](https://es.wikipedia.org/wiki/Refactorizaci%C3%B3n) y el **análisis de sistemas** siguen exigiendo conocimiento experto y comprensión profunda. Estas tareas dependen en gran medida de los [**modelos mentales**](https://es.wikipedia.org/wiki/Modelo_mental) del programador, es decir, de su capacidad para "ejecutar" el código mentalmente y deducir el flujo lógico de causa y efecto de un proyecto [@osborn2026].
-
-Así, programar depende cada vez menos de cuánta información puede retener un desarrollador en su memoria y cada vez más de su capacidad para **pensar con claridad a distintas escalas**: desde el detalle de una función hasta la organización global del sistema. Precisamente aquí es donde los [**patrones de diseño**](https://refactoring.guru/es/design-patterns) siguen siendo relevantes, incluso en la era de la programación *agéntica*: ofrecen soluciones probadas y un vocabulario común para estructurar sistemas complejos, y nos ayudan a evaluar y organizar el código que genera la IA.
+Programar depende cada vez menos de cuánta información puede retener un desarrollador en su memoria y cada vez más de su capacidad para **pensar con claridad a distintas escalas**: desde el detalle de una función hasta la organización global del sistema. Precisamente aquí es donde los [**patrones de diseño**](https://refactoring.guru/es/design-patterns) siguen siendo relevantes, incluso en la era de la programación agéntica: ofrecen soluciones probadas y un vocabulario común para estructurar sistemas complejos, y nos ayudan a evaluar y organizar el código que genera la IA.
 
 Para cerrar, Osborn [@osborn2026] propone una analogía con la medicina que ilustra bien este cambio:
 
@@ -41,9 +40,9 @@ Para cerrar, Osborn [@osborn2026] propone una analogía con la medicina que ilus
 
 El término **patrón** tiene múltiples significados según el contexto. En matemáticas, por ejemplo, hablamos de patrones numéricos (una secuencia que sigue una regla) o de patrones geométricos (formas que se repiten en el espacio).
 
-En el área de la Inteligencia Artificial, el [aprendizaje automático](https://es.wikipedia.org/wiki/Aprendizaje_autom%C3%A1tico) utiliza técnicas computacionales avanzadas para descubrir patrones y relaciones ocultas en los datos.
+En el área de la Inteligencia Artificial, el [aprendizaje automático](https://en.wikipedia.org/wiki/Machine_learning) utiliza técnicas computacionales avanzadas para descubrir patrones y relaciones ocultas en los datos.
 
-En ingeniería de software, la palabra tiene un sentido distinto. A lo largo de tu carrera profesional comprobarás que los mismos problemas de diseño de software aparecen una y otra vez. Hay muchas formas de resolverlos, pero la industria prefiere soluciones flexibles, reutilizables y verificables. Esas soluciones son los [**patrones de diseño**](https://refactoring.guru/es/design-patterns): descripciones generales de cómo resolver un problema de diseño recurrente, que puedes adaptar a cada situación concreta.
+En ingeniería de software, la palabra tiene un significado distinto. A lo largo de tu carrera profesional comprobarás que los mismos problemas de diseño de software aparecen una y otra vez. Hay muchas formas de resolverlos, pero la industria del sector prefiere soluciones flexibles, reutilizables y verificables. Esas soluciones son los [**patrones de diseño**](https://refactoring.guru/es/design-patterns): descripciones generales de cómo resolver un problema de diseño recurrente, que puedes adaptar a situaciones concretas.
 
 
 ::: {.callout-note title="Definición" icon=true}
@@ -52,9 +51,9 @@ Un **patrón de diseño de software** es una solución práctica, reutilizable y
 
 :::
 
-Los patrones de diseño permiten reutilizar soluciones ya probadas, que otros desarrolladores han aplicado con éxito muchas veces para resolver un mismo problema de diseño. Así no hace falta reinventar la rueda, es decir, crear una solución nueva desde cero a partir de los principios básicos de la [programación orientada a objetos](https://es.wikipedia.org/wiki/Programaci%C3%B3n_orientada_a_objetos).
+Los patrones de diseño permiten reutilizar soluciones ya probadas, que otros desarrolladores han aplicado con éxito muchas veces para resolver un mismo problema de diseño. Así no hace falta reinventar la rueda, es decir, crear una solución nueva desde cero a partir de los principios básicos de la [programación orientada a objetos](https://en.wikipedia.org/wiki/Object-oriented_programming).
 
-Los patrones de diseño no son soluciones puramente teóricas o académicas: se utilizan de forma habitual en la industria del software, tanto en productos comerciales como en la implementación de los propios lenguajes de programación. Por ejemplo, el bucle `for` de Python se apoya en el patrón [*Iterator*](https://refactoring.guru/es/design-patterns/iterator), que permite recorrer los elementos de una colección sin conocer cómo está organizada internamente.
+Los patrones de diseño no son soluciones puramente teóricas o académicas: se utilizan de forma habitual en la industria del software, tanto en productos comerciales como en la implementación de los propios lenguajes de programación. Por ejemplo, el bucle `for` de Python se apoya en el patrón [*Iterator*](#iterator), que permite recorrer los elementos de una colección sin conocer cómo se organiza internamente.
 
 Una buena forma de entender qué es un patrón de diseño es compararlo con un plano de arquitectura: no es una construcción terminada, sino un esquema general que puedes adaptar para resolver un problema de diseño que se repite en tu código.
 
@@ -69,7 +68,7 @@ Una buena forma de entender qué es un patrón de diseño es compararlo con un p
 
 Conviene dejar claro que un patrón de diseño no es simplemente un fragmento de código (clases, interfaces, etc.) que se copia y se añade al proyecto de software. Un patrón de diseño es una **solución conceptual**: una idea general que se aplica y, sobre todo, se adapta durante el diseño y la implementación de un programa concreto. Su objetivo es mejorar la estructura, la modularidad, la abstracción, la flexibilidad y la reutilización del código.
 
-Por ese motivo, en este curso presentamos los patrones de diseño de forma conceptual, describiendo qué papel cumple cada elemento (clases, interfaces y relaciones entre ellos), normalmente con ayuda de diagramas [UML](https://es.wikipedia.org/wiki/Lenguaje_unificado_de_modelado). Después, en el proyecto común de la asignatura, implementarás algunos de estos patrones en un contexto real.
+Por ese motivo, en este curso presentamos los patrones de diseño de forma conceptual, describiendo qué papel cumplen, como se relacioan los elementos que lo forman (clases, interfaces y relaciones entre ellos), normalmente con ayuda de diagramas [UML](https://en.wikipedia.org/wiki/Unified_Modeling_Language). Después, en el proyecto común de la asignatura, implementarás algunos de estos patrones como parte de uan aplicación de software funcional.
 
 
 ## Patrones creacionales
@@ -267,12 +266,12 @@ Este árbol es una guía, no una regla. En la práctica, un mismo problema puede
 
 ## Patrones estructurales
 
-Si los patrones creacionales responden a la pregunta **¿cómo se crean los objetos?**, los patrones estructurales responden a otra distinta: **¿cómo se organizan, conectan y combinan  los objetos entre sí?** En un sistema real, las clases no trabajan de forma aislada e independiente de otras. Siempre existe cierto grado de dependencia entre clases y, sobretodo, existen muy probablemente necesidades de integrar otras clases, externas o no, en el código del sistema. Por ejemplo, a veces surge la necesidad de incluir librerías externas cuya interfaz no encaja con las clases de nuestro sistema, ocultar subsistemas complejos, o añadir funcionalidades sin tener que modificar el código existente.
+Si los patrones creacionales abordan los problemas derivados de **,a creación de objetivos**, los patrones estructurales responden a la problemática de **cómo se organizan, conectan y combinan  los objetos entre sí**. En un sistema real, las clases no se especifican de forma aislada ni se ejecutan independiente de otras. Siempre existe cierto grado de dependencia entre clases y, sobretodo, existen necesidades de integrar otras clases, externas o no, en el código del sistema a menudo que las necesidades cambian con el tiempo. Por ejemplo, a veces surge la necesidad de incluir librerías externas cuya interfaz no encaja con las clases de nuestro sistema, o sperar o ocultar subsistemas complejos para que sean transparentes a los usuarios, o simplemente se requiren nuevas funcionalidades sin que se deba modificar el código existente.
 
-La idea común que subyace a todos los patrones estructurales es favorecer la [**composición frente a la herencia**](#02_principles.html#favorece-la-composici%C3%B3n-sobre-la-herencia). En lugar de definir jerarquías *estáticas* de clases cada vez más profundas y rígidas en tiempo de diseño, los patrones estructurales facilitan la combinación de clases/objetos de forma *dinámica* cuando la jerarquía estática de clase se convierte en un problema: un objeto **envuelve** a otro, delega trabajo o actúa de intermediario. Así se pueden cambiar los objetos y clases de la estructura sin [modificar el resto del programa](#02_principles.html#encapsula-lo-que-var%C3%ADa-y-sep%C3%A1ralo-de-lo-que-no-cambia). De forma conceptual, muchos de estos patrones se basan en un objeto envoltorio (*wrapper*), y la diferencia entre ellos está en el propósito de ese envoltorio.
+La idea común que subyace a todos los patrones estructurales es favorecer la [**composición frente a la herencia**](#02_principles.html#favorece-la-composici%C3%B3n-sobre-la-herencia). En lugar de definir jerarquías *estáticas* de clases cada vez más profundas y rígidas en tiempo de diseño, los patrones estructurales facilitan la combinación de clases/objetos de forma *dinámica* cuando la jerarquía estática de clases se convierte en un problema. De esta forma, un objeto **envuelve** a otro, delega trabajo o actúa de intermediario, sin [modificar el resto del programa](#02_principles.html#encapsula-lo-que-var%C3%ADa-y-sep%C3%A1ralo-de-lo-que-no-cambia). De forma conceptual, muchos de estos patrones se basan en un objeto envoltorio (*wrapper*), y la diferencia entre ellos está en el propósito de ese envoltorio.
 
 ::: {.column-margin}
-¿Maximinar la reutilización de código sin la herencia? [Composición sobre herencia](https://en.wikipedia.org/wiki/Composition_over_inheritance). 
+¿Maximinar la reutilización de código sin herencia? [Composición sobre herencia](https://en.wikipedia.org/wiki/Composition_over_inheritance). 
 :::
 
 ::: {.callout-note title="Definición" icon=true}
@@ -295,12 +294,12 @@ Los patrones estructurales son:
 
 ### Adapter
 
-Imagina que tu aplicación trabaja con datos en formato [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) y quieres incorporar una librería de análisis que solo acepta [parquet](https://en.wikipedia.org/wiki/Apache_Parquet). No puedes modificar la librería (porque es externa) y tampoco quieres (o puedes) reescribir tu aplicación. El patrón *Adapter* resuelve este problema mediante un objeto intermedio, el **adaptador**, que traduce las llamadas de una interfaz a otra, igual que un adaptador de enchufe permite conectar tu teléfono a una toma de corriente de otro país. Así, dos clases con interfaces incompatibles pueden colaborar sin que ninguna de ellas cambie.
+Imagina que una aplicación procesa datos en formato [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) y quieres incorporar una librería de análisis que solo acepta datso en formato [parquet](https://en.wikipedia.org/wiki/Apache_Parquet). Además, no puedes modificar la librería (porque es externa) y tampoco quieres (o puedes) reescribir tu aplicación. El patrón *Adapter* resuelve este problema introduciendo un objeto intermedio, el **adaptador**, que traduce las llamadas de una interfaz a otra, igual que un adaptador de enchufe permite conectar tu teléfono a una toma de corriente de otro país. Así, dos clases con interfaces incompatibles pueden colaborar [sin que ninguna de ellas cambie](https://cgranell.github.io/ei2639/materials/02_principles.html#encapsula-lo-que-var%C3%ADa-y-sep%C3%A1ralo-de-lo-que-no-cambia).
 
 
 | Propósito |  Problema |
 |-----------|-----------|
-| permite que clases con **interfaces incompatibles** colaboren...  | ... porque quiero utilizar cierta clase o librería externa |
+| permite que clases con **interfaces incompatibles** colaboren...  | ... porque quiero utilizar una clase o librería externa |
 
 
 ::: column-screen-inset-right
@@ -328,7 +327,7 @@ Imagina que tu aplicación trabaja con datos en formato [CSV](https://en.wikiped
 
 ### Bridge
 
-Imagina que programas un bot que envía distintos tipos de mensajes (texto, imágenes y encuestas) a cada una de las plataformas de mensajería: Discord, Telegram y Slack. Con herencia, se necesita una subclase (implementación) para cada combinación mensaje-plataforma (`EncuestaDiscord`, `ImagenTelegram`, `TextoSlack`...): nueve clases para tres mensajes y tres plataformas, y cada nueva plataforma obliga a añadir tres clases más. El problema es que el diseño crece en dos dimensiones independientes: qué se envía y por dónde se envía. El uso del patrón *Bridge* separa esas dimensiones en dos jerarquías distintas, la **abstracción** (el tipo de mensaje) y la **implementación** (la plataforma), conectadas mediante una referencia, el *puente* (*bridge*). Cada mensaje sabe **qué** contenido enviar y delega en la plataforma **cómo** enviarlo. Añadir, poer ejemplo una nueva plataforma (e.g., WhatsApp) supone únicamente añadir una nueva clase a la dimensión de implementación únicamente, y no una clase por cada tipo de mensaje disponible.
+Imagina que programas un bot que envía distintos tipos de mensajes (texto, imágenes y encuestas) a cada una de las plataformas de mensajería: Discord, Telegram y Slack. Con herencia, se necesita una subclase (implementación) para cada combinación mensaje-plataforma (`EncuestaDiscord`, `ImagenTelegram`, `TextoSlack`...): nueve clases para tres mensajes y tres plataformas, y cada nueva plataforma obliga a añadir tres clases más. El problema es que el diseño crece en dos dimensiones independientes: qué se envía y por dónde se envía. El uso del patrón *Bridge* separa esos dos subsistemas en jerarquías distintas, uno para la **abstracción** (el tipo de mensaje) y otro para la **implementación** (la plataforma), conectados mediante un *puente* (*bridge*) que combina abstracciones e implementaciones dinámicamente. Cada mensaje sabe **qué** contenido enviar y delega en la plataforma **cómo** enviarlo. Añadir, por ejemplo, una nueva plataforma (e.g., WhatsApp) supone únicamente añadir una nueva clase al subsistema de implementación únicamente, y no una clase por cada tipo de mensaje disponible. Es decir, la jerarquía de clases para el subsistema de implementación evoluaciona sin afectar al código relativo al subsistema de abstracción.
 
 
 
@@ -355,7 +354,7 @@ Imagina que programas un bot que envía distintos tipos de mensajes (texto, imá
 
 ### Facade 
 
-Cada vez que ejecutas `git commit` estás usando un partrón *Facade*. Internamente, Git distingue entre comandos de bajo nivel, o [*plumbing*](https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain) (fontanería), y comandos de alto nivel, o *porcelain* (porcelana). Un *commit* exige en realidad varios pasos: guardar el contenido de los archivos como objetos (`git hash-object`), construir el árbol de directorios (`git write-tree`), crear el objeto *commit* que apunta a ese árbol (`git commit-tree`) y mover la rama a ese nuevo *commit* (`git update-ref`). Nadie quiere realizar todas estas tareas cada vez que se lleva a cabo un `commit`. El patrón *Facade* ofrece uan solicón mediante la ideas de fachada: una interfaz sencilla y amigable, como `git commit`, que coordina internamente el subsistema complejo como uan serie de comandos de bajo nivel. El usuario solo ve la fachada, aunque podría utilizar los comandos de bajo nivel para, por ejemplo, encadanarlos al estilo UNIX en la línea de comandos.
+Cada vez que ejecutas `git commit` estás usando un patrón *Facade*. Internamente, Git distingue entre comandos de bajo nivel, o [*plumbing*](https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain) (fontanería), y comandos de alto nivel, o *porcelain* (porcelana). Un *commit* requiere varios pasos: guardar el contenido de los archivos como objetos (`git hash-object`), construir el árbol de directorios (`git write-tree`), crear el objeto *commit* que apunta a ese árbol (`git commit-tree`) y mover la rama a ese nuevo *commit* (`git update-ref`). Nadie quiere realizar todas estas tareas cada vez que se lleva a cabo un `commit`. El patrón *Facade* ofrece una solución mediante la ideas de fachada: una interfaz sencilla y amigable, como `git commit`, que coordina internamente el subsistema complejo como una serie de comandos de bajo nivel. El usuario solo ve la fachada, aunque podría utilizar los comandos Git de bajo nivel para, por ejemplo, encadenarlos al estilo UNIX en la línea de comandos.
 
 
 | Propósito |  Problema |
@@ -388,12 +387,12 @@ Cada vez que ejecutas `git commit` estás usando un partrón *Facade*. Intername
 ### Proxy
 
 
-A veces no queremos que el cliente acceda directamente a un objeto. Puede que sea un objeto costoso (una imagen de gran tamaño, o un objeto que requiere de mucho cómputo para instanciarse), que haya que comprobar permisos antes de usarlo, o que convenga guardar en caché sus resultados. El patrón *Proxy* propone un objeto **sustituto** con el misma interfaz del objeto real. El cliente cree que trabaja con el objeto original, pero realmente interactua con el objeto *proxy* que controla el acceso y puede hacer tareas adicionales antes y/o después de delegar en o interaccionar con el objeto real. En definitiva, el patrón *Proxy* permite **suplantar o sustituir** el objeto real.
+A veces no queremos que el cliente acceda directamente a un objeto. Puede que sea un objeto costoso (una imagen de gran tamaño, o un objeto que requiere de mucho cómputo para instanciarse), que haya que comprobar permisos antes de usarlo, o que convenga guardar en caché sus resultados. El patrón *Proxy* propone un objeto **sustituto** con el mismo interfaz que el objeto real. El cliente cree que trabaja con el objeto original, pero realmente interactua con el objeto *proxy* que controla el acceso y puede hacer tareas adicionales antes y/o después de delegar en o interaccionar con el objeto real. En definitiva, el patrón *Proxy* permite **suplantar o sustituir** un objeto real.
 
 
 | Propósito |  Problema |
 |-----------|-----------|
-| **suplanta** recursos reales de forma transparente al cliente... | ... porque quiero implantar restricciones de acceso o reducir coste |
+| **suplanta** recursos reales de forma transparente al cliente... | ... porque quiero introducir restricciones de acceso o reducir coste |
 
 
 
@@ -421,9 +420,9 @@ A veces no queremos que el cliente acceda directamente a un objeto. Puede que se
 ### Composite
 
 
-Muchas estructuras tienen forma de **árbol**: un sistema de archivos contiene carpetas que a su vez contienen archivos y otras carpetas; un pedido contiene productos y cajas que a su vez contienen más productos. Si el código tiene que distinguir en cada paso si trata con un elemento simple o con un contenedor, se llena de condicionales. El patrón *Composite* define una interfaz común para los elementos simples (las hojas) y los compuestos (los contenedores), de modo que el cliente los trata de la misma forma. Por ejemplo, para calcular el tamaño de una carpeta basta con pedirle su tamaño, y ella se lo pide recursivamente a su contenido.
+Muchas abstraciones o modelos de datos se estructuran en forma de **árbol**: un sistema de archivos contiene carpetas que a su vez contienen archivos y otras carpetas; un pedido contiene productos y cajas que a su vez contienen más productos. Si el código tiene que distinguir en cada paso si trata de un objeto simple (un fichero) o de un objeto contenedor (una carpeta), se llena de condicionales y resulta más difícil su mantenimiento. Para resolver este problema, el patrón *Composite* define una interfaz común para los elementos simples (las hojas) y los compuestos (los contenedores), de modo que para el cliente todos los nodos son del mismo tipo. Por ejemplo, para calcular el tamaño de un elemento compuesto (una carpeta) basta con pedirle su tamaño, y el objeto compuesto se lo pide recursivamente a sus objetos hijos (ficheros incluidos en la carpeta).
 
-Enlazado con asignaturas de compiladores y estructuras de datos, piensa en cómo un compilador o una calculadora evalúa la expresión `(3 + 4) * 5`. Primero la convierte en un [**árbol de sintaxis abstracta**](https://en.wikipedia.org/wiki/Abstract_syntax_tree) (AST): los números son las **hojas** y las operaciones (`+`, `*`) son **nodos compuestos** que contienen otras expresiones. Si el evaluador tuviera que comprobar en cada paso si está ante un número o ante una operación, se llenaría de condicionales. El patrón *Composite* define una interfaz común, `Expresion`, con un método `evaluar()`, que implementan tanto los números (nodos hojas) como las operaciones (nodos intermedios). Un número simplemente devuelve su valor; una suma pide a sus dos nodos hijos que se evalúen y suma los resultados. Así, al tener la misma interfaz, evaluar la expresión completa se reduce a una sola llamada: `raiz.evaluar()`, y la recursión hace el resto.
+Relacionado con las asignaturas de compiladores y estructuras de datos, piensa en cómo un compilador o una calculadora evalúa la expresión `(3 + 4) * 5`. Primero la convierte en un [**árbol de sintaxis abstracta**](https://en.wikipedia.org/wiki/Abstract_syntax_tree) (AST): los números son los **nodos hojas** y las operaciones (`+`, `*`) son los **nodos intermedios** que contienen otras expresiones. Si el compilador tuviera que comprobar en cada paso si está ante un número o ante una operación, resultaría en un código muy engorroso. El patrón *Composite* define una interfaz común, `Expresion`, con un método `evaluar()`, que deben implementar tanto los números (nodos hojas) como las operaciones (nodos intermedios). Un número simplemente devuelve su valor; una suma pide a sus dos nodos hijos que se evalúen y suma los resultados. Así, al tener la misma interfaz, evaluar la expresión completa se reduce a una sola llamada: `raiz.evaluar()`, y la recursión hace el resto.
 
 
 | Propósito |  Problema |
@@ -456,9 +455,9 @@ Enlazado con asignaturas de compiladores y estructuras de datos, piensa en cómo
 
 ### Decorator
 
-Imagina un sistema de notificaciones que envía avisos por correo electrónico. Más adelante, algunos usuarios quieren recibirlos también por SMS, mientras que otros por Slack y, para complicar las cosas, hay otro grupo de usuarios que recibe notificaciones por las tres vías a la vez. Crear una subclase para cada combinación es inviable. El patrón *Decorator* permite **añadir responsabilidades a un objeto de forma dinámica**, envolviéndolo en uno o varios *decoradores* que comparten su interfaz. Cada decorador añade un comportamiento específica (por ejemplo, enviar por SMS) y delega el resto en el objeto que envuelve, como quien se pone capas de ropa según el tiempo que haga.
+Imagina un sistema de notificaciones que envía avisos por correo electrónico. Más adelante, algunos usuarios quieren recibirlos también por SMS, mientras que otros por Slack y, para complicar las cosas, hay otro grupo de usuarios que recibe notificaciones por las tres vías a la vez. Crear una subclase para cada combinación es inviable. El patrón *Decorator* permite **añadir responsabilidades a un objeto de forma dinámica**, envolviéndolo en uno o varios *decoradores* que comparten la misma interfaz. Cada decorador añade un comportamiento específico (por ejemplo, enviar por SMS) y delega el resto en el objeto que envuelve, como quien se pone capas de ropa según el tiempo que haga.
 
-Los decoradores de Python son otro ejemplo ilustrativo ya que se inspiran en el patrón *Decorator*, pero no son exactamente lo mismo, porque envuelven funciones y no objetos que comparten una interfaz. La sitaxis `@` permite añadir comportamiento a una función in python sin modificar su código. Por ejemplo, `@functools.lru_cache` añade una caché de resultados a cualquier función, de modo que una función recursiva como Fibonacci deja de recalcular los mismos valores una y otra vez. Del mismo modo, podrías escribir un decorador `@medir_tiempo` que cronometre la ejecución o un decorador `@requiere_login` que compruebe permisos, y aplicar varios a la vez, uno encima de otro. Esta es la idea del patrón *Decorator*: **envolver** un objeto (aquí, una función) en otro que añade una responsabilidad y delega el resto en el original. Así, los comportamientos se añaden, se quitan o se combinan sin tocar el código envuelto.
+Los decoradores de Python son otro ejemplo ilustrativo, ya que también se inspiran en el patrón *Decorator*, pero no son exactamente lo mismo, porque envuelven funciones y no objetos que comparten una interfaz. La sitaxis `@` permite añadir comportamiento a una función in Python sin modificar su código. Por ejemplo, `@functools.lru_cache` añade una caché de resultados a cualquier función, de modo que una función recursiva como Fibonacci deja de recalcular los mismos valores una y otra vez. Del mismo modo, podrías escribir un decorador `@medir_tiempo` que monitorize la ejecución o un decorador `@requiere_login` que compruebe permisos de acceso, y aplicar varios a la vez secuencialmente. Esta es la idea del patrón *Decorator*: **envolver** un objeto (en este ejemplo de Python, una función) en otro que añade una responsabilidad y delega el resto en el objeto original. Así, los comportamientos se añaden, se quitan o se combinan sin tocar el código del objeto envuelto.
 
 ::: {.column-margin}
 Echa un vistazo a las [functools — Higher-order functions](https://docs.python.org/3/library/functools.html) para averiguar más sobre los entresigos de los decoradores en python.
@@ -491,18 +490,44 @@ Echa un vistazo a las [functools — Higher-order functions](https://docs.python
 
 ### Flyweight
 
-Ahora imagina un videojuego que recrea un mundo con un bosque de cien mil árboles. Si cada árbol guardara su propia copia del modelo 3D, las texturas y la animación del viento, el juego necesitaría varios gigabytes de memoria solo para la vegetación. Sin embargo, en realidad solo hay unos pocos tipos de árbol (pino, roble, abeto); lo que cambia de uno a otro es su posición, su tamaño y su rotación. El patrón *Flyweight* separa el estado de cada objeto en dos partes. El **estado intrínseco** (el modelo y las texturas de cada tipo de árbol) es compartido e inmutable y se almacena una sola vez. El **estado extrínseco** (posición, escala, rotación) es propio de cada árbol. Así, miles de objetos *ligeros* comparten una copia de los mismos datos. 
+Ahora imagina un videojuego que recrea un bosque de cien mil árboles. Si cada árbol guarda su propia copia del modelo 3D del árbol, las texturas y la animación del viento, el juego necesitaría enormes cantidades de memoria solo para gestionar la vegetación. Sin embargo, en realidad solo hay unos pocos tipos de árbol (pino, roble, abeto); lo que cambia de uno a otro es su posición, su tamaño y su rotación. El patrón *Flyweight* separa el estado de cada objeto en dos partes. El **estado intrínseco** (el modelo y las texturas de cada tipo de árbol) es compartido e inmutable y se almacena una sola vez. El **estado extrínseco** (posición, escala, rotación) es propio de cada instancia de los objetos `árbol`. Así, miles de objetos *ligeros* comparten una copia del mismo estado. 
 
 ::: {.column-margin}
-Los motores gráficos llevan el patrón *Flyweight* al hardware con la técnica de [*instancing*](https://en.wikipedia.org/wiki/Geometry_instancing), que permite a la GPU dibujar miles de copias de un mismo modelo en una sola operación.
+Los motores gráficos utilizan el patrón *Flyweight* con la técnica de [*instancing*](https://en.wikipedia.org/wiki/Geometry_instancing), que permite a la GPU dibujar miles de copias de un mismo modelo en una sola operación.
 :::
 
-Prueba esto en Java: `Integer.valueOf(100) == Integer.valueOf(100)` devuelve `true`, pero `Integer.valueOf(1000) == Integer.valueOf(1000)` devuelve `false`. La razón es que Java mantiene una **caché** con los objetos `Integer` de -128 a 127: como esos valores se usan constantemente, en lugar de crear un objeto nuevo cada vez, `valueOf()` devuelve siempre la misma instancia compartida. Python hace algo parecido con los enteros pequeños, y ambos lenguajes también reutilizan cadenas de texto idénticas (*string interning*). Esta es la idea del patrón *Flyweight*: cuando muchos objetos son idénticos e inmutables, se **comparte una única instancia** en lugar de crear miles de copias, lo que ahorra una gran cantidad de memoria.
+Abre una consola de Python y prueba lo siguiente:
+
+```python
+a = int("256")
+b = int("256")
+print(a == b, a is b)   # True True
+
+a = int("257")
+b = int("257")
+print(a == b, a is b)   # True False
+```
+
+En ambos casos los valores son iguales (`==` devuelve `True`), pero con `256` las dos variables apuntan **al mismo objeto** (`is` devuelve `True`), y con `257` no. La razón es que CPython, la implementación habitual de Python, crea al arrancar los objetos de los enteros entre -5 y 256 y los guarda en una **caché**. Como estos números se usan constantemente (índices, contadores, bucles...), en lugar de crear un objeto nuevo cada vez que aparecen, el intérprete devuelve siempre la misma instancia compartida. A partir de 257, cada valor se crea como un objeto independiente.
+
+Python aplica la misma idea a las cadenas de texto mediante el [*string interning*](https://github.com/python/cpython/blob/main/InternalDocs/string_interning.md): muchas cadenas cortas (como los nombres de variables o las claves de los diccionarios) se almacenan una sola vez, y el programador puede forzarlo con `sys.intern()`:
+
+
+```python
+import sys
+
+s1 = "".join(["hola", "mundo"])
+s2 = "".join(["hola", "mundo"])
+print(s1 is s2)                          # False: dos objetos distintos
+print(sys.intern(s1) is sys.intern(s2))  # True: una única instancia compartida
+```
+
+Esta es la idea del patrón *Flyweight*: cuando un programa necesita muchos objetos **idénticos e inmutables**, se **comparte una única instancia** en lugar de crear miles de copias, lo que ahorra memoria y tiempo de creación. La [inmutabilidad](https://en.wikipedia.org/wiki/Immutable_object) es la clave: si un objeto compartido pudiera modificarse, el cambio afectaría a todos los que lo usan. En términos del patrón, la caché de enteros actúa como una **fábrica de *flyweights* **: antes de crear un objeto, comprueba si ya existe uno igual y, en ese caso, lo reutiliza.
 
 
 | Propósito |  Problema |
 |-----------|-----------|
-| **construye objetos ligeros**  que comparten estado... | ... porque tengo problemas de memoria al tener muchos objetos similares |
+| **construye objetos ligeros** que comparten estado... | ... porque tengo problemas de memoria al tener muchos objetos similares |
 
 
 ::: column-screen-inset-right
