@@ -25,7 +25,7 @@ Por ejemplo, si una función recibe un objeto `Notificador` en lugar de un `Noti
 
 ::: {.column-margin}
 
-![](https://www.python.org/static/img/python-logo.png){width=100}: [Abstract Base Classes](https://docs.python.org/3/library/abc.html) y [Protocols](https://typing.python.org/en/latest/spec/protocol.html).
+![](https://www.python.org/static/img/python-logo.png): [Abstract Base Classes](https://docs.python.org/3/library/abc.html) y [Protocols](https://typing.python.org/en/latest/spec/protocol.html).
 :::
 
 ### Favorece la composición sobre la herencia
@@ -34,7 +34,7 @@ La herencia es una forma sencilla de reutilizar código, pero crea un vínculo m
 
 Por ejemplo, en lugar de crear subclases como `PersonajeVolador` o `PersonajeNadadorVolador`, un personaje puede *tener* un objeto que define cómo se mueve, y ese objeto puede sustituirse durante la partida. Este principio es la base de los patrones estructurales (*Decorator*, *Bridge*, *Composite*, *Proxy*) y de muchos patrones de comportamiento, como *Strategy* o *State*.
 
-::: {.callout-tip title="Para reflexionar"}
+::: {.callout-tip title="Para reflexionar" icon=true}
 
 Los tres principios están relacionados entre sí: encapsulamos lo que varía *detrás de una interfaz* y lo conectamos con el resto del sistema *mediante composición*. ¿Puedes identificar los tres en alguno de los patrones que ya conoces?
 
