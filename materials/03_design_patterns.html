@@ -102,7 +102,7 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-defce90a430ddeea48f4f6a2f762eb41.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d4540b64af3bcec97118e82438396e6f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-81d8ec7cf955bbbdd9d6d093b8d99ca1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -238,11 +238,11 @@ div.csl-indent {
   <li><a href="#patrones-estructurales" id="toc-patrones-estructurales" class="nav-link" data-scroll-target="#patrones-estructurales"><span class="header-section-number">3.3</span> Patrones estructurales</a>
   <ul class="collapse">
   <li><a href="#adapter" id="toc-adapter" class="nav-link" data-scroll-target="#adapter"><span class="header-section-number">3.3.1</span> Adapter</a></li>
-  <li><a href="#bridge" id="toc-bridge" class="nav-link" data-scroll-target="#bridge"><span class="header-section-number">3.3.2</span> Bridge</a></li>
-  <li><a href="#facade" id="toc-facade" class="nav-link" data-scroll-target="#facade"><span class="header-section-number">3.3.3</span> Facade</a></li>
-  <li><a href="#proxy" id="toc-proxy" class="nav-link" data-scroll-target="#proxy"><span class="header-section-number">3.3.4</span> Proxy</a></li>
+  <li><a href="#facade" id="toc-facade" class="nav-link" data-scroll-target="#facade"><span class="header-section-number">3.3.2</span> Facade</a></li>
+  <li><a href="#proxy" id="toc-proxy" class="nav-link" data-scroll-target="#proxy"><span class="header-section-number">3.3.3</span> Proxy</a></li>
+  <li><a href="#decorator" id="toc-decorator" class="nav-link" data-scroll-target="#decorator"><span class="header-section-number">3.3.4</span> Decorator</a></li>
   <li><a href="#composite" id="toc-composite" class="nav-link" data-scroll-target="#composite"><span class="header-section-number">3.3.5</span> Composite</a></li>
-  <li><a href="#decorator" id="toc-decorator" class="nav-link" data-scroll-target="#decorator"><span class="header-section-number">3.3.6</span> Decorator</a></li>
+  <li><a href="#bridge" id="toc-bridge" class="nav-link" data-scroll-target="#bridge"><span class="header-section-number">3.3.6</span> Bridge</a></li>
   <li><a href="#flyweight" id="toc-flyweight" class="nav-link" data-scroll-target="#flyweight"><span class="header-section-number">3.3.7</span> Flyweight</a></li>
   <li><a href="#relaciones-estructurales" id="toc-relaciones-estructurales" class="nav-link" data-scroll-target="#relaciones-estructurales"><span class="header-section-number">3.3.8</span> Relaciones entre patrones</a></li>
   </ul></li>
@@ -678,11 +678,11 @@ Figure&nbsp;3.1: Árbol de decisión para elegir un patrón creacional
 <p>Los patrones estructurales son:</p>
 <ul>
 <li><a href="#adapter">Adapter</a></li>
-<li><a href="#bridge">Bridge</a></li>
 <li><a href="#facade">Facade</a></li>
 <li><a href="#proxy">Proxy</a></li>
-<li><a href="#composite">Composite</a></li>
 <li><a href="#decorator">Decorator</a></li>
+<li><a href="#composite">Composite</a></li>
+<li><a href="#bridge">Bridge</a></li>
 <li><a href="#flyweight">Flyweight</a></li>
 </ul>
 <section id="adapter" class="level3 page-columns page-full" data-number="3.3.1">
@@ -736,46 +736,8 @@ Figure&nbsp;3.1: Árbol de decisión para elegir un patrón creacional
 </div>
 </div>
 </section>
-<section id="bridge" class="level3 page-columns page-full" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="bridge"><span class="header-section-number">3.3.2</span> Bridge</h3>
-<p>Imagina que programas un bot que envía distintos tipos de mensajes (texto, imágenes y encuestas) a cada una de las plataformas de mensajería: Discord, Telegram y Slack. Con herencia, se necesita una subclase (implementación) para cada combinación mensaje-plataforma (<code>EncuestaDiscord</code>, <code>ImagenTelegram</code>, <code>TextoSlack</code>…): nueve clases para tres mensajes y tres plataformas, y cada nueva plataforma obliga a añadir tres clases más. El problema es que el diseño crece en dos dimensiones independientes: qué se envía y por dónde se envía. El uso del patrón <em>Bridge</em> separa esos dos subsistemas en jerarquías distintas, uno para la <strong>abstracción</strong> (el tipo de mensaje) y otro para la <strong>implementación</strong> (la plataforma), conectados mediante un <em>puente</em> (<em>bridge</em>) que combina abstracciones e implementaciones dinámicamente. Cada mensaje sabe <strong>qué</strong> contenido enviar y delega en la plataforma <strong>cómo</strong> enviarlo. Añadir, por ejemplo, una nueva plataforma (e.g., WhatsApp) supone únicamente añadir una nueva clase al subsistema de implementación únicamente, y no una clase por cada tipo de mensaje disponible. Es decir, la jerarquía de clases para el subsistema de implementación evoluaciona sin afectar al código relativo al subsistema de abstracción.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Propósito</th>
-<th>Problema</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>separa subsistemas</strong>…</td>
-<td>… porque puede que un subsistema cambie completamente sin que eso afecte al otro subsistema</td>
-</tr>
-</tbody>
-</table>
-<div class="column-screen-inset-right">
-<p><img src="../images/concept-maps/BRIDGE-map.png" class="img-fluid"></p>
-</div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Implementación">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Implementación
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/bridge/java/example#lang-features">Bridge en Java (refactoring.guru)</a></p>
-</div>
-</div>
-</section>
-<section id="facade" class="level3 page-columns page-full" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="facade"><span class="header-section-number">3.3.3</span> Facade</h3>
+<section id="facade" class="level3 page-columns page-full" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="facade"><span class="header-section-number">3.3.2</span> Facade</h3>
 <p>Cada vez que ejecutas <code>git commit</code> estás usando un patrón <em>Facade</em>. Internamente, Git distingue entre comandos de bajo nivel, o <a href="https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain"><em>plumbing</em></a> (fontanería), y comandos de alto nivel, o <em>porcelain</em> (porcelana). Un <em>commit</em> requiere varios pasos: guardar el contenido de los archivos como objetos (<code>git hash-object</code>), construir el árbol de directorios (<code>git write-tree</code>), crear el objeto <em>commit</em> que apunta a ese árbol (<code>git commit-tree</code>) y mover la rama a ese nuevo <em>commit</em> (<code>git update-ref</code>). Nadie quiere realizar todas estas tareas cada vez que se lleva a cabo un <code>commit</code>. El patrón <em>Facade</em> ofrece una solución mediante la ideas de fachada: una interfaz sencilla y amigable, como <code>git commit</code>, que coordina internamente el subsistema complejo como una serie de comandos de bajo nivel. El usuario solo ve la fachada, aunque podría utilizar los comandos Git de bajo nivel para, por ejemplo, encadenarlos al estilo UNIX en la línea de comandos.</p>
 <table class="caption-top table">
 <colgroup>
@@ -825,8 +787,8 @@ Figure&nbsp;3.1: Árbol de decisión para elegir un patrón creacional
 </div>
 </div>
 </section>
-<section id="proxy" class="level3 page-columns page-full" data-number="3.3.4">
-<h3 data-number="3.3.4" class="anchored" data-anchor-id="proxy"><span class="header-section-number">3.3.4</span> Proxy</h3>
+<section id="proxy" class="level3 page-columns page-full" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="proxy"><span class="header-section-number">3.3.3</span> Proxy</h3>
 <p>A veces no queremos que el cliente acceda directamente a un objeto. Puede que sea un objeto costoso (una imagen de gran tamaño, o un objeto que requiere de mucho cómputo para instanciarse), que haya que comprobar permisos antes de usarlo, o que convenga guardar en caché sus resultados. El patrón <em>Proxy</em> propone un objeto <strong>sustituto</strong> con el mismo interfaz que el objeto real. El cliente cree que trabaja con el objeto original, pero realmente interactua con el objeto <em>proxy</em> que controla el acceso y puede hacer tareas adicionales antes y/o después de delegar en o interaccionar con el objeto real. En definitiva, el patrón <em>Proxy</em> permite <strong>suplantar o sustituir</strong> un objeto real.</p>
 <table class="caption-top table">
 <colgroup>
@@ -873,6 +835,61 @@ Figure&nbsp;3.1: Árbol de decisión para elegir un patrón creacional
 </div>
 <div class="callout-body-container callout-body">
 <p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/proxy/java/example#lang-features">Proxy en Java (refactoring.guru)</a></p>
+</div>
+</div>
+</section>
+<section id="decorator" class="level3 page-columns page-full" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="decorator"><span class="header-section-number">3.3.4</span> Decorator</h3>
+<p>Imagina un sistema de notificaciones que envía avisos por correo electrónico. Más adelante, algunos usuarios quieren recibirlos también por SMS, mientras que otros por Slack y, para complicar las cosas, hay otro grupo de usuarios que recibe notificaciones por las tres vías a la vez. Crear una subclase para cada combinación es inviable. El patrón <em>Decorator</em> permite <strong>añadir responsabilidades a un objeto de forma dinámica</strong>, envolviéndolo en uno o varios <em>decoradores</em> que comparten la misma interfaz. Cada decorador añade un comportamiento específico (por ejemplo, enviar por SMS) y delega el resto en el objeto que envuelve, como quien se pone capas de ropa según el tiempo que haga.</p>
+<p>Los decoradores de Python son otro ejemplo ilustrativo, ya que también se inspiran en el patrón <em>Decorator</em>, pero no son exactamente lo mismo, porque envuelven funciones y no objetos que comparten una interfaz. La sintaxis <code>@</code> permite añadir comportamiento a una función in Python sin modificar su código. Por ejemplo, <code>@functools.lru_cache</code> añade una caché de resultados a cualquier función, de modo que una función recursiva como Fibonacci deja de recalcular los mismos valores una y otra vez. Del mismo modo, podrías escribir un decorador <code>@medir_tiempo</code> que monitorize la ejecución o un decorador <code>@requiere_login</code> que compruebe permisos de acceso, y aplicar varios a la vez secuencialmente. Esta es la idea del patrón <em>Decorator</em>: <strong>envolver</strong> un objeto (en este ejemplo de Python, una función) en otro que añade una responsabilidad y delega el resto en el objeto original. Así, los comportamientos se añaden, se quitan o se combinan sin tocar el código del objeto envuelto.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Echa un vistazo a las <a href="https://docs.python.org/3/library/functools.html">functools — Higher-order functions</a> para averiguar más sobre los entresigos de los decoradores en python.</p>
+</div></div><table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propósito</th>
+<th>Problema</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>añade</strong> nuevas reponsabilidades/comportamientos a objetos</td>
+<td>… porque quiero añadirlos, quitarlos, o agregarlos dinámicamente</td>
+</tr>
+</tbody>
+</table>
+<div class="column-screen-inset-right">
+<p><img src="../images/concept-maps/DECORATOR-map.png" class="img-fluid"></p>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Slide Deck">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Slide Deck
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="https://cgranell.github.io/ei1039/slides/TE6_decorator.html">Decorator pattern</a></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Implementación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Implementación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/decorator/java/example#lang-features">Decorator en Java (refactoring.guru)</a></p>
 </div>
 </div>
 </section>
@@ -928,14 +945,10 @@ Figure&nbsp;3.1: Árbol de decisión para elegir un patrón creacional
 </div>
 </div>
 </section>
-<section id="decorator" class="level3 page-columns page-full" data-number="3.3.6">
-<h3 data-number="3.3.6" class="anchored" data-anchor-id="decorator"><span class="header-section-number">3.3.6</span> Decorator</h3>
-<p>Imagina un sistema de notificaciones que envía avisos por correo electrónico. Más adelante, algunos usuarios quieren recibirlos también por SMS, mientras que otros por Slack y, para complicar las cosas, hay otro grupo de usuarios que recibe notificaciones por las tres vías a la vez. Crear una subclase para cada combinación es inviable. El patrón <em>Decorator</em> permite <strong>añadir responsabilidades a un objeto de forma dinámica</strong>, envolviéndolo en uno o varios <em>decoradores</em> que comparten la misma interfaz. Cada decorador añade un comportamiento específico (por ejemplo, enviar por SMS) y delega el resto en el objeto que envuelve, como quien se pone capas de ropa según el tiempo que haga.</p>
-<p>Los decoradores de Python son otro ejemplo ilustrativo, ya que también se inspiran en el patrón <em>Decorator</em>, pero no son exactamente lo mismo, porque envuelven funciones y no objetos que comparten una interfaz. La sitaxis <code>@</code> permite añadir comportamiento a una función in Python sin modificar su código. Por ejemplo, <code>@functools.lru_cache</code> añade una caché de resultados a cualquier función, de modo que una función recursiva como Fibonacci deja de recalcular los mismos valores una y otra vez. Del mismo modo, podrías escribir un decorador <code>@medir_tiempo</code> que monitorize la ejecución o un decorador <code>@requiere_login</code> que compruebe permisos de acceso, y aplicar varios a la vez secuencialmente. Esta es la idea del patrón <em>Decorator</em>: <strong>envolver</strong> un objeto (en este ejemplo de Python, una función) en otro que añade una responsabilidad y delega el resto en el objeto original. Así, los comportamientos se añaden, se quitan o se combinan sin tocar el código del objeto envuelto.</p>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p>Echa un vistazo a las <a href="https://docs.python.org/3/library/functools.html">functools — Higher-order functions</a> para averiguar más sobre los entresigos de los decoradores en python.</p>
-</div></div><table class="caption-top table">
+<section id="bridge" class="level3 page-columns page-full" data-number="3.3.6">
+<h3 data-number="3.3.6" class="anchored" data-anchor-id="bridge"><span class="header-section-number">3.3.6</span> Bridge</h3>
+<p>Imagina que programas un bot que envía distintos tipos de mensajes (texto, imágenes y encuestas) a cada una de las plataformas de mensajería: Discord, Telegram y Slack. Con herencia, se necesita una subclase (implementación) para cada combinación mensaje-plataforma (<code>EncuestaDiscord</code>, <code>ImagenTelegram</code>, <code>TextoSlack</code>…): nueve clases para tres mensajes y tres plataformas, y cada nueva plataforma obliga a añadir tres clases más. El problema es que el diseño crece en dos dimensiones independientes: qué se envía y por dónde se envía. El uso del patrón <em>Bridge</em> separa esos dos subsistemas en jerarquías distintas, uno para la <strong>abstracción</strong> (el tipo de mensaje) y otro para la <strong>implementación</strong> (la plataforma), conectados mediante un <em>puente</em> (<em>bridge</em>) que combina abstracciones e implementaciones dinámicamente. Cada mensaje sabe <strong>qué</strong> contenido enviar y delega en la plataforma <strong>cómo</strong> enviarlo. Añadir, por ejemplo, una nueva plataforma (e.g., WhatsApp) supone únicamente añadir una nueva clase al subsistema de implementación únicamente, y no una clase por cada tipo de mensaje disponible. Es decir, la jerarquía de clases para el subsistema de implementación evoluaciona sin afectar al código relativo al subsistema de abstracción.</p>
+<table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -948,26 +961,13 @@ Figure&nbsp;3.1: Árbol de decisión para elegir un patrón creacional
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>añade</strong> nuevas reponsabilidades/comportamientos a objetos</td>
-<td>… porque quiero añadirlos, quitarlos, o agregarlos dinámicamente</td>
+<td><strong>separa subsistemas</strong>…</td>
+<td>… porque puede que un subsistema cambie completamente sin que eso afecte al otro subsistema</td>
 </tr>
 </tbody>
 </table>
 <div class="column-screen-inset-right">
-<p><img src="../images/concept-maps/DECORATOR-map.png" class="img-fluid"></p>
-</div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Slide Deck">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Slide Deck
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><a href="https://cgranell.github.io/ei1039/slides/TE6_decorator.html">Decorator pattern</a></p>
-</div>
+<p><img src="../images/concept-maps/BRIDGE-map.png" class="img-fluid"></p>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled" title="Implementación">
 <div class="callout-header d-flex align-content-center">
@@ -979,7 +979,7 @@ Figure&nbsp;3.1: Árbol de decisión para elegir un patrón creacional
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/decorator/java/example#lang-features">Decorator en Java (refactoring.guru)</a></p>
+<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/bridge/java/example#lang-features">Bridge en Java (refactoring.guru)</a></p>
 </div>
 </div>
 </section>
