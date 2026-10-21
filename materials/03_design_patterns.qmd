@@ -499,7 +499,8 @@ Los motores gráficos utilizan el patrón *Flyweight* con la técnica de [*insta
 
 Abre una consola de Python y prueba lo siguiente:
 
-```python
+```{python}
+#| echo: true
 a = int("256")
 b = int("256")
 print(a == b, a is b)   # True True
