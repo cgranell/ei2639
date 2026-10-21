@@ -499,8 +499,9 @@ Los motores gráficos utilizan el patrón *Flyweight* con la técnica de [*insta
 
 Abre una consola de Python y prueba lo siguiente:
 
-```{python}
-#| echo: true
+```python
+#| code-block-border-left: true
+
 a = int("256")
 b = int("256")
 print(a == b, a is b)   # True True
@@ -516,6 +517,8 @@ Python aplica la misma idea a las cadenas de texto mediante el [*string internin
 
 
 ```python
+#| code-block-border-left: true
+
 import sys
 
 s1 = "".join(["hola", "mundo"])
