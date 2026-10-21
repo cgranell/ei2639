@@ -25,7 +25,7 @@ Por ejemplo, si una función recibe un objeto `Notificador` en lugar de un `Noti
 
 ::: {.column-margin}
 
-![](https://www.python.org/static/img/python-logo.png){width=25}: [Abstract Base Classes](https://docs.python.org/3/library/abc.html) y [Protocols](https://typing.python.org/en/latest/spec/protocol.html).
+![](https://www.python.org/static/img/python-logo.png){width=100}: [Abstract Base Classes](https://docs.python.org/3/library/abc.html) y [Protocols](https://typing.python.org/en/latest/spec/protocol.html).
 :::
 
 ### Favorece la composición sobre la herencia
