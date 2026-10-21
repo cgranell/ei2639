@@ -196,7 +196,7 @@ div.csl-indent {
   <li><a href="#singleton" id="toc-singleton" class="nav-link" data-scroll-target="#singleton"><span class="header-section-number">3.2.1</span> Singleton</a></li>
   <li><a href="#builder" id="toc-builder" class="nav-link" data-scroll-target="#builder"><span class="header-section-number">3.2.2</span> Builder</a></li>
   <li><a href="#prototype" id="toc-prototype" class="nav-link" data-scroll-target="#prototype"><span class="header-section-number">3.2.3</span> Prototype</a></li>
-  <li><a href="#factory-method" id="toc-factory-method" class="nav-link" data-scroll-target="#factory-method"><span class="header-section-number">3.2.4</span> Factory method</a></li>
+  <li><a href="#factory-method" id="toc-factory-method" class="nav-link" data-scroll-target="#factory-method"><span class="header-section-number">3.2.4</span> Factory Method</a></li>
   <li><a href="#abstract-factory" id="toc-abstract-factory" class="nav-link" data-scroll-target="#abstract-factory"><span class="header-section-number">3.2.5</span> Abstract Factory</a></li>
   <li><a href="#relaciones-entre-patrones" id="toc-relaciones-entre-patrones" class="nav-link" data-scroll-target="#relaciones-entre-patrones"><span class="header-section-number">3.2.6</span> Relaciones entre patrones</a></li>
   <li><a href="#aplicabilidad" id="toc-aplicabilidad" class="nav-link" data-scroll-target="#aplicabilidad"><span class="header-section-number">3.2.7</span> Aplicabilidad</a></li>
@@ -340,8 +340,15 @@ div.csl-indent {
 </div>
 </div>
 <p>Los patrones creacionales responden a una pregunta (problema) aparentemente sencilla: <strong>¿cómo se crean los objetos?</strong> En un programa pequeño basta con llamar directamente al constructor de una clase. Pero, a medida que el sistema crece en complejidad, crear objetos mediante la instanciación de clases concretas genera problemas: el código queda atado a clases concretas, cuesta sustituir unas por otras y la lógica de creación se repite por todo el proyecto.</p>
-<p>Los patrones creacionales resuelven estos problemas relacionados con la creación de objetos <strong>separando el uso de un objeto de la forma en que se crea</strong>. Así, el resto de código de un programa (e.g., librería, modulo, cliente) no necesita saber qué clase concreta se instancia ni cómo se configura, resultando en un código más flexible, menos dependiente, y fácil de mantener.</p>
-<p>En este curso, todos los patrones (creacionales, estructurales y de comportamiento) se describen con la misma estructura, que coincide con la de sus mapas conceptuales:</p>
+<p>Los patrones creacionales resuelven estos problemas relacionados con la creación de objetos <strong>separando el uso de un objeto de la forma en que se crea</strong>. Así, el resto de código de un programa (e.g., librería, modulo, cliente) no necesita saber qué clase concreta se instancia ni cómo se configura, resultando en un código más flexible, menos dependiente, y fácil de mantener. Los patrones creacionales son:</p>
+<ul>
+<li><a href="#Singleton">Singleton</a></li>
+<li><a href="#Builder">Builder</a></li>
+<li><a href="#Prototype">Prototype</a></li>
+<li><a href="#Factory%20Method">Factory Method</a></li>
+<li><a href="#Abstract%20Factory">Abstract Factory</a></li>
+</ul>
+<p>En este curso, todos los patrones, tanto los creacionales, estructurales y de comportamiento, se describen con la misma estructura, que coincide con la de sus mapas conceptuales:</p>
 <ol type="1">
 <li><strong>Propósito</strong> (<em>aim</em>): qué pretende conseguir el patrón.</li>
 <li><strong>Problema</strong> (<em>what problem does it solve?</em>): qué situación de diseño lo hace necesario.</li>
@@ -479,7 +486,7 @@ div.csl-indent {
 </div>
 </section>
 <section id="factory-method" class="level3 page-columns page-full" data-number="3.2.4">
-<h3 data-number="3.2.4" class="anchored" data-anchor-id="factory-method"><span class="header-section-number">3.2.4</span> Factory method</h3>
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="factory-method"><span class="header-section-number">3.2.4</span> Factory Method</h3>
 <p>Imagina una aplicación de logística que al principio solo gestiona camiones. Si el código crea los camiones directamente (<code>new Camion()</code>), añadir barcos más adelante obligará a modificar muchas partes del programa. El patrón <em>Factory Method</em> resuelve este problema sustituyendo la creación directa de objetos por una llamada a un <strong>método de fábrica</strong>, que las subclases pueden redefinir para decidir qué objeto concreto se crea. Así, el código que usa los objetos depende de una interfaz común y no de clases concretas.</p>
 <table class="caption-top table">
 <colgroup>
