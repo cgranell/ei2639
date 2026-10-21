@@ -397,7 +397,7 @@ Imagina un sistema de notificaciones que envía avisos por correo electrónico. 
 Los decoradores de Python son otro ejemplo ilustrativo, ya que también se inspiran en el patrón *Decorator*, pero no son exactamente lo mismo, porque envuelven funciones y no objetos que comparten una interfaz. La sintaxis `@` permite añadir comportamiento a una función in Python sin modificar su código. Por ejemplo, `@functools.lru_cache` añade una caché de resultados a cualquier función, de modo que una función recursiva como Fibonacci deja de recalcular los mismos valores una y otra vez. Del mismo modo, podrías escribir un decorador `@medir_tiempo` que monitorize la ejecución o un decorador `@requiere_login` que compruebe permisos de acceso, y aplicar varios a la vez secuencialmente. Esta es la idea del patrón *Decorator*: **envolver** un objeto (en este ejemplo de Python, una función) en otro que añade una responsabilidad y delega el resto en el objeto original. Así, los comportamientos se añaden, se quitan o se combinan sin tocar el código del objeto envuelto.
 
 ::: {.column-margin}
-Echa un vistazo a las [functools — Higher-order functions](https://docs.python.org/3/library/functools.html) para averiguar más sobre los entresigos de los decoradores en python.
+![](https://docs.python.org/3/_static/py.svg): Echa un vistazo a las [functools — Higher-order functions](https://docs.python.org/3/library/functools.html) para averiguar más sobre los entresigos de los decoradores en Python.
 :::
 
 | Propósito |  Problema |
