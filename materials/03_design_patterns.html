@@ -102,7 +102,7 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-defce90a430ddeea48f4f6a2f762eb41.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d4540b64af3bcec97118e82438396e6f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-81d8ec7cf955bbbdd9d6d093b8d99ca1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -995,21 +995,25 @@ Figure&nbsp;3.1: Árbol de decisión para elegir un patrón creacional
 <div class="no-row-height column-margin column-container"><div class="">
 <p>Los motores gráficos utilizan el patrón <em>Flyweight</em> con la técnica de <a href="https://en.wikipedia.org/wiki/Geometry_instancing"><em>instancing</em></a>, que permite a la GPU dibujar miles de copias de un mismo modelo en una sola operación.</p>
 </div></div><p>Abre una consola de Python y prueba lo siguiente:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="bu">int</span>(<span class="st">"256"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="bu">int</span>(<span class="st">"256"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a <span class="op">==</span> b, a <span class="kw">is</span> b)   <span class="co"># True True</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="bu">int</span>(<span class="st">"257"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="bu">int</span>(<span class="st">"257"</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a <span class="op">==</span> b, a <span class="kw">is</span> b)   <span class="co"># True False</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-block-border-left: true</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="bu">int</span>(<span class="st">"256"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="bu">int</span>(<span class="st">"256"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a <span class="op">==</span> b, a <span class="kw">is</span> b)   <span class="co"># True True</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="bu">int</span>(<span class="st">"257"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="bu">int</span>(<span class="st">"257"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a <span class="op">==</span> b, a <span class="kw">is</span> b)   <span class="co"># True False</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>En ambos casos los valores son iguales (<code>==</code> devuelve <code>True</code>), pero con <code>256</code> las dos variables apuntan <strong>al mismo objeto</strong> (<code>is</code> devuelve <code>True</code>), y con <code>257</code> no. La razón es que CPython, la implementación habitual de Python, crea al arrancar los objetos de los enteros entre -5 y 256 y los guarda en una <strong>caché</strong>. Como estos números se usan constantemente (índices, contadores, bucles…), en lugar de crear un objeto nuevo cada vez que aparecen, el intérprete devuelve siempre la misma instancia compartida. A partir de 257, cada valor se crea como un objeto independiente.</p>
 <p>Python aplica la misma idea a las cadenas de texto mediante el <a href="https://github.com/python/cpython/blob/main/InternalDocs/string_interning.md"><em>string interning</em></a>: muchas cadenas cortas (como los nombres de variables o las claves de los diccionarios) se almacenan una sola vez, y el programador puede forzarlo con <code>sys.intern()</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-block-border-left: true</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>s1 <span class="op">=</span> <span class="st">""</span>.join([<span class="st">"hola"</span>, <span class="st">"mundo"</span>])</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>s2 <span class="op">=</span> <span class="st">""</span>.join([<span class="st">"hola"</span>, <span class="st">"mundo"</span>])</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s1 <span class="kw">is</span> s2)                          <span class="co"># False: dos objetos distintos</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.<span class="bu">intern</span>(s1) <span class="kw">is</span> sys.<span class="bu">intern</span>(s2))  <span class="co"># True: una única instancia compartida</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>s1 <span class="op">=</span> <span class="st">""</span>.join([<span class="st">"hola"</span>, <span class="st">"mundo"</span>])</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>s2 <span class="op">=</span> <span class="st">""</span>.join([<span class="st">"hola"</span>, <span class="st">"mundo"</span>])</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s1 <span class="kw">is</span> s2)                          <span class="co"># False: dos objetos distintos</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.<span class="bu">intern</span>(s1) <span class="kw">is</span> sys.<span class="bu">intern</span>(s2))  <span class="co"># True: una única instancia compartida</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Esta es la idea del patrón <em>Flyweight</em>: cuando un programa necesita muchos objetos <strong>idénticos e inmutables</strong>, se <strong>comparte una única instancia</strong> en lugar de crear miles de copias, lo que ahorra memoria y tiempo de creación. La <a href="https://en.wikipedia.org/wiki/Immutable_object">inmutabilidad</a> es la clave: si un objeto compartido pudiera modificarse, el cambio afectaría a todos los que lo usan. En términos del patrón, la caché de enteros actúa como una <strong>fábrica de <em>flyweights</em> </strong>: antes de crear un objeto, comprueba si ya existe uno igual y, en ese caso, lo reutiliza.</p>
 <table class="caption-top table">
 <colgroup>
