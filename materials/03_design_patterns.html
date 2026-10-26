@@ -1107,6 +1107,8 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </section>
 <section id="patrones-de-comportamiento" class="level2 page-columns page-full" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="patrones-de-comportamiento"><span class="header-section-number">3.4</span> Patrones de comportamiento</h2>
+<p>Si los patrones creacionales responden a la pregunta <em>¿cómo se crean los objetos?</em> y los estructurales a <em>¿cómo se organizan y conectan?</em>, los patrones de comportamiento responden a un tercer problema bastante común en ingeniería de software: <strong>¿quién hace qué, y cómo se comunican los objetos para conseguirlo?</strong> En un sistema real, los objetos y clases colaboran constantemente: un objeto avisa a otros de un cambio, otro decide qué algoritmo aplicar, otro guarda un estado para poder deshacer una acción a posteriori. Si esa colaboración y asignación de responsabildiades no se diseña de forma adecuada, aparecen síntomas caractetristicos del código de baja calidad (alto acoplamiento, baja cohesión, o bajo nivel de reutilización) . Los objetos saben demasiado unos de otros, los métodos se llenan de condicionales <code>if</code>/<code>else</code> o <code>switch</code> interminables y cualquier cambio en una clase obliga a modificar muchas otras.</p>
+<p>La idea común a casi todos estos patrones es <strong>tratar y convertir un comportamiento como un objeto</strong>. Una petición se convierte en un objeto en <em>Command</em>, un algoritmo en <em>Strategy</em>, un estado en <em>State</em>, una forma de recorrer una colección en <em>Iterator</em> y una instantánea del estado de un objeto en <em>Memento</em>. Una vez que el comportamiento deseado se estructura como un objeto, éste puede guardarse, intercambiarse, combinarse o pasarse a otros objetos. Un cliente de una petición queda <strong>desacoplado</strong> del objeto que finalmente la atiende. Los patrones de commportamiento aplican los <a href="../materials/02_principles.html#principios-de-la-programación-orientada-a-objetos-poo">principios básicos de diseño</a> vistos anteriormente: encapsular lo que varía, programar a una interfaz y favorecer la composición sobre la herencia. Todo esto facilita que el software resultante sea de <strong>alta cohesión</strong>, que es lo que queremos como ingenieros/as de software.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Definición">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1117,15 +1119,29 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Los <strong>patrones de comportamiento</strong> se refieren a la comunicación entre objetos en tiempo de ejecución, es decir, los roles que asumen dichos objetos y cómo interactúan entre sí.</p>
+<p>Los <strong>patrones de comportamiento</strong> se ocupan de la comunicación entre objetos en tiempo de ejecución, es decir, de los roles que asumen los objetos, de cómo se reparten las responsabilidades y de cómo interactúan entre sí.</p>
 </div>
 </div>
+<p>Los patrones de comportamiento son:</p>
+<ul>
+<li><a href="#command">Command</a></li>
+<li><a href="#memento">Memento</a></li>
+<li><a href="#chain-of-responsibility">Chain of Responsibility</a></li>
+<li><a href="#template-method">Template Method</a></li>
+<li><a href="#observer">Observer</a></li>
+<li><a href="#strategy">Strategy</a></li>
+<li><a href="#mediator">Mediator</a></li>
+<li><a href="#iterator">Iterator</a></li>
+<li><a href="#state">State</a></li>
+<li><a href="#interpreter">Interpreter</a></li>
+</ul>
 <section id="command" class="level3 page-columns page-full" data-number="3.4.1">
 <h3 data-number="3.4.1" class="anchored" data-anchor-id="command"><span class="header-section-number">3.4.1</span> Command</h3>
+<p>En un editor de código, la acción “copiar” puede iniciarse desde el menú, desde un botón de la barra de herramientas, con <code>Ctrl+C</code> o desde la paleta de comandos. Si cada uno de esos elementos contiene su propia lógica, el código se hace más compleja de forma innecesaria. Además, resulta más difícil implementar funciones como <strong>deshacer</strong> (<code>Ctrl+Z</code>) o repetir la última acción, si depende del origen que la desencadeno. El patrón <em>Command</em> encapsula cada petición en un <strong>objeto comando</strong>, con un método <code>ejecutar()</code> y, opcionalmente, otro <code>deshacer()</code>. Así, los botones, menús y atajos solo saben que deben ejecutar un comportamiento determinado (un comando), sin conocer qué hace. Como las peticiones son objetos, pueden guardarse en un historial, ponerse en una cola para ejecutarse más tarde o enviarse a otra aplicación.</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 52%">
+<col style="width: 47%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1135,8 +1151,8 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </thead>
 <tbody>
 <tr class="odd">
-<td>permite encapsular una petición como un objeto …</td>
-<td>… porque quiero tener mayor control sobre el ciclo de vida de dicha petición</td>
+<td>permite encapsular una petición como un objeto…</td>
+<td>… porque quiero tener mayor control sobre el ciclo de vida de dicha petición (deshacer, encolar, registrar, repetir)</td>
 </tr>
 </tbody>
 </table>
@@ -1172,10 +1188,11 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </section>
 <section id="memento" class="level3 page-columns page-full" data-number="3.4.2">
 <h3 data-number="3.4.2" class="anchored" data-anchor-id="memento"><span class="header-section-number">3.4.2</span> Memento</h3>
+<p>Piensa por un momento en cómo se almacena una partida en un videojuego. EN cada moemento, el videojuego necesita una instantánea del estado del personaje (posición, vida, inventario…) para poder restaurarla más tarde. Sin embargo, si cualquier clase pudiera leer y modificar libremente esos atributos, se rompería la <a href="https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)">encapsulación</a> y cualquiera podría hacer trampas. El patrón <em>Memento</em> resuelve este problema haciendo que sea el <strong>propio objeto</strong> (el <em>originador</em>) quien genere una instantánea de su estado, el <em>memento</em>. Otro objeto, el <em>cuidador</em> (por ejemplo, el sistema de partidas guardadas), almacena los mementos sin poder ver ni modificar su contenido. Cuando hace falta, el originador recibe un memento y restaura su estado a partir de él.</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 52%">
+<col style="width: 47%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1185,7 +1202,7 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </thead>
 <tbody>
 <tr class="odd">
-<td>permite capturar el estado de un objeto …</td>
+<td>permite capturar el estado de un objeto sin violar su encapsulación…</td>
 <td>… porque quiero restaurar ese estado en cualquier momento</td>
 </tr>
 </tbody>
@@ -1209,10 +1226,11 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </section>
 <section id="chain-of-responsibility" class="level3 page-columns page-full" data-number="3.4.3">
 <h3 data-number="3.4.3" class="anchored" data-anchor-id="chain-of-responsibility"><span class="header-section-number">3.4.3</span> Chain of responsibility</h3>
+<p>Cuando una petición HTTP llega a una aplicación web, antes de llegar a la función que la atiende suele pasar por varios filtros. Uno registra la petición en el <em>log</em>, otro comprueba que el usuario ha iniciado sesión, otro limita el número de peticiones por minuto y otro descomprime los datos. Si todas esas comprobaciones estuvieran en un único método, sería enorme y difícil de modificar. El patrón <em>Chain of Responsibility</em> organiza los gestores en una <strong>cadena</strong>: cada eslabón decide si procesa la petición, si la rechaza o si la pasa al siguiente. Es exactamente lo que hacen los <a href="https://docs.djangoproject.com/es/stable/topics/http/middleware/"><em>middleware</em></a> de frameworks como <a href="https://www.djangoproject.com/">Django</a>, <a href="https://expressjs.com/">Express</a> o <a href="https://docs.spring.io/spring-boot/">Spring Boot</a>. Así, se pueden añadir, quitar o reordenar eslabones sin modificar el resto de la cadena.</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 52%">
+<col style="width: 47%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1222,7 +1240,7 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </thead>
 <tbody>
 <tr class="odd">
-<td>permite distribuir responsabilidad de una petición …</td>
+<td>permite distribuir la responsabilidad de una petición entre una cadena de gestores…</td>
 <td>… porque tengo un número variable de objetos que pueden gestionarla</td>
 </tr>
 </tbody>
@@ -1246,10 +1264,11 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </section>
 <section id="template-method" class="level3 page-columns page-full" data-number="3.4.4">
 <h3 data-number="3.4.4" class="anchored" data-anchor-id="template-method"><span class="header-section-number">3.4.4</span> Template method</h3>
+<p>Si has escrito pruebas unitarias con <code>unittest</code> en Python o con <a href="https://junit.org/">JUnit</a> en Java, ya has usado este patrón sin saberlo. El <em>framework</em> define el algoritmo general que se sigue al ejecutar cada prueba: preparar el entorno (<code>setUp</code>), ejecutar la prueba y limpiar al terminar (<code>tearDown</code>). Tú solo redefines los pasos que te interesan en tu subclase, y el <em>framework</em> se encarga del resto. Eso es el patrón <em>Template Method</em>: una superclase define el <strong>esqueleto de un algoritmo</strong> en un método (la <em>plantilla</em>) y deja que las subclases redefinan algunos de sus pasos sin cambiar la estructura general. Se evita así duplicar la parte común del algoritmo en cada subclase (es decir, las implementacones concretas).</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 52%">
+<col style="width: 47%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1259,8 +1278,8 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </thead>
 <tbody>
 <tr class="odd">
-<td>define un algoritmo a nivel de superclase…</td>
-<td>… pero permite que subclases sobrescriban partes del algoritmo</td>
+<td>define el esqueleto de un algoritmo a nivel de superclase…</td>
+<td>… pero permite que las subclases sobrescriban partes del algoritmo</td>
 </tr>
 </tbody>
 </table>
@@ -1296,10 +1315,11 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </section>
 <section id="observer" class="level3 page-columns page-full" data-number="3.4.5">
 <h3 data-number="3.4.5" class="anchored" data-anchor-id="observer"><span class="header-section-number">3.4.5</span> Observer</h3>
+<p>Cuando te suscribes a un canal de YouTube o activas las notificaciones de un repositorio de GitHub, no tienes que comprobar cada cinco minutos si hay novedades: es el canal quien te avisa cuando publica algo. El patrón <em>Observer</em> aplica esta misma idea entre objetos. Un objeto, el <strong>sujeto</strong>, mantiene una lista de objetos <strong>observadores</strong> suscritos y les notifica automáticamente cada vez que cambia su estado. Los observadores pueden suscribirse o darse de baja en cualquier momento, y el sujeto no necesita conocer sus clases concretas. Es el mecanismo que hay detrás de los eventos en las interfaces gráficas (<code>addEventListener</code> en JavaScript), de las hojas de cálculo que recalculan las celdas dependientes y de los <em>frameworks</em> reactivos, como sucede en los notebooks <a href="https://github.com/navneet-mkr/marimo-observability">marimo</a> o <a href="https://observablehq.com/">observable</a>.</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 52%">
+<col style="width: 47%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1309,7 +1329,7 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </thead>
 <tbody>
 <tr class="odd">
-<td>define un mecanismo de suscripción sobre un objeto (sujeto) …</td>
+<td>define un mecanismo de suscripción sobre un objeto (sujeto)…</td>
 <td>… porque hay un número variable de objetos observadores que dependen de sus cambios</td>
 </tr>
 </tbody>
@@ -1346,10 +1366,11 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </section>
 <section id="strategy" class="level3 page-columns page-full" data-number="3.4.6">
 <h3 data-number="3.4.6" class="anchored" data-anchor-id="strategy"><span class="header-section-number">3.4.6</span> Strategy</h3>
+<p>Una aplicación de navegación como Google Maps calcula rutas distintas según vayas en coche, a pie, en bicicleta o en transporte público. Si todos esos algoritmos estuvieran en una sola clase, controlados por un gran <code>if</code>/<code>else</code>, cada nuevo medio de transporte obligaría a modificarla y aumentaría el riesgo de errores. El patrón <em>Strategy</em> considera cada algoritmo como si fuera un objeto/clase, la <strong>estrategia</strong>, y todas las estrategias comparten una interfaz común. El objeto principal, el <em>contexto</em>, guarda una referencia a la estrategia activa para delegarle llevar a cabo el trabajo, de modo que se puede slecioar otra estrategia en tiempo de ejecución.</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 52%">
+<col style="width: 47%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1359,11 +1380,12 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </thead>
 <tbody>
 <tr class="odd">
-<td>Permite seleccionar un método/algoritmo en tiempo real …</td>
+<td>permite seleccionar un método/algoritmo en tiempo de ejecución…</td>
 <td>… porque hay diferentes algoritmos intercambiables para resolver un mismo problema</td>
 </tr>
 </tbody>
 </table>
+<p>Un ejemplo que ya conoces es el argumento <code>key</code> de <code>sorted()</code> en Python, que permite cambiar el criterio de ordenación sin modificar el algoritmo de ordenación.</p>
 <div class="column-screen-inset-right">
 <p><img src="../images/concept-maps/STRATEGY-map.png" class="img-fluid"></p>
 </div>
@@ -1396,10 +1418,11 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </section>
 <section id="mediator" class="level3 page-columns page-full" data-number="3.4.7">
 <h3 data-number="3.4.7" class="anchored" data-anchor-id="mediator"><span class="header-section-number">3.4.7</span> Mediator</h3>
+<p>En un aeropuerto, los aviones no se comunican directamente entre sí para decidir quién aterriza primero: todos hablan con la <strong>torre de control</strong>, que coordina el tráfico. Si cada avión tuviera que negociar con todos los demás, el sistema sería caótico. Lo mismo ocurre en un formulario de registro: marcar una casilla activa un campo de texto, elegir un país cambia la lista de provincias y el botón “Enviar” solo se habilita si todo es correcto. Si cada componente conoce y modifica directamente a los demás, el resultado es una red de dependencias cruzadas difícil de mantener (el llamado <a href="https://en.wikipedia.org/wiki/Spaghetti_code">código <em>spaguetti</em></a>). El patrón <em>Mediator</em> introduce un objeto <strong>mediador</strong> que centraliza la comunicación: los componentes solo hablan con él, y es el mediador quien decide a quién avisar.</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 52%">
+<col style="width: 47%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1409,7 +1432,7 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </thead>
 <tbody>
 <tr class="odd">
-<td>Encapsula comunicaciones/interacciones entre objetos …</td>
+<td>encapsula las comunicaciones/interacciones entre objetos…</td>
 <td>… para evitar dependencias directas y código <em>spaguetti</em></td>
 </tr>
 </tbody>
@@ -1433,10 +1456,11 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </section>
 <section id="iterator" class="level3 page-columns page-full" data-number="3.4.8">
 <h3 data-number="3.4.8" class="anchored" data-anchor-id="iterator"><span class="header-section-number">3.4.8</span> Iterator</h3>
+<p>Como vimos anteriormente, el bucle <code>for</code> de Python funciona igual con una lista, un diccionario, un archivo de texto o un rango de números, aunque cada uno guarde sus datos de forma muy distinta. Esto es posible gracias al patrón <em>Iterator</em>, que extrae la lógica de recorrido de una colección a un objeto aparte, el <strong>iterador</strong>. El iterador sabe cuál es el siguiente elemento y cuándo se ha terminado el recorrido de la coleción. En Python, cualquier objeto que implemente los métodos <code>__iter__()</code> y <code>__next__()</code> puede recorrerse con <code>for</code>, y los generadores (<code>yield</code>) permiten crear iteradores con muy poco código. Así, el cliente recorre cualquier colección de la misma forma, sin conocer su estructura interna (una lista, un árbol, una tabla <em>hash</em>…).</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 52%">
+<col style="width: 47%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1446,8 +1470,8 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </thead>
 <tbody>
 <tr class="odd">
-<td>Proporciona un mecanismo de acceso a los elementos de una colección sin exponer su estructura/representación interna…</td>
-<td>… porque tengo diferentes tipos de colecciones y quiero acceder de forma homegénea a todas</td>
+<td>proporciona un mecanismo de acceso a los elementos de una colección sin exponer su estructura/representación interna…</td>
+<td>… porque tengo diferentes tipos de colecciones y quiero acceder de forma homogénea a todas</td>
 </tr>
 </tbody>
 </table>
@@ -1483,12 +1507,105 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </section>
 <section id="state" class="level3" data-number="3.4.9">
 <h3 data-number="3.4.9" class="anchored" data-anchor-id="state"><span class="header-section-number">3.4.9</span> State</h3>
+<p>Piensa en una petición <em>pull request</em> (PR) de GitHub: puede estar en borrador, abierta, en revisión, aprobada, fusionada o cerrada, y en cada estado las mismas acciones se comportan de forma distinta. Por ejemplo, no se puede fusionar una <em>pull request</em> en borrador, y una ya fusionada no puede volver a revisarse. Si este comportamiento se implementa con condicionales (<code>if estado == "borrador": ... elif estado == "abierta": ...</code>), cada método se llena de ramas y cada estado nuevo obliga a revisarlos todos. El patrón <em>State</em> aplica la idea de las <a href="https://en.wikipedia.org/wiki/Finite-state_machine">máquinas de estados finitos</a> que conoces de otras asignaturas. Cada estado se convierte en una <strong>clase</strong> con su propio comportamiento, y el objeto principal (el <em>contexto</em>) delega en su estado actual. Cuando el estado cambia, el objeto <em>parece cambiar de clase</em>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 52%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propósito</th>
+<th>Problema</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>permite que un objeto cambie su comportamiento cuando cambia su estado interno…</td>
+<td>… porque tengo muchos condicionales que dependen del estado del objeto y cada nuevo estado obliga a modificarlos todos</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Implementación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Implementación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/state/java/example#lang-features">State en Java (refactoring.guru)</a></p>
+</div>
+</div>
 </section>
 <section id="interpreter" class="level3" data-number="3.4.10">
 <h3 data-number="3.4.10" class="anchored" data-anchor-id="interpreter"><span class="header-section-number">3.4.10</span> Interpreter</h3>
 </section>
 <section id="relaciones-comportamiento" class="level3" data-number="3.4.11">
 <h3 data-number="3.4.11" class="anchored" data-anchor-id="relaciones-comportamiento"><span class="header-section-number">3.4.11</span> Relaciones entre patrones</h3>
+<p>Los patrones de comportamiento se combinan con frecuencia, y varios tienen estructuras tan parecidas que es fácil confundirlos:</p>
+<ul>
+<li><em>Command y Memento.</em> Juntos permiten implementar <strong>deshacer</strong>. El comando ejecuta la acción y, antes de hacerlo, guarda un memento con el estado anterior para poder restaurarlo.</li>
+<li><em>Strategy y State.</em> Ambos se basan en la composición y la delegación, y sus diagramas son casi idénticos. La diferencia está en la intención. En <em>Strategy</em>, el cliente elige el algoritmo y las estrategias no se conocen entre sí. En <em>State</em>, los propios estados se conocen y deciden cuándo pasar de uno a otro.</li>
+<li><em>Strategy y Template Method.</em> Ambos permiten variar partes de un algoritmo. <em>Template Method</em> lo hace mediante <strong>herencia</strong>: se decide al escribir el código y afecta a toda la clase. <em>Strategy</em> lo hace mediante <strong>composición</strong>: se decide en tiempo de ejecución y afecta a cada objeto.</li>
+<li><em>Observer y Mediator.</em> <em>Observer</em> establece suscripciones dinámicas de <strong>uno a muchos</strong>. <em>Mediator</em> centraliza en un solo objeto las comunicaciones de <strong>muchos a muchos</strong>. Ambos se combinan a menudo: un mediador puede implementarse como sujeto al que se suscriben los componentes.</li>
+<li><em>Chain of Responsibility, Command, Mediator y Observer.</em> Los cuatro conectan a quien envía una petición con quien la recibe, pero de forma distinta. <em>Chain</em> la pasa de eslabón en eslabón, <em>Command</em> la encapsula en un objeto, <em>Mediator</em> centraliza la comunicación y <em>Observer</em> permite suscribirse y darse de baja dinámicamente.</li>
+<li><em>Iterator y Composite.</em> Un iterador permite recorrer un árbol <em>Composite</em> sin conocer su estructura. Además, <em>Iterator</em> puede apoyarse en <em>Memento</em> para guardar la posición actual del recorrido y retomarla después.</li>
+<li><em>Interpreter y Composite.</em> El árbol de expresiones de <em>Interpreter</em> es, en realidad, un <em>Composite</em>: las expresiones terminales son las hojas y las no terminales son los nodos compuestos.</li>
+</ul>
+<p>La <a href="#fig-arbol-comportamiento" class="quarto-xref">Figure&nbsp;<span>3.3</span></a> recrea un <a href="https://medium.com/womenintechnology/stop-memorizing-design-patterns-use-this-decision-tree-instead-e84f22fca9fa?sk=d8ce25c71ba530c026c9b90e9c8d38f0">árbol de decisión</a> que resume cuándo conviene utilizar cada patrón de comportamiento.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div id="fig-arbol-comportamiento" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-arbol-comportamiento-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-arbol-comportamiento">flowchart TD
+  A["¿Qué problema tengo en la colaboración&lt;br/&gt;entre objetos?"] --&gt; B{"¿Quiero tratar una petición como un objeto&lt;br/&gt;(deshacer, encolar, registrar)?"}
+  B -- Sí --&gt; CM["Command"]
+  B -- No --&gt; C{"¿Necesito guardar y restaurar el estado&lt;br/&gt;de un objeto sin romper su encapsulación?"}
+  C -- Sí --&gt; ME["Memento"]
+  C -- No --&gt; D{"¿Varios objetos pueden atender una petición&lt;br/&gt;y no sé de antemano cuál lo hará?"}
+  D -- Sí --&gt; CR["Chain of Responsibility"]
+  D -- No --&gt; E{"¿Varios objetos deben enterarse&lt;br/&gt;automáticamente de los cambios de otro?"}
+  E -- Sí --&gt; OB["Observer"]
+  E -- No --&gt; F{"¿Muchos objetos se comunican entre sí&lt;br/&gt;y las dependencias se cruzan?"}
+  F -- Sí --&gt; MD["Mediator"]
+  F -- No --&gt; G{"¿El comportamiento de un objeto&lt;br/&gt;cambia según su estado interno?"}
+  G -- Sí --&gt; ST["State"]
+  G -- No --&gt; H{"¿Hay varios algoritmos intercambiables&lt;br/&gt;para una misma tarea?"}
+  H -- "Sí, elegidos en ejecución" --&gt; SG["Strategy"]
+  H -- "Sí, comparten un esqueleto común" --&gt; TM["Template Method"]
+  H -- No --&gt; I{"¿Necesito recorrer colecciones distintas&lt;br/&gt;de la misma forma?"}
+  I -- Sí --&gt; IT["Iterator"]
+  I -- No --&gt; J{"¿Debo evaluar expresiones de un&lt;br/&gt;lenguaje o gramática sencillos?"}
+  J -- Sí --&gt; IN["Interpreter"]
+  J -- No --&gt; N["No hace falta un patrón:&lt;br/&gt;basta con una colaboración directa"]
+</pre>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-arbol-comportamiento-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.3: Árbol de decisión para elegir un patrón de comportamiento
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Un árbol orientativo">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Un árbol orientativo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Igual que en las secciones anteriores, este árbol es una guía y no una regla. Los patrones de comportamiento se combinan con frecuencia (<em>Command</em> con <em>Memento</em>, <em>Mediator</em> con <em>Observer</em>, <em>Iterator</em> con <em>Composite</em>), y un mismo problema puede encajar en varias ramas.</p>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
