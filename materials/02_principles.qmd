@@ -65,7 +65,7 @@ Como ingenieros/as de software, queremos que el software generado tenga **un baj
 
 ::: {.callout-note title="Definición" icon=true}
 
-**Cohesión** indica el grado en que entidades/componentes de software independientes se combinan para alcanzar un resultado (comporatemeionte, etc) mejor que si trabajaran por separado. Se refiere a la forma en que podemos agrupar componentes de software.
+**Cohesión** indica el grado en que entidades/componentes de software independientes se combinan para alcanzar un resultado (un nuevo comportamiento o funcionalidad, etc.) mejor que si trabajaran por separado. Se refiere a la forma en que podemos agrupar componentes de software.
 
 
 :::

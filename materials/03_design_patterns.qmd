@@ -770,7 +770,29 @@ Una aplicación de navegación como Google Maps calcula rutas distintas según v
 | permite seleccionar un método/algoritmo en tiempo de ejecución... | ... porque hay diferentes algoritmos intercambiables para resolver un mismo problema |
 
 
-Un ejemplo que ya conoces es el argumento `key` de `sorted()` en Python, que permite cambiar el criterio de ordenación sin modificar el algoritmo de ordenación.
+Otro ejemplo de integración de patrones de diseño en la propia implementaciij de los lenguajes de programación es la función `sorted()` de Python, queordena cualquier colección con el mismo algoritmo, [Timsort](https://es.wikipedia.org/wiki/Timsort). Por defecto compara los elementos directamente, pero el argumento `key` permite indicar **el criterio** de ordenación. Ese criterio es una función que recibe un elemento y devuelve el valor (la *clave*) que se usará para compararlo:
+
+
+```python
+from operator import itemgetter                 
+# https://www.geeksforgeeks.org/python/itemgetter-in-python/
+
+alumnos = [("Ana", 8.5, 21), ("Luis", 6.0, 24), ("Marta", 9.2, 23)]
+
+sorted(alumnos, key=itemgetter(1), reverse=True)  # por nota, de mayor a menor: Marta, Ana, Luis
+sorted(alumnos, key=itemgetter(2))                # por edad: Ana, Marta, Luis
+```
+
+El patrón en este ejemplo cumple los mismos [principios básico de diseño](02_principles.qmd):
+
+- **Encapsula lo que varía.** El criterio de ordenación está aislado en una función aparte, fuera del algoritmo de ordenación.
+- **Programa a una interfaz.** `sorted()` no sabe qué función recibe, ni le importa: solo espera algo que pueda llamarse con un elemento y devuelva un valor comparable.
+- **Favorece la composición.** No hace falta crear subclases como `OrdenadorPorNota` u `OrdenadorPorEdad`. El criterio se pasa como un objeto y se *combina* con el algoritmo en el momento de la llamada.
+- **Principio (SOLID) abierto/cerrado.** Podemos añadir criterios nuevos sin modificar el código de `sorted()`. Está *cerrado* a modificaciones, pero *abierto* a extensiones.
+
+::: {.column-margin}
+En la versión clásica del patrón [@gamma1994], cada estrategia es una clase que implementa una interfaz común. En Python, las funciones son **objetos de primera clase**: pueden guardarse en variables y pasarse como argumentos. En sentido estricto, la estrategia no sustituye todo el algoritmo de ordenación, sino a una parte: el criterio de comparación. Es una aplicación de *Strategy* a pequeña escala: una simple función basta como estrategia, y la *interfaz* es implícita (cualquier cosa que pueda llamarse con un elemento).
+:::
 
 
 ::: column-screen-inset-right
