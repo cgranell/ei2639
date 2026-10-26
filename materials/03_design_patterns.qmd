@@ -589,24 +589,39 @@ Igual que con los patrones creacionales, este árbol es una guía y no una regla
 
 ## Patrones de comportamiento
 
+Si los patrones creacionales responden a la pregunta *¿cómo se crean los objetos?* y los estructurales a *¿cómo se organizan y conectan?*, los patrones de comportamiento responden a un tercer problema bastante común en ingeniería de software: **¿quién hace qué, y cómo se comunican los objetos para conseguirlo?** En un sistema real, los objetos y clases colaboran constantemente: un objeto avisa a otros de un cambio, otro decide qué algoritmo aplicar, otro guarda un estado para poder deshacer una acción a posteriori. Si esa colaboración y asignación de responsabildiades no se diseña de forma adecuada, aparecen síntomas caractetristicos del código de baja calidad (alto acoplamiento, baja cohesión, o bajo nivel de reutilización) . Los objetos saben demasiado unos de otros, los métodos se llenan de condicionales `if`/`else` o `switch` interminables y cualquier cambio en una clase obliga a modificar muchas otras.
 
+La idea común a casi todos estos patrones es **tratar y convertir un comportamiento como un objeto**. Una petición se convierte en un objeto en *Command*, un algoritmo en *Strategy*, un estado en *State*, una forma de recorrer una colección en *Iterator* y una instantánea del estado de un objeto en *Memento*. Una vez que el comportamiento deseado se estructura como un objeto, éste puede guardarse, intercambiarse, combinarse o pasarse a otros objetos. Un cliente de una petición queda **desacoplado** del objeto que finalmente la atiende. Los patrones de commportamiento aplican los [principios básicos de diseño](02_principles.qmd#principios-de-la-programaci%C3%B3n-orientada-a-objetos-poo) vistos anteriormente: encapsular lo que varía, programar a una interfaz y favorecer la composición sobre la herencia. Todo esto facilita que el software resultante sea de **alta cohesión**, que es lo que queremos como ingenieros/as de software.
 
 ::: {.callout-note title="Definición" icon=true}
 
-Los **patrones de comportamiento** se refieren a la comunicación entre objetos en tiempo de ejecución, es decir, los roles que asumen dichos objetos y cómo interactúan entre sí.
+Los **patrones de comportamiento** se ocupan de la comunicación entre objetos en tiempo de ejecución, es decir, de los roles que asumen los objetos, de cómo se reparten las responsabilidades y de cómo interactúan entre sí.
 
 :::
 
+Los patrones de comportamiento son:
+
+- [Command](#command)
+- [Memento](#memento)
+- [Chain of Responsibility](#chain-of-responsibility)
+- [Template Method](#template-method)
+- [Observer](#observer)
+- [Strategy](#strategy)
+- [Mediator](#mediator)
+- [Iterator](#iterator)
+- [State](#state)
+- [Interpreter](#interpreter)
 
 
 
 ### Command
 
+En un editor de código, la acción "copiar" puede iniciarse desde el menú, desde un botón de la barra de herramientas, con `Ctrl+C` o desde la paleta de comandos. Si cada uno de esos elementos contiene su propia lógica, el código se hace más compleja de forma innecesaria. Además, resulta más  difícil implementar funciones como **deshacer** (`Ctrl+Z`) o repetir la última acción, si depende del origen que la desencadeno. El patrón *Command* encapsula cada petición en un **objeto comando**, con un método `ejecutar()` y, opcionalmente, otro `deshacer()`. Así, los botones, menús y atajos solo saben que deben ejecutar un comportamiento determinado (un comando), sin conocer qué hace. Como las peticiones son objetos, pueden guardarse en un historial, ponerse en una cola para ejecutarse más tarde o enviarse a otra aplicación. 
 
 
-| Propósito |  Problema |
-|-----------|-----------|
-| permite encapsular una petición como un objeto ...  | ... porque quiero tener mayor control sobre el ciclo de vida de dicha petición |
+| Propósito | Problema |
+|-----------|----------|
+| permite encapsular una petición como un objeto... | ... porque quiero tener mayor control sobre el ciclo de vida de dicha petición (deshacer, encolar, registrar, repetir) |
 
 
 ::: column-screen-inset-right
@@ -633,10 +648,14 @@ Los **patrones de comportamiento** se refieren a la comunicación entre objetos 
 
 ### Memento
 
+Piensa por un momento en cómo se almacena una partida en un videojuego. EN cada moemento, el videojuego necesita una instantánea del estado del personaje (posición, vida, inventario...) para poder restaurarla más tarde. Sin embargo, si cualquier clase pudiera leer y modificar libremente esos atributos, se rompería la [encapsulación](https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)) y cualquiera podría hacer trampas. El patrón *Memento* resuelve este problema haciendo que sea el **propio objeto** (el *originador*) quien genere una instantánea de su estado, el *memento*. Otro objeto, el *cuidador* (por ejemplo, el sistema de partidas guardadas), almacena los mementos sin poder ver ni modificar su contenido. Cuando hace falta, el originador recibe un memento y restaura su estado a partir de él.
 
-| Propósito |  Problema |
-|-----------|-----------|
-| permite capturar el estado de un objeto  ...  | ... porque quiero restaurar ese estado en cualquier momento |
+
+
+| Propósito | Problema |
+|-----------|----------|
+| permite capturar el estado de un objeto sin violar su encapsulación... | ... porque quiero restaurar ese estado en cualquier momento |
+
 
 
 ::: column-screen-inset-right
@@ -656,9 +675,13 @@ Los **patrones de comportamiento** se refieren a la comunicación entre objetos 
 
 ### Chain of responsibility
 
-| Propósito |  Problema |
-|-----------|-----------|
-| permite distribuir responsabilidad de una petición ...  | ... porque tengo un número variable de objetos que pueden gestionarla |
+
+Cuando una petición HTTP llega a una aplicación web, antes de llegar a la función que la atiende suele pasar por varios filtros. Uno registra la petición en el *log*, otro comprueba que el usuario ha iniciado sesión, otro limita el número de peticiones por minuto y otro descomprime los datos. Si todas esas comprobaciones estuvieran en un único método, sería enorme y difícil de modificar. El patrón *Chain of Responsibility* organiza los gestores en una **cadena**: cada eslabón decide si procesa la petición, si la rechaza o si la pasa al siguiente. Es exactamente lo que hacen los [*middleware*](https://docs.djangoproject.com/es/stable/topics/http/middleware/) de frameworks como [Django](https://www.djangoproject.com/), [Express](https://expressjs.com/) o [Spring Boot](https://docs.spring.io/spring-boot/). Así, se pueden añadir, quitar o reordenar eslabones sin modificar el resto de la cadena.
+
+| Propósito | Problema |
+|-----------|----------|
+| permite distribuir la responsabilidad de una petición entre una cadena de gestores... | ... porque tengo un número variable de objetos que pueden gestionarla |
+
 
 
 ::: column-screen-inset-right
@@ -677,9 +700,12 @@ Los **patrones de comportamiento** se refieren a la comunicación entre objetos 
 
 ### Template method  
 
-| Propósito |  Problema |
-|-----------|-----------|
-| define un algoritmo a nivel de superclase...  | ... pero permite que subclases sobrescriban partes del algoritmo |
+
+Si has escrito pruebas unitarias con `unittest` en Python o con [JUnit](https://junit.org/) en Java, ya has usado este patrón sin saberlo. El *framework* define el algoritmo general que se sigue al ejecutar cada prueba: preparar el entorno (`setUp`), ejecutar la prueba y limpiar al terminar (`tearDown`). Tú solo redefines los pasos que te interesan en tu subclase, y el *framework* se encarga del resto. Eso es el patrón *Template Method*: una superclase define el **esqueleto de un algoritmo** en un método (la *plantilla*) y deja que las subclases redefinan algunos de sus pasos sin cambiar la estructura general. Se evita así duplicar la parte común del algoritmo en cada subclase (es decir, las implementacones concretas).
+
+| Propósito | Problema |
+|-----------|----------|
+| define el esqueleto de un algoritmo a nivel de superclase... | ... pero permite que las subclases sobrescriban partes del algoritmo |
 
 
 ::: column-screen-inset-right
@@ -706,9 +732,12 @@ Los **patrones de comportamiento** se refieren a la comunicación entre objetos 
 
 ### Observer
 
-| Propósito |  Problema |
-|-----------|-----------|
-| define un mecanismo de suscripción sobre un objeto (sujeto) ...  | ... porque hay un número variable de objetos observadores que dependen de sus cambios |
+Cuando te suscribes a un canal de YouTube o activas las notificaciones de un repositorio de GitHub, no tienes que comprobar cada cinco minutos si hay novedades: es el canal quien te avisa cuando publica algo. El patrón *Observer* aplica esta misma idea entre objetos. Un objeto, el **sujeto**, mantiene una lista de objetos **observadores** suscritos y les notifica automáticamente cada vez que cambia su estado. Los observadores pueden suscribirse o darse de baja en cualquier momento, y el sujeto no necesita conocer sus clases concretas. Es el mecanismo que hay detrás de los eventos en las interfaces gráficas (`addEventListener` en JavaScript), de las hojas de cálculo que recalculan las celdas dependientes y de los *frameworks* reactivos, como sucede en los notebooks [marimo](https://github.com/navneet-mkr/marimo-observability) o [observable](https://observablehq.com/).
+
+| Propósito | Problema |
+|-----------|----------|
+| define un mecanismo de suscripción sobre un objeto (sujeto)... | ... porque hay un número variable de objetos observadores que dependen de sus cambios |
+
 
 
 ::: column-screen-inset-right
@@ -733,10 +762,15 @@ Los **patrones de comportamiento** se refieren a la comunicación entre objetos 
 
 ### Strategy
 
+Una aplicación de navegación como Google Maps calcula rutas distintas según vayas en coche, a pie, en bicicleta o en transporte público. Si todos esos algoritmos estuvieran en una sola clase, controlados por un gran `if`/`else`, cada nuevo medio de transporte obligaría a modificarla y aumentaría el riesgo de errores. El patrón *Strategy* considera cada algoritmo como si fuera un objeto/clase, la **estrategia**, y todas las estrategias comparten una interfaz común. El objeto principal, el *contexto*, guarda una referencia a la estrategia activa para delegarle llevar a cabo el trabajo, de modo que se puede slecioar otra estrategia en tiempo de ejecución. 
 
-| Propósito |  Problema |
-|-----------|-----------|
-| Permite seleccionar un método/algoritmo en tiempo real ...  | ... porque hay diferentes algoritmos intercambiables para resolver un mismo problema |
+
+| Propósito | Problema |
+|-----------|----------|
+| permite seleccionar un método/algoritmo en tiempo de ejecución... | ... porque hay diferentes algoritmos intercambiables para resolver un mismo problema |
+
+
+Un ejemplo que ya conoces es el argumento `key` de `sorted()` en Python, que permite cambiar el criterio de ordenación sin modificar el algoritmo de ordenación.
 
 
 ::: column-screen-inset-right
@@ -761,10 +795,12 @@ Los **patrones de comportamiento** se refieren a la comunicación entre objetos 
 
 ### Mediator
 
+En un aeropuerto, los aviones no se comunican directamente entre sí para decidir quién aterriza primero: todos hablan con la **torre de control**, que coordina el tráfico. Si cada avión tuviera que negociar con todos los demás, el sistema sería caótico. Lo mismo ocurre en un formulario de registro: marcar una casilla activa un campo de texto, elegir un país cambia la lista de provincias y el botón "Enviar" solo se habilita si todo es correcto. Si cada componente conoce y modifica directamente a los demás, el resultado es una red de dependencias cruzadas difícil de mantener (el llamado [código *spaguetti*](https://en.wikipedia.org/wiki/Spaghetti_code)). El patrón *Mediator* introduce un objeto **mediador** que centraliza la comunicación: los componentes solo hablan con él, y es el mediador quien decide a quién avisar.
 
-| Propósito |  Problema |
-|-----------|-----------|
-| Encapsula comunicaciones/interacciones entre objetos ...  | ... para evitar dependencias directas y código *spaguetti* |
+
+| Propósito | Problema |
+|-----------|----------|
+| encapsula las comunicaciones/interacciones entre objetos... | ... para evitar dependencias directas y código *spaguetti* |
 
 
 ::: column-screen-inset-right
@@ -785,9 +821,11 @@ Los **patrones de comportamiento** se refieren a la comunicación entre objetos 
 ### Iterator
 
 
-| Propósito |  Problema |
-|-----------|-----------|
-| Proporciona un mecanismo de acceso a los elementos de una colección sin exponer su estructura/representación interna...  | ... porque tengo diferentes tipos de colecciones y quiero acceder de forma homegénea a todas |
+Como vimos anteriormente, el bucle `for` de Python funciona igual con una lista, un diccionario, un archivo de texto o un rango de números, aunque cada uno guarde sus datos de forma muy distinta. Esto es posible gracias al patrón *Iterator*, que extrae la lógica de recorrido de una colección a un objeto aparte, el **iterador**. El iterador sabe cuál es el siguiente elemento y cuándo se ha terminado el recorrido de la coleción. En Python, cualquier objeto que implemente los métodos `__iter__()` y `__next__()` puede recorrerse con `for`, y los generadores (`yield`) permiten crear iteradores con muy poco código. Así, el cliente recorre cualquier colección de la misma forma, sin conocer su estructura interna (una lista, un árbol, una tabla *hash*...).
+
+| Propósito | Problema |
+|-----------|----------|
+| proporciona un mecanismo de acceso a los elementos de una colección sin exponer su estructura/representación interna... | ... porque tengo diferentes tipos de colecciones y quiero acceder de forma homogénea a todas |
 
 
 ::: column-screen-inset-right
@@ -814,6 +852,20 @@ Los **patrones de comportamiento** se refieren a la comunicación entre objetos 
 
 ### State
 
+Piensa en una petición *pull request* (PR) de GitHub: puede estar en borrador, abierta, en revisión, aprobada, fusionada o cerrada, y en cada estado las mismas acciones se comportan de forma distinta. Por ejemplo, no se puede fusionar una *pull request* en borrador, y una ya fusionada no puede volver a revisarse. Si este comportamiento se implementa con condicionales (`if estado == "borrador": ... elif estado == "abierta": ...`), cada método se llena de ramas y cada estado nuevo obliga a revisarlos todos. El patrón *State* aplica la idea de las [máquinas de estados finitos](https://en.wikipedia.org/wiki/Finite-state_machine) que conoces de otras asignaturas. Cada estado se convierte en una **clase** con su propio comportamiento, y el objeto principal (el *contexto*) delega en su estado actual. Cuando el estado cambia, el objeto *parece cambiar de clase*.
+
+
+| Propósito | Problema |
+|-----------|----------|
+| permite que un objeto cambie su comportamiento cuando cambia su estado interno... | ... porque tengo muchos condicionales que dependen del estado del objeto y cada nuevo estado obliga a modificarlos todos |
+
+
+::: {.callout-tip title="Implementación"}
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [State en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/state/java/example#lang-features)
+:::
+
+
+
 
 ### Interpreter
 
@@ -822,5 +874,48 @@ Los **patrones de comportamiento** se refieren a la comunicación entre objetos 
 ### Relaciones entre patrones {#relaciones-comportamiento}
 
 
+Los patrones de comportamiento se combinan con frecuencia, y varios tienen estructuras tan parecidas que es fácil confundirlos:
+
+- *Command y Memento.* Juntos permiten implementar **deshacer**. El comando ejecuta la acción y, antes de hacerlo, guarda un memento con el estado anterior para poder restaurarlo.
+- *Strategy y State.* Ambos se basan en la composición y la delegación, y sus diagramas son casi idénticos. La diferencia está en la intención. En *Strategy*, el cliente elige el algoritmo y las estrategias no se conocen entre sí. En *State*, los propios estados se conocen y deciden cuándo pasar de uno a otro.
+- *Strategy y Template Method.* Ambos permiten variar partes de un algoritmo. *Template Method* lo hace mediante **herencia**: se decide al escribir el código y afecta a toda la clase. *Strategy* lo hace mediante **composición**: se decide en tiempo de ejecución y afecta a cada objeto.
+- *Observer y Mediator.* *Observer* establece suscripciones dinámicas de **uno a muchos**. *Mediator* centraliza en un solo objeto las comunicaciones de **muchos a muchos**. Ambos se combinan a menudo: un mediador puede implementarse como sujeto al que se suscriben los componentes.
+- *Chain of Responsibility, Command, Mediator y Observer.* Los cuatro conectan a quien envía una petición con quien la recibe, pero de forma distinta. *Chain* la pasa de eslabón en eslabón, *Command* la encapsula en un objeto, *Mediator* centraliza la comunicación y *Observer* permite suscribirse y darse de baja dinámicamente.
+- *Iterator y Composite.* Un iterador permite recorrer un árbol *Composite* sin conocer su estructura. Además, *Iterator* puede apoyarse en *Memento* para guardar la posición actual del recorrido y retomarla después.
+- *Interpreter y Composite.* El árbol de expresiones de *Interpreter* es, en realidad, un *Composite*: las expresiones terminales son las hojas y las no terminales son los nodos compuestos.
+
+La @fig-arbol-comportamiento recrea un [árbol de decisión](https://medium.com/womenintechnology/stop-memorizing-design-patterns-use-this-decision-tree-instead-e84f22fca9fa?sk=d8ce25c71ba530c026c9b90e9c8d38f0) que resume cuándo conviene utilizar cada patrón de comportamiento.
+
+```{mermaid}
+%%| label: fig-arbol-comportamiento
+%%| fig-cap: "Árbol de decisión para elegir un patrón de comportamiento"
+%%| echo: false
+flowchart TD
+  A["¿Qué problema tengo en la colaboración<br/>entre objetos?"] --> B{"¿Quiero tratar una petición como un objeto<br/>(deshacer, encolar, registrar)?"}
+  B -- Sí --> CM["Command"]
+  B -- No --> C{"¿Necesito guardar y restaurar el estado<br/>de un objeto sin romper su encapsulación?"}
+  C -- Sí --> ME["Memento"]
+  C -- No --> D{"¿Varios objetos pueden atender una petición<br/>y no sé de antemano cuál lo hará?"}
+  D -- Sí --> CR["Chain of Responsibility"]
+  D -- No --> E{"¿Varios objetos deben enterarse<br/>automáticamente de los cambios de otro?"}
+  E -- Sí --> OB["Observer"]
+  E -- No --> F{"¿Muchos objetos se comunican entre sí<br/>y las dependencias se cruzan?"}
+  F -- Sí --> MD["Mediator"]
+  F -- No --> G{"¿El comportamiento de un objeto<br/>cambia según su estado interno?"}
+  G -- Sí --> ST["State"]
+  G -- No --> H{"¿Hay varios algoritmos intercambiables<br/>para una misma tarea?"}
+  H -- "Sí, elegidos en ejecución" --> SG["Strategy"]
+  H -- "Sí, comparten un esqueleto común" --> TM["Template Method"]
+  H -- No --> I{"¿Necesito recorrer colecciones distintas<br/>de la misma forma?"}
+  I -- Sí --> IT["Iterator"]
+  I -- No --> J{"¿Debo evaluar expresiones de un<br/>lenguaje o gramática sencillos?"}
+  J -- Sí --> IN["Interpreter"]
+  J -- No --> N["No hace falta un patrón:<br/>basta con una colaboración directa"]
+```
+
+
+::: {.callout-note title="Un árbol orientativo"}
+Igual que en las secciones anteriores, este árbol es una guía y no una regla. Los patrones de comportamiento se combinan con frecuencia (*Command* con *Memento*, *Mediator* con *Observer*, *Iterator* con *Composite*), y un mismo problema puede encajar en varias ramas.
+:::
 
 
