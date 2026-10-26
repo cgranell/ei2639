@@ -1385,14 +1385,16 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </tr>
 </tbody>
 </table>
-<p>Otro ejemplo de integración de patrones de diseño en la propia implementaciij de los lenguajes de programación es la función <code>sorted()</code> de Python, queordena cualquier colección con el mismo algoritmo, <a href="https://es.wikipedia.org/wiki/Timsort">Timsort</a>. Por defecto compara los elementos directamente, pero el argumento <code>key</code> permite indicar <strong>el criterio</strong> de ordenación. Ese criterio es una función que recibe un elemento y devuelve el valor (la <em>clave</em>) que se usará para compararlo:</p>
+<p>Otro ejemplo de integración de patrones de diseño en la propia implementaciij de los lenguajes de programación es la función <code>sorted()</code> de Python, queordena cualquier colección con el mismo algoritmo, <a href="https://en.wikipedia.org/wiki/Timsort">Timsort</a>. Por defecto compara los elementos directamente, pero el argumento <code>key</code> permite indicar <strong>el criterio</strong> de ordenación. Ese criterio es una función que recibe un elemento y devuelve el valor (la <em>clave</em>) que se usará para compararlo.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> operator <span class="im">import</span> itemgetter                 </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># https://www.geeksforgeeks.org/python/itemgetter-in-python/</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>alumnos <span class="op">=</span> [(<span class="st">"Ana"</span>, <span class="fl">8.5</span>, <span class="dv">21</span>), (<span class="st">"Luis"</span>, <span class="fl">6.0</span>, <span class="dv">24</span>), (<span class="st">"Marta"</span>, <span class="fl">9.2</span>, <span class="dv">23</span>)]</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span>(alumnos, key<span class="op">=</span>itemgetter(<span class="dv">1</span>), reverse<span class="op">=</span><span class="va">True</span>)  <span class="co"># por nota, de mayor a menor: Marta, Ana, Luis</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span>(alumnos, key<span class="op">=</span>itemgetter(<span class="dv">2</span>))                <span class="co"># por edad: Ana, Marta, Luis</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># por nota, de mayor a menor: Marta, Ana, Luis</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span>(alumnos, key<span class="op">=</span>itemgetter(<span class="dv">1</span>), reverse<span class="op">=</span><span class="va">True</span>)  </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># por edad: Ana, Marta, Luis</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span>(alumnos, key<span class="op">=</span>itemgetter(<span class="dv">2</span>))                </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>El patrón en este ejemplo cumple los mismos <a href="../materials/02_principles.html">principios básico de diseño</a>:</p>
 <ul>
 <li><strong>Encapsula lo que varía.</strong> El criterio de ordenación está aislado en una función aparte, fuera del algoritmo de ordenación.</li>
@@ -1402,7 +1404,7 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </ul>
 
 <div class="no-row-height column-margin column-container"><div class="">
-<p>En la versión clásica del patrón <span class="citation" data-cites="gamma1994">(<a href="../references.html#ref-gamma1994" role="doc-biblioref">Gamma et al. 1994</a>)</span>, cada estrategia es una clase que implementa una interfaz común. En Python, las funciones son <strong>objetos de primera clase</strong>: pueden guardarse en variables y pasarse como argumentos. En sentido estricto, la estrategia no sustituye todo el algoritmo de ordenación, sino a una parte: el criterio de comparación. Es una aplicación de <em>Strategy</em> a pequeña escala: una simple función basta como estrategia, y la <em>interfaz</em> es implícita (cualquier cosa que pueda llamarse con un elemento).</p>
+<p>En la versión clásica <span class="citation" data-cites="gamma1994">(<a href="../references.html#ref-gamma1994" role="doc-biblioref">Gamma et al. 1994</a>)</span>, cada estrategia es una clase que implementa una interfaz común. En Python, las funciones son <strong>objetos de primera clase</strong>: pueden guardarse en variables y pasarse como argumentos. La estrategia no sustituye todo el algoritmo de ordenación, sino a una parte: el criterio de comparación. Es una aplicación de <em>Strategy</em> a pequeña escala.</p>
 </div></div><div class="column-screen-inset-right">
 <p><img src="../images/concept-maps/STRATEGY-map.png" class="img-fluid"></p>
 </div>
