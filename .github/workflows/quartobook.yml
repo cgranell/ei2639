@@ -12,7 +12,8 @@ jobs:
   build-deploy:
     # Uncomment if you don't want this action to run on forks
     # if: github.event.repository.fork != true
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
 
