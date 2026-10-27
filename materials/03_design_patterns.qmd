@@ -676,7 +676,7 @@ Piensa por un momento en cómo se almacenan los elementos en un videojuego. En c
 ### Chain of responsibility
 
 
-Cuando una petición HTTP llega a una aplicación web, antes de llegar a la función que la atiende suele pasar por varios filtros. Uno registra la petición en el *log*, otro comprueba que el usuario ha iniciado sesión, otro limita el número de peticiones por minuto y otro descomprime los datos. Si todas esas comprobaciones estuvieran en un único método, sería enorme y difícil de modificar. El patrón *Chain of Responsibility* organiza los gestores en una **cadena**: cada eslabón decide si procesa la petición, si la rechaza o si la pasa al siguiente. Es exactamente lo que hacen los [*middleware*](https://docs.djangoproject.com/es/stable/topics/http/middleware/) de frameworks como [Django](https://www.djangoproject.com/), [Express](https://expressjs.com/) o [Spring Boot](https://docs.spring.io/spring-boot/). Así, se pueden añadir, quitar o reordenar eslabones sin modificar el resto de la cadena.
+Cuando una petición HTTP llega a una aplicación web, antes de llegar a la función concreta que la atiende suele pasar por varios filtros previos. Por ejemplo, uno registra la petición en el *log*, otro comprueba que el usuario ha iniciado sesión, otro limita el número de peticiones por minuto y otro descomprime los datos. Si todas esas comprobaciones estuvieran en un único método, sería un serio candidato para incumplir el principio SOLID de abierto/cerrado. El patrón *Chain of Responsibility* organiza estas decisiones en una **cadena de responsables**: cada eslabón decide si procesa la petición, si la rechaza o si la pasa al siguiente eslabón. Es exactamente lo que hacen los [*middleware*](https://docs.djangoproject.com/es/stable/topics/http/middleware/) de frameworks como [Django](https://www.djangoproject.com/), [Express](https://expressjs.com/) o [Spring Boot](https://docs.spring.io/spring-boot/). Así, se pueden añadir, quitar, reemplazar o reordenar eslabones sin alterar el funcionamiento del resto de la cadena.
 
 | Propósito | Problema |
 |-----------|----------|
@@ -701,7 +701,7 @@ Cuando una petición HTTP llega a una aplicación web, antes de llegar a la func
 ### Template method  
 
 
-Si has escrito pruebas unitarias con `unittest` en Python o con [JUnit](https://junit.org/) en Java, ya has usado este patrón sin saberlo. El *framework* define el algoritmo general que se sigue al ejecutar cada prueba: preparar el entorno (`setUp`), ejecutar la prueba y limpiar al terminar (`tearDown`). Tú solo redefines los pasos que te interesan en tu subclase, y el *framework* se encarga del resto. Eso es el patrón *Template Method*: una superclase define el **esqueleto de un algoritmo** en un método (la *plantilla*) y deja que las subclases redefinan algunos de sus pasos sin cambiar la estructura general. Se evita así duplicar la parte común del algoritmo en cada subclase (es decir, las implementacones concretas).
+Si has escrito pruebas unitarias con `unittest` en Python o con [JUnit](https://junit.org/) en Java, ya has usado este patrón sin saberlo. El *framework* define los pasos del algoritmo general que se sigue al ejecutar cada prueba: preparar el entorno (`setUp`), ejecutar la prueba y limpiar al terminar (`tearDown`). Tú solo redefines el paso o pasos que te interesan en tu subclase, mientras que el *framework* se encarga del resto. Eso es el patrón *Template Method*: una superclase define el **esqueleto de un algoritmo** en un método específico, la *plantilla*, y deja que las subclases sobreescriban, si es necesario, algunos de los pasos sin altear la estructura del algoritmo general. Se evita así duplicar la parte común del algoritmo en cada implementación concreta.
 
 | Propósito | Problema |
 |-----------|----------|
@@ -732,7 +732,7 @@ Si has escrito pruebas unitarias con `unittest` en Python o con [JUnit](https://
 
 ### Observer
 
-Cuando te suscribes a un canal de YouTube o activas las notificaciones de un repositorio de GitHub, no tienes que comprobar cada cinco minutos si hay novedades: es el canal quien te avisa cuando publica algo. El patrón *Observer* aplica esta misma idea entre objetos. Un objeto, el **sujeto**, mantiene una lista de objetos **observadores** suscritos y les notifica automáticamente cada vez que cambia su estado. Los observadores pueden suscribirse o darse de baja en cualquier momento, y el sujeto no necesita conocer sus clases concretas. Es el mecanismo que hay detrás de los eventos en las interfaces gráficas (`addEventListener` en JavaScript), de las hojas de cálculo que recalculan las celdas dependientes y de los *frameworks* reactivos, como sucede en los notebooks [marimo](https://github.com/navneet-mkr/marimo-observability) o [observable](https://observablehq.com/).
+Cuando te suscribes a un canal de YouTube o activas las notificaciones de un repositorio de GitHub, no tienes que comprobar periódicamente si hay novedades: es el canal quien te avisa cuando publica algo, ya sea un nuevo video o un *issue* en GitHub. El patrón *Observer* aplica esta misma idea entre objetos. Un objeto, el **sujeto**, mantiene una lista de objetos suscritos, **observadores**, y les notifica automáticamente cada vez que cambia su estado. Los observadores pueden suscribirse o darse de baja en cualquier momento, y el sujeto no necesita conocer las clases concretas de los observadores. Es justo el mecanismo que hay detrás de muchos sistemas actuales, como los eventos en las interfaces gráficas (`addEventListener` en JavaScript), de las hojas de cálculo que recalculan las celdas dependientes y de los *frameworks* reactivos, como sucede en los notebooks [marimo](https://github.com/navneet-mkr/marimo-observability) o [observable](https://observablehq.com/).
 
 | Propósito | Problema |
 |-----------|----------|
@@ -762,7 +762,7 @@ Cuando te suscribes a un canal de YouTube o activas las notificaciones de un rep
 
 ### Strategy
 
-Una aplicación de navegación como Google Maps calcula rutas distintas según vayas en coche, a pie, en bicicleta o en transporte público. Si todos esos algoritmos estuvieran en una sola clase, controlados por un gran `if`/`else`, cada nuevo medio de transporte obligaría a modificarla y aumentaría el riesgo de errores. El patrón *Strategy* considera cada algoritmo como si fuera un objeto/clase, la **estrategia**, y todas las estrategias comparten una interfaz común. El objeto principal, el *contexto*, guarda una referencia a la estrategia activa para delegarle llevar a cabo el trabajo, de modo que se puede slecioar otra estrategia en tiempo de ejecución. 
+Una aplicación de navegación como Google Maps calcula rutas distintas según te desplazasen coche, a pie, en bicicleta o en transporte público. Si todos esos algoritmos de cálculo de rutas estuvieran en una sola clase, controlados por un gran `if`/`else`, cada nuevo medio de transporte obligaría a modificarla y aumentaría el riesgo de propagación de errores. El patrón *Strategy* considera cada algoritmo como si fuera un objeto/clase, la **estrategia**, y todas las estrategias comparten una interfaz común. El objeto principal, el *contexto*, guarda una referencia a la estrategia activa para delegarle la tarea. La calve es que las estrategias son intercambiables, ya que el contexto puede seleccionar otra estrategia en tiempo de ejecución como la estrategia activa para llevar a cabo la misma tarea. 
 
 
 | Propósito | Problema |
@@ -770,7 +770,7 @@ Una aplicación de navegación como Google Maps calcula rutas distintas según v
 | permite seleccionar un método/algoritmo en tiempo de ejecución... | ... porque hay diferentes algoritmos intercambiables para resolver un mismo problema |
 
 
-Otro ejemplo de integración de patrones de diseño en la propia implementaciij de los lenguajes de programación es la función `sorted()` de Python, queordena cualquier colección con el mismo algoritmo, [Timsort](https://en.wikipedia.org/wiki/Timsort). Por defecto compara los elementos directamente, pero el argumento `key` permite indicar **el criterio** de ordenación. Ese criterio es una función que recibe un elemento y devuelve el valor (la *clave*) que se usará para compararlo.
+Un ejemplo de integración de patrones de diseño, de los muchos que hay, en la implementación de los lenguajes de programación es la función `sorted()` de Python, que ordena cualquier colección con el algoritmo [Timsort](https://en.wikipedia.org/wiki/Timsort). Por defecto, esta función compara los elementos directamente, pero el argumento `key` permite indicar **el criterio** de ordenación. Ese criterio es una función que recibe un elemento y devuelve el valor (la *clave*) que se usará para compararlo.
 
 
 ```python
@@ -788,9 +788,9 @@ sorted(alumnos, key=itemgetter(2))
 El patrón en este ejemplo cumple los mismos [principios básico de diseño](02_principles.qmd):
 
 - **Encapsula lo que varía.** El criterio de ordenación está aislado en una función aparte, fuera del algoritmo de ordenación.
-- **Programa a una interfaz.** `sorted()` no sabe qué función recibe, ni le importa: solo espera algo que pueda llamarse con un elemento y devuelva un valor comparable.
-- **Favorece la composición.** No hace falta crear subclases como `OrdenadorPorNota` u `OrdenadorPorEdad`. El criterio se pasa como un objeto y se *combina* con el algoritmo en el momento de la llamada.
-- **Principio (SOLID) abierto/cerrado.** Podemos añadir criterios nuevos sin modificar el código de `sorted()`. Está *cerrado* a modificaciones, pero *abierto* a extensiones.
+- **Programa a una interfaz.** `sorted()` no sabe qué función (de criterio de ordenación) recibe, ni le importa: solo espera algo que pueda llamarse con un elemento y devuelva un valor comparable.
+- **Favorece la composición.** No hace falta crear subclases como `OrdenaPorNota` u `OrdenaPorEdad`. El criterio se pasa como un objeto y se *combina* con el algoritmo en el momento de la llamada.
+- **Principio (SOLID) abierto/cerrado.** Podemos añadir nuevos criterios sin modificar el código de `sorted()`. Es decirt, `sorted()` está *cerrado* a modificaciones, pero *abierto* a extensiones.
 
 ::: {.column-margin}
 En la versión clásica [@gamma1994], cada estrategia es una clase que implementa una interfaz común. En Python, las funciones son **objetos de primera clase**: pueden guardarse en variables y pasarse como argumentos. La estrategia no sustituye todo el algoritmo de ordenación, sino a una parte: el criterio de comparación. Es una aplicación de *Strategy* a pequeña escala.
@@ -819,7 +819,7 @@ En la versión clásica [@gamma1994], cada estrategia es una clase que implement
 
 ### Mediator
 
-En un aeropuerto, los aviones no se comunican directamente entre sí para decidir quién aterriza primero: todos hablan con la **torre de control**, que coordina el tráfico. Si cada avión tuviera que negociar con todos los demás, el sistema sería caótico. Lo mismo ocurre en un formulario de registro: marcar una casilla activa un campo de texto, elegir un país cambia la lista de provincias y el botón "Enviar" solo se habilita si todo es correcto. Si cada componente conoce y modifica directamente a los demás, el resultado es una red de dependencias cruzadas difícil de mantener (el llamado [código *spaguetti*](https://en.wikipedia.org/wiki/Spaghetti_code)). El patrón *Mediator* introduce un objeto **mediador** que centraliza la comunicación: los componentes solo hablan con él, y es el mediador quien decide a quién avisar.
+En un aeropuerto, los aviones no se comunican directamente entre sí para decidir quién aterriza primero: todos hablan con la **torre de control**, que coordina el tráfico aéreo. Si cada avión tuviera que negociar con todos los demás, el sistema sería completmaente caótico y proponse a errores (incidentes) fatales. Lo mismo ocurre en un formulario de registro: marcar una casilla activa un campo de texto, elegir un país cambia la lista de provincias y el botón "Enviar" solo se habilita si todo es correcto. Si cada componente conoce y modifica directamente a los demás, el resultado es una red de dependencias entre objetos difícil de mantener (el llamado [código *spaguetti*](https://en.wikipedia.org/wiki/Spaghetti_code)). El patrón *Mediator* introduce un objeto **mediador** que simplemente centraliza la comunicación: los componentes solo hablan con el mediador, y es el mediador quien decide a quién avisar en función de la petición recibida.
 
 
 | Propósito | Problema |
@@ -893,6 +893,7 @@ Piensa en una petición *pull request* (PR) de GitHub: puede estar en borrador, 
 
 ### Interpreter
 
+### Visitor
 
  
 ### Relaciones entre patrones {#relaciones-comportamiento}
