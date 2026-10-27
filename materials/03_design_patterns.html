@@ -102,7 +102,7 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-defce90a430ddeea48f4f6a2f762eb41.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-81d8ec7cf955bbbdd9d6d093b8d99ca1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-66f8265630e381de759a1634d4586b0e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -264,7 +264,8 @@ div.csl-indent {
   <li><a href="#iterator" id="toc-iterator" class="nav-link" data-scroll-target="#iterator"><span class="header-section-number">3.4.8</span> Iterator</a></li>
   <li><a href="#state" id="toc-state" class="nav-link" data-scroll-target="#state"><span class="header-section-number">3.4.9</span> State</a></li>
   <li><a href="#interpreter" id="toc-interpreter" class="nav-link" data-scroll-target="#interpreter"><span class="header-section-number">3.4.10</span> Interpreter</a></li>
-  <li><a href="#relaciones-comportamiento" id="toc-relaciones-comportamiento" class="nav-link" data-scroll-target="#relaciones-comportamiento"><span class="header-section-number">3.4.11</span> Relaciones entre patrones</a></li>
+  <li><a href="#visitor" id="toc-visitor" class="nav-link" data-scroll-target="#visitor"><span class="header-section-number">3.4.11</span> Visitor</a></li>
+  <li><a href="#relaciones-comportamiento" id="toc-relaciones-comportamiento" class="nav-link" data-scroll-target="#relaciones-comportamiento"><span class="header-section-number">3.4.12</span> Relaciones entre patrones</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/cgranell/ei2639/blob/main/materials/03_design_patterns.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/cgranell/ei2639/edit/main/materials/03_design_patterns.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/cgranell/ei2639/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -1226,7 +1227,7 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </section>
 <section id="chain-of-responsibility" class="level3 page-columns page-full" data-number="3.4.3">
 <h3 data-number="3.4.3" class="anchored" data-anchor-id="chain-of-responsibility"><span class="header-section-number">3.4.3</span> Chain of responsibility</h3>
-<p>Cuando una petición HTTP llega a una aplicación web, antes de llegar a la función que la atiende suele pasar por varios filtros. Uno registra la petición en el <em>log</em>, otro comprueba que el usuario ha iniciado sesión, otro limita el número de peticiones por minuto y otro descomprime los datos. Si todas esas comprobaciones estuvieran en un único método, sería enorme y difícil de modificar. El patrón <em>Chain of Responsibility</em> organiza los gestores en una <strong>cadena</strong>: cada eslabón decide si procesa la petición, si la rechaza o si la pasa al siguiente. Es exactamente lo que hacen los <a href="https://docs.djangoproject.com/es/stable/topics/http/middleware/"><em>middleware</em></a> de frameworks como <a href="https://www.djangoproject.com/">Django</a>, <a href="https://expressjs.com/">Express</a> o <a href="https://docs.spring.io/spring-boot/">Spring Boot</a>. Así, se pueden añadir, quitar o reordenar eslabones sin modificar el resto de la cadena.</p>
+<p>Cuando una petición HTTP llega a una aplicación web, antes de llegar a la función concreta que la atiende suele pasar por varios filtros previos. Por ejemplo, uno registra la petición en el <em>log</em>, otro comprueba que el usuario ha iniciado sesión, otro limita el número de peticiones por minuto y otro descomprime los datos. Si todas esas comprobaciones estuvieran en un único método, sería un serio candidato para incumplir el principio SOLID de abierto/cerrado. El patrón <em>Chain of Responsibility</em> organiza estas decisiones en una <strong>cadena de responsables</strong>: cada eslabón decide si procesa la petición, si la rechaza o si la pasa al siguiente eslabón. Es exactamente lo que hacen los <a href="https://docs.djangoproject.com/es/stable/topics/http/middleware/"><em>middleware</em></a> de frameworks como <a href="https://www.djangoproject.com/">Django</a>, <a href="https://expressjs.com/">Express</a> o <a href="https://docs.spring.io/spring-boot/">Spring Boot</a>. Así, se pueden añadir, quitar, reemplazar o reordenar eslabones sin alterar el funcionamiento del resto de la cadena.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 52%">
@@ -1264,7 +1265,7 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </section>
 <section id="template-method" class="level3 page-columns page-full" data-number="3.4.4">
 <h3 data-number="3.4.4" class="anchored" data-anchor-id="template-method"><span class="header-section-number">3.4.4</span> Template method</h3>
-<p>Si has escrito pruebas unitarias con <code>unittest</code> en Python o con <a href="https://junit.org/">JUnit</a> en Java, ya has usado este patrón sin saberlo. El <em>framework</em> define el algoritmo general que se sigue al ejecutar cada prueba: preparar el entorno (<code>setUp</code>), ejecutar la prueba y limpiar al terminar (<code>tearDown</code>). Tú solo redefines los pasos que te interesan en tu subclase, y el <em>framework</em> se encarga del resto. Eso es el patrón <em>Template Method</em>: una superclase define el <strong>esqueleto de un algoritmo</strong> en un método (la <em>plantilla</em>) y deja que las subclases redefinan algunos de sus pasos sin cambiar la estructura general. Se evita así duplicar la parte común del algoritmo en cada subclase (es decir, las implementacones concretas).</p>
+<p>Si has escrito pruebas unitarias con <code>unittest</code> en Python o con <a href="https://junit.org/">JUnit</a> en Java, ya has usado este patrón sin saberlo. El <em>framework</em> define los pasos del algoritmo general que se sigue al ejecutar cada prueba: preparar el entorno (<code>setUp</code>), ejecutar la prueba y limpiar al terminar (<code>tearDown</code>). Tú solo redefines el paso o pasos que te interesan en tu subclase, mientras que el <em>framework</em> se encarga del resto. Eso es el patrón <em>Template Method</em>: una superclase define el <strong>esqueleto de un algoritmo</strong> en un método específico, la <em>plantilla</em>, y deja que las subclases sobreescriban, si es necesario, algunos de los pasos sin altear la estructura del algoritmo general. Se evita así duplicar la parte común del algoritmo en cada implementación concreta.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 52%">
@@ -1315,7 +1316,7 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </section>
 <section id="observer" class="level3 page-columns page-full" data-number="3.4.5">
 <h3 data-number="3.4.5" class="anchored" data-anchor-id="observer"><span class="header-section-number">3.4.5</span> Observer</h3>
-<p>Cuando te suscribes a un canal de YouTube o activas las notificaciones de un repositorio de GitHub, no tienes que comprobar cada cinco minutos si hay novedades: es el canal quien te avisa cuando publica algo. El patrón <em>Observer</em> aplica esta misma idea entre objetos. Un objeto, el <strong>sujeto</strong>, mantiene una lista de objetos <strong>observadores</strong> suscritos y les notifica automáticamente cada vez que cambia su estado. Los observadores pueden suscribirse o darse de baja en cualquier momento, y el sujeto no necesita conocer sus clases concretas. Es el mecanismo que hay detrás de los eventos en las interfaces gráficas (<code>addEventListener</code> en JavaScript), de las hojas de cálculo que recalculan las celdas dependientes y de los <em>frameworks</em> reactivos, como sucede en los notebooks <a href="https://github.com/navneet-mkr/marimo-observability">marimo</a> o <a href="https://observablehq.com/">observable</a>.</p>
+<p>Cuando te suscribes a un canal de YouTube o activas las notificaciones de un repositorio de GitHub, no tienes que comprobar periódicamente si hay novedades: es el canal quien te avisa cuando publica algo, ya sea un nuevo video o un <em>issue</em> en GitHub. El patrón <em>Observer</em> aplica esta misma idea entre objetos. Un objeto, el <strong>sujeto</strong>, mantiene una lista de objetos suscritos, <strong>observadores</strong>, y les notifica automáticamente cada vez que cambia su estado. Los observadores pueden suscribirse o darse de baja en cualquier momento, y el sujeto no necesita conocer las clases concretas de los observadores. Es justo el mecanismo que hay detrás de muchos sistemas actuales, como los eventos en las interfaces gráficas (<code>addEventListener</code> en JavaScript), de las hojas de cálculo que recalculan las celdas dependientes y de los <em>frameworks</em> reactivos, como sucede en los notebooks <a href="https://github.com/navneet-mkr/marimo-observability">marimo</a> o <a href="https://observablehq.com/">observable</a>.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 52%">
@@ -1366,7 +1367,7 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </section>
 <section id="strategy" class="level3 page-columns page-full" data-number="3.4.6">
 <h3 data-number="3.4.6" class="anchored" data-anchor-id="strategy"><span class="header-section-number">3.4.6</span> Strategy</h3>
-<p>Una aplicación de navegación como Google Maps calcula rutas distintas según vayas en coche, a pie, en bicicleta o en transporte público. Si todos esos algoritmos estuvieran en una sola clase, controlados por un gran <code>if</code>/<code>else</code>, cada nuevo medio de transporte obligaría a modificarla y aumentaría el riesgo de errores. El patrón <em>Strategy</em> considera cada algoritmo como si fuera un objeto/clase, la <strong>estrategia</strong>, y todas las estrategias comparten una interfaz común. El objeto principal, el <em>contexto</em>, guarda una referencia a la estrategia activa para delegarle llevar a cabo el trabajo, de modo que se puede slecioar otra estrategia en tiempo de ejecución.</p>
+<p>Una aplicación de navegación como Google Maps calcula rutas distintas según te desplazasen coche, a pie, en bicicleta o en transporte público. Si todos esos algoritmos de cálculo de rutas estuvieran en una sola clase, controlados por un gran <code>if</code>/<code>else</code>, cada nuevo medio de transporte obligaría a modificarla y aumentaría el riesgo de propagación de errores. El patrón <em>Strategy</em> considera cada algoritmo como si fuera un objeto/clase, la <strong>estrategia</strong>, y todas las estrategias comparten una interfaz común. El objeto principal, el <em>contexto</em>, guarda una referencia a la estrategia activa para delegarle la tarea. La calve es que las estrategias son intercambiables, ya que el contexto puede seleccionar otra estrategia en tiempo de ejecución como la estrategia activa para llevar a cabo la misma tarea.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 52%">
@@ -1385,7 +1386,7 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </tr>
 </tbody>
 </table>
-<p>Otro ejemplo de integración de patrones de diseño en la propia implementaciij de los lenguajes de programación es la función <code>sorted()</code> de Python, queordena cualquier colección con el mismo algoritmo, <a href="https://en.wikipedia.org/wiki/Timsort">Timsort</a>. Por defecto compara los elementos directamente, pero el argumento <code>key</code> permite indicar <strong>el criterio</strong> de ordenación. Ese criterio es una función que recibe un elemento y devuelve el valor (la <em>clave</em>) que se usará para compararlo.</p>
+<p>Un ejemplo de integración de patrones de diseño, de los muchos que hay, en la implementación de los lenguajes de programación es la función <code>sorted()</code> de Python, que ordena cualquier colección con el algoritmo <a href="https://en.wikipedia.org/wiki/Timsort">Timsort</a>. Por defecto, esta función compara los elementos directamente, pero el argumento <code>key</code> permite indicar <strong>el criterio</strong> de ordenación. Ese criterio es una función que recibe un elemento y devuelve el valor (la <em>clave</em>) que se usará para compararlo.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> operator <span class="im">import</span> itemgetter                 </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># https://www.geeksforgeeks.org/python/itemgetter-in-python/</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1398,9 +1399,9 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 <p>El patrón en este ejemplo cumple los mismos <a href="../materials/02_principles.html">principios básico de diseño</a>:</p>
 <ul>
 <li><strong>Encapsula lo que varía.</strong> El criterio de ordenación está aislado en una función aparte, fuera del algoritmo de ordenación.</li>
-<li><strong>Programa a una interfaz.</strong> <code>sorted()</code> no sabe qué función recibe, ni le importa: solo espera algo que pueda llamarse con un elemento y devuelva un valor comparable.</li>
-<li><strong>Favorece la composición.</strong> No hace falta crear subclases como <code>OrdenadorPorNota</code> u <code>OrdenadorPorEdad</code>. El criterio se pasa como un objeto y se <em>combina</em> con el algoritmo en el momento de la llamada.</li>
-<li><strong>Principio (SOLID) abierto/cerrado.</strong> Podemos añadir criterios nuevos sin modificar el código de <code>sorted()</code>. Está <em>cerrado</em> a modificaciones, pero <em>abierto</em> a extensiones.</li>
+<li><strong>Programa a una interfaz.</strong> <code>sorted()</code> no sabe qué función (de criterio de ordenación) recibe, ni le importa: solo espera algo que pueda llamarse con un elemento y devuelva un valor comparable.</li>
+<li><strong>Favorece la composición.</strong> No hace falta crear subclases como <code>OrdenaPorNota</code> u <code>OrdenaPorEdad</code>. El criterio se pasa como un objeto y se <em>combina</em> con el algoritmo en el momento de la llamada.</li>
+<li><strong>Principio (SOLID) abierto/cerrado.</strong> Podemos añadir nuevos criterios sin modificar el código de <code>sorted()</code>. Es decirt, <code>sorted()</code> está <em>cerrado</em> a modificaciones, pero <em>abierto</em> a extensiones.</li>
 </ul>
 
 <div class="no-row-height column-margin column-container"><div class="">
@@ -1437,7 +1438,7 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </section>
 <section id="mediator" class="level3 page-columns page-full" data-number="3.4.7">
 <h3 data-number="3.4.7" class="anchored" data-anchor-id="mediator"><span class="header-section-number">3.4.7</span> Mediator</h3>
-<p>En un aeropuerto, los aviones no se comunican directamente entre sí para decidir quién aterriza primero: todos hablan con la <strong>torre de control</strong>, que coordina el tráfico. Si cada avión tuviera que negociar con todos los demás, el sistema sería caótico. Lo mismo ocurre en un formulario de registro: marcar una casilla activa un campo de texto, elegir un país cambia la lista de provincias y el botón “Enviar” solo se habilita si todo es correcto. Si cada componente conoce y modifica directamente a los demás, el resultado es una red de dependencias cruzadas difícil de mantener (el llamado <a href="https://en.wikipedia.org/wiki/Spaghetti_code">código <em>spaguetti</em></a>). El patrón <em>Mediator</em> introduce un objeto <strong>mediador</strong> que centraliza la comunicación: los componentes solo hablan con él, y es el mediador quien decide a quién avisar.</p>
+<p>En un aeropuerto, los aviones no se comunican directamente entre sí para decidir quién aterriza primero: todos hablan con la <strong>torre de control</strong>, que coordina el tráfico aéreo. Si cada avión tuviera que negociar con todos los demás, el sistema sería completmaente caótico y proponse a errores (incidentes) fatales. Lo mismo ocurre en un formulario de registro: marcar una casilla activa un campo de texto, elegir un país cambia la lista de provincias y el botón “Enviar” solo se habilita si todo es correcto. Si cada componente conoce y modifica directamente a los demás, el resultado es una red de dependencias entre objetos difícil de mantener (el llamado <a href="https://en.wikipedia.org/wiki/Spaghetti_code">código <em>spaguetti</em></a>). El patrón <em>Mediator</em> introduce un objeto <strong>mediador</strong> que simplemente centraliza la comunicación: los componentes solo hablan con el mediador, y es el mediador quien decide a quién avisar en función de la petición recibida.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 52%">
@@ -1562,8 +1563,11 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 <section id="interpreter" class="level3" data-number="3.4.10">
 <h3 data-number="3.4.10" class="anchored" data-anchor-id="interpreter"><span class="header-section-number">3.4.10</span> Interpreter</h3>
 </section>
-<section id="relaciones-comportamiento" class="level3" data-number="3.4.11">
-<h3 data-number="3.4.11" class="anchored" data-anchor-id="relaciones-comportamiento"><span class="header-section-number">3.4.11</span> Relaciones entre patrones</h3>
+<section id="visitor" class="level3" data-number="3.4.11">
+<h3 data-number="3.4.11" class="anchored" data-anchor-id="visitor"><span class="header-section-number">3.4.11</span> Visitor</h3>
+</section>
+<section id="relaciones-comportamiento" class="level3" data-number="3.4.12">
+<h3 data-number="3.4.12" class="anchored" data-anchor-id="relaciones-comportamiento"><span class="header-section-number">3.4.12</span> Relaciones entre patrones</h3>
 <p>Los patrones de comportamiento se combinan con frecuencia, y varios tienen estructuras tan parecidas que es fácil confundirlos:</p>
 <ul>
 <li><em>Command y Memento.</em> Juntos permiten implementar <strong>deshacer</strong>. El comando ejecuta la acción y, antes de hacerlo, guarda un memento con el estado anterior para poder restaurarlo.</li>
