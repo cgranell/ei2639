@@ -610,8 +610,8 @@ Los patrones de comportamiento son:
 - [Mediator](#mediator)
 - [Iterator](#iterator)
 - [State](#state)
+- [Visitor](#visitor)
 - [Interpreter](#interpreter)
-
 
 
 ### Command
@@ -888,12 +888,44 @@ Piensa en una petición *pull request* (PR) de GitHub: puede estar en borrador, 
 ![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [State en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/state/java/example#lang-features)
 :::
 
+### Visitor
+
+Un compilador o un [linter](https://en.wikipedia.org/wiki/Lint_(software), como `pylint` o `ruff`, convierte el código fuente en un [árbol de sintaxis abstracta](https://en.wikipedia.org/wiki/Abstract_syntax_tree), formado por nodos de distintos tipos: asignaciones, llamadas a funciones, bucles, variables... Sobre ese mismo árbol se deben relalizar operaciones distintas como, por ejemplo, comprobar los tipos, detectar variables sin asignar o formatear el código. Si añadimos cada operación como un método en todas las clases de nodos, esas clases se llenan de responsabilidades que no tienen nada que ver entre sí, y cada operación nueva obliga a modificar toda la jerarquía. El patrón *Visitor* extrae cada operación a un objeto aparte, el **visitante**, que tiene un método para cada tipo de nodo (por ejemplo, `visitar_asignacion()`, `visitar_llamada()`...). Los nodos solo necesitan un método `aceptar(visitante)` que llama al método del visitante que les corresponde. Así, añadir una operación nueva consiste en escribir un visitante nuevo, sin modificar las clases de los nodos. 
 
 
+::: {.column-margin}
+Python incluye el patrón Visitor en su librería estándar: la clase [`ast.NodeVisitor`](https://docs.python.org/es/3/library/ast.html#ast.NodeVisitor) permite recorrer el AST de un programa Python y llama a una función de visitante (`visit()`) para cada nodo encontrado.
+:::
+
+| Propósito | Problema |
+|-----------|----------|
+| permite añadir nuevas operaciones a una jerarquía de clases sin modificarla, separando las operaciones de los objetos sobre los que actúan... | ... porque tengo una estructura de objetos estable sobre la que necesito aplicar muchas operaciones distintas y no relacionadas |
+
+::: {.callout-tip title="Implementación"}
+![](https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34){width=25} [Visitor en Java (refactoring.guru)](https://refactoring.guru/es/design-patterns/visitor/java/example#lang-features)
+:::
+
+::: {.callout-note title="Doble despacho y un compromiso importante"}
+El método `aceptar()` existe porque, en lenguajes como Java, el método que se ejecuta depende del tipo del objeto que recibe la llamada, pero no del tipo de sus argumentos. Con `nodo.aceptar(visitante)` se elige el método según el tipo de **nodo**, y este, a su vez, llama a `visitante.visitar_xxx(this)`, que elige según el tipo de **visitante**. Esta técnica se conoce como [**doble despacho**](https://en.wikipedia.org/wiki/Double_dispatch). (`ast.NodeVisitor` de Python resuelve lo mismo de otra forma: construye el nombre del método a partir del nombre de la clase del nodo.)
+
+*Visitor* tiene, además, un compromiso que conviene tener presente: hace muy fácil añadir **operaciones** nuevas, pero muy costoso añadir **tipos de elementos** nuevos, porque cada clase nueva obliga a añadir un método en todos los visitantes. Por eso solo conviene usarlo cuando la jerarquía de clases es estable y lo que cambia con frecuencia son las operaciones.
+:::
 
 ### Interpreter
 
-### Visitor
+
+Las [expresiones regulares](https://en.wikipedia.org/wiki/Regular_expression), las consultas SQL, las fórmulas de una hoja de cálculo o los archivos de configuración ([YAML](https://en.wikipedia.org/wiki/YAML)...) son **lenguajes** con su propia gramática. Cuando una aplicación necesita evaluar frases de un lenguaje determinado, como reglas de filtrado del tipo `edad > 18 AND pais == "ES"`, escribir un analizador desde cero puede resultar costoso. El patrón *Interpreter* propone representar cada regla de la gramática como una **clase**: los elementos simples (números, variables) son *expresiones terminales*, y las combinaciones (`AND`, `>`, `+`) son *expresiones no terminales* que contienen otras expresiones. Una frase del lenguaje se convierte así en un árbol de objetos, y para evaluarla basta con llamar a `interpretar()` en la raíz. Es un patrón útil para gramáticas sencillas. Para lenguajes complejos conviene usar herramientas específicas de [análisis sintáctico](https://es.wikipedia.org/wiki/Analizador_sint%C3%A1ctico), como ANTLR.
+
+| Propósito | Problema |
+|-----------|----------|
+| define una representación de la gramática de un lenguaje y un intérprete para evaluar sus frases... | ... porque necesito evaluar expresiones o reglas escritas en un lenguaje sencillo y recurrente |
+
+
+::: {.callout-tip title="Implementación"}
+[Interpreter pattern (Wikipedia, con ejemplos en Java y otros lenguajes)](https://en.wikipedia.org/wiki/Interpreter_pattern)
+:::
+
+
 
  
 ### Relaciones entre patrones {#relaciones-comportamiento}
@@ -908,6 +940,8 @@ Los patrones de comportamiento se combinan con frecuencia, y varios tienen estru
 - *Chain of Responsibility, Command, Mediator y Observer.* Los cuatro conectan a quien envía una petición con quien la recibe, pero de forma distinta. *Chain* la pasa de eslabón en eslabón, *Command* la encapsula en un objeto, *Mediator* centraliza la comunicación y *Observer* permite suscribirse y darse de baja dinámicamente.
 - *Iterator y Composite.* Un iterador permite recorrer un árbol *Composite* sin conocer su estructura. Además, *Iterator* puede apoyarse en *Memento* para guardar la posición actual del recorrido y retomarla después.
 - *Interpreter y Composite.* El árbol de expresiones de *Interpreter* es, en realidad, un *Composite*: las expresiones terminales son las hojas y las no terminales son los nodos compuestos.
+- *Visitor y Composite.* *Visitor* se usa a menudo para aplicar una operación sobre todos los elementos de un árbol *Composite*, aunque sean de clases distintas.
+- *Visitor y Iterator.* *Iterator* se encarga de *recorrer* la estructura y *Visitor* de *qué hacer* con cada elemento. Se combinan habitalmente.
 
 La @fig-arbol-comportamiento recrea un [árbol de decisión](https://medium.com/womenintechnology/stop-memorizing-design-patterns-use-this-decision-tree-instead-e84f22fca9fa?sk=d8ce25c71ba530c026c9b90e9c8d38f0) que resume cuándo conviene utilizar cada patrón de comportamiento.
 
@@ -935,7 +969,9 @@ flowchart TD
   I -- Sí --> IT["Iterator"]
   I -- No --> J{"¿Debo evaluar expresiones de un<br/>lenguaje o gramática sencillos?"}
   J -- Sí --> IN["Interpreter"]
-  J -- No --> N["No hace falta un patrón:<br/>basta con una colaboración directa"]
+  J -- No --> K{"¿Necesito añadir operaciones nuevas a una<br/>jerarquía de clases estable sin modificarla?"}
+  K -- Sí --> VI["Visitor"]
+  K -- No --> N["No hace falta un patrón:<br/>basta con una colaboración directa"]
 ```
 
 
