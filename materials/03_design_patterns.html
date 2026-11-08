@@ -1569,7 +1569,7 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 <p>Un compilador o un [linter](https://en.wikipedia.org/wiki/Lint_(software), como <code>pylint</code> o <code>ruff</code>, convierte el código fuente en un <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">árbol de sintaxis abstracta</a>, formado por nodos de distintos tipos: asignaciones, llamadas a funciones, bucles, variables… Sobre ese mismo árbol se deben relalizar operaciones distintas como, por ejemplo, comprobar los tipos, detectar variables sin asignar o formatear el código. Si añadimos cada operación como un método en todas las clases de nodos, esas clases se llenan de responsabilidades que no tienen nada que ver entre sí, y cada operación nueva obliga a modificar toda la jerarquía. El patrón <em>Visitor</em> extrae cada operación a un objeto aparte, el <strong>visitante</strong>, que tiene un método para cada tipo de nodo (por ejemplo, <code>visitar_asignacion()</code>, <code>visitar_llamada()</code>…). Los nodos solo necesitan un método <code>aceptar(visitante)</code> que llama al método del visitante que les corresponde. Así, añadir una operación nueva consiste en escribir un visitante nuevo, sin modificar las clases de los nodos.</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
-<p>Python incluye el patrón Visitor en su librería estándar: la clase <a href="https://docs.python.org/es/3/library/ast.html#ast.NodeVisitor"><code>ast.NodeVisitor</code></a> permite recorrer el AST de un programa Python y llama a una función de visitante (<code>visit()</code>) para cada nodo encontrado.</p>
+<p>Python incluye el patrón Visitor en su librería estándar: la clase <a href="https://docs.python.org/es/3/library/ast.html#ast.NodeVisitor"><code>ast.NodeVisitor</code></a> permite recorrer el AST de un programa Python y llama a la función <code>visit()</code> para cada nodo visitado.</p>
 </div></div><table class="caption-top table">
 <colgroup>
 <col style="width: 52%">
@@ -1599,20 +1599,6 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </div>
 <div class="callout-body-container callout-body">
 <p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/visitor/java/example#lang-features">Visitor en Java (refactoring.guru)</a></p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Doble despacho y un compromiso importante
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>El método <code>aceptar()</code> existe porque, en lenguajes como Java, el método que se ejecuta depende del tipo del objeto que recibe la llamada, pero no del tipo de sus argumentos. Con <code>nodo.aceptar(visitante)</code> se elige el método según el tipo de <strong>nodo</strong>, y este, a su vez, llama a <code>visitante.visitar_xxx(this)</code>, que elige según el tipo de <strong>visitante</strong>. Esta técnica se conoce como <a href="https://en.wikipedia.org/wiki/Double_dispatch"><strong>doble despacho</strong></a>. (<code>ast.NodeVisitor</code> de Python resuelve lo mismo de otra forma: construye el nombre del método a partir del nombre de la clase del nodo.)</p>
-<p><em>Visitor</em> tiene, además, un compromiso que conviene tener presente: hace muy fácil añadir <strong>operaciones</strong> nuevas, pero muy costoso añadir <strong>tipos de elementos</strong> nuevos, porque cada clase nueva obliga a añadir un método en todos los visitantes. Por eso solo conviene usarlo cuando la jerarquía de clases es estable y lo que cambia con frecuencia son las operaciones.</p>
 </div>
 </div>
 </section>
