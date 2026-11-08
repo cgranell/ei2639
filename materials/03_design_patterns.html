@@ -264,8 +264,8 @@ div.csl-indent {
   <li><a href="#mediator" id="toc-mediator" class="nav-link" data-scroll-target="#mediator"><span class="header-section-number">3.4.7</span> Mediator</a></li>
   <li><a href="#iterator" id="toc-iterator" class="nav-link" data-scroll-target="#iterator"><span class="header-section-number">3.4.8</span> Iterator</a></li>
   <li><a href="#state" id="toc-state" class="nav-link" data-scroll-target="#state"><span class="header-section-number">3.4.9</span> State</a></li>
-  <li><a href="#interpreter" id="toc-interpreter" class="nav-link" data-scroll-target="#interpreter"><span class="header-section-number">3.4.10</span> Interpreter</a></li>
-  <li><a href="#visitor" id="toc-visitor" class="nav-link" data-scroll-target="#visitor"><span class="header-section-number">3.4.11</span> Visitor</a></li>
+  <li><a href="#visitor" id="toc-visitor" class="nav-link" data-scroll-target="#visitor"><span class="header-section-number">3.4.10</span> Visitor</a></li>
+  <li><a href="#interpreter" id="toc-interpreter" class="nav-link" data-scroll-target="#interpreter"><span class="header-section-number">3.4.11</span> Interpreter</a></li>
   <li><a href="#relaciones-comportamiento" id="toc-relaciones-comportamiento" class="nav-link" data-scroll-target="#relaciones-comportamiento"><span class="header-section-number">3.4.12</span> Relaciones entre patrones</a></li>
   </ul></li>
   </ul>
@@ -1137,6 +1137,7 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 <li><a href="#mediator">Mediator</a></li>
 <li><a href="#iterator">Iterator</a></li>
 <li><a href="#state">State</a></li>
+<li><a href="#visitor">Visitor</a></li>
 <li><a href="#interpreter">Interpreter</a></li>
 </ul>
 <section id="command" class="level3 page-columns page-full" data-number="3.4.1">
@@ -1563,11 +1564,92 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 </div>
 </div>
 </section>
-<section id="interpreter" class="level3" data-number="3.4.10">
-<h3 data-number="3.4.10" class="anchored" data-anchor-id="interpreter"><span class="header-section-number">3.4.10</span> Interpreter</h3>
+<section id="visitor" class="level3 page-columns page-full" data-number="3.4.10">
+<h3 data-number="3.4.10" class="anchored" data-anchor-id="visitor"><span class="header-section-number">3.4.10</span> Visitor</h3>
+<p>Un compilador o un [linter](https://en.wikipedia.org/wiki/Lint_(software), como <code>pylint</code> o <code>ruff</code>, convierte el código fuente en un <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">árbol de sintaxis abstracta</a>, formado por nodos de distintos tipos: asignaciones, llamadas a funciones, bucles, variables… Sobre ese mismo árbol se deben relalizar operaciones distintas como, por ejemplo, comprobar los tipos, detectar variables sin asignar o formatear el código. Si añadimos cada operación como un método en todas las clases de nodos, esas clases se llenan de responsabilidades que no tienen nada que ver entre sí, y cada operación nueva obliga a modificar toda la jerarquía. El patrón <em>Visitor</em> extrae cada operación a un objeto aparte, el <strong>visitante</strong>, que tiene un método para cada tipo de nodo (por ejemplo, <code>visitar_asignacion()</code>, <code>visitar_llamada()</code>…). Los nodos solo necesitan un método <code>aceptar(visitante)</code> que llama al método del visitante que les corresponde. Así, añadir una operación nueva consiste en escribir un visitante nuevo, sin modificar las clases de los nodos.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Python incluye el patrón Visitor en su librería estándar: la clase <a href="https://docs.python.org/es/3/library/ast.html#ast.NodeVisitor"><code>ast.NodeVisitor</code></a> permite recorrer el AST de un programa Python y llama a una función de visitante (<code>visit()</code>) para cada nodo encontrado.</p>
+</div></div><table class="caption-top table">
+<colgroup>
+<col style="width: 52%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propósito</th>
+<th>Problema</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>permite añadir nuevas operaciones a una jerarquía de clases sin modificarla, separando las operaciones de los objetos sobre los que actúan…</td>
+<td>… porque tengo una estructura de objetos estable sobre la que necesito aplicar muchas operaciones distintas y no relacionadas</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Implementación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="https://refactoring.guru/images/content-public/logos/logo-new.png?id=97d554614702483f31e38b32e82d8e34" class="img-fluid" width="25"> <a href="https://refactoring.guru/es/design-patterns/visitor/java/example#lang-features">Visitor en Java (refactoring.guru)</a></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Doble despacho y un compromiso importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El método <code>aceptar()</code> existe porque, en lenguajes como Java, el método que se ejecuta depende del tipo del objeto que recibe la llamada, pero no del tipo de sus argumentos. Con <code>nodo.aceptar(visitante)</code> se elige el método según el tipo de <strong>nodo</strong>, y este, a su vez, llama a <code>visitante.visitar_xxx(this)</code>, que elige según el tipo de <strong>visitante</strong>. Esta técnica se conoce como <a href="https://en.wikipedia.org/wiki/Double_dispatch"><strong>doble despacho</strong></a>. (<code>ast.NodeVisitor</code> de Python resuelve lo mismo de otra forma: construye el nombre del método a partir del nombre de la clase del nodo.)</p>
+<p><em>Visitor</em> tiene, además, un compromiso que conviene tener presente: hace muy fácil añadir <strong>operaciones</strong> nuevas, pero muy costoso añadir <strong>tipos de elementos</strong> nuevos, porque cada clase nueva obliga a añadir un método en todos los visitantes. Por eso solo conviene usarlo cuando la jerarquía de clases es estable y lo que cambia con frecuencia son las operaciones.</p>
+</div>
+</div>
 </section>
-<section id="visitor" class="level3" data-number="3.4.11">
-<h3 data-number="3.4.11" class="anchored" data-anchor-id="visitor"><span class="header-section-number">3.4.11</span> Visitor</h3>
+<section id="interpreter" class="level3" data-number="3.4.11">
+<h3 data-number="3.4.11" class="anchored" data-anchor-id="interpreter"><span class="header-section-number">3.4.11</span> Interpreter</h3>
+<p>Las <a href="https://en.wikipedia.org/wiki/Regular_expression">expresiones regulares</a>, las consultas SQL, las fórmulas de una hoja de cálculo o los archivos de configuración (<a href="https://en.wikipedia.org/wiki/YAML">YAML</a>…) son <strong>lenguajes</strong> con su propia gramática. Cuando una aplicación necesita evaluar frases de un lenguaje determinado, como reglas de filtrado del tipo <code>edad &gt; 18 AND pais == "ES"</code>, escribir un analizador desde cero puede resultar costoso. El patrón <em>Interpreter</em> propone representar cada regla de la gramática como una <strong>clase</strong>: los elementos simples (números, variables) son <em>expresiones terminales</em>, y las combinaciones (<code>AND</code>, <code>&gt;</code>, <code>+</code>) son <em>expresiones no terminales</em> que contienen otras expresiones. Una frase del lenguaje se convierte así en un árbol de objetos, y para evaluarla basta con llamar a <code>interpretar()</code> en la raíz. Es un patrón útil para gramáticas sencillas. Para lenguajes complejos conviene usar herramientas específicas de <a href="https://es.wikipedia.org/wiki/Analizador_sint%C3%A1ctico">análisis sintáctico</a>, como ANTLR.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 52%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propósito</th>
+<th>Problema</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>define una representación de la gramática de un lenguaje y un intérprete para evaluar sus frases…</td>
+<td>… porque necesito evaluar expresiones o reglas escritas en un lenguaje sencillo y recurrente</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Implementación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="https://en.wikipedia.org/wiki/Interpreter_pattern">Interpreter pattern (Wikipedia, con ejemplos en Java y otros lenguajes)</a></p>
+</div>
+</div>
 </section>
 <section id="relaciones-comportamiento" class="level3" data-number="3.4.12">
 <h3 data-number="3.4.12" class="anchored" data-anchor-id="relaciones-comportamiento"><span class="header-section-number">3.4.12</span> Relaciones entre patrones</h3>
@@ -1580,6 +1662,8 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
 <li><em>Chain of Responsibility, Command, Mediator y Observer.</em> Los cuatro conectan a quien envía una petición con quien la recibe, pero de forma distinta. <em>Chain</em> la pasa de eslabón en eslabón, <em>Command</em> la encapsula en un objeto, <em>Mediator</em> centraliza la comunicación y <em>Observer</em> permite suscribirse y darse de baja dinámicamente.</li>
 <li><em>Iterator y Composite.</em> Un iterador permite recorrer un árbol <em>Composite</em> sin conocer su estructura. Además, <em>Iterator</em> puede apoyarse en <em>Memento</em> para guardar la posición actual del recorrido y retomarla después.</li>
 <li><em>Interpreter y Composite.</em> El árbol de expresiones de <em>Interpreter</em> es, en realidad, un <em>Composite</em>: las expresiones terminales son las hojas y las no terminales son los nodos compuestos.</li>
+<li><em>Visitor y Composite.</em> <em>Visitor</em> se usa a menudo para aplicar una operación sobre todos los elementos de un árbol <em>Composite</em>, aunque sean de clases distintas.</li>
+<li><em>Visitor y Iterator.</em> <em>Iterator</em> se encarga de <em>recorrer</em> la estructura y <em>Visitor</em> de <em>qué hacer</em> con cada elemento. Se combinan habitalmente.</li>
 </ul>
 <p>La <a href="#fig-arbol-comportamiento" class="quarto-xref">Figure&nbsp;<span>3.3</span></a> recrea un <a href="https://medium.com/womenintechnology/stop-memorizing-design-patterns-use-this-decision-tree-instead-e84f22fca9fa?sk=d8ce25c71ba530c026c9b90e9c8d38f0">árbol de decisión</a> que resume cuándo conviene utilizar cada patrón de comportamiento.</p>
 <div class="cell" data-layout-align="default">
@@ -1609,7 +1693,9 @@ Figure&nbsp;3.2: Árbol de decisión para elegir un patrón estructural
   I -- Sí --&gt; IT["Iterator"]
   I -- No --&gt; J{"¿Debo evaluar expresiones de un&lt;br/&gt;lenguaje o gramática sencillos?"}
   J -- Sí --&gt; IN["Interpreter"]
-  J -- No --&gt; N["No hace falta un patrón:&lt;br/&gt;basta con una colaboración directa"]
+  J -- No --&gt; K{"¿Necesito añadir operaciones nuevas a una&lt;br/&gt;jerarquía de clases estable sin modificarla?"}
+  K -- Sí --&gt; VI["Visitor"]
+  K -- No --&gt; N["No hace falta un patrón:&lt;br/&gt;basta con una colaboración directa"]
 </pre>
 </div>
 </div>
