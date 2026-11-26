@@ -29,7 +29,7 @@ Este bloque recorre el cambio de paradigma más antiguo de la ingeniería de dat
 
 ### ETL Architecture
 
-*ETL architecture* es el patrón clásico de tres fases: *Extract* (extracción de datos desde fuentes y/o sistemas de origen), *Transform* (limpieza, integración, agregación  y validación de lso datos en n esquema determinado) y *Load* (carga en un data warehouse con un esquema relacional fijo, optmizado para cierto tipo de consultas). Se ejecuta normalmente por lotes (*batch*) ,y está orientado a consultas analíticas estructuradas (BI/reporting). En la práctica, ETL se encuentra detrás de los data warehouses empresariales clásicos de sectore clasico como venta al por mayor/menor, banca o seguros [@kimball2004]. 
+*ETL architecture* es el patrón clásico de tres fases: *Extract* (extracción de datos desde fuentes y/o sistemas de origen), *Transform* (limpieza, integración, agregación  y validación de lso datos en n esquema determinado) y *Load* (carga en un data warehouse con un esquema relacional fijo, optmizado para cierto tipo de consultas). Se ejecuta normalmente por lotes (*batch*) ,y está orientado a consultas analíticas estructuradas (BI/reporting). En la práctica, ETL se encuentra detrás de los data warehouses empresariales de sectores clásicos como venta al por menor, banca o seguros [@kimball2004]. 
 
 
 ![](../images/etl-azurre.png){fig-alt="ETL architecture" fig-align="center" width="80%"}
