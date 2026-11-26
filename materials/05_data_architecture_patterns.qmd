@@ -12,20 +12,45 @@ Por lo tanto, la ingeniería de datos, como disciplina, no va de trasladar, move
 A medida que organizaciones y entidades adoptan la computación y plataformasen la nube, analítica en tiempo real, productos de datos y aplicaciones o modelos dirigidas por la IA, comprender los **patrones de arquitectura de datos** (por ejemplo, [@aais2026]) es una habilidad primordial Al igual que los patrones de diseño de software, los patrones de arquitectura de datos ofrecen soluciones probadas a problemas recurrentes, ya sean éstos la integración de fuentes de datos heterogéneas, servir datos a baja latencia, o garantizar la trazabilidad de los datos.
 
 
-## ETL Architecture
+En la [sección anterior](04_cloud_data_formats.html) vimos los formatos de datos optimizados para la nube (Parquet y afines): columnar, comprimidos, con esquema explícito y evolución de esquema. Podríamos decir que estos formatos optimizados son los *ladrillos* y que los patrones de arquitectura de datos son los *planos*: deciden cómo se combinan esos ladrillos en un sistema completo, es decir, dónde se almacenan los datos, cómo se procesan, cómo se organizan y especifica aspectos de gobernanza a nivel de toda una organización.
+
+Para no perder el hilo entre los siguiente seis patrones de arquitectura de datos y entender el role que desempeñan a un nivel alto de abstracción, los agrupamos en tres bloques:
+
+- **Bloque A — Almacenamiento:** ¿dónde y con qué esquema guardamos los datos? (*ETL* → *Data Lake*)
+- **Bloque B — Procesamiento:** ¿cómo equilibramos latencia y precisión entre análisis por lotes y en tiempo real? (*Lambda* → *Kappa*)
+- **Bloque C — Organización y gobernanza:** ¿cómo estructuramos y definimos la gobernaza de lso datos a escala de organización? (*Medallion* → *Data Product*)
+
+Cada bloque depende conceptualmente del anterior: el Bloque C se apoya en las decisiones de almacenamiento del Bloque A (*medallion* es, de hecho, una forma de organizar capas en un *data lake*), mientras que el Bloque B es una dimensión relativamente independiente (aplica tanto si el almacenamiento final es, por ejemplo, un *warehouse* como si es un *data lake*).
 
 
-## Data Lake Architecture
+## 5.1 Bloque A — Almacenamiento: de ETL a Data Lake
+
+Este bloque recorre el cambio de paradigma más antiguo de la ingeniería de datos: del esquema fijo definido **antes** de cargar los datos (*schema-on-write*), al almacenamiento de datos en bruto con el esquema aplicado *al leer* (*schema-on-read*)- Esta transitcion fue posible en gran medida al abaratamiento del almacenamiento en la nube y a los formatos da datos optimizados como parquet.
+
+### ETL Architecture
 
 
-## Lambda Architecture
+### Data Lake Architecture
 
 
-## Kappa Architecture
+## 5.2 Bloque B — Procesamiento: batch vs. tiempo real
+
+El segundo bloque aborda el "cuándo": ¿cómo servimos resultados con baja latencia sin renunciar a la precisión inherente cunado se analiza todo el histórico de datos? *Lambda* y *Kappa* son dos respuestas a la misma pregunta y, además, *Kappa* solo se entiende *como una reacción a* la arquitectura *Lambda*, por eso el orden importa aquí más que en ningún otro bloque.
+
+### Lambda Architecture
 
 
-## Medallion Architecture
+
+### Kappa Architecture
 
 
-## Data Product Architecture
+
+## 5.3 Bloque C — Organización y gobierno del dato
+
+Este último bloque no trata únicamente de decisiones técnicas de almacenamiento o procesamiento, como en los dos bloques anteriores, sino que incluye aspectos como la **organización y gobernanza** de los datos a escala de toda una organización. *Medallion* sigue operando dentro del *data lake* del Bloque A (es, de hecho, una forma de ordenar sus capas de calidad); *Data Product/Data Mesh* es el patrón más reciente y de mayor nivel de abstracción.
+
+### Medallion Architecture
+
+
+### Data Product Architecture
 
