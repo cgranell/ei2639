@@ -68,7 +68,7 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-95314a05dc0222111ae2e635bd46ac38.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-ea6d297d60b01ecdea4279a314fd386e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-d818d20bfb278fa48841ca8fa081968f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -194,17 +194,17 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#bloque-a-almacenamiento-de-etl-a-data-lake" id="toc-bloque-a-almacenamiento-de-etl-a-data-lake" class="nav-link active" data-scroll-target="#bloque-a-almacenamiento-de-etl-a-data-lake"><span class="header-section-number">5.1</span> 5.1 Bloque A — Almacenamiento: de ETL a Data Lake</a>
+  <li><a href="#bloque-a-almacenamiento-de-etl-a-data-lake" id="toc-bloque-a-almacenamiento-de-etl-a-data-lake" class="nav-link active" data-scroll-target="#bloque-a-almacenamiento-de-etl-a-data-lake"><span class="header-section-number">5.1</span> Bloque A — Almacenamiento: de ETL a Data Lake</a>
   <ul class="collapse">
   <li><a href="#etl-architecture" id="toc-etl-architecture" class="nav-link" data-scroll-target="#etl-architecture"><span class="header-section-number">5.1.1</span> ETL Architecture</a></li>
   <li><a href="#data-lake-architecture" id="toc-data-lake-architecture" class="nav-link" data-scroll-target="#data-lake-architecture"><span class="header-section-number">5.1.2</span> Data Lake Architecture</a></li>
   </ul></li>
-  <li><a href="#bloque-b-procesamiento-batch-vs.-tiempo-real" id="toc-bloque-b-procesamiento-batch-vs.-tiempo-real" class="nav-link" data-scroll-target="#bloque-b-procesamiento-batch-vs.-tiempo-real"><span class="header-section-number">5.2</span> 5.2 Bloque B — Procesamiento: batch vs.&nbsp;tiempo real</a>
+  <li><a href="#bloque-b-procesamiento-batch-vs.-tiempo-real" id="toc-bloque-b-procesamiento-batch-vs.-tiempo-real" class="nav-link" data-scroll-target="#bloque-b-procesamiento-batch-vs.-tiempo-real"><span class="header-section-number">5.2</span> Bloque B — Procesamiento: batch vs.&nbsp;tiempo real</a>
   <ul class="collapse">
   <li><a href="#lambda-architecture" id="toc-lambda-architecture" class="nav-link" data-scroll-target="#lambda-architecture"><span class="header-section-number">5.2.1</span> Lambda Architecture</a></li>
   <li><a href="#kappa-architecture" id="toc-kappa-architecture" class="nav-link" data-scroll-target="#kappa-architecture"><span class="header-section-number">5.2.2</span> Kappa Architecture</a></li>
   </ul></li>
-  <li><a href="#bloque-c-organización-y-gobierno-del-dato" id="toc-bloque-c-organización-y-gobierno-del-dato" class="nav-link" data-scroll-target="#bloque-c-organización-y-gobierno-del-dato"><span class="header-section-number">5.3</span> 5.3 Bloque C — Organización y gobierno del dato</a>
+  <li><a href="#bloque-c-organización-y-gobierno-del-dato" id="toc-bloque-c-organización-y-gobierno-del-dato" class="nav-link" data-scroll-target="#bloque-c-organización-y-gobierno-del-dato"><span class="header-section-number">5.3</span> Bloque C — Organización y gobierno del dato</a>
   <ul class="collapse">
   <li><a href="#medallion-architecture" id="toc-medallion-architecture" class="nav-link" data-scroll-target="#medallion-architecture"><span class="header-section-number">5.3.1</span> Medallion Architecture</a></li>
   <li><a href="#data-product-architecture" id="toc-data-product-architecture" class="nav-link" data-scroll-target="#data-product-architecture"><span class="header-section-number">5.3.2</span> Data Product Architecture</a></li>
@@ -250,17 +250,37 @@ div.csl-indent {
 </ul>
 <p>Cada bloque depende conceptualmente del anterior: el Bloque C se apoya en las decisiones de almacenamiento del Bloque A (<em>medallion</em> es, de hecho, una forma de organizar capas en un <em>data lake</em>), mientras que el Bloque B es una dimensión relativamente independiente (aplica tanto si el almacenamiento final es, por ejemplo, un <em>warehouse</em> como si es un <em>data lake</em>).</p>
 <section id="bloque-a-almacenamiento-de-etl-a-data-lake" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="bloque-a-almacenamiento-de-etl-a-data-lake"><span class="header-section-number">5.1</span> 5.1 Bloque A — Almacenamiento: de ETL a Data Lake</h2>
+<h2 data-number="5.1" class="anchored" data-anchor-id="bloque-a-almacenamiento-de-etl-a-data-lake"><span class="header-section-number">5.1</span> Bloque A — Almacenamiento: de ETL a Data Lake</h2>
 <p>Este bloque recorre el cambio de paradigma más antiguo de la ingeniería de datos: del esquema fijo definido <strong>antes</strong> de cargar los datos (<em>schema-on-write</em>), al almacenamiento de datos en bruto con el esquema aplicado <em>al leer</em> (<em>schema-on-read</em>)- Esta transitcion fue posible en gran medida al abaratamiento del almacenamiento en la nube y a los formatos da datos optimizados como parquet.</p>
 <section id="etl-architecture" class="level3" data-number="5.1.1">
 <h3 data-number="5.1.1" class="anchored" data-anchor-id="etl-architecture"><span class="header-section-number">5.1.1</span> ETL Architecture</h3>
+<p><em>ETL architecture</em> es el patrón clásico de tres fases: <em>Extract</em> (extracción de datos desde fuentes y/o sistemas de origen), <em>Transform</em> (limpieza, integración, agregación y validación de lso datos en n esquema determinado) y <em>Load</em> (carga en un data warehouse con un esquema relacional fijo, optmizado para cierto tipo de consultas). Se ejecuta normalmente por lotes (batch), programado (p.&nbsp;ej., cargas nocturnas), y está orientado a consultas analíticas estructuradas (BI/reporting).</p>
+<p><img src="../images/etl-azurre.png" class="img-fluid quarto-figure quarto-figure-center" style="width:70.0%" alt="ETL architecture"> <em>Source: <a href="https://learn.microsoft.com/en-us/azure/architecture/data-guide/relational-data/etl">Azure Architecture Center, “Extract, transform, and load (ETL)”</a></em></p>
+<p>En la práctica, ETL se encuentras dertrás de los data warehouses empresariales clásicos (retail, banca, seguros) documentados extensamente por Kimball; sigue siendo el estándar en herramientas como Informatica, Talend o SSIS alimentando warehouses tipo Teradata o Snowflake.</p>
+<p><strong>Fuente base:</strong> Kimball, R., &amp; Caserta, J. (2004). <em>The Data Warehouse ETL Toolkit: Practical Techniques for Extracting, Cleaning, Conforming, and Delivering Data</em>. Wiley.</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Para profundizar
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Referencia base: <em>The Data Warehouse ETL Toolkit: Practical Techniques for Extracting, Cleaning, Conforming, and Delivering Data</em> <span class="citation" data-cites="kimball2024">(<a href="../references.html#ref-kimball2024" role="doc-biblioref"><strong>kimball2024?</strong></a>)</span></li>
+<li>Otros: Kimball Group, <a href="https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/etl-architecture-34-subsystems/">“ETL Architecture’s 34 Subsystems”</a> — describe el desglose práctico de los subsistemas de un ETL real.</li>
+</ul>
+</div>
+</div>
 </section>
 <section id="data-lake-architecture" class="level3" data-number="5.1.2">
 <h3 data-number="5.1.2" class="anchored" data-anchor-id="data-lake-architecture"><span class="header-section-number">5.1.2</span> Data Lake Architecture</h3>
 </section>
 </section>
 <section id="bloque-b-procesamiento-batch-vs.-tiempo-real" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="bloque-b-procesamiento-batch-vs.-tiempo-real"><span class="header-section-number">5.2</span> 5.2 Bloque B — Procesamiento: batch vs.&nbsp;tiempo real</h2>
+<h2 data-number="5.2" class="anchored" data-anchor-id="bloque-b-procesamiento-batch-vs.-tiempo-real"><span class="header-section-number">5.2</span> Bloque B — Procesamiento: batch vs.&nbsp;tiempo real</h2>
 <p>El segundo bloque aborda el “cuándo”: ¿cómo servimos resultados con baja latencia sin renunciar a la precisión inherente cunado se analiza todo el histórico de datos? <em>Lambda</em> y <em>Kappa</em> son dos respuestas a la misma pregunta y, además, <em>Kappa</em> solo se entiende <em>como una reacción a</em> la arquitectura <em>Lambda</em>, por eso el orden importa aquí más que en ningún otro bloque.</p>
 <section id="lambda-architecture" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="lambda-architecture"><span class="header-section-number">5.2.1</span> Lambda Architecture</h3>
@@ -270,7 +290,7 @@ div.csl-indent {
 </section>
 </section>
 <section id="bloque-c-organización-y-gobierno-del-dato" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="bloque-c-organización-y-gobierno-del-dato"><span class="header-section-number">5.3</span> 5.3 Bloque C — Organización y gobierno del dato</h2>
+<h2 data-number="5.3" class="anchored" data-anchor-id="bloque-c-organización-y-gobierno-del-dato"><span class="header-section-number">5.3</span> Bloque C — Organización y gobierno del dato</h2>
 <p>Este último bloque no trata únicamente de decisiones técnicas de almacenamiento o procesamiento, como en los dos bloques anteriores, sino que incluye aspectos como la <strong>organización y gobernanza</strong> de los datos a escala de toda una organización. <em>Medallion</em> sigue operando dentro del <em>data lake</em> del Bloque A (es, de hecho, una forma de ordenar sus capas de calidad); <em>Data Product/Data Mesh</em> es el patrón más reciente y de mayor nivel de abstracción.</p>
 <section id="medallion-architecture" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="medallion-architecture"><span class="header-section-number">5.3.1</span> Medallion Architecture</h3>
