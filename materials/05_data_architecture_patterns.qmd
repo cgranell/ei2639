@@ -29,19 +29,18 @@ Este bloque recorre el cambio de paradigma más antiguo de la ingeniería de dat
 
 ### ETL Architecture
 
-*ETL architecture* es el patrón clásico de tres fases: *Extract* (extracción de datos desde fuentes y/o sistemas de origen), *Transform* (limpieza, integración, agregación  y validación de lso datos en n esquema determinado) y *Load* (carga en un data warehouse con un esquema relacional fijo, optmizado para cierto tipo de consultas). Se ejecuta normalmente por lotes (batch), programado (p. ej., cargas nocturnas), y está orientado a consultas analíticas estructuradas (BI/reporting).
+*ETL architecture* es el patrón clásico de tres fases: *Extract* (extracción de datos desde fuentes y/o sistemas de origen), *Transform* (limpieza, integración, agregación  y validación de lso datos en n esquema determinado) y *Load* (carga en un data warehouse con un esquema relacional fijo, optmizado para cierto tipo de consultas). Se ejecuta normalmente por lotes (*batch*) ,y está orientado a consultas analíticas estructuradas (BI/reporting). En la práctica, ETL se encuentra detrás de los data warehouses empresariales clásicos de sectore clasico como venta al por mayor/menor, banca o seguros [@kimball2004]. 
 
-![](../images/etl-azurre.png){fig-alt="ETL architecture" fig-align="center" width="70%"}
+
+![](../images/etl-azurre.png){fig-alt="ETL architecture" fig-align="center" width="80%"}
+
 *Source: [Azure Architecture Center, "Extract, transform, and load (ETL)"](https://learn.microsoft.com/en-us/azure/architecture/data-guide/relational-data/etl)*
 
 
-En la práctica, ETL se encuentras dertrás de los data warehouses empresariales clásicos (retail, banca, seguros) documentados extensamente por Kimball; sigue siendo el estándar en herramientas como Informatica, Talend o SSIS alimentando warehouses tipo Teradata o Snowflake.
-
-**Fuente base:** Kimball, R., & Caserta, J. (2004). *The Data Warehouse ETL Toolkit: Practical Techniques for Extracting, Cleaning, Conforming, and Delivering Data*. Wiley.
 
 ::: {.callout-note appearance="simple" title="Para profundizar"}
 
-- Referencia base: *The Data Warehouse ETL Toolkit: Practical Techniques for Extracting, Cleaning, Conforming, and Delivering Data* [@kimball2024]
+- Referencia base: *The Data Warehouse ETL Toolkit: Practical Techniques for Extracting, Cleaning, Conforming, and Delivering Data* [@kimball2004]
 - Otros: Kimball Group, ["ETL Architecture's 34 Subsystems"](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/etl-architecture-34-subsystems/) — describe el desglose práctico de los subsistemas de un ETL real.
 :::
 
