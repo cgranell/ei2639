@@ -254,10 +254,13 @@ div.csl-indent {
 <p>Este bloque recorre el cambio de paradigma más antiguo de la ingeniería de datos: del esquema fijo definido <strong>antes</strong> de cargar los datos (<em>schema-on-write</em>), al almacenamiento de datos en bruto con el esquema aplicado <em>al leer</em> (<em>schema-on-read</em>)- Esta transitcion fue posible en gran medida al abaratamiento del almacenamiento en la nube y a los formatos da datos optimizados como parquet.</p>
 <section id="etl-architecture" class="level3" data-number="5.1.1">
 <h3 data-number="5.1.1" class="anchored" data-anchor-id="etl-architecture"><span class="header-section-number">5.1.1</span> ETL Architecture</h3>
-<p><em>ETL architecture</em> es el patrón clásico de tres fases: <em>Extract</em> (extracción de datos desde fuentes y/o sistemas de origen), <em>Transform</em> (limpieza, integración, agregación y validación de lso datos en n esquema determinado) y <em>Load</em> (carga en un data warehouse con un esquema relacional fijo, optmizado para cierto tipo de consultas). Se ejecuta normalmente por lotes (batch), programado (p.&nbsp;ej., cargas nocturnas), y está orientado a consultas analíticas estructuradas (BI/reporting).</p>
-<p><img src="../images/etl-azurre.png" class="img-fluid quarto-figure quarto-figure-center" style="width:70.0%" alt="ETL architecture"> <em>Source: <a href="https://learn.microsoft.com/en-us/azure/architecture/data-guide/relational-data/etl">Azure Architecture Center, “Extract, transform, and load (ETL)”</a></em></p>
-<p>En la práctica, ETL se encuentras dertrás de los data warehouses empresariales clásicos (retail, banca, seguros) documentados extensamente por Kimball; sigue siendo el estándar en herramientas como Informatica, Talend o SSIS alimentando warehouses tipo Teradata o Snowflake.</p>
-<p><strong>Fuente base:</strong> Kimball, R., &amp; Caserta, J. (2004). <em>The Data Warehouse ETL Toolkit: Practical Techniques for Extracting, Cleaning, Conforming, and Delivering Data</em>. Wiley.</p>
+<p><em>ETL architecture</em> es el patrón clásico de tres fases: <em>Extract</em> (extracción de datos desde fuentes y/o sistemas de origen), <em>Transform</em> (limpieza, integración, agregación y validación de lso datos en n esquema determinado) y <em>Load</em> (carga en un data warehouse con un esquema relacional fijo, optmizado para cierto tipo de consultas). Se ejecuta normalmente por lotes (<em>batch</em>) ,y está orientado a consultas analíticas estructuradas (BI/reporting). En la práctica, ETL se encuentra detrás de los data warehouses empresariales clásicos de sectore clasico como venta al por mayor/menor, banca o seguros <span class="citation" data-cites="kimball2004">(<a href="../references.html#ref-kimball2004" role="doc-biblioref">Kimball and Caserta 2004</a>)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/etl-azurre.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%" alt="ETL architecture"></p>
+</figure>
+</div>
+<p><em>Source: <a href="https://learn.microsoft.com/en-us/azure/architecture/data-guide/relational-data/etl">Azure Architecture Center, “Extract, transform, and load (ETL)”</a></em></p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -269,7 +272,7 @@ div.csl-indent {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Referencia base: <em>The Data Warehouse ETL Toolkit: Practical Techniques for Extracting, Cleaning, Conforming, and Delivering Data</em> <span class="citation" data-cites="kimball2024">(<a href="../references.html#ref-kimball2024" role="doc-biblioref"><strong>kimball2024?</strong></a>)</span></li>
+<li>Referencia base: <em>The Data Warehouse ETL Toolkit: Practical Techniques for Extracting, Cleaning, Conforming, and Delivering Data</em> <span class="citation" data-cites="kimball2004">(<a href="../references.html#ref-kimball2004" role="doc-biblioref">Kimball and Caserta 2004</a>)</span></li>
 <li>Otros: Kimball Group, <a href="https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/etl-architecture-34-subsystems/">“ETL Architecture’s 34 Subsystems”</a> — describe el desglose práctico de los subsistemas de un ETL real.</li>
 </ul>
 </div>
@@ -305,6 +308,9 @@ E-learning, AAIS. 2026. <em>The 12 Data Architecture Patterns Every Data Enginee
 </div>
 <div id="ref-heck2024_dataengineering" class="csl-entry" role="listitem">
 Heck, Petra. 2024. <span>“What about the Data? A Mapping Study on Data Engineering for AI Systems.”</span> <em>Proceedings of the IEEE/ACM 3rd International Conference on AI Engineering - Software Engineering for AI</em>, April, 43–52. <a href="https://doi.org/10.1145/3644815.3644954">https://doi.org/10.1145/3644815.3644954</a>.
+</div>
+<div id="ref-kimball2004" class="csl-entry" role="listitem">
+Kimball, Ralph, and Joe Caserta. 2004. <em>The Data Warehouse ETL Toolkit: Practical Techniques for Extracting, Cleaning, Conforming, and Delivering Data</em>. Wiley.
 </div>
 <div id="ref-reis2022" class="csl-entry" role="listitem">
 Reis, Joe, and Matt Housley. 2022. <em>Fundamentals of Data Engineering</em>. O’Reilly. <a href="https://www.oreilly.com/library/view/fundamentals-of-data/9781098108298/">https://www.oreilly.com/library/view/fundamentals-of-data/9781098108298/</a>.
