@@ -23,17 +23,32 @@ Para no perder el hilo entre los siguiente seis patrones de arquitectura de dato
 Cada bloque depende conceptualmente del anterior: el Bloque C se apoya en las decisiones de almacenamiento del Bloque A (*medallion* es, de hecho, una forma de organizar capas en un *data lake*), mientras que el Bloque B es una dimensión relativamente independiente (aplica tanto si el almacenamiento final es, por ejemplo, un *warehouse* como si es un *data lake*).
 
 
-## 5.1 Bloque A — Almacenamiento: de ETL a Data Lake
+## Bloque A — Almacenamiento: de ETL a Data Lake
 
 Este bloque recorre el cambio de paradigma más antiguo de la ingeniería de datos: del esquema fijo definido **antes** de cargar los datos (*schema-on-write*), al almacenamiento de datos en bruto con el esquema aplicado *al leer* (*schema-on-read*)- Esta transitcion fue posible en gran medida al abaratamiento del almacenamiento en la nube y a los formatos da datos optimizados como parquet.
 
 ### ETL Architecture
 
+*ETL architecture* es el patrón clásico de tres fases: *Extract* (extracción de datos desde fuentes y/o sistemas de origen), *Transform* (limpieza, integración, agregación  y validación de lso datos en n esquema determinado) y *Load* (carga en un data warehouse con un esquema relacional fijo, optmizado para cierto tipo de consultas). Se ejecuta normalmente por lotes (batch), programado (p. ej., cargas nocturnas), y está orientado a consultas analíticas estructuradas (BI/reporting).
+
+![](../images/etl-azurre.png){fig-alt="ETL architecture" fig-align="center" width="70%"}
+*Source: [Azure Architecture Center, "Extract, transform, and load (ETL)"](https://learn.microsoft.com/en-us/azure/architecture/data-guide/relational-data/etl)*
+
+
+En la práctica, ETL se encuentras dertrás de los data warehouses empresariales clásicos (retail, banca, seguros) documentados extensamente por Kimball; sigue siendo el estándar en herramientas como Informatica, Talend o SSIS alimentando warehouses tipo Teradata o Snowflake.
+
+**Fuente base:** Kimball, R., & Caserta, J. (2004). *The Data Warehouse ETL Toolkit: Practical Techniques for Extracting, Cleaning, Conforming, and Delivering Data*. Wiley.
+
+::: {.callout-note appearance="simple" title="Para profundizar"}
+
+- Referencia base: *The Data Warehouse ETL Toolkit: Practical Techniques for Extracting, Cleaning, Conforming, and Delivering Data* [@kimball2024]
+- Otros: Kimball Group, ["ETL Architecture's 34 Subsystems"](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/etl-architecture-34-subsystems/) — describe el desglose práctico de los subsistemas de un ETL real.
+:::
 
 ### Data Lake Architecture
 
 
-## 5.2 Bloque B — Procesamiento: batch vs. tiempo real
+## Bloque B — Procesamiento: batch vs. tiempo real
 
 El segundo bloque aborda el "cuándo": ¿cómo servimos resultados con baja latencia sin renunciar a la precisión inherente cunado se analiza todo el histórico de datos? *Lambda* y *Kappa* son dos respuestas a la misma pregunta y, además, *Kappa* solo se entiende *como una reacción a* la arquitectura *Lambda*, por eso el orden importa aquí más que en ningún otro bloque.
 
@@ -45,7 +60,7 @@ El segundo bloque aborda el "cuándo": ¿cómo servimos resultados con baja late
 
 
 
-## 5.3 Bloque C — Organización y gobierno del dato
+## Bloque C — Organización y gobierno del dato
 
 Este último bloque no trata únicamente de decisiones técnicas de almacenamiento o procesamiento, como en los dos bloques anteriores, sino que incluye aspectos como la **organización y gobernanza** de los datos a escala de toda una organización. *Medallion* sigue operando dentro del *data lake* del Bloque A (es, de hecho, una forma de ordenar sus capas de calidad); *Data Product/Data Mesh* es el patrón más reciente y de mayor nivel de abstracción.
 
