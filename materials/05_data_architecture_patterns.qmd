@@ -119,6 +119,8 @@ Suele utlizar formatos transaccionales tipo Delta Lake [@armbrust2020] o [Apache
 
 
 ```{mermaid}
+%%| fig-align: center
+%%| echo: false
 flowchart LR
   A[Fuentes de datos] --> B[Bronze - Datos crudos]
   B --> C[Silver - Limpios y conformados]
@@ -139,7 +141,7 @@ El patrón *Data Product Architecture* (o [*Data Mesh*](https://en.wikipedia.org
 
 ```{mermaid}
 %%| fig-align: center
-
+%%| echo: false
 flowchart TB
   subgraph Dominio A
     DPA[Data Product A]
