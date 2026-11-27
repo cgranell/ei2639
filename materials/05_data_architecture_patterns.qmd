@@ -3,7 +3,7 @@
 
 Como señala [@heck2024_dataengineering], la **ingeniería de datos** es 
 
-> "el desarrollo, la implementación y el mantenimiento de sistemas y procesos que toman datos en bruto y producen información consistente y de alta calidad que soporta casos de uso posteriores, como el análisis y el aprendizaje automático" [@reis2022], citado en [@heck2024_dataengineering].
+> "el desarrollo, la implementación y el mantenimiento de sistemas y procesos que toman datos en crud y producen información consistente y de alta calidad que soporta casos de uso posteriores, como el análisis y el aprendizaje automático" [@reis2022], citado en [@heck2024_dataengineering].
 
 La ingeniería de datos es la disciplina que diseña, construye y mantiene los sistemas, infraestructuras y arquitecturas que permiten recopilar, almacenar, transformar y poner a disposición los datos de una organización para su análisis y uso operativo. Combina principios de ingeniería de software, arquitectura de sistemas y gestión de datos para garantizar que la información *fluya* de manera fiable desde las fuentes originales hasta los usuarios finales, ya sean éstos otros sistemas o aplicaciones (modelos IA, applicaciones de negocio, dashboards), personal especializado (analistas, científicos de datos) o el público en general.
 
@@ -25,12 +25,17 @@ Cada bloque depende conceptualmente del anterior: el Bloque C se apoya en las de
 
 ## Bloque A — Almacenamiento: de ETL a Data Lake
 
-Este bloque recorre el cambio de paradigma más antiguo de la ingeniería de datos: del esquema fijo definido **antes** de cargar los datos (*schema-on-write*), al almacenamiento de datos en bruto con el esquema aplicado *al leer* (*schema-on-read*)- Esta transitcion fue posible en gran medida al abaratamiento del almacenamiento en la nube y a los formatos da datos optimizados como parquet.
+Este bloque hace refernecia al cambio de paradigma más antiguo de la ingeniería de datos: del esquema fijo definido antes de cargar los datos (*schema-on-write*), al almacenamiento de datos en crudo con el esquema aplicado al leer o consumir (*schema-on-read*). Esta transición fue posible en gran medida al abaratamiento del almacenamiento en la nube y a los formatos da datos optimizados como parquet.
 
 ### ETL Architecture
 
-*ETL architecture* es el patrón clásico de tres fases: *Extract* (extracción de datos desde fuentes y/o sistemas de origen), *Transform* (limpieza, integración, agregación  y validación de lso datos en n esquema determinado) y *Load* (carga en un data warehouse con un esquema relacional fijo, optmizado para cierto tipo de consultas). Se ejecuta normalmente por lotes (*batch*) ,y está orientado a consultas analíticas estructuradas (BI/reporting). En la práctica, ETL se encuentra detrás de los data warehouses empresariales de sectores clásicos como venta al por menor, banca o seguros [@kimball2004]. 
+*ETL architecture* es el patrón clásico de tres fases orientado aa consultas analíticas estructuradas (BI/reporting): 
 
+- *Extract*: extracción de datos desde fuentes y/o sistemas de origen
+- *Transform*: limpieza, integración, agregación  y validación de los datos en un esquema determinado (*schema-on-write*) 
+- *Load*: carga de los datos en un data warehouse con un esquema relacional fijo, optmizado para cierto tipo de consultas 
+
+En la práctica, ETL se encuentra detrás de los data warehouses empresariales de sectores clásicos como venta al por menor, banca o seguros [@kimball2004]. 
 
 ![](../images/etl-azure.png){fig-alt="ETL architecture" fig-align="center" width="80%"}
 
@@ -47,7 +52,7 @@ Este bloque recorre el cambio de paradigma más antiguo de la ingeniería de dat
 ### Data Lake Architecture
 
 
-El patrón *Data Lake Architecture* hace referencia a un repositorio centralizado que almacena datos en formato nativo/bruto (*schema-on-read*), tanto estructurados como no estructurados, típicamente en infraestructuras de la nube (mediante objetos de almacenamiento tipo Amazon S3) usando formatos de columna como Parquet. A diferencia del patron ETL, el esquema de los datos se decide al consumir el dato, no al almacenarlo. Una implementacion real a gran escal es el ejemplo de Uber, que construyó su data lake transaccional sobre [Apache Hudi](https://hudi.apache.org/) (desarrollado intermante por Uber) para soportar procesamiento incremental a escala de billones de registros, evitando reescribir particiones completas en cada actualización.
+El patrón *Data Lake Architecture* hace referencia a un repositorio centralizado que almacena datos en formato nativo o original (*schema-on-read*) en infraestructuras de la nube (mediante objetos de almacenamiento tipo Amazon S3) usando formatos orientados a columna como Parquet. A diferencia del patrón ETL, el esquema de los datos se decide al consumir el dato (*schema-on-read*), no en el momento de almacenarlo. Uber realizó una implementacion real a gran escala en su data lake transaccional sobre [Apache Hudi](https://hudi.apache.org/) (también desarrollado intermante por Uber) para facilitar  procesamiento incremental a escala de billones de registros de datos, evitando reescribir particiones completas en cada actualización.
 
 
 ::: {.callout-note appearance="simple" title="Para profundizar"}
@@ -58,12 +63,17 @@ El patrón *Data Lake Architecture* hace referencia a un repositorio centralizad
 
 ## Bloque B — Procesamiento: batch vs. tiempo real
 
-El segundo bloque aborda el "cuándo": ¿cómo servimos resultados con baja latencia sin renunciar a la precisión inherente cunado se analiza todo el histórico de datos? *Lambda* y *Kappa* son dos respuestas a la misma pregunta y, además, *Kappa* solo se entiende *como una reacción a* la arquitectura *Lambda*, por eso el orden importa aquí más que en ningún otro bloque.
+El segundo bloque aborda el "cuándo": ¿cómo servimos resultados con baja latencia sin renunciar a la precisión inherente cuando se analiza todo el histórico de datos? *Lambda* y *Kappa* son dos respuestas a la misma pregunta. Y *Kappa* solo se entiende *como una reacción a* paliar una deficiencia de la arquitectura *Lambda*.
 
 ### Lambda Architecture
 
 
-El patrón *Lambda Architecture* combina dos rutas paralelas sobre los mismos datos: una **capa batch** (procesa todo el histórico, alta precisión, alta latencia) y una **capa speed/streaming** (datos recientes, baja latencia, resultados aproximados). Ambas vista se combinan y unifican en una **capa serving** par adar servici oa consulta analíticas. El coste es mantener y sincronizar dos bases de código con la misma lógica de negocio implementada dos veces. El [capítulo 1](https://manning-content.s3.amazonaws.com/download/3/4142054-00c8-4115-879e-946c643f3665/big-data-ch01.pdf) de[@marz2015] describe un ejemplo práctico en Twitter/BackType que combina Hadoop (batch) con Storm (streaming).
+El patrón *Lambda Architecture* combina dos capas o rutas paralelas sobre los mismos datos: 
+
+- capa **batch**: procesa todo el histórico, alta precisión, alta latencia.
+- capa **speed/streaming**: proceso datos recientes, baja latencia, resultados aproximados. 
+
+Ambas vistas de datos se combinan y unifican en una capa **serving** para dar servicio a consulta analíticas. El coste aquí es mantener y sincronizar las dos capas de entrada de datos. En [@marz2015], el [capítulo 1](https://manning-content.s3.amazonaws.com/download/3/4142054-00c8-4115-879e-946c643f3665/big-data-ch01.pdf) describe un ejemplo práctico en Twitter que combina [Apache Hadoop](https://hadoop.apache.org/) (batch) con [Apache Storm](https://storm.apache.org/) (streaming).
 
 ![](../images/lambda-azure.png){fig-alt="Lambda architecture" fig-align="center" width="80%"}
 
@@ -77,7 +87,7 @@ El patrón *Lambda Architecture* combina dos rutas paralelas sobre los mismos da
 ### Kappa Architecture
 
 
-El patrón *Kappa* simplifica *Lambda* eliminando la capa batch. Todo el procesamiento dedatos, tanto histórico como en tiempo real, pasa por un único pipeline de streaming. Normalemnte, la integración de los datos histórico se relaican recomputando el log de eventos (p. ej., Kafka) en lugar de mantener una segunda base de código. Por ejemplo, LinkedIn adoptó pipelines *Kappa* basados enteramente en streaming para evitar la duplicidad de lógica de *Lambda*.
+El patrón *Kappa* simplifica *Lambda* eliminando la capa batch. Todo el procesamiento de datos, tanto histórico como en tiempo real, pasa por un único fluho d eprocesamiento de datos en streaming. Normalmente, la integración de los datos históricos se realiza a posteriore, reanalizando el log de eventos (p. ej., [Apache Kafka](https://kafka.apache.org/)) en lugar de mantener una segunda capa de código. Por ejemplo, LinkedIn adoptó una architectura  *Kappa* basada enteramente en el procesamineto de datos en streaming para evitar la duplicidad de lógica de *Lambda*.
 
 
 ![](../images/kappa-azure.png){fig-alt="Lambda architecture" fig-align="center" width="80%"}
@@ -94,18 +104,18 @@ El patrón *Kappa* simplifica *Lambda* eliminando la capa batch. Todo el procesa
 
 ## Bloque C — Organización y gobernanza de datos
 
-Este último bloque no trata únicamente de decisiones técnicas de almacenamiento o procesamiento, como en los dos bloques anteriores, sino que incluye aspectos como la **organización y gobernanza** de los datos a escala de toda una organización. *Medallion* sigue operando dentro del *data lake* del Bloque A (es, de hecho, una forma de ordenar sus capas de calidad); *Data Product/Data Mesh* es el patrón más reciente y de mayor nivel de abstracción.
+Este último bloque no trata únicamente de decisiones de almacenamiento o procesamiento de los datos, como en los dos bloques anteriores, sino que incluye aspectos como la **organización y gobernanza** de los datos a escala de toda una organización. *Medallion* sigue operando dentro del *data lake* del Bloque A (es, de hecho, una forma de ordenar sus capas de calidad); *Data Product/Data Mesh* es el patrón más reciente y de mayor nivel de abstracción.
 
 ### Medallion Architecture
 
 
 El patrón *Medallion Architecture* organiza los datos dentro de un data lake/lakehouse en capas progresivas de calidad: 
 
-- **Bronze** (datos crudos, tal cual llegan), 
-- **Silver** (datos limpios, validados y conformados) y 
-- **Gold** (datos agregados, listos para consumo de negocio/BI/ML). 
+- *Bronze*: datos en crudo, tal como llegan
+- *Silver*: datos limpios, validados y conformados
+- *Gold*: datos agregados, listos para consumo de negocio/BI/ML
 
-Suele apoyarse en formatos transaccionales tipo Delta Lake [@armbrust2020] o [Apache Iceberg](https://iceberglakehouse.com/iceberg/iceberg-medallion-architecture/) construidos sobre Parquet. Este es el patrón de referencia en prácticamente todos los casos de cliente publicados por [Databricks](https://www.databricks.com/) (banca, salud, retail) que migran a arquitectura lakehouse.
+Suele utlizar formatos transaccionales tipo Delta Lake [@armbrust2020] o [Apache Iceberg](https://iceberglakehouse.com/iceberg/iceberg-medallion-architecture/) construidos sobre Parquet. Este es el patrón de referencia en prácticamente todos los casos de cliente publicados por [Databricks](https://www.databricks.com/).
 
 
 ```{mermaid}
@@ -124,7 +134,6 @@ flowchart LR
 
 
 ### Data Product Architecture
-
 
 El patrón *Data Product Architecture* (o [*Data Mesh*](https://en.wikipedia.org/wiki/Data_mesh)) se distingue de los anteriores por ser más conceptual y organizativo. Aquó, los datos se tratan como **productos**, con propietarios de dominio (*domain ownership*), descubribles y de autoservicio, con con una gobernanza  federada. [Intuit](https://www.intuit.com/) (empresa de fintech) documentó su migración a data mesh con equipos de dominio propietarios de sus propios datos.
 
