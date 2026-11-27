@@ -127,9 +127,26 @@ flowchart LR
 
 El patrón *Data Product Architecture* (o [*Data Mesh*](https://en.wikipedia.org/wiki/Data_mesh)) se distingue de los anteriores por ser más conceptual y organizativo. Aquó, los datos se tratan como **productos**, con propietarios de dominio (*domain ownership*), descubribles y de autoservicio, con con una gobernanza  federada. [Intuit](https://www.intuit.com/) (empresa de fintech) documentó su migración a data mesh con equipos de dominio propietarios de sus propios datos.
 
+```{mermaid}
+%%| fig-align: center
+
+flowchart TB
+    subgraph Dominio A
+      DPA[Data Product A]
+    end
+    subgraph Dominio B
+      DPB[Data Product B]
+    end
+    subgraph Dominio C
+      DPC[Data Product C]
+    end
+    DPA <--> DPB
+    DPB <--> DPC
+    DPA <--> DPC
+```
 
 ::: {.callout-note appearance="simple" title="Para profundizar"}
--  Data Mesh: Delivering Data-Driven Value at Scale [@dehghani2022]
+- Data Mesh: Delivering Data-Driven Value at Scale [@dehghani2022]
 - Intuit, ["Intuit's Data Mesh"](https://www.slideshare.net/TristanBaker2/intuits-data-mesh-data-mesh-leaning-community-meetup-5132021) — charla pública en Data Mesh Learning Community (2021). [#intuit2021]
 :::
 
