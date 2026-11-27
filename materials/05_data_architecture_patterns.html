@@ -274,7 +274,7 @@ div.csl-indent {
 
 <p>Como señala <span class="citation" data-cites="heck2024_dataengineering">(<a href="../references.html#ref-heck2024_dataengineering" role="doc-biblioref">Heck 2024</a>)</span>, la <strong>ingeniería de datos</strong> es</p>
 <blockquote class="blockquote">
-<p>“el desarrollo, la implementación y el mantenimiento de sistemas y procesos que toman datos en bruto y producen información consistente y de alta calidad que soporta casos de uso posteriores, como el análisis y el aprendizaje automático” <span class="citation" data-cites="reis2022">(<a href="../references.html#ref-reis2022" role="doc-biblioref">Reis and Housley 2022</a>)</span>, citado en <span class="citation" data-cites="heck2024_dataengineering">(<a href="../references.html#ref-heck2024_dataengineering" role="doc-biblioref">Heck 2024</a>)</span>.</p>
+<p>“el desarrollo, la implementación y el mantenimiento de sistemas y procesos que toman datos en crud y producen información consistente y de alta calidad que soporta casos de uso posteriores, como el análisis y el aprendizaje automático” <span class="citation" data-cites="reis2022">(<a href="../references.html#ref-reis2022" role="doc-biblioref">Reis and Housley 2022</a>)</span>, citado en <span class="citation" data-cites="heck2024_dataengineering">(<a href="../references.html#ref-heck2024_dataengineering" role="doc-biblioref">Heck 2024</a>)</span>.</p>
 </blockquote>
 <p>La ingeniería de datos es la disciplina que diseña, construye y mantiene los sistemas, infraestructuras y arquitecturas que permiten recopilar, almacenar, transformar y poner a disposición los datos de una organización para su análisis y uso operativo. Combina principios de ingeniería de software, arquitectura de sistemas y gestión de datos para garantizar que la información <em>fluya</em> de manera fiable desde las fuentes originales hasta los usuarios finales, ya sean éstos otros sistemas o aplicaciones (modelos IA, applicaciones de negocio, dashboards), personal especializado (analistas, científicos de datos) o el público en general.</p>
 <p>Por lo tanto, la ingeniería de datos, como disciplina, no va de trasladar, mover, o copiar datos de un sistema a otro. El perfil del ingeniero/a de datos se encarga de diseñar y construir arquitecturas de datos escalables, fiables, seguras, rentables y preparadas para la analítica y la IA. Sus tareas incluyen, entre otras, el diseño de <em>workflows</em> de captura y transformación de datos, la especificacion de modelos de datos óptimos, la gobernanza de los datos, o la calidad de los datos.</p>
@@ -289,10 +289,16 @@ div.csl-indent {
 <p>Cada bloque depende conceptualmente del anterior: el Bloque C se apoya en las decisiones de almacenamiento del Bloque A (<em>medallion</em> es, de hecho, una forma de organizar capas en un <em>data lake</em>), mientras que el Bloque B es una dimensión relativamente independiente (aplica tanto si el almacenamiento final es, por ejemplo, un <em>warehouse</em> como si es un <em>data lake</em>).</p>
 <section id="bloque-a-almacenamiento-de-etl-a-data-lake" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="bloque-a-almacenamiento-de-etl-a-data-lake"><span class="header-section-number">5.1</span> Bloque A — Almacenamiento: de ETL a Data Lake</h2>
-<p>Este bloque recorre el cambio de paradigma más antiguo de la ingeniería de datos: del esquema fijo definido <strong>antes</strong> de cargar los datos (<em>schema-on-write</em>), al almacenamiento de datos en bruto con el esquema aplicado <em>al leer</em> (<em>schema-on-read</em>)- Esta transitcion fue posible en gran medida al abaratamiento del almacenamiento en la nube y a los formatos da datos optimizados como parquet.</p>
+<p>Este bloque hace refernecia al cambio de paradigma más antiguo de la ingeniería de datos: del esquema fijo definido antes de cargar los datos (<em>schema-on-write</em>), al almacenamiento de datos en crudo con el esquema aplicado al leer o consumir (<em>schema-on-read</em>). Esta transición fue posible en gran medida al abaratamiento del almacenamiento en la nube y a los formatos da datos optimizados como parquet.</p>
 <section id="etl-architecture" class="level3" data-number="5.1.1">
 <h3 data-number="5.1.1" class="anchored" data-anchor-id="etl-architecture"><span class="header-section-number">5.1.1</span> ETL Architecture</h3>
-<p><em>ETL architecture</em> es el patrón clásico de tres fases: <em>Extract</em> (extracción de datos desde fuentes y/o sistemas de origen), <em>Transform</em> (limpieza, integración, agregación y validación de lso datos en n esquema determinado) y <em>Load</em> (carga en un data warehouse con un esquema relacional fijo, optmizado para cierto tipo de consultas). Se ejecuta normalmente por lotes (<em>batch</em>) ,y está orientado a consultas analíticas estructuradas (BI/reporting). En la práctica, ETL se encuentra detrás de los data warehouses empresariales de sectores clásicos como venta al por menor, banca o seguros <span class="citation" data-cites="kimball2004">(<a href="../references.html#ref-kimball2004" role="doc-biblioref">Kimball and Caserta 2004</a>)</span>.</p>
+<p><em>ETL architecture</em> es el patrón clásico de tres fases orientado aa consultas analíticas estructuradas (BI/reporting):</p>
+<ul>
+<li><em>Extract</em>: extracción de datos desde fuentes y/o sistemas de origen</li>
+<li><em>Transform</em>: limpieza, integración, agregación y validación de los datos en un esquema determinado (<em>schema-on-write</em>)</li>
+<li><em>Load</em>: carga de los datos en un data warehouse con un esquema relacional fijo, optmizado para cierto tipo de consultas</li>
+</ul>
+<p>En la práctica, ETL se encuentra detrás de los data warehouses empresariales de sectores clásicos como venta al por menor, banca o seguros <span class="citation" data-cites="kimball2004">(<a href="../references.html#ref-kimball2004" role="doc-biblioref">Kimball and Caserta 2004</a>)</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/etl-azure.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%" alt="ETL architecture"></p>
@@ -318,7 +324,7 @@ div.csl-indent {
 </section>
 <section id="data-lake-architecture" class="level3" data-number="5.1.2">
 <h3 data-number="5.1.2" class="anchored" data-anchor-id="data-lake-architecture"><span class="header-section-number">5.1.2</span> Data Lake Architecture</h3>
-<p>El patrón <em>Data Lake Architecture</em> hace referencia a un repositorio centralizado que almacena datos en formato nativo/bruto (<em>schema-on-read</em>), tanto estructurados como no estructurados, típicamente en infraestructuras de la nube (mediante objetos de almacenamiento tipo Amazon S3) usando formatos de columna como Parquet. A diferencia del patron ETL, el esquema de los datos se decide al consumir el dato, no al almacenarlo. Una implementacion real a gran escal es el ejemplo de Uber, que construyó su data lake transaccional sobre <a href="https://hudi.apache.org/">Apache Hudi</a> (desarrollado intermante por Uber) para soportar procesamiento incremental a escala de billones de registros, evitando reescribir particiones completas en cada actualización.</p>
+<p>El patrón <em>Data Lake Architecture</em> hace referencia a un repositorio centralizado que almacena datos en formato nativo o original (<em>schema-on-read</em>) en infraestructuras de la nube (mediante objetos de almacenamiento tipo Amazon S3) usando formatos orientados a columna como Parquet. A diferencia del patrón ETL, el esquema de los datos se decide al consumir el dato (<em>schema-on-read</em>), no en el momento de almacenarlo. Uber realizó una implementacion real a gran escala en su data lake transaccional sobre <a href="https://hudi.apache.org/">Apache Hudi</a> (también desarrollado intermante por Uber) para facilitar procesamiento incremental a escala de billones de registros de datos, evitando reescribir particiones completas en cada actualización.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -340,10 +346,15 @@ div.csl-indent {
 </section>
 <section id="bloque-b-procesamiento-batch-vs.-tiempo-real" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="bloque-b-procesamiento-batch-vs.-tiempo-real"><span class="header-section-number">5.2</span> Bloque B — Procesamiento: batch vs.&nbsp;tiempo real</h2>
-<p>El segundo bloque aborda el “cuándo”: ¿cómo servimos resultados con baja latencia sin renunciar a la precisión inherente cunado se analiza todo el histórico de datos? <em>Lambda</em> y <em>Kappa</em> son dos respuestas a la misma pregunta y, además, <em>Kappa</em> solo se entiende <em>como una reacción a</em> la arquitectura <em>Lambda</em>, por eso el orden importa aquí más que en ningún otro bloque.</p>
+<p>El segundo bloque aborda el “cuándo”: ¿cómo servimos resultados con baja latencia sin renunciar a la precisión inherente cuando se analiza todo el histórico de datos? <em>Lambda</em> y <em>Kappa</em> son dos respuestas a la misma pregunta. Y <em>Kappa</em> solo se entiende <em>como una reacción a</em> paliar una deficiencia de la arquitectura <em>Lambda</em>.</p>
 <section id="lambda-architecture" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="lambda-architecture"><span class="header-section-number">5.2.1</span> Lambda Architecture</h3>
-<p>El patrón <em>Lambda Architecture</em> combina dos rutas paralelas sobre los mismos datos: una <strong>capa batch</strong> (procesa todo el histórico, alta precisión, alta latencia) y una <strong>capa speed/streaming</strong> (datos recientes, baja latencia, resultados aproximados). Ambas vista se combinan y unifican en una <strong>capa serving</strong> par adar servici oa consulta analíticas. El coste es mantener y sincronizar dos bases de código con la misma lógica de negocio implementada dos veces. El <a href="https://manning-content.s3.amazonaws.com/download/3/4142054-00c8-4115-879e-946c643f3665/big-data-ch01.pdf">capítulo 1</a> de<span class="citation" data-cites="marz2015">(<a href="../references.html#ref-marz2015" role="doc-biblioref">Marz and Warren 2015</a>)</span> describe un ejemplo práctico en Twitter/BackType que combina Hadoop (batch) con Storm (streaming).</p>
+<p>El patrón <em>Lambda Architecture</em> combina dos capas o rutas paralelas sobre los mismos datos:</p>
+<ul>
+<li>capa <strong>batch</strong>: procesa todo el histórico, alta precisión, alta latencia.</li>
+<li>capa <strong>speed/streaming</strong>: proceso datos recientes, baja latencia, resultados aproximados.</li>
+</ul>
+<p>Ambas vistas de datos se combinan y unifican en una capa <strong>serving</strong> para dar servicio a consulta analíticas. El coste aquí es mantener y sincronizar las dos capas de entrada de datos. En <span class="citation" data-cites="marz2015">(<a href="../references.html#ref-marz2015" role="doc-biblioref">Marz and Warren 2015</a>)</span>, el <a href="https://manning-content.s3.amazonaws.com/download/3/4142054-00c8-4115-879e-946c643f3665/big-data-ch01.pdf">capítulo 1</a> describe un ejemplo práctico en Twitter que combina <a href="https://hadoop.apache.org/">Apache Hadoop</a> (batch) con <a href="https://storm.apache.org/">Apache Storm</a> (streaming).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/lambda-azure.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%" alt="Lambda architecture"></p>
@@ -368,7 +379,7 @@ div.csl-indent {
 </section>
 <section id="kappa-architecture" class="level3" data-number="5.2.2">
 <h3 data-number="5.2.2" class="anchored" data-anchor-id="kappa-architecture"><span class="header-section-number">5.2.2</span> Kappa Architecture</h3>
-<p>El patrón <em>Kappa</em> simplifica <em>Lambda</em> eliminando la capa batch. Todo el procesamiento dedatos, tanto histórico como en tiempo real, pasa por un único pipeline de streaming. Normalemnte, la integración de los datos histórico se relaican recomputando el log de eventos (p.&nbsp;ej., Kafka) en lugar de mantener una segunda base de código. Por ejemplo, LinkedIn adoptó pipelines <em>Kappa</em> basados enteramente en streaming para evitar la duplicidad de lógica de <em>Lambda</em>.</p>
+<p>El patrón <em>Kappa</em> simplifica <em>Lambda</em> eliminando la capa batch. Todo el procesamiento de datos, tanto histórico como en tiempo real, pasa por un único fluho d eprocesamiento de datos en streaming. Normalmente, la integración de los datos históricos se realiza a posteriore, reanalizando el log de eventos (p.&nbsp;ej., <a href="https://kafka.apache.org/">Apache Kafka</a>) en lugar de mantener una segunda capa de código. Por ejemplo, LinkedIn adoptó una architectura <em>Kappa</em> basada enteramente en el procesamineto de datos en streaming para evitar la duplicidad de lógica de <em>Lambda</em>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/kappa-azure.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%" alt="Lambda architecture"></p>
@@ -395,16 +406,16 @@ div.csl-indent {
 </section>
 <section id="bloque-c-organización-y-gobernanza-de-datos" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="bloque-c-organización-y-gobernanza-de-datos"><span class="header-section-number">5.3</span> Bloque C — Organización y gobernanza de datos</h2>
-<p>Este último bloque no trata únicamente de decisiones técnicas de almacenamiento o procesamiento, como en los dos bloques anteriores, sino que incluye aspectos como la <strong>organización y gobernanza</strong> de los datos a escala de toda una organización. <em>Medallion</em> sigue operando dentro del <em>data lake</em> del Bloque A (es, de hecho, una forma de ordenar sus capas de calidad); <em>Data Product/Data Mesh</em> es el patrón más reciente y de mayor nivel de abstracción.</p>
+<p>Este último bloque no trata únicamente de decisiones de almacenamiento o procesamiento de los datos, como en los dos bloques anteriores, sino que incluye aspectos como la <strong>organización y gobernanza</strong> de los datos a escala de toda una organización. <em>Medallion</em> sigue operando dentro del <em>data lake</em> del Bloque A (es, de hecho, una forma de ordenar sus capas de calidad); <em>Data Product/Data Mesh</em> es el patrón más reciente y de mayor nivel de abstracción.</p>
 <section id="medallion-architecture" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="medallion-architecture"><span class="header-section-number">5.3.1</span> Medallion Architecture</h3>
 <p>El patrón <em>Medallion Architecture</em> organiza los datos dentro de un data lake/lakehouse en capas progresivas de calidad:</p>
 <ul>
-<li><strong>Bronze</strong> (datos crudos, tal cual llegan),</li>
-<li><strong>Silver</strong> (datos limpios, validados y conformados) y</li>
-<li><strong>Gold</strong> (datos agregados, listos para consumo de negocio/BI/ML).</li>
+<li><em>Bronze</em>: datos en crudo, tal como llegan</li>
+<li><em>Silver</em>: datos limpios, validados y conformados</li>
+<li><em>Gold</em>: datos agregados, listos para consumo de negocio/BI/ML</li>
 </ul>
-<p>Suele apoyarse en formatos transaccionales tipo Delta Lake <span class="citation" data-cites="armbrust2020">(<a href="../references.html#ref-armbrust2020" role="doc-biblioref">Armbrust et al. 2020</a>)</span> o <a href="https://iceberglakehouse.com/iceberg/iceberg-medallion-architecture/">Apache Iceberg</a> construidos sobre Parquet. Este es el patrón de referencia en prácticamente todos los casos de cliente publicados por <a href="https://www.databricks.com/">Databricks</a> (banca, salud, retail) que migran a arquitectura lakehouse.</p>
+<p>Suele utlizar formatos transaccionales tipo Delta Lake <span class="citation" data-cites="armbrust2020">(<a href="../references.html#ref-armbrust2020" role="doc-biblioref">Armbrust et al. 2020</a>)</span> o <a href="https://iceberglakehouse.com/iceberg/iceberg-medallion-architecture/">Apache Iceberg</a> construidos sobre Parquet. Este es el patrón de referencia en prácticamente todos los casos de cliente publicados por <a href="https://www.databricks.com/">Databricks</a>.</p>
 <div class="cell" data-layout-align="default">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>flowchart LR</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  A[Fuentes de datos] --&gt; B[Bronze - Datos crudos]</span>
