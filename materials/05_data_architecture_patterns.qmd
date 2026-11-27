@@ -9,44 +9,48 @@ La ingeniería de datos es la disciplina que diseña, construye y mantiene los s
 
 Por lo tanto, la ingeniería de datos, como disciplina, no va de trasladar, mover, o copiar datos de un sistema a otro. El perfil del ingeniero/a de datos se encarga de diseñar y construir arquitecturas de datos escalables, fiables, seguras, rentables y preparadas para la analítica y la IA. Sus tareas incluyen, entre otras, el diseño de *workflows* de captura y transformación de datos, la especificacion de modelos de datos óptimos, la gobernanza de los datos, o la calidad de los datos.
 
-A medida que organizaciones y entidades adoptan la computación y plataformasen la nube, analítica en tiempo real, productos de datos y aplicaciones o modelos dirigidas por la IA, comprender los **patrones de arquitectura de datos** (por ejemplo, [@aais2026]) es una habilidad primordial Al igual que los patrones de diseño de software, los patrones de arquitectura de datos ofrecen soluciones probadas a problemas recurrentes, ya sean éstos la integración de fuentes de datos heterogéneas, servir datos a baja latencia, o garantizar la trazabilidad de los datos.
+A medida que organizaciones y entidades adoptan la computación y plataformas en la nube, analítica en tiempo real, productos de datos y aplicaciones o modelos dirigidas por la IA, comprender los **patrones de arquitectura de datos** (por ejemplo, [@aais2026]) es una habilidad primordial. Al igual que los patrones de diseño de software, los patrones de arquitectura de datos ofrecen soluciones probadas a problemas recurrentes, ya sean éstos la integración de fuentes de datos heterogéneas, servir datos a baja latencia, o garantizar la trazabilidad de los datos.
 
 
-En la [sección anterior](04_cloud_data_formats.html) vimos los formatos de datos optimizados para la nube (Parquet y afines): columnar, comprimidos, con esquema explícito y evolución de esquema. Podríamos decir que estos formatos optimizados son los *ladrillos* y que los patrones de arquitectura de datos son los *planos*: deciden cómo se combinan esos ladrillos en un sistema completo, es decir, dónde se almacenan los datos, cómo se procesan, cómo se organizan y especifica aspectos de gobernanza a nivel de toda una organización.
+En la [sección anterior](04_cloud_data_formats.html) vimos los formatos de datos optimizados para la nube (Parquet y afines): columnar, comprimidos, con esquema explícito y evolución de esquema. Podríamos decir que estos formatos optimizados son los *ladrillos* y que los patrones de arquitectura de datos son los *planos*: deciden cómo se combinan esos ladrillos en un sistema completo, es decir, dónde se almacenan los datos, cómo se procesan, cómo se organizan y tratan aspectos de gobernanza de datos a nivel de toda una organización.
 
-Para no perder el hilo entre los siguiente seis patrones de arquitectura de datos y entender el role que desempeñan a un nivel alto de abstracción, los agrupamos en tres bloques:
+Para entender el rol que desempeñan los siguiente patrones de arquitectura de datos a un nivel alto de abstracción, los agrupamos en tres bloques:
 
-- **Bloque A — Almacenamiento:** ¿dónde y con qué esquema guardamos los datos? (*ETL* → *Data Lake*)
-- **Bloque B — Procesamiento:** ¿cómo equilibramos latencia y precisión entre análisis por lotes y en tiempo real? (*Lambda* → *Kappa*)
-- **Bloque C — Organización y gobernanza:** ¿cómo estructuramos y definimos la gobernaza de lso datos a escala de organización? (*Medallion* → *Data Product*)
+- **Almacenamiento:** ¿dónde y con qué esquema guardamos los datos? (*ETL* y *Data Lake*)
+- **Procesamiento:** ¿cómo equilibramos latencia y precisión entre análisis por lotes y en tiempo real? (*Lambda* y *Kappa*)
+- **Organización y gobernanza:** ¿cómo estructuramos y definimos la gobernanza de los datos a escala de organización? (*Medallion* y *Data Product*)
 
-Cada bloque depende conceptualmente del anterior: el Bloque C se apoya en las decisiones de almacenamiento del Bloque A (*medallion* es, de hecho, una forma de organizar capas en un *data lake*), mientras que el Bloque B es una dimensión relativamente independiente (aplica tanto si el almacenamiento final es, por ejemplo, un *warehouse* como si es un *data lake*).
+Cada bloque depende conceptualmente de otros. El bloque de "organización y gobernanza" se apoya en las decisiones de almacenamiento del bloque de "Almacenamiento". Por ejemplo, el patrón *medallion* puede verse como una forma de organizar capas en una arquitectura *data lake*. Por otro lado, las arquitecturas de "procesamiento" es una dimensión relativamente independiente del almacenamiento, ya que el análisis de datos sucede tanto si el almacenamiento es, por ejemplo, un *warehouse* o un *data lake*.
 
 
-## Bloque A — Almacenamiento: de ETL a Data Lake
+## Almacenamiento: de ETL a Data Lake
 
-Este bloque hace refernecia al cambio de paradigma más antiguo de la ingeniería de datos: del esquema fijo definido antes de cargar los datos (*schema-on-write*), al almacenamiento de datos en crudo con el esquema aplicado al leer o consumir (*schema-on-read*). Esta transición fue posible en gran medida al abaratamiento del almacenamiento en la nube y a los formatos da datos optimizados como parquet.
+Este bloque hace referencia al cambio de paradigma más antiguo de la ingeniería de datos: del esquema fijo definido antes de cargar los datos (*schema-on-write*), al almacenamiento de datos en crudo con el esquema aplicado en el momebnto de consumir los datos (*schema-on-read*). Este cambio fue posible en gran medida al abaratamiento del almacenamiento en la nube y a la aparición de los formatos de datos optimizados para la nube como parquet.
 
 ### ETL Architecture
 
-*ETL architecture* es el patrón clásico de tres fases orientado aa consultas analíticas estructuradas (BI/reporting): 
+*ETL architecture* es el patrón clásico de tres fases orientado a consultas analíticas estructuradas, como en aplicaciones y tecnologías de [*Business intelligence*](https://en.wikipedia.org/wiki/Business_intelligence) (BI):
 
 - *Extract*: extracción de datos desde fuentes y/o sistemas de origen
 - *Transform*: limpieza, integración, agregación  y validación de los datos en un esquema determinado (*schema-on-write*) 
 - *Load*: carga de los datos en un data warehouse con un esquema relacional fijo, optmizado para cierto tipo de consultas 
 
-En la práctica, ETL se encuentra detrás de los data warehouses empresariales de sectores clásicos como venta al por menor, banca o seguros [@kimball2004]. 
+En la práctica, ETL se encuentra detrás de la mayoría los data warehouses bancarios y de seguros que siguen en producción [@kimball2004]. Microsoft SQL Server es un ejemplo de suite empresariales ETL clásica. Este mismo concepto de extraer-transformar-cargar se ha trasladado a la nube como un servicio gestionado, serverless y facturado por uso: [Azure Data Factory](https://learn.microsoft.com/es-es/azure/data-factory/introduction), [AWS Glue](https://aws.amazon.com/es/glue/?refid=2e7a6e09-deaa-4486-9128-1de811f41d33)
+
 
 ![](../images/etl-azure.png){fig-alt="ETL architecture" fig-align="center" width="80%"}
 
 *Source: [Azure Architecture Center, "Extract, transform, and load (ETL)"](https://learn.microsoft.com/en-us/azure/architecture/data-guide/relational-data/etl)*
 
 
+La ventaja promordial de ETL es que la transformación del esquema de datos ocurre **antes** de que los datos se almacenen, ya que el *warehouse* solo recibe datos ya limpios, validados y con un esquema fijo, de forma que procesos de análsis y herramientas de BI los consultan con previsibilidad, sin inconsistentes o duplicaciones. Esto es especialmente beneficioso en sectores regulados (banca, salud, seguros): la transformación de los datos pasa por una capa intermedia controlada (*transform*), que se encarga de aplicar reglas de validación establecidas, como reglas de calidad, anonimización de datos sensibles, o procesos de trazabilidad ligados a regulaciones legales [@kimballgroup_subsystems].
+
+La contrapartida de ETL es la rigidez: cualquier cambio en la lógica de transformación requiere reprocesar y desplegar el pipeline analítico completo, lo que explica por qué muchas organizaciones se han movido hacia ELT (Extract, Load, Transform), donde se cargan los datos y luego se transforman aprovechando el cómputo barato y elástico de los warehouses cloud tipo BigQuery.
 
 ::: {.callout-note appearance="simple" title="Para profundizar"}
 
 - *The Data Warehouse ETL Toolkit: Practical Techniques for Extracting, Cleaning, Conforming, and Delivering Data* [@kimball2004]
-- Kimball Group, ["ETL Architecture's 34 Subsystems"](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/etl-architecture-34-subsystems/) — describe el desglose práctico de los subsistemas de un ETL real.
+- Kimball Group, ["ETL Architecture's 34 Subsystems"](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/etl-architecture-34-subsystems/) [@kimballgroup_subsystems].
 :::
 
 ### Data Lake Architecture
