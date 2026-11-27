@@ -103,7 +103,7 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-95314a05dc0222111ae2e635bd46ac38.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-a8e10f8b984f323f99b8953c972e91ae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-d57ed9c935aac95441555c2aa4f30b82.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -242,7 +242,7 @@ div.csl-indent {
   <li><a href="#lambda-architecture" id="toc-lambda-architecture" class="nav-link" data-scroll-target="#lambda-architecture"><span class="header-section-number">5.2.1</span> Lambda Architecture</a></li>
   <li><a href="#kappa-architecture" id="toc-kappa-architecture" class="nav-link" data-scroll-target="#kappa-architecture"><span class="header-section-number">5.2.2</span> Kappa Architecture</a></li>
   </ul></li>
-  <li><a href="#bloque-c-organización-y-gobierno-del-dato" id="toc-bloque-c-organización-y-gobierno-del-dato" class="nav-link" data-scroll-target="#bloque-c-organización-y-gobierno-del-dato"><span class="header-section-number">5.3</span> Bloque C — Organización y gobierno del dato</a>
+  <li><a href="#bloque-c-organización-y-gobernanza-de-datos" id="toc-bloque-c-organización-y-gobernanza-de-datos" class="nav-link" data-scroll-target="#bloque-c-organización-y-gobernanza-de-datos"><span class="header-section-number">5.3</span> Bloque C — Organización y gobernanza de datos</a>
   <ul class="collapse">
   <li><a href="#medallion-architecture" id="toc-medallion-architecture" class="nav-link" data-scroll-target="#medallion-architecture"><span class="header-section-number">5.3.1</span> Medallion Architecture</a></li>
   <li><a href="#data-product-architecture" id="toc-data-product-architecture" class="nav-link" data-scroll-target="#data-product-architecture"><span class="header-section-number">5.3.2</span> Data Product Architecture</a></li>
@@ -386,15 +386,15 @@ div.csl-indent {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li><span class="citation" data-cites="kreps2014">(<a href="../references.html#ref-kreps2014" role="doc-biblioref"><strong>kreps2014?</strong></a>)</span></li>
+<li><span class="citation" data-cites="kreps2014">(<a href="../references.html#ref-kreps2014" role="doc-biblioref">Kreps 2014</a>)</span></li>
 <li><span class="citation" data-cites="lin2017">(<a href="../references.html#ref-lin2017" role="doc-biblioref">Lin 2017</a>)</span> - comparación crítica y más académica de ambos patrones.</li>
 </ul>
 </div>
 </div>
 </section>
 </section>
-<section id="bloque-c-organización-y-gobierno-del-dato" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="bloque-c-organización-y-gobierno-del-dato"><span class="header-section-number">5.3</span> Bloque C — Organización y gobierno del dato</h2>
+<section id="bloque-c-organización-y-gobernanza-de-datos" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="bloque-c-organización-y-gobernanza-de-datos"><span class="header-section-number">5.3</span> Bloque C — Organización y gobernanza de datos</h2>
 <p>Este último bloque no trata únicamente de decisiones técnicas de almacenamiento o procesamiento, como en los dos bloques anteriores, sino que incluye aspectos como la <strong>organización y gobernanza</strong> de los datos a escala de toda una organización. <em>Medallion</em> sigue operando dentro del <em>data lake</em> del Bloque A (es, de hecho, una forma de ordenar sus capas de calidad); <em>Data Product/Data Mesh</em> es el patrón más reciente y de mayor nivel de abstracción.</p>
 <section id="medallion-architecture" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="medallion-architecture"><span class="header-section-number">5.3.1</span> Medallion Architecture</h3>
@@ -404,7 +404,7 @@ div.csl-indent {
 <li><strong>Silver</strong> (datos limpios, validados y conformados) y</li>
 <li><strong>Gold</strong> (datos agregados, listos para consumo de negocio/BI/ML).</li>
 </ul>
-<p>Suele apoyarse en formatos transaccionales tipo Delta Lake <span class="citation" data-cites="armbrust2020">(<a href="../references.html#ref-armbrust2020" role="doc-biblioref">Armbrust et al. 2020</a>)</span> o <a href="https://iceberglakehouse.com/iceberg/iceberg-medallion-architecture/">Apache Iceberg</a> construidos sobre Parquet. Este es el patrón de referencia en prácticamente todos los casos de cliente publicados por <a href="https://www.databricks.com/">Databricks</a> (banca, salud, retail) que migran a arquitectura lakehouse</p>
+<p>Suele apoyarse en formatos transaccionales tipo Delta Lake <span class="citation" data-cites="armbrust2020">(<a href="../references.html#ref-armbrust2020" role="doc-biblioref">Armbrust et al. 2020</a>)</span> o <a href="https://iceberglakehouse.com/iceberg/iceberg-medallion-architecture/">Apache Iceberg</a> construidos sobre Parquet. Este es el patrón de referencia en prácticamente todos los casos de cliente publicados por <a href="https://www.databricks.com/">Databricks</a> (banca, salud, retail) que migran a arquitectura lakehouse.</p>
 <div class="cell" data-layout-align="default">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>flowchart LR</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    A[Fuentes de datos] --&gt; B[Bronze\nDatos crudos]</span>
@@ -436,7 +436,7 @@ div.csl-indent {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Databricks, <a href="https://docs.databricks.com/aws/en/lakehouse/medallion">“What is the medallion lakehouse architecture?”</a>.</li>
+<li>Databricks, <a href="https://docs.databricks.com/aws/en/lakehouse/medallion">“What is the medallion lakehouse architecture?”</a> <span class="citation" data-cites="databricks_medallion">(<a href="../references.html#ref-databricks_medallion" role="doc-biblioref">Databricks, n.d.</a>)</span>.</li>
 <li>Databricks, <a href="https://docs.databricks.com/aws/en/delta/">documentación de Delta Lake</a> — el formato transaccional que suele sustentar Medallion en producción.</li>
 <li><span class="citation" data-cites="armbrust2020">(<a href="../references.html#ref-armbrust2020" role="doc-biblioref">Armbrust et al. 2020</a>)</span> - Delta Lake</li>
 </ul>
@@ -445,6 +445,23 @@ div.csl-indent {
 </section>
 <section id="data-product-architecture" class="level3" data-number="5.3.2">
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="data-product-architecture"><span class="header-section-number">5.3.2</span> Data Product Architecture</h3>
+<p>El patrón <em>Data Product Architecture</em> (o <a href="https://en.wikipedia.org/wiki/Data_mesh"><em>Data Mesh</em></a>) se distingue de los anteriores por ser más conceptual y organizativo. Aquó, los datos se tratan como <strong>productos</strong>, con propietarios de dominio (<em>domain ownership</em>), descubribles y de autoservicio, con con una gobernanza federada. <a href="https://www.intuit.com/">Intuit</a> (empresa de fintech) documentó su migración a data mesh con equipos de dominio propietarios de sus propios datos.</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Para profundizar
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Data Mesh: Delivering Data-Driven Value at Scale <span class="citation" data-cites="dehghani2022">(<a href="../references.html#ref-dehghani2022" role="doc-biblioref">Dehghani 2022</a>)</span></li>
+<li>Intuit, <a href="https://www.slideshare.net/TristanBaker2/intuits-data-mesh-data-mesh-leaning-community-meetup-5132021">“Intuit’s Data Mesh”</a> — charla pública en Data Mesh Learning Community (2021). [#intuit2021]</li>
+</ul>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
@@ -453,6 +470,12 @@ Armbrust, Michael, Tathagata Das, Liwen Sun, et al. 2020. <span>“Delta Lake: H
 </div>
 <div id="ref-azzabi2024" class="csl-entry" role="listitem">
 Azzabi, Siwar, Zaid Alfughi, and Abdelkader Ouda. 2024. <span>“Data Lakes: A Survey of Concepts and Architectures.”</span> <em>Computers</em> 13 (7): 183. <a href="https://doi.org/10.3390/computers13070183">https://doi.org/10.3390/computers13070183</a>.
+</div>
+<div id="ref-databricks_medallion" class="csl-entry" role="listitem">
+Databricks. n.d. <span>“What Is the Medallion Lakehouse Architecture?”</span> Accessed November 26, 2026. <a href="https://docs.databricks.com/aws/en/lakehouse/medallion">https://docs.databricks.com/aws/en/lakehouse/medallion</a>.
+</div>
+<div id="ref-dehghani2022" class="csl-entry" role="listitem">
+Dehghani, Zhamak. 2022. <em>Data Mesh: Delivering Data-Driven Value at Scale</em>. O’Reilly Media.
 </div>
 <div id="ref-dixon2010" class="csl-entry" role="listitem">
 Dixon, James. 2010. <span>“Pentaho, Hadoop, and Data Lakes.”</span> <a href="https://jamesdixon.wordpress.com/2010/10/14/pentaho-hadoop-and-data-lakes/">https://jamesdixon.wordpress.com/2010/10/14/pentaho-hadoop-and-data-lakes/</a>.
@@ -465,6 +488,9 @@ Heck, Petra. 2024. <span>“What about the Data? A Mapping Study on Data Enginee
 </div>
 <div id="ref-kimball2004" class="csl-entry" role="listitem">
 Kimball, Ralph, and Joe Caserta. 2004. <em>The Data Warehouse ETL Toolkit: Practical Techniques for Extracting, Cleaning, Conforming, and Delivering Data</em>. Wiley.
+</div>
+<div id="ref-kreps2014" class="csl-entry" role="listitem">
+Kreps, Jay. 2014. <span>“Questioning the Lambda Architecture.”</span> <a href="https://www.oreilly.com/radar/questioning-the-lambda-architecture/">https://www.oreilly.com/radar/questioning-the-lambda-architecture/</a>.
 </div>
 <div id="ref-lin2017" class="csl-entry" role="listitem">
 Lin, Jimmy. 2017. <span>“The Lambda and the Kappa.”</span> <em>IEEE Internet Computing</em> 21 (5): 60–66. <a href="https://doi.org/10.1109/MIC.2017.3481351">https://doi.org/10.1109/MIC.2017.3481351</a>.
