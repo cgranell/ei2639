@@ -103,7 +103,7 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-95314a05dc0222111ae2e635bd46ac38.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d57ed9c935aac95441555c2aa4f30b82.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-d818d20bfb278fa48841ca8fa081968f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -446,6 +446,44 @@ div.csl-indent {
 <section id="data-product-architecture" class="level3" data-number="5.3.2">
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="data-product-architecture"><span class="header-section-number">5.3.2</span> Data Product Architecture</h3>
 <p>El patrón <em>Data Product Architecture</em> (o <a href="https://en.wikipedia.org/wiki/Data_mesh"><em>Data Mesh</em></a>) se distingue de los anteriores por ser más conceptual y organizativo. Aquó, los datos se tratan como <strong>productos</strong>, con propietarios de dominio (<em>domain ownership</em>), descubribles y de autoservicio, con con una gobernanza federada. <a href="https://www.intuit.com/">Intuit</a> (empresa de fintech) documentó su migración a data mesh con equipos de dominio propietarios de sus propios datos.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>flowchart TB</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    subgraph Dominio A</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>      DPA[Data Product A]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    end</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    subgraph Dominio B</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      DPB[Data Product B]</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    end</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    subgraph Dominio C</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      DPC[Data Product C]</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    end</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    DPA &lt;--&gt; DPB</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    DPB &lt;--&gt; DPC</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    DPA &lt;--&gt; DPC</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+
+<pre class="mermaid mermaid-js">flowchart TB
+    subgraph Dominio A
+      DPA[Data Product A]
+    end
+    subgraph Dominio B
+      DPB[Data Product B]
+    end
+    subgraph Dominio C
+      DPC[Data Product C]
+    end
+    DPA &lt;--&gt; DPB
+    DPB &lt;--&gt; DPC
+    DPA &lt;--&gt; DPC
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
