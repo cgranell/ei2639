@@ -68,7 +68,7 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-95314a05dc0222111ae2e635bd46ac38.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d818d20bfb278fa48841ca8fa081968f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-d57ed9c935aac95441555c2aa4f30b82.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -202,12 +202,12 @@ div.csl-indent {
   <li><a href="#etl-architecture" id="toc-etl-architecture" class="nav-link" data-scroll-target="#etl-architecture"><span class="header-section-number">5.1.1</span> ETL Architecture</a></li>
   <li><a href="#data-lake-architecture" id="toc-data-lake-architecture" class="nav-link" data-scroll-target="#data-lake-architecture"><span class="header-section-number">5.1.2</span> Data Lake Architecture</a></li>
   </ul></li>
-  <li><a href="#bloque-b-procesamiento-batch-vs.-tiempo-real" id="toc-bloque-b-procesamiento-batch-vs.-tiempo-real" class="nav-link" data-scroll-target="#bloque-b-procesamiento-batch-vs.-tiempo-real"><span class="header-section-number">5.2</span> Bloque B — Procesamiento: batch vs.&nbsp;tiempo real</a>
+  <li><a href="#procesamiento-batch-vs.-tiempo-real" id="toc-procesamiento-batch-vs.-tiempo-real" class="nav-link" data-scroll-target="#procesamiento-batch-vs.-tiempo-real"><span class="header-section-number">5.2</span> Procesamiento: batch vs.&nbsp;tiempo real</a>
   <ul class="collapse">
   <li><a href="#lambda-architecture" id="toc-lambda-architecture" class="nav-link" data-scroll-target="#lambda-architecture"><span class="header-section-number">5.2.1</span> Lambda Architecture</a></li>
   <li><a href="#kappa-architecture" id="toc-kappa-architecture" class="nav-link" data-scroll-target="#kappa-architecture"><span class="header-section-number">5.2.2</span> Kappa Architecture</a></li>
   </ul></li>
-  <li><a href="#bloque-c-organización-y-gobernanza-de-datos" id="toc-bloque-c-organización-y-gobernanza-de-datos" class="nav-link" data-scroll-target="#bloque-c-organización-y-gobernanza-de-datos"><span class="header-section-number">5.3</span> Bloque C — Organización y gobernanza de datos</a>
+  <li><a href="#organización-y-gobernanza-de-datos" id="toc-organización-y-gobernanza-de-datos" class="nav-link" data-scroll-target="#organización-y-gobernanza-de-datos"><span class="header-section-number">5.3</span> Organización y gobernanza de datos</a>
   <ul class="collapse">
   <li><a href="#medallion-architecture" id="toc-medallion-architecture" class="nav-link" data-scroll-target="#medallion-architecture"><span class="header-section-number">5.3.1</span> Medallion Architecture</a></li>
   <li><a href="#data-product-architecture" id="toc-data-product-architecture" class="nav-link" data-scroll-target="#data-product-architecture"><span class="header-section-number">5.3.2</span> Data Product Architecture</a></li>
@@ -291,7 +291,7 @@ div.csl-indent {
 </section>
 <section id="data-lake-architecture" class="level3" data-number="5.1.2">
 <h3 data-number="5.1.2" class="anchored" data-anchor-id="data-lake-architecture"><span class="header-section-number">5.1.2</span> Data Lake Architecture</h3>
-<p>El patrón <em>Data Lake Architecture</em> hace referencia a un repositorio centralizado que almacena datos en formato nativo o original (<em>schema-on-read</em>) en infraestructuras de la nube (mediante objetos de almacenamiento tipo Amazon S3) usando formatos orientados a columna como Parquet. A diferencia del patrón ETL, el esquema de los datos se decide al consumir el dato (<em>schema-on-read</em>), no en el momento de almacenarlo. Uber realizó una implementacion real a gran escala en su data lake transaccional sobre <a href="https://hudi.apache.org/">Apache Hudi</a> (también desarrollado intermante por Uber) para facilitar procesamiento incremental a escala de billones de registros de datos, evitando reescribir particiones completas en cada actualización.</p>
+<p>El patrón <em>Data Lake Architecture</em> hace referencia a un repositorio centralizado que almacena datos en formato nativo o original (<em>schema-on-read</em>) en infraestructuras de la nube (mediante objetos de almacenamiento tipo Amazon S3) usando formatos orientados a columna como Parquet. A diferencia del patrón ETL, el esquema de los datos se decide al consumir los datos (<em>schema-on-read</em>), no en el momento de almacenarlo. Uber realizó una implementacion real a gran escala en su data lake transaccional sobre <a href="https://hudi.apache.org/">Apache Hudi</a> (también desarrollado intermante por Uber) para facilitar procesamiento incremental a escala de billones de registros de datos, evitando reescribir particiones completas en cada actualización.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -305,15 +305,19 @@ div.csl-indent {
 <ul>
 <li><a href="https://jamesdixon.wordpress.com/2010/10/14/pentaho-hadoop-and-data-lakes/">“Pentaho, Hadoop, and Data Lakes”</a><span class="citation" data-cites="dixon2010">(<a href="../references.html#ref-dixon2010" role="doc-biblioref">Dixon 2010</a>)</span> - entrada de blog original que acuña el término.</li>
 <li><span class="citation" data-cites="azzabi2024">(<a href="../references.html#ref-azzabi2024" role="doc-biblioref">Azzabi et al. 2024</a>)</span></li>
-<li>Uber Engineering, <a href="https://www.uber.com/us/en/blog/ubers-lakehouse-architecture/">“Uber’s Lakehouse Architecture”</a> — caso práctico con Apache Hudi.</li>
+<li><span class="citation" data-cites="minghini2022">(<a href="../references.html#ref-minghini2022" role="doc-biblioref">Minghini et al. 2022</a>)</span></li>
+<li>Uber Engineering, <a href="https://www.uber.com/us/en/blog/ubers-lakehouse-architecture/">“Uber’s Lakehouse Architecture”</a></li>
 </ul>
 </div>
 </div>
+<p>La primera ventaja es el <em>schema-on-read</em>: no hace falta decidir la estructura de los datos antes de guardarlos, como sí exige el ETL clásico. Esto permite ingerir de inmediato cualquier tipo de dato (logs semi-estructurados en JSON, imágenes, vídeo, texto) y posponer la decisión de cómo estructurarlos hasta el momento en que se realizan consultas analíticas. Este es habitual en proyectos de ciencia de datos y machine learning.</p>
+<p>Otra ventaja (económico), es la separación entre almacenamiento y procesamiento/transformación: el almacenamiento de objetos en la nubeo es muy barato y se puede escalar casi sin límite, mientras que el cómputo (Spark, Trino, etc.) se activa únicamente cunado se require procesamiento. En los warehouses clásicos, almacenamiento y procesamiento/transformacón estaban acoplados y encarece el coste a medida que el volumen de datos aumenta.</p>
+<p>La contrapartida es la falta de gobernalidad de los datos: calidad, trazabilidad, confiabilidad, etc.</p>
 </section>
 </section>
-<section id="bloque-b-procesamiento-batch-vs.-tiempo-real" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="bloque-b-procesamiento-batch-vs.-tiempo-real"><span class="header-section-number">5.2</span> Bloque B — Procesamiento: batch vs.&nbsp;tiempo real</h2>
-<p>El segundo bloque aborda el “cuándo”: ¿cómo servimos resultados con baja latencia sin renunciar a la precisión inherente cuando se analiza todo el histórico de datos? <em>Lambda</em> y <em>Kappa</em> son dos respuestas a la misma pregunta. Y <em>Kappa</em> solo se entiende <em>como una reacción a</em> paliar una deficiencia de la arquitectura <em>Lambda</em>.</p>
+<section id="procesamiento-batch-vs.-tiempo-real" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="procesamiento-batch-vs.-tiempo-real"><span class="header-section-number">5.2</span> Procesamiento: batch vs.&nbsp;tiempo real</h2>
+<p>El segundo bloque aborda el “cuándo”: ¿cómo servimos resultados con baja latencia sin renunciar a la precisión inherente cuando se analiza todo el histórico de datos? <em>Lambda</em> y <em>Kappa</em> son dos respuestas a la misma pregunta. Y <em>Kappa</em> solo se entiende <em>como una reacción</em> para paliar deficiencias de la arquitectura <em>Lambda</em>.</p>
 <section id="lambda-architecture" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="lambda-architecture"><span class="header-section-number">5.2.1</span> Lambda Architecture</h3>
 <p>El patrón <em>Lambda Architecture</em> combina dos capas o rutas paralelas sobre los mismos datos:</p>
@@ -371,8 +375,8 @@ div.csl-indent {
 </div>
 </section>
 </section>
-<section id="bloque-c-organización-y-gobernanza-de-datos" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="bloque-c-organización-y-gobernanza-de-datos"><span class="header-section-number">5.3</span> Bloque C — Organización y gobernanza de datos</h2>
+<section id="organización-y-gobernanza-de-datos" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="organización-y-gobernanza-de-datos"><span class="header-section-number">5.3</span> Organización y gobernanza de datos</h2>
 <p>Este último bloque no trata únicamente de decisiones de almacenamiento o procesamiento de los datos, como en los dos bloques anteriores, sino que incluye aspectos como la <strong>organización y gobernanza</strong> de los datos a escala de toda una organización. <em>Medallion</em> sigue operando dentro del <em>data lake</em> del Bloque A (es, de hecho, una forma de ordenar sus capas de calidad); <em>Data Product/Data Mesh</em> es el patrón más reciente y de mayor nivel de abstracción.</p>
 <section id="medallion-architecture" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="medallion-architecture"><span class="header-section-number">5.3.1</span> Medallion Architecture</h3>
@@ -500,6 +504,9 @@ Lin, Jimmy. 2017. <span>“The Lambda and the Kappa.”</span> <em>IEEE Internet
 </div>
 <div id="ref-marz2015" class="csl-entry" role="listitem">
 Marz, Nathan, and James Warren. 2015. <em>Big Data: Principles and Best Practices of Scalable Real-Time Data Systems</em>. Manning Publications.
+</div>
+<div id="ref-minghini2022" class="csl-entry" role="listitem">
+Minghini, Marco, Alexander Kotsev, and Carlos Granell. 2022. <span>“A European Approach to the Establishment of Data Spaces.”</span> <em>Data</em> 7 (8). <a href="https://doi.org/10.3390/data7080118">https://doi.org/10.3390/data7080118</a>.
 </div>
 <div id="ref-reis2022" class="csl-entry" role="listitem">
 Reis, Joe, and Matt Housley. 2022. <em>Fundamentals of Data Engineering</em>. O’Reilly. <a href="https://www.oreilly.com/library/view/fundamentals-of-data/9781098108298/">https://www.oreilly.com/library/view/fundamentals-of-data/9781098108298/</a>.
