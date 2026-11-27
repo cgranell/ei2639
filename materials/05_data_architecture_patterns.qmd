@@ -99,5 +99,29 @@ Este último bloque no trata únicamente de decisiones técnicas de almacenamien
 ### Medallion Architecture
 
 
+
+El patrón *Medallion Architecture* organiza los datos dentro de un data lake/lakehouse en capas progresivas de calidad: 
+
+- **Bronze** (datos crudos, tal cual llegan), 
+- **Silver** (datos limpios, validados y conformados) y 
+- **Gold** (datos agregados, listos para consumo de negocio/BI/ML). 
+
+Suele apoyarse en formatos transaccionales tipo Delta Lake [@armbrust2020] o [Apache Iceberg](https://iceberglakehouse.com/iceberg/iceberg-medallion-architecture/) construidos sobre Parquet. Este es el patrón de referencia en prácticamente todos los casos de cliente publicados por [Databricks](https://www.databricks.com/) (banca, salud, retail) que migran a arquitectura lakehouse
+
+
+```{mermaid}
+flowchart LR
+    A[Fuentes de datos] --> B[Bronze\nDatos crudos]
+    B --> C[Silver\nLimpios y conformados]
+    C --> D[Gold\nAgregados, listos para BI/ML]
+```
+
+::: {.callout-note appearance="simple" title="Para profundizar"}
+- Databricks, ["What is the medallion lakehouse architecture?"](https://docs.databricks.com/aws/en/lakehouse/medallion).
+- Databricks, [documentación de Delta Lake](https://docs.databricks.com/aws/en/delta/) — el formato transaccional que suele sustentar Medallion en producción.
+- [@armbrust2020] - Delta Lake
+:::
+
+
 ### Data Product Architecture
 
