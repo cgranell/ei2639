@@ -386,7 +386,7 @@ div.csl-indent {
 <li><em>Silver</em>: datos limpios, validados y conformados</li>
 <li><em>Gold</em>: datos agregados, listos para consumo de negocio/BI/ML</li>
 </ul>
-<p>Suele utlizar formatos transaccionales tipo Delta Lake <span class="citation" data-cites="armbrust2020">(<a href="../references.html#ref-armbrust2020" role="doc-biblioref">Armbrust et al. 2020</a>)</span> o <a href="https://iceberglakehouse.com/iceberg/iceberg-medallion-architecture/">Apache Iceberg</a> construidos sobre Parquet. Este es el patrón de referencia en prácticamente todos los casos de cliente publicados por <a href="https://www.databricks.com/">Databricks</a>.</p>
+<p>Suele utilizar formatos transaccionales tipo Delta Lake <span class="citation" data-cites="armbrust2020">(<a href="../references.html#ref-armbrust2020" role="doc-biblioref">Armbrust et al. 2020</a>)</span> o <a href="https://iceberglakehouse.com/iceberg/iceberg-medallion-architecture/">Apache Iceberg</a> construidos sobre Parquet. Este es el patrón de referencia en prácticamente todos los casos de cliente publicados por <a href="https://www.databricks.com/">Databricks</a>. De hecho, esta entidad diseñó sus propias herramientas de pipelines explícitamente alrededor de las capas bronze-silver-gold.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
@@ -403,6 +403,8 @@ div.csl-indent {
 </div>
 </div>
 </div>
+<p>La ventaja principal es que separa explícitamente la responsabilidad de cada etapa de transformación, en lugar de tener un único proceso ETL monolítico que se ejecuta a la vez. Bronze conserva una copia fiel e inmutable de los datos tal cual, lo que significa que si se descubre un error en la lógica de limpieza (silver), se puede repetir el proceso desde bronze sin tener que repetir la extración de los datos desde las fuentes originales. Esto es una ventaja frente al ETL clásico, donde corregir un error de transformación a menudo obliga a re-extraer los datos de la fuente.</p>
+<p>Otras ventaja es organizativa ya que la delimitación de responsabilidad entre capas, permite que distintos equipos gestionen distintas capas (ingeniería de datos para bronze/silver, analistas para gold). En cotnrapartida, ñlas tres capas pueden añadir latencia entre la ingesta de los datos en bronze y su disponibilidad em gold para tareas de análisis.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -423,7 +425,7 @@ div.csl-indent {
 </section>
 <section id="data-product-architecture" class="level3" data-number="5.3.2">
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="data-product-architecture"><span class="header-section-number">5.3.2</span> Data Product Architecture</h3>
-<p>El patrón <em>Data Product Architecture</em> (o <a href="https://en.wikipedia.org/wiki/Data_mesh"><em>Data Mesh</em></a>) se distingue de los anteriores por ser más conceptual y organizativo. Aquó, los datos se tratan como <strong>productos</strong>, con propietarios de dominio (<em>domain ownership</em>), descubribles y de autoservicio, con con una gobernanza federada. <a href="https://www.intuit.com/">Intuit</a> (empresa de fintech) documentó su migración a data mesh con equipos de dominio propietarios de sus propios datos.</p>
+<p>El patrón <em>Data Product Architecture</em> (o <a href="https://en.wikipedia.org/wiki/Data_mesh"><em>Data Mesh</em></a>) se distingue de los anteriores por ser más conceptual y organizativo. Aquí, los datos se tratan como <strong>productos</strong>, con propietarios de dominio (<em>domain ownership</em>), descubribles y de autoservicio, con una gobernanza federada. <a href="https://www.intuit.com/">Intuit</a> (empresa de fintech) documentó su migración a data mesh con equipos de dominio propietarios de sus propios datos.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
@@ -450,6 +452,7 @@ div.csl-indent {
 </div>
 </div>
 <p><em>Source: propia; inspirado de <a href="https://martinfowler.com/articles/data-monolith-to-mesh.html">How to Move Beyond a Monolithic Data Lake to a Distributed Data Mesh</a></em></p>
+<p>Un <em>data product</em> es un conjunto de datos con un propietario de dominio claro, autodescriptivo (documentación, esquema, licencia), descubrible a través de un catálogo común y accesible mediante una interfaz estandarizada. <a href="https://source.coop/">Source Cooperative</a> es un buen ejemplo real de esta idea aplicada a datos geoespaciales abiertos: cada conjunto de datos vive en su propio repositorio, con su propio README como documentación, publicado de forma independiente por la organización o persona que lo produce y servido mediante una API compatible con S3 en formatos cloud-native como GeoParquet, PMTiles o Cloud-Optimized GeoTIFF.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -463,6 +466,8 @@ div.csl-indent {
 <ul>
 <li>Data Mesh: Delivering Data-Driven Value at Scale <span class="citation" data-cites="dehghani2022">(<a href="../references.html#ref-dehghani2022" role="doc-biblioref">Dehghani 2022</a>)</span></li>
 <li>Intuit, <a href="https://www.slideshare.net/TristanBaker2/intuits-data-mesh-data-mesh-leaning-community-meetup-5132021">“Intuit’s Data Mesh”</a> — charla pública en Data Mesh Learning Community (2021). [#intuit2021]</li>
+<li><a href="https://docs.source.coop/what-is-source">What is Source Cooperative?</a></li>
+<li><a href="https://greatdataproducts.com/">Great Data Products podcast</a></li>
 </ul>
 </div>
 </div>
