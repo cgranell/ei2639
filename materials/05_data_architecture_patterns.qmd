@@ -32,7 +32,7 @@ Este bloque recorre el cambio de paradigma más antiguo de la ingeniería de dat
 *ETL architecture* es el patrón clásico de tres fases: *Extract* (extracción de datos desde fuentes y/o sistemas de origen), *Transform* (limpieza, integración, agregación  y validación de lso datos en n esquema determinado) y *Load* (carga en un data warehouse con un esquema relacional fijo, optmizado para cierto tipo de consultas). Se ejecuta normalmente por lotes (*batch*) ,y está orientado a consultas analíticas estructuradas (BI/reporting). En la práctica, ETL se encuentra detrás de los data warehouses empresariales de sectores clásicos como venta al por menor, banca o seguros [@kimball2004]. 
 
 
-![](../images/etl-azurre.png){fig-alt="ETL architecture" fig-align="center" width="80%"}
+![](../images/etl-azure.png){fig-alt="ETL architecture" fig-align="center" width="80%"}
 
 *Source: [Azure Architecture Center, "Extract, transform, and load (ETL)"](https://learn.microsoft.com/en-us/azure/architecture/data-guide/relational-data/etl)*
 
@@ -40,12 +40,21 @@ Este bloque recorre el cambio de paradigma más antiguo de la ingeniería de dat
 
 ::: {.callout-note appearance="simple" title="Para profundizar"}
 
-- Referencia base: *The Data Warehouse ETL Toolkit: Practical Techniques for Extracting, Cleaning, Conforming, and Delivering Data* [@kimball2004]
-- Otros: Kimball Group, ["ETL Architecture's 34 Subsystems"](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/etl-architecture-34-subsystems/) — describe el desglose práctico de los subsistemas de un ETL real.
+- *The Data Warehouse ETL Toolkit: Practical Techniques for Extracting, Cleaning, Conforming, and Delivering Data* [@kimball2004]
+- Kimball Group, ["ETL Architecture's 34 Subsystems"](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/etl-architecture-34-subsystems/) — describe el desglose práctico de los subsistemas de un ETL real.
 :::
 
 ### Data Lake Architecture
 
+
+El patrón *Data Lake Architecture* hace referencia a un repositorio centralizado que almacena datos en formato nativo/bruto (*schema-on-read*), tanto estructurados como no estructurados, típicamente en infraestructuras de la nube (mediante objetos de almacenamiento tipo Amazon S3) usando formatos de columna como Parquet. A diferencia del patron ETL, el esquema de los datos se decide al consumir el dato, no al almacenarlo. Una implementacion real a gran escal es el ejemplo de Uber, que construyó su data lake transaccional sobre [Apache Hudi](https://hudi.apache.org/) (desarrollado intermante por Uber) para soportar procesamiento incremental a escala de billones de registros, evitando reescribir particiones completas en cada actualización.
+
+
+::: {.callout-note appearance="simple" title="Para profundizar"}
+- ["Pentaho, Hadoop, and Data Lakes"](https://jamesdixon.wordpress.com/2010/10/14/pentaho-hadoop-and-data-lakes/)[@dixon2010] - entrada de blog original que acuña el término.
+- [@azzabi2024]
+- Uber Engineering, ["Uber's Lakehouse Architecture"](https://www.uber.com/us/en/blog/ubers-lakehouse-architecture/) — caso práctico con Apache Hudi.
+:::
 
 ## Bloque B — Procesamiento: batch vs. tiempo real
 
@@ -54,10 +63,34 @@ El segundo bloque aborda el "cuándo": ¿cómo servimos resultados con baja late
 ### Lambda Architecture
 
 
+El patrón *Lambda Architecture* combina dos rutas paralelas sobre los mismos datos: una **capa batch** (procesa todo el histórico, alta precisión, alta latencia) y una **capa speed/streaming** (datos recientes, baja latencia, resultados aproximados). Ambas vista se combinan y unifican en una **capa serving** par adar servici oa consulta analíticas. El coste es mantener y sincronizar dos bases de código con la misma lógica de negocio implementada dos veces. El [capítulo 1](https://manning-content.s3.amazonaws.com/download/3/4142054-00c8-4115-879e-946c643f3665/big-data-ch01.pdf) de[@marz2015] describe un ejemplo práctico en Twitter/BackType que combina Hadoop (batch) con Storm (streaming).
+
+![](../images/lambda-azure.png){fig-alt="Lambda architecture" fig-align="center" width="80%"}
+
+*Source: [Azure Architecture Center, "Big data architectures"](https://learn.microsoft.com/en-us/azure/architecture/databases/guide/big-data-architectures)*
+
+
+::: {.callout-note appearance="simple" title="Para profundizar"}
+- [@marz2015]
+:::
 
 ### Kappa Architecture
 
 
+El patrón *Kappa* simplifica *Lambda* eliminando la capa batch. Todo el procesamiento dedatos, tanto histórico como en tiempo real, pasa por un único pipeline de streaming. Normalemnte, la integración de los datos histórico se relaican recomputando el log de eventos (p. ej., Kafka) en lugar de mantener una segunda base de código. Por ejemplo, LinkedIn adoptó pipelines *Kappa* basados enteramente en streaming para evitar la duplicidad de lógica de *Lambda*.
+
+
+![](../images/kappa-azure.png){fig-alt="Lambda architecture" fig-align="center" width="80%"}
+
+*Source: [Azure Architecture Center, "Big data architectures"](https://learn.microsoft.com/en-us/azure/architecture/databases/guide/big-data-architectures)*
+
+
+::: {.callout-note appearance="simple" title="Para profundizar"}
+
+- [@kreps2014]
+- [@lin2017] - comparación crítica y más académica de ambos patrones.
+
+:::
 
 ## Bloque C — Organización y gobierno del dato
 
