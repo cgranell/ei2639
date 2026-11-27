@@ -27,6 +27,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -96,6 +131,9 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -360,12 +398,59 @@ div.csl-indent {
 <p>Este último bloque no trata únicamente de decisiones técnicas de almacenamiento o procesamiento, como en los dos bloques anteriores, sino que incluye aspectos como la <strong>organización y gobernanza</strong> de los datos a escala de toda una organización. <em>Medallion</em> sigue operando dentro del <em>data lake</em> del Bloque A (es, de hecho, una forma de ordenar sus capas de calidad); <em>Data Product/Data Mesh</em> es el patrón más reciente y de mayor nivel de abstracción.</p>
 <section id="medallion-architecture" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="medallion-architecture"><span class="header-section-number">5.3.1</span> Medallion Architecture</h3>
+<p>El patrón <em>Medallion Architecture</em> organiza los datos dentro de un data lake/lakehouse en capas progresivas de calidad:</p>
+<ul>
+<li><strong>Bronze</strong> (datos crudos, tal cual llegan),</li>
+<li><strong>Silver</strong> (datos limpios, validados y conformados) y</li>
+<li><strong>Gold</strong> (datos agregados, listos para consumo de negocio/BI/ML).</li>
+</ul>
+<p>Suele apoyarse en formatos transaccionales tipo Delta Lake <span class="citation" data-cites="armbrust2020">(<a href="../references.html#ref-armbrust2020" role="doc-biblioref">Armbrust et al. 2020</a>)</span> o <a href="https://iceberglakehouse.com/iceberg/iceberg-medallion-architecture/">Apache Iceberg</a> construidos sobre Parquet. Este es el patrón de referencia en prácticamente todos los casos de cliente publicados por <a href="https://www.databricks.com/">Databricks</a> (banca, salud, retail) que migran a arquitectura lakehouse</p>
+<div class="cell" data-layout-align="default">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>flowchart LR</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    A[Fuentes de datos] --&gt; B[Bronze\nDatos crudos]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    B --&gt; C[Silver\nLimpios y conformados]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    C --&gt; D[Gold\nAgregados, listos para BI/ML]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+
+<pre class="mermaid mermaid-js">flowchart LR
+    A[Fuentes de datos] --&gt; B[Bronze\nDatos crudos]
+    B --&gt; C[Silver\nLimpios y conformados]
+    C --&gt; D[Gold\nAgregados, listos para BI/ML]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Para profundizar
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Databricks, <a href="https://docs.databricks.com/aws/en/lakehouse/medallion">“What is the medallion lakehouse architecture?”</a>.</li>
+<li>Databricks, <a href="https://docs.databricks.com/aws/en/delta/">documentación de Delta Lake</a> — el formato transaccional que suele sustentar Medallion en producción.</li>
+<li><span class="citation" data-cites="armbrust2020">(<a href="../references.html#ref-armbrust2020" role="doc-biblioref">Armbrust et al. 2020</a>)</span> - Delta Lake</li>
+</ul>
+</div>
+</div>
 </section>
 <section id="data-product-architecture" class="level3" data-number="5.3.2">
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="data-product-architecture"><span class="header-section-number">5.3.2</span> Data Product Architecture</h3>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-armbrust2020" class="csl-entry" role="listitem">
+Armbrust, Michael, Tathagata Das, Liwen Sun, et al. 2020. <span>“Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores.”</span> <em>Proc. VLDB Endow.</em> 13 (12): 3411–24. <a href="https://doi.org/10.14778/3415478.3415560">https://doi.org/10.14778/3415478.3415560</a>.
+</div>
 <div id="ref-azzabi2024" class="csl-entry" role="listitem">
 Azzabi, Siwar, Zaid Alfughi, and Abdelkader Ouda. 2024. <span>“Data Lakes: A Survey of Concepts and Architectures.”</span> <em>Computers</em> 13 (7): 183. <a href="https://doi.org/10.3390/computers13070183">https://doi.org/10.3390/computers13070183</a>.
 </div>
