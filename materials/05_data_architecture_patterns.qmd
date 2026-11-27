@@ -110,10 +110,11 @@ Suele apoyarse en formatos transaccionales tipo Delta Lake [@armbrust2020] o [Ap
 
 ```{mermaid}
 flowchart LR
-    A[Fuentes de datos] --> B[Bronze\nDatos crudos]
-    B --> C[Silver\nLimpios y conformados]
-    C --> D[Gold\nAgregados, listos para BI/ML]
+  A[Fuentes de datos] --> B[Bronze - Datos crudos]
+  B --> C[Silver - Limpios y conformados]
+  C --> D[Gold Agregados, listos para BI/ML]
 ```
+
 
 ::: {.callout-note appearance="simple" title="Para profundizar"}
 - Databricks, ["What is the medallion lakehouse architecture?"](https://docs.databricks.com/aws/en/lakehouse/medallion) [@databricks_medallion].
@@ -131,19 +132,21 @@ El patrón *Data Product Architecture* (o [*Data Mesh*](https://en.wikipedia.org
 %%| fig-align: center
 
 flowchart TB
-    subgraph Dominio A
-      DPA[Data Product A]
-    end
-    subgraph Dominio B
-      DPB[Data Product B]
-    end
-    subgraph Dominio C
-      DPC[Data Product C]
-    end
-    DPA <--> DPB
-    DPB <--> DPC
-    DPA <--> DPC
+  subgraph Dominio A
+    DPA[Data Product A]
+  end
+  subgraph Dominio B
+    DPB[Data Product B]
+  end
+  subgraph Dominio C
+    DPC[Data Product C]
+  end
+  DPA <--> DPB
+  DPB <--> DPC
+  DPA <--> DPC
 ```
+
+*Source: propia; inspirado de [How to Move Beyond a Monolithic Data Lake to a Distributed Data Mesh](https://martinfowler.com/articles/data-monolith-to-mesh.html)*
 
 ::: {.callout-note appearance="simple" title="Para profundizar"}
 - Data Mesh: Delivering Data-Driven Value at Scale [@dehghani2022]
