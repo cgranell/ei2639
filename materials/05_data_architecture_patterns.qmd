@@ -55,19 +55,25 @@ La contrapartida de ETL es la rigidez: cualquier cambio en la lógica de transfo
 
 ### Data Lake Architecture
 
-
-El patrón *Data Lake Architecture* hace referencia a un repositorio centralizado que almacena datos en formato nativo o original (*schema-on-read*) en infraestructuras de la nube (mediante objetos de almacenamiento tipo Amazon S3) usando formatos orientados a columna como Parquet. A diferencia del patrón ETL, el esquema de los datos se decide al consumir el dato (*schema-on-read*), no en el momento de almacenarlo. Uber realizó una implementacion real a gran escala en su data lake transaccional sobre [Apache Hudi](https://hudi.apache.org/) (también desarrollado intermante por Uber) para facilitar  procesamiento incremental a escala de billones de registros de datos, evitando reescribir particiones completas en cada actualización.
+El patrón *Data Lake Architecture* hace referencia a un repositorio centralizado que almacena datos en formato nativo o original (*schema-on-read*) en infraestructuras de la nube (mediante objetos de almacenamiento tipo Amazon S3) usando formatos orientados a columna como Parquet. A diferencia del patrón ETL, el esquema de los datos se decide al consumir los datos (*schema-on-read*), no en el momento de almacenarlo. Uber realizó una implementacion real a gran escala en su data lake transaccional sobre [Apache Hudi](https://hudi.apache.org/) (también desarrollado intermante por Uber) para facilitar  procesamiento incremental a escala de billones de registros de datos, evitando reescribir particiones completas en cada actualización.
 
 
 ::: {.callout-note appearance="simple" title="Para profundizar"}
 - ["Pentaho, Hadoop, and Data Lakes"](https://jamesdixon.wordpress.com/2010/10/14/pentaho-hadoop-and-data-lakes/)[@dixon2010] - entrada de blog original que acuña el término.
 - [@azzabi2024]
-- Uber Engineering, ["Uber's Lakehouse Architecture"](https://www.uber.com/us/en/blog/ubers-lakehouse-architecture/) — caso práctico con Apache Hudi.
+- [@minghini2022]
+- Uber Engineering, ["Uber's Lakehouse Architecture"](https://www.uber.com/us/en/blog/ubers-lakehouse-architecture/)
 :::
 
-## Bloque B — Procesamiento: batch vs. tiempo real
+La primera ventaja es el *schema-on-read*: no hace falta decidir la estructura de los datos antes de guardarlos, como sí exige el ETL clásico. Esto permite ingerir de inmediato cualquier tipo de dato (logs semi-estructurados en JSON, imágenes, vídeo, texto) y posponer la decisión de cómo estructurarlos hasta el momento en que se realizan consultas analíticas. Este es habitual en proyectos de ciencia de datos y machine learning.
 
-El segundo bloque aborda el "cuándo": ¿cómo servimos resultados con baja latencia sin renunciar a la precisión inherente cuando se analiza todo el histórico de datos? *Lambda* y *Kappa* son dos respuestas a la misma pregunta. Y *Kappa* solo se entiende *como una reacción a* paliar una deficiencia de la arquitectura *Lambda*.
+Otra ventaja (económico), es la separación entre almacenamiento y procesamiento/transformación: el almacenamiento de objetos en la nubeo es muy barato y se puede escalar casi sin límite, mientras que el cómputo (Spark, Trino, etc.) se activa únicamente cunado se require procesamiento. En los warehouses clásicos, almacenamiento y procesamiento/transformacón estaban acoplados y encarece el coste a medida que el volumen de datos aumenta.
+
+La contrapartida es la falta de gobernalidad de los datos: calidad, trazabilidad, confiabilidad, etc.
+
+## Procesamiento: batch vs. tiempo real
+
+El segundo bloque aborda el "cuándo": ¿cómo servimos resultados con baja latencia sin renunciar a la precisión inherente cuando se analiza todo el histórico de datos? *Lambda* y *Kappa* son dos respuestas a la misma pregunta. Y *Kappa* solo se entiende *como una reacción* para paliar deficiencias de la arquitectura *Lambda*.
 
 ### Lambda Architecture
 
@@ -106,7 +112,7 @@ El patrón *Kappa* simplifica *Lambda* eliminando la capa batch. Todo el procesa
 
 :::
 
-## Bloque C — Organización y gobernanza de datos
+## Organización y gobernanza de datos
 
 Este último bloque no trata únicamente de decisiones de almacenamiento o procesamiento de los datos, como en los dos bloques anteriores, sino que incluye aspectos como la **organización y gobernanza** de los datos a escala de toda una organización. *Medallion* sigue operando dentro del *data lake* del Bloque A (es, de hecho, una forma de ordenar sus capas de calidad); *Data Product/Data Mesh* es el patrón más reciente y de mayor nivel de abstracción.
 
