@@ -92,12 +92,11 @@ El patrón *Kappa* simplifica *Lambda* eliminando la capa batch. Todo el procesa
 
 :::
 
-## Bloque C — Organización y gobierno del dato
+## Bloque C — Organización y gobernanza de datos
 
 Este último bloque no trata únicamente de decisiones técnicas de almacenamiento o procesamiento, como en los dos bloques anteriores, sino que incluye aspectos como la **organización y gobernanza** de los datos a escala de toda una organización. *Medallion* sigue operando dentro del *data lake* del Bloque A (es, de hecho, una forma de ordenar sus capas de calidad); *Data Product/Data Mesh* es el patrón más reciente y de mayor nivel de abstracción.
 
 ### Medallion Architecture
-
 
 
 El patrón *Medallion Architecture* organiza los datos dentro de un data lake/lakehouse en capas progresivas de calidad: 
@@ -106,7 +105,7 @@ El patrón *Medallion Architecture* organiza los datos dentro de un data lake/la
 - **Silver** (datos limpios, validados y conformados) y 
 - **Gold** (datos agregados, listos para consumo de negocio/BI/ML). 
 
-Suele apoyarse en formatos transaccionales tipo Delta Lake [@armbrust2020] o [Apache Iceberg](https://iceberglakehouse.com/iceberg/iceberg-medallion-architecture/) construidos sobre Parquet. Este es el patrón de referencia en prácticamente todos los casos de cliente publicados por [Databricks](https://www.databricks.com/) (banca, salud, retail) que migran a arquitectura lakehouse
+Suele apoyarse en formatos transaccionales tipo Delta Lake [@armbrust2020] o [Apache Iceberg](https://iceberglakehouse.com/iceberg/iceberg-medallion-architecture/) construidos sobre Parquet. Este es el patrón de referencia en prácticamente todos los casos de cliente publicados por [Databricks](https://www.databricks.com/) (banca, salud, retail) que migran a arquitectura lakehouse.
 
 
 ```{mermaid}
@@ -117,11 +116,20 @@ flowchart LR
 ```
 
 ::: {.callout-note appearance="simple" title="Para profundizar"}
-- Databricks, ["What is the medallion lakehouse architecture?"](https://docs.databricks.com/aws/en/lakehouse/medallion).
+- Databricks, ["What is the medallion lakehouse architecture?"](https://docs.databricks.com/aws/en/lakehouse/medallion) [@databricks_medallion].
 - Databricks, [documentación de Delta Lake](https://docs.databricks.com/aws/en/delta/) — el formato transaccional que suele sustentar Medallion en producción.
 - [@armbrust2020] - Delta Lake
 :::
 
 
 ### Data Product Architecture
+
+
+El patrón *Data Product Architecture* (o [*Data Mesh*](https://en.wikipedia.org/wiki/Data_mesh)) se distingue de los anteriores por ser más conceptual y organizativo. Aquó, los datos se tratan como **productos**, con propietarios de dominio (*domain ownership*), descubribles y de autoservicio, con con una gobernanza  federada. [Intuit](https://www.intuit.com/) (empresa de fintech) documentó su migración a data mesh con equipos de dominio propietarios de sus propios datos.
+
+
+::: {.callout-note appearance="simple" title="Para profundizar"}
+-  Data Mesh: Delivering Data-Driven Value at Scale [@dehghani2022]
+- Intuit, ["Intuit's Data Mesh"](https://www.slideshare.net/TristanBaker2/intuits-data-mesh-data-mesh-leaning-community-meetup-5132021) — charla pública en Data Mesh Learning Community (2021). [#intuit2021]
+:::
 
