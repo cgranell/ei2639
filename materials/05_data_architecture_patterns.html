@@ -407,18 +407,18 @@ div.csl-indent {
 <p>Suele apoyarse en formatos transaccionales tipo Delta Lake <span class="citation" data-cites="armbrust2020">(<a href="../references.html#ref-armbrust2020" role="doc-biblioref">Armbrust et al. 2020</a>)</span> o <a href="https://iceberglakehouse.com/iceberg/iceberg-medallion-architecture/">Apache Iceberg</a> construidos sobre Parquet. Este es el patrón de referencia en prácticamente todos los casos de cliente publicados por <a href="https://www.databricks.com/">Databricks</a> (banca, salud, retail) que migran a arquitectura lakehouse.</p>
 <div class="cell" data-layout-align="default">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>flowchart LR</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    A[Fuentes de datos] --&gt; B[Bronze\nDatos crudos]</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    B --&gt; C[Silver\nLimpios y conformados]</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    C --&gt; D[Gold\nAgregados, listos para BI/ML]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  A[Fuentes de datos] --&gt; B[Bronze - Datos crudos]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  B --&gt; C[Silver - Limpios y conformados]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  C --&gt; D[Gold Agregados, listos para BI/ML]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
 
 <pre class="mermaid mermaid-js">flowchart LR
-    A[Fuentes de datos] --&gt; B[Bronze\nDatos crudos]
-    B --&gt; C[Silver\nLimpios y conformados]
-    C --&gt; D[Gold\nAgregados, listos para BI/ML]
+  A[Fuentes de datos] --&gt; B[Bronze - Datos crudos]
+  B --&gt; C[Silver - Limpios y conformados]
+  C --&gt; D[Gold Agregados, listos para BI/ML]
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -448,42 +448,43 @@ div.csl-indent {
 <p>El patrón <em>Data Product Architecture</em> (o <a href="https://en.wikipedia.org/wiki/Data_mesh"><em>Data Mesh</em></a>) se distingue de los anteriores por ser más conceptual y organizativo. Aquó, los datos se tratan como <strong>productos</strong>, con propietarios de dominio (<em>domain ownership</em>), descubribles y de autoservicio, con con una gobernanza federada. <a href="https://www.intuit.com/">Intuit</a> (empresa de fintech) documentó su migración a data mesh con equipos de dominio propietarios de sus propios datos.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>flowchart TB</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    subgraph Dominio A</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>      DPA[Data Product A]</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    end</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    subgraph Dominio B</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      DPB[Data Product B]</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    end</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    subgraph Dominio C</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      DPC[Data Product C]</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    end</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    DPA &lt;--&gt; DPB</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    DPB &lt;--&gt; DPC</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    DPA &lt;--&gt; DPC</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  subgraph Dominio A</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    DPA[Data Product A]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  end</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  subgraph Dominio B</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    DPB[Data Product B]</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  end</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  subgraph Dominio C</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    DPC[Data Product C]</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  end</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  DPA &lt;--&gt; DPB</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  DPB &lt;--&gt; DPC</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  DPA &lt;--&gt; DPC</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
 
 <pre class="mermaid mermaid-js">flowchart TB
-    subgraph Dominio A
-      DPA[Data Product A]
-    end
-    subgraph Dominio B
-      DPB[Data Product B]
-    end
-    subgraph Dominio C
-      DPC[Data Product C]
-    end
-    DPA &lt;--&gt; DPB
-    DPB &lt;--&gt; DPC
-    DPA &lt;--&gt; DPC
+  subgraph Dominio A
+    DPA[Data Product A]
+  end
+  subgraph Dominio B
+    DPB[Data Product B]
+  end
+  subgraph Dominio C
+    DPC[Data Product C]
+  end
+  DPA &lt;--&gt; DPB
+  DPB &lt;--&gt; DPC
+  DPA &lt;--&gt; DPC
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
+<p><em>Source: propia; inspirado de <a href="https://martinfowler.com/articles/data-monolith-to-mesh.html">How to Move Beyond a Monolithic Data Lake to a Distributed Data Mesh</a></em></p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
