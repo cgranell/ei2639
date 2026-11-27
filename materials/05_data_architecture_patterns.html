@@ -257,7 +257,7 @@ div.csl-indent {
 <p><em>ETL architecture</em> es el patrón clásico de tres fases: <em>Extract</em> (extracción de datos desde fuentes y/o sistemas de origen), <em>Transform</em> (limpieza, integración, agregación y validación de lso datos en n esquema determinado) y <em>Load</em> (carga en un data warehouse con un esquema relacional fijo, optmizado para cierto tipo de consultas). Se ejecuta normalmente por lotes (<em>batch</em>) ,y está orientado a consultas analíticas estructuradas (BI/reporting). En la práctica, ETL se encuentra detrás de los data warehouses empresariales de sectores clásicos como venta al por menor, banca o seguros <span class="citation" data-cites="kimball2004">(<a href="../references.html#ref-kimball2004" role="doc-biblioref">Kimball and Caserta 2004</a>)</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../images/etl-azurre.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%" alt="ETL architecture"></p>
+<p><img src="../images/etl-azure.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%" alt="ETL architecture"></p>
 </figure>
 </div>
 <p><em>Source: <a href="https://learn.microsoft.com/en-us/azure/architecture/data-guide/relational-data/etl">Azure Architecture Center, “Extract, transform, and load (ETL)”</a></em></p>
@@ -272,14 +272,32 @@ div.csl-indent {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Referencia base: <em>The Data Warehouse ETL Toolkit: Practical Techniques for Extracting, Cleaning, Conforming, and Delivering Data</em> <span class="citation" data-cites="kimball2004">(<a href="../references.html#ref-kimball2004" role="doc-biblioref">Kimball and Caserta 2004</a>)</span></li>
-<li>Otros: Kimball Group, <a href="https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/etl-architecture-34-subsystems/">“ETL Architecture’s 34 Subsystems”</a> — describe el desglose práctico de los subsistemas de un ETL real.</li>
+<li><em>The Data Warehouse ETL Toolkit: Practical Techniques for Extracting, Cleaning, Conforming, and Delivering Data</em> <span class="citation" data-cites="kimball2004">(<a href="../references.html#ref-kimball2004" role="doc-biblioref">Kimball and Caserta 2004</a>)</span></li>
+<li>Kimball Group, <a href="https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/etl-architecture-34-subsystems/">“ETL Architecture’s 34 Subsystems”</a> — describe el desglose práctico de los subsistemas de un ETL real.</li>
 </ul>
 </div>
 </div>
 </section>
 <section id="data-lake-architecture" class="level3" data-number="5.1.2">
 <h3 data-number="5.1.2" class="anchored" data-anchor-id="data-lake-architecture"><span class="header-section-number">5.1.2</span> Data Lake Architecture</h3>
+<p>El patrón <em>Data Lake Architecture</em> hace referencia a un repositorio centralizado que almacena datos en formato nativo/bruto (<em>schema-on-read</em>), tanto estructurados como no estructurados, típicamente en infraestructuras de la nube (mediante objetos de almacenamiento tipo Amazon S3) usando formatos de columna como Parquet. A diferencia del patron ETL, el esquema de los datos se decide al consumir el dato, no al almacenarlo. Una implementacion real a gran escal es el ejemplo de Uber, que construyó su data lake transaccional sobre <a href="https://hudi.apache.org/">Apache Hudi</a> (desarrollado intermante por Uber) para soportar procesamiento incremental a escala de billones de registros, evitando reescribir particiones completas en cada actualización.</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Para profundizar
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="https://jamesdixon.wordpress.com/2010/10/14/pentaho-hadoop-and-data-lakes/">“Pentaho, Hadoop, and Data Lakes”</a><span class="citation" data-cites="dixon2010">(<a href="../references.html#ref-dixon2010" role="doc-biblioref">Dixon 2010</a>)</span> - entrada de blog original que acuña el término.</li>
+<li><span class="citation" data-cites="azzabi2024">(<a href="../references.html#ref-azzabi2024" role="doc-biblioref">Azzabi et al. 2024</a>)</span></li>
+<li>Uber Engineering, <a href="https://www.uber.com/us/en/blog/ubers-lakehouse-architecture/">“Uber’s Lakehouse Architecture”</a> — caso práctico con Apache Hudi.</li>
+</ul>
+</div>
+</div>
 </section>
 </section>
 <section id="bloque-b-procesamiento-batch-vs.-tiempo-real" class="level2" data-number="5.2">
@@ -287,9 +305,54 @@ div.csl-indent {
 <p>El segundo bloque aborda el “cuándo”: ¿cómo servimos resultados con baja latencia sin renunciar a la precisión inherente cunado se analiza todo el histórico de datos? <em>Lambda</em> y <em>Kappa</em> son dos respuestas a la misma pregunta y, además, <em>Kappa</em> solo se entiende <em>como una reacción a</em> la arquitectura <em>Lambda</em>, por eso el orden importa aquí más que en ningún otro bloque.</p>
 <section id="lambda-architecture" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="lambda-architecture"><span class="header-section-number">5.2.1</span> Lambda Architecture</h3>
+<p>El patrón <em>Lambda Architecture</em> combina dos rutas paralelas sobre los mismos datos: una <strong>capa batch</strong> (procesa todo el histórico, alta precisión, alta latencia) y una <strong>capa speed/streaming</strong> (datos recientes, baja latencia, resultados aproximados). Ambas vista se combinan y unifican en una <strong>capa serving</strong> par adar servici oa consulta analíticas. El coste es mantener y sincronizar dos bases de código con la misma lógica de negocio implementada dos veces. El <a href="https://manning-content.s3.amazonaws.com/download/3/4142054-00c8-4115-879e-946c643f3665/big-data-ch01.pdf">capítulo 1</a> de<span class="citation" data-cites="marz2015">(<a href="../references.html#ref-marz2015" role="doc-biblioref">Marz and Warren 2015</a>)</span> describe un ejemplo práctico en Twitter/BackType que combina Hadoop (batch) con Storm (streaming).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/lambda-azure.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%" alt="Lambda architecture"></p>
+</figure>
+</div>
+<p><em>Source: <a href="https://learn.microsoft.com/en-us/azure/architecture/databases/guide/big-data-architectures">Azure Architecture Center, “Big data architectures”</a></em></p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Para profundizar
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><span class="citation" data-cites="marz2015">(<a href="../references.html#ref-marz2015" role="doc-biblioref">Marz and Warren 2015</a>)</span></li>
+</ul>
+</div>
+</div>
 </section>
 <section id="kappa-architecture" class="level3" data-number="5.2.2">
 <h3 data-number="5.2.2" class="anchored" data-anchor-id="kappa-architecture"><span class="header-section-number">5.2.2</span> Kappa Architecture</h3>
+<p>El patrón <em>Kappa</em> simplifica <em>Lambda</em> eliminando la capa batch. Todo el procesamiento dedatos, tanto histórico como en tiempo real, pasa por un único pipeline de streaming. Normalemnte, la integración de los datos histórico se relaican recomputando el log de eventos (p.&nbsp;ej., Kafka) en lugar de mantener una segunda base de código. Por ejemplo, LinkedIn adoptó pipelines <em>Kappa</em> basados enteramente en streaming para evitar la duplicidad de lógica de <em>Lambda</em>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/kappa-azure.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%" alt="Lambda architecture"></p>
+</figure>
+</div>
+<p><em>Source: <a href="https://learn.microsoft.com/en-us/azure/architecture/databases/guide/big-data-architectures">Azure Architecture Center, “Big data architectures”</a></em></p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Para profundizar
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><span class="citation" data-cites="kreps2014">(<a href="../references.html#ref-kreps2014" role="doc-biblioref"><strong>kreps2014?</strong></a>)</span></li>
+<li><span class="citation" data-cites="lin2017">(<a href="../references.html#ref-lin2017" role="doc-biblioref">Lin 2017</a>)</span> - comparación crítica y más académica de ambos patrones.</li>
+</ul>
+</div>
+</div>
 </section>
 </section>
 <section id="bloque-c-organización-y-gobierno-del-dato" class="level2" data-number="5.3">
@@ -303,6 +366,12 @@ div.csl-indent {
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-azzabi2024" class="csl-entry" role="listitem">
+Azzabi, Siwar, Zaid Alfughi, and Abdelkader Ouda. 2024. <span>“Data Lakes: A Survey of Concepts and Architectures.”</span> <em>Computers</em> 13 (7): 183. <a href="https://doi.org/10.3390/computers13070183">https://doi.org/10.3390/computers13070183</a>.
+</div>
+<div id="ref-dixon2010" class="csl-entry" role="listitem">
+Dixon, James. 2010. <span>“Pentaho, Hadoop, and Data Lakes.”</span> <a href="https://jamesdixon.wordpress.com/2010/10/14/pentaho-hadoop-and-data-lakes/">https://jamesdixon.wordpress.com/2010/10/14/pentaho-hadoop-and-data-lakes/</a>.
+</div>
 <div id="ref-aais2026" class="csl-entry" role="listitem">
 E-learning, AAIS. 2026. <em>The 12 Data Architecture Patterns Every Data Engineer Should Master in 2026</em>. Medium. <a href="https://medium.com/@aaiselearning/the-12-data-architecture-patterns-every-data-engineer-should-master-in-2026-00fe5f9052ce">https://medium.com/@aaiselearning/the-12-data-architecture-patterns-every-data-engineer-should-master-in-2026-00fe5f9052ce</a>.
 </div>
@@ -311,6 +380,12 @@ Heck, Petra. 2024. <span>“What about the Data? A Mapping Study on Data Enginee
 </div>
 <div id="ref-kimball2004" class="csl-entry" role="listitem">
 Kimball, Ralph, and Joe Caserta. 2004. <em>The Data Warehouse ETL Toolkit: Practical Techniques for Extracting, Cleaning, Conforming, and Delivering Data</em>. Wiley.
+</div>
+<div id="ref-lin2017" class="csl-entry" role="listitem">
+Lin, Jimmy. 2017. <span>“The Lambda and the Kappa.”</span> <em>IEEE Internet Computing</em> 21 (5): 60–66. <a href="https://doi.org/10.1109/MIC.2017.3481351">https://doi.org/10.1109/MIC.2017.3481351</a>.
+</div>
+<div id="ref-marz2015" class="csl-entry" role="listitem">
+Marz, Nathan, and James Warren. 2015. <em>Big Data: Principles and Best Practices of Scalable Real-Time Data Systems</em>. Manning Publications.
 </div>
 <div id="ref-reis2022" class="csl-entry" role="listitem">
 Reis, Joe, and Matt Housley. 2022. <em>Fundamentals of Data Engineering</em>. O’Reilly. <a href="https://www.oreilly.com/library/view/fundamentals-of-data/9781098108298/">https://www.oreilly.com/library/view/fundamentals-of-data/9781098108298/</a>.
