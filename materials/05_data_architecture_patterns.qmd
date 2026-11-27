@@ -125,7 +125,8 @@ El patrón *Medallion Architecture* organiza los datos dentro de un data lake/la
 - *Silver*: datos limpios, validados y conformados
 - *Gold*: datos agregados, listos para consumo de negocio/BI/ML
 
-Suele utlizar formatos transaccionales tipo Delta Lake [@armbrust2020] o [Apache Iceberg](https://iceberglakehouse.com/iceberg/iceberg-medallion-architecture/) construidos sobre Parquet. Este es el patrón de referencia en prácticamente todos los casos de cliente publicados por [Databricks](https://www.databricks.com/).
+Suele utilizar formatos transaccionales tipo Delta Lake [@armbrust2020] o [Apache Iceberg](https://iceberglakehouse.com/iceberg/iceberg-medallion-architecture/) construidos sobre Parquet. Este es el patrón de referencia en prácticamente todos los casos de cliente publicados por [Databricks](https://www.databricks.com/). De hecho, esta entidad diseñó sus propias herramientas de pipelines explícitamente alrededor de las capas bronze-silver-gold.
+
 
 
 ```{mermaid}
@@ -137,6 +138,10 @@ flowchart LR
   C --> D[Gold Agregados, listos para BI/ML]
 ```
 
+La ventaja principal es que separa explícitamente la responsabilidad de cada etapa de transformación, en lugar de tener un único proceso ETL monolítico que se ejecuta a la vez. Bronze conserva una copia fiel e inmutable de los datos tal cual, lo que significa que si se descubre un error en la lógica de limpieza (silver), se puede repetir el proceso desde bronze sin tener que repetir la extración de los datos desde las fuentes originales. Esto es una ventaja frente al ETL clásico, donde corregir un error de transformación a menudo obliga a re-extraer los datos de la fuente.
+
+Otras ventaja es organizativa ya que la delimitación de responsabilidad entre capas, permite que distintos equipos gestionen distintas capas (ingeniería de datos para bronze/silver, analistas para gold). En cotnrapartida, ñlas tres capas pueden añadir  latencia entre la ingesta de los datos en bronze y su disponibilidad em gold para tareas de análisis.
+
 
 ::: {.callout-note appearance="simple" title="Para profundizar"}
 - Databricks, ["What is the medallion lakehouse architecture?"](https://docs.databricks.com/aws/en/lakehouse/medallion) [@databricks_medallion].
@@ -147,7 +152,7 @@ flowchart LR
 
 ### Data Product Architecture
 
-El patrón *Data Product Architecture* (o [*Data Mesh*](https://en.wikipedia.org/wiki/Data_mesh)) se distingue de los anteriores por ser más conceptual y organizativo. Aquó, los datos se tratan como **productos**, con propietarios de dominio (*domain ownership*), descubribles y de autoservicio, con con una gobernanza  federada. [Intuit](https://www.intuit.com/) (empresa de fintech) documentó su migración a data mesh con equipos de dominio propietarios de sus propios datos.
+El patrón *Data Product Architecture* (o [*Data Mesh*](https://en.wikipedia.org/wiki/Data_mesh)) se distingue de los anteriores por ser más conceptual y organizativo. Aquí, los datos se tratan como **productos**, con propietarios de dominio (*domain ownership*), descubribles y de autoservicio, con una gobernanza  federada. [Intuit](https://www.intuit.com/) (empresa de fintech) documentó su migración a data mesh con equipos de dominio propietarios de sus propios datos.
 
 ```{mermaid}
 %%| fig-align: center
@@ -169,8 +174,12 @@ flowchart TB
 
 *Source: propia; inspirado de [How to Move Beyond a Monolithic Data Lake to a Distributed Data Mesh](https://martinfowler.com/articles/data-monolith-to-mesh.html)*
 
+Un *data product* es un conjunto de datos con un propietario de dominio claro, autodescriptivo (documentación, esquema, licencia), descubrible a través de un catálogo común y accesible mediante una interfaz estandarizada. [Source Cooperative](https://source.coop/) es un buen ejemplo real de esta idea aplicada a datos geoespaciales abiertos: cada conjunto de datos vive en su propio repositorio, con su propio README como documentación, publicado de forma independiente por la organización o persona que lo produce y servido mediante una API compatible con S3 en formatos cloud-native como GeoParquet, PMTiles o Cloud-Optimized GeoTIFF.
+
 ::: {.callout-note appearance="simple" title="Para profundizar"}
 - Data Mesh: Delivering Data-Driven Value at Scale [@dehghani2022]
 - Intuit, ["Intuit's Data Mesh"](https://www.slideshare.net/TristanBaker2/intuits-data-mesh-data-mesh-leaning-community-meetup-5132021) — charla pública en Data Mesh Learning Community (2021). [#intuit2021]
+- [What is Source Cooperative?](https://docs.source.coop/what-is-source)
+- [Great Data Products podcast](https://greatdataproducts.com/)
 :::
 
